@@ -42,6 +42,8 @@ Use `IE` when the requested records were not produced or cannot distinguish abse
 
 When evidence supports both a ceremonial and substantive interpretation, use the lower finding and document the ambiguity. This reduces optimistic inference.
 
+The downward rule applies to ordinal ambiguity such as `1` versus `2`. It does not authorize converting uncertainty about whether a practice existed into `0`. Use `IE` when the evidence cannot distinguish absence from unavailable evidence.
+
 ## 5. Assess Telemetry Integrity separately
 
 Report provenance, completeness, controlled edit authority, operational independence, tamper evidence, retention, and missing-record disclosure. Telemetry Integrity is not averaged with the six substantive dimensions.
@@ -65,6 +67,18 @@ Cite each artifact precisely. Separate observation from interpretation. Preserve
 
 ## 8. Inter-rater exercise
 
-Two reviewers should independently assess the same fixture without discussing it. Compare findings by dimension, identify the source of disagreement, and record whether disagreement arose from evidence interpretation, rubric ambiguity, or missing information.
+Two reviewers should independently assess the same frozen materials without discussing findings. The scorer packet, evidence boundary, protocol, submission contract, comparison rule, and advancement threshold must be fixed before scoring begins.
 
-A stable release requires a documented reliability threshold and disagreement protocol.
+The candidate v0.3.0 procedure is defined in [`validation/inter-rater-protocol.md`](../validation/inter-rater-protocol.md). It requires:
+
+- two scorers independent of the author and of each other;
+- no prior access to the author's case scores;
+- the same fixed source packet;
+- one schema-valid submission per scorer;
+- publication of original submissions before adjudication changes any method artifact;
+- exact comparison across six substantive dimensions plus Telemetry Integrity;
+- preservation and classification of every disagreement.
+
+The predeclared Level 2 gate is at least six exact agreements across seven items and zero critical disagreements. Unweighted Cohen's kappa across the six substantive dimensions is supplementary rather than decisive because the first exercise is small.
+
+Adjudication may explain disagreement or propose later rubric changes. It must not overwrite original scores, recalculate the primary result after discussion, or conceal a failing exercise.
