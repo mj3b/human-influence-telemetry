@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use Human Influence Telemetry, cite this software and research artifact."
+title: "Human Influence Telemetry"
+type: software
+version: "0.1.0"
+date-released: "2026-07-16"
+authors:
+  - family-names: Banasihan
+    given-names: Mark Julius
+    orcid: "https://orcid.org/0009-0001-8121-2878"
+abstract: "A decision-record method for testing whether formal human oversight retained practical force in AI-mediated institutional decisions."
+license: Apache-2.0
+repository-code: "https://github.com/mj3b/human-influence-telemetry"
+doi: "10.5281/zenodo.21204892"
+keywords:
+  - AI governance
+  - human oversight
+  - decision accountability
+  - assurance
+  - institutional decision-making
