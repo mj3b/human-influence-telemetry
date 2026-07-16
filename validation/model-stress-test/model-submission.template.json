@@ -1,0 +1,39 @@
+{
+  "submission_id": "HIT-MST-MODEL-A",
+  "protocol_id": "HIT-MST-CIGNA-001",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "model": {
+    "public_id": "MODEL-A",
+    "provider": "REPLACE",
+    "product_label": "REPLACE",
+    "version_detail": null,
+    "run_date": "YYYY-MM-DD",
+    "access_mode": "fresh chat session",
+    "settings_note": null
+  },
+  "contamination_attestation": {
+    "fresh_session": true,
+    "no_author_scores": true,
+    "no_other_model_output": true,
+    "no_additional_case_sources": true,
+    "no_substantive_author_coaching": true
+  },
+  "substantive_findings": [
+    {"dimension": "counsel", "finding": "IE", "evidence_refs": ["S1"], "rationale": "Replace with a source-grounded rationale of at least thirty characters.", "ambiguity_note": null},
+    {"dimension": "judgment", "finding": "IE", "evidence_refs": ["S1"], "rationale": "Replace with a source-grounded rationale of at least thirty characters.", "ambiguity_note": null},
+    {"dimension": "command", "finding": "IE", "evidence_refs": ["S1"], "rationale": "Replace with a source-grounded rationale of at least thirty characters.", "ambiguity_note": null},
+    {"dimension": "correction", "finding": "IE", "evidence_refs": ["S1"], "rationale": "Replace with a source-grounded rationale of at least thirty characters.", "ambiguity_note": null},
+    {"dimension": "repair", "finding": "IE", "evidence_refs": ["S1"], "rationale": "Replace with a source-grounded rationale of at least thirty characters.", "ambiguity_note": null},
+    {"dimension": "reform", "finding": "IE", "evidence_refs": ["S1"], "rationale": "Replace with a source-grounded rationale of at least thirty characters.", "ambiguity_note": null}
+  ],
+  "telemetry_integrity": {
+    "status": "IE",
+    "evidence_refs": ["S1"],
+    "rationale": "Replace with a source-grounded rationale of at least thirty characters.",
+    "ambiguity_note": null
+  },
+  "submitted_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "general_limitations": [
+    "This is a model-based exploratory stress test and not a human reliability result."
+  ]
+}
