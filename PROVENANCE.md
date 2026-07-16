@@ -10,8 +10,13 @@ The public technical instrument is extracted from that program without publishin
 - ORCID: 0009-0001-8121-2878
 - Originating concept DOI: 10.5281/zenodo.21204892
 - Source repository: private and retained by the author
+- Public repository release: 0.2.0
 - Public specification version: 0.1.0
+- Assessment schema version: 0.1.0
+- Dimension catalog version: 0.1.0
 - Canonical public repository: `mj3b/human-influence-telemetry`
+
+Repository release 0.2.0 adds public evidence artifacts without changing the 0.1.0 specification, schema, dimension catalog, or scoring contract.
 
 ## Canonical construct decision
 
@@ -21,7 +26,7 @@ Telemetry Integrity is a cross-cutting evidence-quality dimension. It is assesse
 
 ## Case-study extraction
 
-The public evidence pack contains normalized versions of three retrospective applications:
+The v0.2.0 public evidence pack contains normalized versions of three retrospective applications:
 
 - Dutch childcare-benefits harm-period assessment;
 - Obermeyer population-health assessment, separated into deployer and manufacturer records;
