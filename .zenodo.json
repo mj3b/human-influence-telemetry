@@ -1,0 +1,36 @@
+{
+  "title": "Human Influence Telemetry",
+  "description": "A documentary assurance method for testing whether formal human oversight retained practical force in AI-mediated institutional decisions.",
+  "creators": [
+    {
+      "name": "Banasihan, Mark Julius",
+      "orcid": "0009-0001-8121-2878",
+      "affiliation": "Node & Norm"
+    }
+  ],
+  "version": "0.1.0",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "Apache-2.0",
+  "language": "eng",
+  "keywords": [
+    "AI governance",
+    "human oversight",
+    "decision accountability",
+    "assurance",
+    "institutional decision-making",
+    "human influence telemetry"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://doi.org/10.5281/zenodo.21204892",
+      "relation": "isSupplementTo",
+      "resource_type": "other"
+    },
+    {
+      "identifier": "https://github.com/mj3b/governed-decision-intelligence",
+      "relation": "isRelatedTo",
+      "resource_type": "software"
+    }
+  ]
+}
