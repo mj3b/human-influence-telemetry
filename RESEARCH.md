@@ -25,7 +25,7 @@ Human Influence Telemetry is a design-science research artifact. It operationali
 | H1 | HIT can represent six substantive dimensions and one cross-cutting integrity dimension in one machine-readable assessment | Demonstrated by schema, fixtures, and public case records once CI passes | Revise when a required finding cannot be represented |
 | H2 | The 0/1/2/IE rubric distinguishes absence, ceremonial presence, substantive exercise, and missing evidence | Demonstrated for included fixtures and author-scored public cases only | Revise after independent scoring or failed discrimination cases |
 | H3 | Independent reviewers can reach substantial agreement using the published handbook | Unresolved | Requires documented inter-rater exercise |
-| H4 | HIT can identify oversight theater that binary human-in-the-loop labels miss | Supported by design logic and three public case studies; not independently validated | Requires external replication |
+| H4 | HIT can identify oversight theater that binary human-in-the-loop labels miss | Supported by design logic and three released public case studies; not independently validated | Requires external replication |
 | H5 | Higher HIT findings predict lower harm or better repair | Hypothesis | Requires preregistered population, outcomes, and statistical method |
 | H6 | A high HIT finding proves meaningful human control | Unsupported | Would require stronger causal and institutional evidence than documentary assessment alone |
 | H7 | HIT evidence may support oversight, accountability, and contestability obligations in external frameworks | Provisional mapping claim | Requires qualified standards or legal review |
@@ -39,7 +39,7 @@ Human Influence Telemetry is a design-science research artifact. It operationali
 | Obermeyer population-health algorithm | Deploying health systems and manufacturer | 2 | Actor decomposition; near-total IE profile; externally prompted reform |
 | Cigna PxDx | Cigna claims-review workflow | 1 | Signature versus practical command; evidentiary tiers; designed disagreement |
 
-These are retrospective, author-scored applications. Publication demonstrates applicability to heterogeneous public records. It does not resolve H3 or establish field validity.
+These are retrospective, author-scored applications released in repository version 0.2.0. Publication demonstrates applicability to heterogeneous public records. It does not resolve H3 or establish field validity.
 
 ## Methods
 
@@ -59,10 +59,10 @@ Institutional records may be incomplete, curated, or controlled by the governed 
 | 4 | Validated | Preregistered validation design and pilot result |
 | 5 | Adopted | Independent institutional use and external reference |
 
-The levels are cumulative. The repository remains at Level 1 until the inter-rater requirement for Level 2 is completed, even though the three-case evidence condition for Level 3 is now available in public-review form.
+The levels are cumulative. The repository remains at Level 1 until the inter-rater requirement for Level 2 is completed, even though repository version 0.2.0 satisfies the three-case evidence condition required later at Level 3.
 
 ## Release discipline
 
-A numbered release requires passing validation, synchronized schema and examples, updated limitations, accurate claim status, migration notes for normative changes, and citation metadata pointing to the exact release.
+A numbered release requires passing validation, synchronized release metadata, updated limitations, accurate claim status, migration or compatibility notes, and citation metadata pointing to the exact release. Specification, schema, and catalog versions change only when their own contracts change.
 
 The evidence and version gates through 1.0.0 are defined in [`ROADMAP.md`](ROADMAP.md).
