@@ -1,7 +1,7 @@
 # Case Study 2: Obermeyer Population-Health Algorithm
 
 **Method:** Human Influence Telemetry 0.1.0  
-**Status:** Public review draft for repository release 0.2.0  
+**Status:** Released with repository version 0.2.0  
 **Assessments:** [`assessments/obermeyer-deployers.json`](assessments/obermeyer-deployers.json) and [`assessments/obermeyer-manufacturer.json`](assessments/obermeyer-manufacturer.json)  
 **Author:** Mark Julius Banasihan
 
