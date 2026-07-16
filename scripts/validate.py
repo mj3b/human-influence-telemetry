@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Validate HIT schemas, fixtures, public cases, metadata, and release files."""
+"""Validate HIT schemas, evidence packs, inter-rater artifacts, metadata, and releases."""
 
 from __future__ import annotations
 
 import copy
 import json
+import subprocess
 import sys
 from pathlib import Path
 from typing import Any
@@ -21,12 +22,31 @@ CASE_ASSESSMENTS_DIR = CASE_STUDIES_DIR / "assessments"
 CITATION_PATH = ROOT / "CITATION.cff"
 ZENODO_PATH = ROOT / ".zenodo.json"
 
+VALIDATION_DIR = ROOT / "validation"
+PROTOCOL_PATH = VALIDATION_DIR / "inter-rater-protocol.md"
+PROTOCOL_LOCK_PATH = VALIDATION_DIR / "protocol-lock.json"
+SUBMISSION_SCHEMA_PATH = VALIDATION_DIR / "scorer-submission.schema.json"
+SUBMISSION_TEMPLATE_PATH = (
+    VALIDATION_DIR / "submissions" / "scorer-submission.template.json"
+)
+PACKET_MANIFEST_PATH = VALIDATION_DIR / "frozen-packet" / "source-manifest.json"
+TEST_VECTOR_A_PATH = VALIDATION_DIR / "test-vectors" / "rater-a.json"
+TEST_VECTOR_B_PATH = VALIDATION_DIR / "test-vectors" / "rater-b.json"
+COMPARISON_SCRIPT_PATH = ROOT / "scripts" / "compare_raters.py"
+RESULTS_DIR = VALIDATION_DIR / "results"
+
 RELEASE_VERSION = "0.2.0"
 RELEASE_DATE = "2026-07-16"
 SPECIFICATION_VERSION = "0.1.0"
 SCHEMA_VERSION = "0.1.0"
 CATALOG_VERSION = "0.1.0"
 ORIGINATING_CONCEPT_DOI = "10.5281/zenodo.21204892"
+
+INTER_RATER_PROTOCOL_ID = "HIT-IRP-CIGNA-001"
+INTER_RATER_PROTOCOL_VERSION = "1.0.0"
+INTER_RATER_PACKET_ID = "HIT-IR-CIGNA-PXDX-001"
+INTER_RATER_TARGET_RELEASE = "0.3.0"
+EXPECTED_PACKET_SOURCE_IDS = {"S1", "S2", "S3"}
 
 EXPECTED_DIMENSIONS = {
     "counsel",
@@ -46,6 +66,23 @@ CASE_STUDY_PATHS = {
     "case-studies/toeslagenaffaire.md",
     "case-studies/obermeyer.md",
     "case-studies/cigna-pxdx.md",
+}
+INTER_RATER_REQUIRED_FILES = {
+    "validation/README.md",
+    "validation/inter-rater-protocol.md",
+    "validation/protocol-lock.json",
+    "validation/frozen-packet/README.md",
+    "validation/frozen-packet/decision-boundary.md",
+    "validation/frozen-packet/source-manifest.json",
+    "validation/scorer-submission.schema.json",
+    "validation/submissions/scorer-submission.template.json",
+    "validation/disagreement-taxonomy.md",
+    "validation/adjudication-template.md",
+    "validation/results/README.md",
+    "validation/test-vectors/README.md",
+    "validation/test-vectors/rater-a.json",
+    "validation/test-vectors/rater-b.json",
+    "scripts/compare_raters.py",
 }
 REQUIRED_RELEASE_FILES = {
     "README.md",
@@ -69,6 +106,7 @@ REQUIRED_RELEASE_FILES = {
     "docs/doi-and-release-strategy.md",
     "docs/releases/v0.1.0.md",
     "docs/releases/v0.2.0.md",
+    *INTER_RATER_REQUIRED_FILES,
 }
 
 
@@ -206,6 +244,12 @@ def validate_release_text() -> list[str]:
     )
     require_text(
         failures,
+        "README.md",
+        "**Development workstream:** v0.3.0 inter-rater protocol and tooling",
+        "inter-rater development status",
+    )
+    require_text(
+        failures,
         "SPECIFICATION.md",
         f"**Version:** {SPECIFICATION_VERSION}",
         "specification version",
@@ -309,6 +353,260 @@ def validate_metadata(
     return failures
 
 
+def validate_scorer_submission_shape(
+    submission: dict[str, Any], label: str
+) -> list[str]:
+    failures: list[str] = []
+    failures.extend(validate_finding_set(submission, label))
+
+    source_access = submission.get("source_access", [])
+    source_ids = [
+        item.get("source_id")
+        for item in source_access
+        if isinstance(item, dict)
+    ]
+    if set(source_ids) != EXPECTED_PACKET_SOURCE_IDS:
+        failures.append(f"{label}: source_access must contain S1, S2, and S3")
+    if len(source_ids) != len(set(source_ids)):
+        failures.append(f"{label}: duplicate source_access entry")
+    if not all(
+        isinstance(item, dict) and item.get("access_complete") is True
+        for item in source_access
+    ):
+        failures.append(f"{label}: every frozen source must be accessed completely")
+
+    return failures
+
+
+def run_comparison(
+    submission_a: Path, submission_b: Path
+) -> tuple[list[str], dict[str, Any] | None]:
+    completed = subprocess.run(
+        [
+            sys.executable,
+            str(COMPARISON_SCRIPT_PATH),
+            str(submission_a),
+            str(submission_b),
+            "--schema",
+            str(SUBMISSION_SCHEMA_PATH),
+            "--format",
+            "json",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if completed.returncode != 0:
+        return [
+            "comparison tool failed: "
+            + (completed.stderr.strip() or completed.stdout.strip())
+        ], None
+
+    try:
+        result = json.loads(completed.stdout)
+    except json.JSONDecodeError as exc:
+        return [f"comparison tool returned invalid JSON: {exc}"], None
+    if not isinstance(result, dict):
+        return ["comparison tool output must be a JSON object"], None
+    return [], result
+
+
+def validate_inter_rater_artifacts() -> tuple[list[str], str]:
+    failures: list[str] = []
+
+    protocol_lock = load_json(PROTOCOL_LOCK_PATH)
+    if not isinstance(protocol_lock, dict):
+        return ["validation/protocol-lock.json must contain a JSON object"], "unknown"
+
+    expected_lock_values = {
+        "protocol_id": INTER_RATER_PROTOCOL_ID,
+        "protocol_version": INTER_RATER_PROTOCOL_VERSION,
+        "target_repository_release": INTER_RATER_TARGET_RELEASE,
+        "method_specification_version": SPECIFICATION_VERSION,
+        "assessment_schema_version": SCHEMA_VERSION,
+        "packet_id": INTER_RATER_PACKET_ID,
+        "required_scorers": 2,
+        "author_may_score": False,
+        "post_adjudication_rescoring_changes_primary_result": False,
+        "failure_result_must_be_published": True,
+    }
+    for key, expected in expected_lock_values.items():
+        if protocol_lock.get(key) != expected:
+            failures.append(
+                f"validation/protocol-lock.json: {key} must equal {expected!r}"
+            )
+
+    protocol_status = str(protocol_lock.get("status", "unknown"))
+    if protocol_status not in {"candidate", "locked"}:
+        failures.append(
+            "validation/protocol-lock.json: status must be candidate or locked"
+        )
+    if protocol_lock.get("minimum_exact_agreements") != 6:
+        failures.append("protocol lock must require six exact agreements")
+    if protocol_lock.get("minimum_exact_agreement_proportion") != 0.8571:
+        failures.append("protocol lock exact-agreement proportion is inconsistent")
+    if protocol_lock.get("critical_disagreements_allowed") != 0:
+        failures.append("protocol lock must allow zero critical disagreements")
+
+    protocol_text = load_text(PROTOCOL_PATH)
+    for required_text in (
+        INTER_RATER_PROTOCOL_ID,
+        INTER_RATER_PROTOCOL_VERSION,
+        INTER_RATER_PACKET_ID,
+        "at least six of seven findings agree exactly",
+        "A failing result is publishable and informative",
+    ):
+        if required_text not in protocol_text:
+            failures.append(
+                f"validation/inter-rater-protocol.md: missing {required_text}"
+            )
+
+    manifest = load_json(PACKET_MANIFEST_PATH)
+    if not isinstance(manifest, dict):
+        failures.append("frozen packet source manifest must be a JSON object")
+    else:
+        if manifest.get("packet_id") != INTER_RATER_PACKET_ID:
+            failures.append("frozen packet ID is inconsistent")
+        if manifest.get("protocol_id") != INTER_RATER_PROTOCOL_ID:
+            failures.append("frozen packet protocol ID is inconsistent")
+        sources = manifest.get("sources", [])
+        source_ids = {
+            item.get("source_id")
+            for item in sources
+            if isinstance(item, dict)
+        }
+        if source_ids != EXPECTED_PACKET_SOURCE_IDS:
+            failures.append("frozen packet must contain source IDs S1, S2, and S3")
+        if len(sources) != 3:
+            failures.append("frozen packet must contain exactly three sources")
+        for item in sources:
+            if not isinstance(item, dict):
+                failures.append("frozen packet source entries must be objects")
+                continue
+            if item.get("required") is not True:
+                failures.append(
+                    f"frozen packet source {item.get('source_id')} must be required"
+                )
+            for key in ("citation", "url", "evidentiary_tier", "use_constraint"):
+                if not isinstance(item.get(key), str) or not item.get(key):
+                    failures.append(
+                        f"frozen packet source {item.get('source_id')} lacks {key}"
+                    )
+
+        excluded = set(manifest.get("excluded_repository_paths", []))
+        expected_exclusions = {
+            "case-studies/cigna-pxdx.md",
+            "case-studies/assessments/cigna-pxdx.json",
+        }
+        if not expected_exclusions.issubset(excluded):
+            failures.append("frozen packet does not exclude the author-scored Cigna files")
+
+    submission_schema = load_json(SUBMISSION_SCHEMA_PATH)
+    if not isinstance(submission_schema, dict):
+        failures.append("scorer-submission schema must be a JSON object")
+        return failures, protocol_status
+
+    try:
+        Draft202012Validator.check_schema(submission_schema)
+    except Exception as exc:  # jsonschema exposes several schema-error subclasses
+        failures.append(f"invalid scorer-submission schema: {exc}")
+        return failures, protocol_status
+
+    submission_validator = Draft202012Validator(
+        submission_schema,
+        format_checker=FormatChecker(),
+    )
+
+    template = load_json(SUBMISSION_TEMPLATE_PATH)
+    if not isinstance(template, dict):
+        failures.append("scorer submission template must be a JSON object")
+    else:
+        if template.get("protocol_id") != INTER_RATER_PROTOCOL_ID:
+            failures.append("scorer template protocol ID is inconsistent")
+        if template.get("packet_id") != INTER_RATER_PACKET_ID:
+            failures.append("scorer template packet ID is inconsistent")
+        template_dimensions = {
+            item.get("dimension")
+            for item in template.get("substantive_findings", [])
+            if isinstance(item, dict)
+        }
+        if template_dimensions != EXPECTED_DIMENSIONS:
+            failures.append("scorer template does not contain all six dimensions")
+
+    test_submissions: list[dict[str, Any]] = []
+    for path in (TEST_VECTOR_A_PATH, TEST_VECTOR_B_PATH):
+        instance = load_json(path)
+        errors = sorted(
+            submission_validator.iter_errors(instance),
+            key=lambda error: list(error.path),
+        )
+        failures.extend(f"{path}: {error.message}" for error in errors)
+        if isinstance(instance, dict):
+            failures.extend(validate_scorer_submission_shape(instance, str(path)))
+            if not errors:
+                test_submissions.append(instance)
+
+    if len(test_submissions) == 2:
+        scorer_ids = {
+            item.get("scorer", {}).get("public_id")
+            for item in test_submissions
+            if isinstance(item.get("scorer"), dict)
+        }
+        if len(scorer_ids) != 2:
+            failures.append("synthetic test-vector scorer IDs must be distinct")
+
+    comparison_failures, comparison = run_comparison(
+        TEST_VECTOR_A_PATH,
+        TEST_VECTOR_B_PATH,
+    )
+    failures.extend(comparison_failures)
+    if comparison is not None:
+        expected_results = {
+            "items_compared": 7,
+            "exact_agreements": 6,
+            "exact_agreement_proportion": 0.8571,
+            "critical_disagreement_count": 0,
+            "advancement_threshold_met": True,
+        }
+        for key, expected in expected_results.items():
+            if comparison.get(key) != expected:
+                failures.append(
+                    f"comparison test vector: {key} must equal {expected!r}"
+                )
+        disagreements = comparison.get("disagreements", [])
+        if not isinstance(disagreements, list) or len(disagreements) != 1:
+            failures.append("comparison test vector must produce one disagreement")
+
+    result_files = {
+        path.name
+        for path in RESULTS_DIR.iterdir()
+        if path.is_file() and path.name != "README.md"
+    }
+    if not result_files:
+        pending_text = load_text(RESULTS_DIR / "README.md")
+        if "No inter-rater result is currently available." not in pending_text:
+            failures.append("pending results boundary is missing")
+    else:
+        required_result_files = {
+            "scorer-a.json",
+            "scorer-b.json",
+            "pre-adjudication-comparison.json",
+            "pre-adjudication-comparison.md",
+            "disagreement-register.md",
+            "adjudication.md",
+            "result-summary.md",
+        }
+        if result_files != required_result_files:
+            failures.append(
+                "empirical result directory does not contain the exact required result set"
+            )
+        if protocol_status != "locked":
+            failures.append("empirical results require protocol status locked")
+
+    return failures, protocol_status
+
+
 def main() -> int:
     failures = validate_release_files()
     failures.extend(validate_release_text())
@@ -381,6 +679,8 @@ def main() -> int:
         )
 
     failures.extend(validate_metadata(schema, catalog))
+    inter_rater_failures, protocol_status = validate_inter_rater_artifacts()
+    failures.extend(inter_rater_failures)
 
     if failures:
         for failure in failures:
@@ -392,7 +692,7 @@ def main() -> int:
         f"(release {RELEASE_VERSION}; specification {SPECIFICATION_VERSION}; "
         f"schema {SCHEMA_VERSION}; catalog {CATALOG_VERSION}; "
         f"{len(fixtures)} fixtures; {len(case_assessments)} public case assessments; "
-        "4 negative tests)"
+        f"inter-rater protocol {protocol_status}; 4 negative tests)"
     )
     return 0
 
