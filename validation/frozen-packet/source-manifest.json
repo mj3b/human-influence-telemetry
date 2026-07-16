@@ -1,0 +1,40 @@
+{
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "manifest_version": "1.0.0",
+  "prepared_on": "2026-07-16",
+  "sources": [
+    {
+      "source_id": "S1",
+      "source_type": "investigative_reporting",
+      "evidentiary_tier": "reported_evidence_not_adjudicated",
+      "citation": "Patrick Rucker of The Capitol Forum, with Maya Miller and David Armstrong of ProPublica, How Cigna Saves Millions by Having Its Doctors Reject Claims Without Reading Them, 25 March 2023.",
+      "url": "https://www.propublica.org/article/cigna-pxdx-medical-health-insurance-rejection-claims",
+      "required": true,
+      "use_constraint": "Attribute workflow descriptions and figures to the reporting; do not treat them as adjudicated findings."
+    },
+    {
+      "source_id": "S2",
+      "source_type": "investigative_follow_up_and_institutional_response",
+      "evidentiary_tier": "reported_response_and_regulatory_scrutiny",
+      "citation": "ProPublica, Cigna Denial System Draws Regulatory and Congressional Scrutiny, 25 April 2023.",
+      "url": "https://www.propublica.org/article/cigna-health-insurance-denials-pxdx-congress-investigation",
+      "required": true,
+      "use_constraint": "Preserve the distinction between criticism, institutional response, and regulatory inquiry."
+    },
+    {
+      "source_id": "S3",
+      "source_type": "federal_court_order",
+      "evidentiary_tier": "pleading_stage_order_not_merits_judgment",
+      "citation": "Kisting-Leung v. Cigna Corp., No. 2:23-cv-01477-DAD-CSK, order granting in part and denying in part the motion to dismiss, E.D. Cal., 31 March 2025, docket 55.",
+      "url": "https://docs.justia.com/cases/federal/district-courts/california/caedce/2%3A2023cv01477/431351/55",
+      "required": true,
+      "use_constraint": "Treat the order as a procedural ruling on pleading sufficiency; do not describe allegations as proven facts or resolved liability."
+    }
+  ],
+  "excluded_repository_paths": [
+    "case-studies/cigna-pxdx.md",
+    "case-studies/assessments/cigna-pxdx.json"
+  ],
+  "redistribution_note": "The repository freezes source identities, evidentiary tiers, and assessment boundaries. It does not redistribute third-party source files."
+}
