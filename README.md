@@ -63,7 +63,7 @@ HIT is a research instrument, not a certified standard.
 | Stable construct definitions | Available |
 | Machine-readable assessment schema | Available |
 | Deterministic substantive, ceremonial, and insufficient-evidence fixtures | Available |
-| Automated positive, negative, case-record, and metadata validation | Available on the 0.2.0 development branch |
+| Automated positive, negative, case-record, and metadata validation | Available |
 | Retrospective public-record case studies | Three public review drafts with four actor-specific JSON assessments |
 | Inter-rater reliability result | Pending |
 | Prospective institutional validation | Pending |
