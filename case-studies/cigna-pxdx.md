@@ -1,7 +1,7 @@
 # Case Study 3: Cigna PxDx Claims-Review System
 
 **Method:** Human Influence Telemetry 0.1.0  
-**Status:** Public review draft for repository release 0.2.0  
+**Status:** Released with repository version 0.2.0  
 **Assessment:** [`assessments/cigna-pxdx.json`](assessments/cigna-pxdx.json)  
 **Author:** Mark Julius Banasihan
 
