@@ -6,7 +6,7 @@
   "assessment_schema_version": "0.1.0",
   "packet_id": "HIT-IR-CIGNA-PXDX-001",
   "prepared_on": "2026-07-16",
-  "status": "candidate",
+  "status": "locked",
   "primary_measure": "exact_agreement_across_seven_items",
   "minimum_exact_agreements": 6,
   "minimum_exact_agreement_proportion": 0.8571,
