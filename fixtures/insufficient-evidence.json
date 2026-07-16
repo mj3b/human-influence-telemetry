@@ -1,1 +1,105 @@
-{"assessment_id":"HIT-FIXTURE-INSUFFICIENT","schema_version":"0.1.0","institutional_unit":"Fictional Hiring Review Unit","decision_process":"Selection or rejection of job applicants using an AI ranking system","period":{"start":"2026-01-01","end":"2026-03-31"},"sampling_rule":"Requested all appealed, overridden, and randomly sampled hiring decisions; the institution produced only summary reports","assessor":{"name":"Fixture Assessor","organization":"Node & Norm","assessment_date":"2026-07-16"},"substantive_findings":[{"dimension":"counsel","finding":"IE","supporting_artifacts":[],"requested_missing_artifacts":["case evidence access logs","evidence packet shown to reviewers"],"rationale":"The institution did not produce records showing what evidence reviewers could access before the decision.","ambiguity_note":null},{"dimension":"judgment","finding":"IE","supporting_artifacts":[],"requested_missing_artifacts":["reviewer notes","dissent records","alternatives considered"],"rationale":"No decision-level reasoning records were produced, so substantive judgment cannot be distinguished from automatic acceptance.","ambiguity_note":null},{"dimension":"command","finding":1,"supporting_artifacts":[{"artifact_id":"I1","artifact_type":"policy_document","citation":"fixture/hiring-policy.pdf","provenance_status":"partially_verified"}],"requested_missing_artifacts":["exercised override records"],"rationale":"Policy assigns final authority to hiring managers, but no record shows that the authority was usable or exercised.","ambiguity_note":null},{"dimension":"correction","finding":"IE","supporting_artifacts":[],"requested_missing_artifacts":["appeal register","reconsideration outcomes"],"rationale":"The institution states that candidates may request reconsideration but produced no register or decision-level outcomes.","ambiguity_note":null},{"dimension":"repair","finding":"IE","supporting_artifacts":[],"requested_missing_artifacts":["remediation records","named repair owner"],"rationale":"The record does not establish whether substantiated hiring errors led to individual repair.","ambiguity_note":null},{"dimension":"reform","finding":"IE","supporting_artifacts":[],"requested_missing_artifacts":["system-change log","authority for model or workflow changes"],"rationale":"No evidence was produced showing who could change the ranking system or decision workflow after failure.","ambiguity_note":null}],"telemetry_integrity":{"status":"unreliable","provenance":"Only summary documents were produced.","completeness":"Decision-level records are substantially missing.","edit_authority":"Edit authority is undocumented.","independence":"Record independence cannot be established.","tamper_evidence":"No tamper evidence was provided.","retention":"Retention is undocumented.","rationale":"The institution's records cannot currently answer the telemetry questions with acceptable confidence."},"summary":"The dominant finding is documentary insufficiency rather than demonstrated absence of human influence.","limitations":["Synthetic fixture; IE findings must not be converted to zero."]}
+{
+  "assessment_id": "HIT-FIXTURE-INSUFFICIENT",
+  "schema_version": "0.1.0",
+  "institutional_unit": "Fictional Hiring Review Unit",
+  "decision_process": "Selection or rejection of job applicants using an AI ranking system",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-03-31"
+  },
+  "sampling_rule": "Requested all appealed, overridden, and randomly sampled hiring decisions; the institution produced only summary reports",
+  "assessor": {
+    "name": "Fixture Assessor",
+    "organization": "Node & Norm",
+    "assessment_date": "2026-07-16"
+  },
+  "substantive_findings": [
+    {
+      "dimension": "counsel",
+      "finding": "IE",
+      "supporting_artifacts": [],
+      "requested_missing_artifacts": [
+        "case evidence access logs",
+        "evidence packet shown to reviewers"
+      ],
+      "rationale": "The institution did not produce records showing what evidence reviewers could access before the decision.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "judgment",
+      "finding": "IE",
+      "supporting_artifacts": [],
+      "requested_missing_artifacts": [
+        "reviewer notes",
+        "dissent records",
+        "alternatives considered"
+      ],
+      "rationale": "No decision-level reasoning records were produced, so substantive judgment cannot be distinguished from automatic acceptance.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "command",
+      "finding": 1,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "I1",
+          "artifact_type": "policy_document",
+          "citation": "fixture/hiring-policy.pdf",
+          "provenance_status": "partially_verified"
+        }
+      ],
+      "requested_missing_artifacts": [
+        "exercised override records"
+      ],
+      "rationale": "Policy assigns final authority to hiring managers, but no record shows that the authority was usable or exercised.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "correction",
+      "finding": "IE",
+      "supporting_artifacts": [],
+      "requested_missing_artifacts": [
+        "appeal register",
+        "reconsideration outcomes"
+      ],
+      "rationale": "The institution states that candidates may request reconsideration but produced no register or decision-level outcomes.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "repair",
+      "finding": "IE",
+      "supporting_artifacts": [],
+      "requested_missing_artifacts": [
+        "remediation records",
+        "named repair owner"
+      ],
+      "rationale": "The record does not establish whether substantiated hiring errors led to individual repair.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "reform",
+      "finding": "IE",
+      "supporting_artifacts": [],
+      "requested_missing_artifacts": [
+        "system-change log",
+        "authority for model or workflow changes"
+      ],
+      "rationale": "No evidence was produced showing who could change the ranking system or decision workflow after failure.",
+      "ambiguity_note": null
+    }
+  ],
+  "telemetry_integrity": {
+    "status": "unreliable",
+    "provenance": "Only summary documents were produced.",
+    "completeness": "Decision-level records are substantially missing.",
+    "edit_authority": "Edit authority is undocumented.",
+    "independence": "Record independence cannot be established.",
+    "tamper_evidence": "No tamper evidence was provided.",
+    "retention": "Retention is undocumented.",
+    "rationale": "The institution's records cannot currently answer the telemetry questions with acceptable confidence."
+  },
+  "summary": "The dominant finding is documentary insufficiency rather than demonstrated absence of human influence.",
+  "limitations": [
+    "Synthetic fixture; IE findings must not be converted to zero."
+  ]
+}

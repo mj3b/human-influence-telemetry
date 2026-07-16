@@ -26,5 +26,8 @@ jobs:
       - name: Install validation dependencies
         run: python -m pip install --requirement requirements-dev.txt
 
+      - name: Check fixture readability
+        run: python scripts/check_fixture_format.py
+
       - name: Validate HIT artifacts
         run: python scripts/validate.py

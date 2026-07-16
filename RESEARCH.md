@@ -12,8 +12,8 @@ Human Influence Telemetry is a design-science research artifact. It operationali
 
 | Class | Meaning |
 |---|---|
-| E1 | Executable evidence produced by validation or deterministic fixtures |
-| E2 | Artifact evidence directly contained in the specification, schema, case record, or public assessment |
+| E1 | Executable evidence produced by validation, deterministic fixtures, or comparison tooling |
+| E2 | Artifact evidence directly contained in the specification, schema, case record, public assessment, or locked protocol |
 | E3 | External source evidence supporting a construct or case finding |
 | E4 | Comparative inference connecting HIT to adjacent governance concepts |
 | E5 | Hypothesis requiring independent application, field data, or statistical testing |
@@ -24,7 +24,7 @@ Human Influence Telemetry is a design-science research artifact. It operationali
 |---|---|---|---|
 | H1 | HIT can represent six substantive dimensions and one cross-cutting integrity dimension in one machine-readable assessment | Demonstrated by schema, fixtures, and public case records once CI passes | Revise when a required finding cannot be represented |
 | H2 | The 0/1/2/IE rubric distinguishes absence, ceremonial presence, substantive exercise, and missing evidence | Demonstrated for included fixtures and author-scored public cases only | Revise after independent scoring or failed discrimination cases |
-| H3 | Independent reviewers can reach substantial agreement using the published handbook | Unresolved | Requires documented inter-rater exercise |
+| H3 | Independent reviewers can reach substantial agreement using the published handbook | Unresolved; protocol, packet, submission schema, and comparison tooling prepared for v0.3.0 | Requires two eligible independent submissions and a published pre-adjudication result |
 | H4 | HIT can identify oversight theater that binary human-in-the-loop labels miss | Supported by design logic and three released public case studies; not independently validated | Requires external replication |
 | H5 | Higher HIT findings predict lower harm or better repair | Hypothesis | Requires preregistered population, outcomes, and statistical method |
 | H6 | A high HIT finding proves meaningful human control | Unsupported | Would require stronger causal and institutional evidence than documentary assessment alone |
@@ -41,25 +41,49 @@ Human Influence Telemetry is a design-science research artifact. It operationali
 
 These are retrospective, author-scored applications released in repository version 0.2.0. Publication demonstrates applicability to heterogeneous public records. It does not resolve H3 or establish field validity.
 
+## Inter-rater exercise register
+
+| Field | Current state |
+|---|---|
+| Protocol | `HIT-IRP-CIGNA-001`, candidate version 1.0.0 |
+| Frozen packet | `HIT-IR-CIGNA-PXDX-001` |
+| Method version | Specification and assessment schema 0.1.0 |
+| Primary measure | Exact agreement across six substantive dimensions plus Telemetry Integrity |
+| Advancement threshold | At least 6 of 7 exact agreements and zero critical disagreements |
+| Supplementary measure | Unweighted Cohen's kappa across six substantive dimensions |
+| Eligible scorers enrolled | 0 of 2 |
+| Locked scorer submissions | 0 of 2 |
+| Pre-adjudication result | Pending |
+| H3 decision | Pending |
+| Maturity Level 2 decision | Pending |
+
+Prepared protocol infrastructure is E1 and E2 evidence about study design and reproducibility controls. It is not E5 evidence that independent scorers agree.
+
 ## Methods
 
-The research program uses artifact construction, schema validation, deterministic fixtures, retrospective public-record case studies, inter-rater reliability testing, comparative mapping, and prospective validation when institutional access becomes available.
+The research program uses artifact construction, schema validation, deterministic fixtures, retrospective public-record case studies, blinded inter-rater reliability testing, comparative mapping, and prospective validation when institutional access becomes available.
+
+The v0.3.0 inter-rater design predeclares scorer eligibility, blinding, source boundaries, exact-agreement threshold, critical-disagreement rules, supplementary kappa, preservation of original scores, and publication of both passing and failing results.
 
 ## Threats to validity
 
 Institutional records may be incomplete, curated, or controlled by the governed system. Recorded reasons may be post-hoc rationalizations. One exercised override may overstate intervention capacity. Retrospective cases have selection bias. Public records may not expose internal evidence access or authority. Ordinal findings may conceal variation. Reviewers may interpret ceremonial presence differently. Litigation records have different evidentiary weight at allegation, pleading, and merits stages. Framework mappings may overstate equivalence without qualified review.
+
+The first inter-rater exercise has additional limits: only two scorers, seven compared items, one retrospective case, procedural blinding in a public repository, and a small-sample kappa estimate. A passing result would demonstrate reproducibility under one frozen packet, not general reliability across sectors or institutions.
 
 ## Maturity model
 
 | Level | Name | Entry criterion |
 |---|---|---|
 | 1 | Defined | Stable constructs, schema, citable archive |
-| 2 | Applicable | A stranger can apply the method using public materials; inter-rater exercise completed |
+| 2 | Applicable | A stranger can apply the method using public materials; inter-rater exercise completed under declared independence and agreement rules |
 | 3 | Evidenced | Level 2 satisfied and at least three public-record applications published |
 | 4 | Validated | Preregistered validation design and pilot result |
 | 5 | Adopted | Independent institutional use and external reference |
 
 The levels are cumulative. The repository remains at Level 1 until the inter-rater requirement for Level 2 is completed, even though repository version 0.2.0 satisfies the three-case evidence condition required later at Level 3.
+
+A v0.3.0 release may publish a failed exercise without advancing the maturity level.
 
 ## Release discipline
 

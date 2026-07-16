@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mj3b/human-influence-telemetry/blob/main/validation/scorer-submission.schema.json",
+  "title": "HIT Independent Scorer Submission",
+  "description": "Machine-readable submission for the HIT inter-rater exercise targeted for repository release v0.3.0.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "submission_id",
+    "protocol_id",
+    "protocol_version",
+    "packet_id",
+    "scorer",
+    "attestations",
+    "source_access",
+    "substantive_findings",
+    "telemetry_integrity",
+    "submitted_at"
+  ],
+  "$defs": {
+    "sourceRef": {
+      "type": "string",
+      "enum": ["S1", "S2", "S3"]
+    },
+    "substantiveFinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimension", "finding", "evidence_refs", "rationale", "ambiguity_note"],
+      "properties": {
+        "dimension": {
+          "type": "string",
+          "enum": ["counsel", "judgment", "command", "correction", "repair", "reform"]
+        },
+        "finding": {
+          "oneOf": [
+            {"type": "integer", "enum": [0, 1, 2]},
+            {"const": "IE"}
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/sourceRef"}
+        },
+        "rationale": {"type": "string", "minLength": 30},
+        "ambiguity_note": {"type": ["string", "null"]}
+      }
+    },
+    "sourceAccess": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "accessed_on", "access_complete", "access_note"],
+      "properties": {
+        "source_id": {"$ref": "#/$defs/sourceRef"},
+        "accessed_on": {"type": "string", "format": "date"},
+        "access_complete": {"type": "boolean"},
+        "access_note": {"type": ["string", "null"]},
+        "content_digest": {
+          "type": ["string", "null"],
+          "description": "Optional SHA-256 or archived-copy identifier when a stable local copy was used."
+        }
+      }
+    }
+  },
+  "properties": {
+    "submission_id": {
+      "type": "string",
+      "pattern": "^HIT-IR-[A-Za-z0-9._-]+$"
+    },
+    "protocol_id": {"const": "HIT-IRP-CIGNA-001"},
+    "protocol_version": {"const": "1.0.0"},
+    "packet_id": {"const": "HIT-IR-CIGNA-PXDX-001"},
+    "scorer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["public_id", "qualification_summary", "conflict_of_interest_disclosure"],
+      "properties": {
+        "public_id": {"type": "string", "minLength": 2},
+        "name": {"type": ["string", "null"]},
+        "organization": {"type": ["string", "null"]},
+        "orcid": {"type": ["string", "null"]},
+        "qualification_summary": {"type": "string", "minLength": 20},
+        "conflict_of_interest_disclosure": {"type": "string", "minLength": 5}
+      }
+    },
+    "attestations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "not_the_hit_author",
+        "no_material_contribution_to_method_or_case",
+        "no_author_consultation_on_findings",
+        "no_other_scorer_consultation",
+        "no_prior_access_to_author_cigna_scores",
+        "used_only_frozen_packet_case_sources",
+        "assessment_boundary_acknowledged"
+      ],
+      "properties": {
+        "not_the_hit_author": {"const": true},
+        "no_material_contribution_to_method_or_case": {"const": true},
+        "no_author_consultation_on_findings": {"const": true},
+        "no_other_scorer_consultation": {"const": true},
+        "no_prior_access_to_author_cigna_scores": {"const": true},
+        "used_only_frozen_packet_case_sources": {"const": true},
+        "assessment_boundary_acknowledged": {"const": true}
+      }
+    },
+    "source_access": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"$ref": "#/$defs/sourceAccess"}
+    },
+    "substantive_findings": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/substantiveFinding"}
+    },
+    "telemetry_integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "evidence_refs", "rationale", "ambiguity_note"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["adequate", "limited", "unreliable", "IE"]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/sourceRef"}
+        },
+        "rationale": {"type": "string", "minLength": 30},
+        "ambiguity_note": {"type": ["string", "null"]}
+      }
+    },
+    "submitted_at": {"type": "string", "format": "date-time"},
+    "general_limitations": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 10}
+    }
+  }
+}

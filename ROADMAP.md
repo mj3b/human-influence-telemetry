@@ -57,29 +57,49 @@ Version 0.2.0 does not change the 0.1.0 specification, assessment schema, dimens
 
 ## 0.3.0: Inter-rater protocol and result
 
-### Required artifacts
+### Prepared development artifacts
 
 - `validation/inter-rater-protocol.md`;
-- frozen scorer packet;
-- at least two independent scorers;
-- predeclared agreement statistic and threshold;
-- dimension-level comparison output;
-- categorized disagreement register;
-- adjudication record that preserves original scores;
-- statement of whether the handbook or schema changed because of the exercise.
+- `validation/protocol-lock.json`;
+- frozen scorer packet and source manifest;
+- machine-readable scorer-submission schema;
+- neutral submission template;
+- deterministic comparison tool;
+- synthetic comparison test vectors;
+- disagreement taxonomy;
+- adjudication template;
+- explicit pending-results boundary.
 
-### Primary test material
+These artifacts prepare the exercise. They do not constitute an inter-rater result.
 
-Cigna Command is the planned designed disagreement. Additional items should test:
+### Remaining empirical gates
 
-- `0` versus `IE` where public records are silent;
-- `1` versus `0` where de jure authority survives but practical use is constrained;
-- `2` versus `1` where one exercised instance may not establish general capacity;
-- Telemetry Integrity where evidence was externally forced into public view.
+- protocol reviewed and locked on `main` before scoring begins;
+- at least two eligible scorers independent of the author and of each other;
+- no author scoring and no scorer-to-scorer coordination;
+- two complete schema-valid submissions;
+- deterministic pre-adjudication comparison;
+- dimension-level disagreement register;
+- adjudication record preserving original scores;
+- statement of whether the handbook, schema, or later rubric should change;
+- repository claim and maturity status updated from the pre-adjudication result.
+
+### Predeclared threshold
+
+The Level 2 agreement gate requires:
+
+- at least six exact agreements across the six substantive dimensions and Telemetry Integrity;
+- at least `0.8571` exact agreement;
+- zero critical disagreements;
+- satisfied independence and completeness conditions.
+
+Unweighted Cohen's kappa across the six substantive dimensions is supplementary because the sample is small and category prevalence may dominate the estimate.
 
 ### Completion test
 
-Two independent reviewers can apply the public materials without author coaching, and the repository reports agreement and disagreement without collapsing them into a single favorable result.
+Two independent reviewers can apply the frozen public materials without author coaching. The repository publishes both original submissions, the deterministic pre-adjudication comparison, and all disagreements without collapsing them into a favorable post-hoc consensus.
+
+A passing or failing exercise may be released as v0.3.0. Maturity Level 2 is claimed only when the predeclared threshold and independence conditions are met.
 
 ## 0.4.0: Rubric stabilization
 

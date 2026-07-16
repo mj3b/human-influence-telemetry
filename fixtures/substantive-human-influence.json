@@ -1,1 +1,122 @@
-{"assessment_id":"HIT-FIXTURE-SUBSTANTIVE","schema_version":"0.1.0","institutional_unit":"Fictional Claims Review Unit","decision_process":"Approval or denial of a high-impact insurance claim using an AI recommendation","period":{"start":"2026-01-01","end":"2026-03-31"},"sampling_rule":"All appealed and overridden decisions plus a fixed random sample of routine decisions","assessor":{"name":"Fixture Assessor","organization":"Node & Norm","assessment_date":"2026-07-16"},"substantive_findings":[{"dimension":"counsel","finding":2,"supporting_artifacts":[{"artifact_id":"A1","artifact_type":"access_log","citation":"fixture/access-log.csv","provenance_status":"verified"}],"requested_missing_artifacts":[],"rationale":"Review logs show access to underlying case evidence before disposition in every sampled decision.","ambiguity_note":null},{"dimension":"judgment","finding":2,"supporting_artifacts":[{"artifact_id":"A2","artifact_type":"reviewer_reasoning","citation":"fixture/reviewer-notes.json","provenance_status":"verified"}],"requested_missing_artifacts":[],"rationale":"The sample contains independent reasons, alternatives, and documented disagreement with the AI recommendation.","ambiguity_note":null},{"dimension":"command","finding":2,"supporting_artifacts":[{"artifact_id":"A3","artifact_type":"override_log","citation":"fixture/override-log.json","provenance_status":"verified"}],"requested_missing_artifacts":[],"rationale":"Named reviewers could approve, reject, modify, stop, and escalate, and those powers were exercised.","ambiguity_note":null},{"dimension":"correction","finding":2,"supporting_artifacts":[{"artifact_id":"A4","artifact_type":"appeal_register","citation":"fixture/appeals.csv","provenance_status":"verified"}],"requested_missing_artifacts":[],"rationale":"The appeal process produced substantive reconsideration and reversals on the merits.","ambiguity_note":null},{"dimension":"repair","finding":2,"supporting_artifacts":[{"artifact_id":"A5","artifact_type":"remediation_record","citation":"fixture/remediation.json","provenance_status":"verified"}],"requested_missing_artifacts":[],"rationale":"Substantiated harm led to corrected records, restitution, notification, and assigned remediation ownership.","ambiguity_note":null},{"dimension":"reform","finding":2,"supporting_artifacts":[{"artifact_id":"A6","artifact_type":"system_change_record","citation":"fixture/change-log.json","provenance_status":"verified"}],"requested_missing_artifacts":[],"rationale":"The institution changed thresholds and workflow controls under named human authority after the incident.","ambiguity_note":null}],"telemetry_integrity":{"status":"adequate","provenance":"All artifacts have traceable source identifiers.","completeness":"All requested record classes were produced.","edit_authority":"Edits require a separately logged records-administration role.","independence":"Audit storage is operationally separate from the decision service.","tamper_evidence":"Records are hash-sealed after closure.","retention":"Seven-year retention policy applies.","rationale":"The record system provides sufficient provenance, separation, retention, and tamper evidence for the assessment."},"summary":"The fictional process shows substantive human influence across all six dimensions with adequate telemetry integrity.","limitations":["Synthetic fixture; it does not establish institutional effectiveness."]}
+{
+  "assessment_id": "HIT-FIXTURE-SUBSTANTIVE",
+  "schema_version": "0.1.0",
+  "institutional_unit": "Fictional Claims Review Unit",
+  "decision_process": "Approval or denial of a high-impact insurance claim using an AI recommendation",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-03-31"
+  },
+  "sampling_rule": "All appealed and overridden decisions plus a fixed random sample of routine decisions",
+  "assessor": {
+    "name": "Fixture Assessor",
+    "organization": "Node & Norm",
+    "assessment_date": "2026-07-16"
+  },
+  "substantive_findings": [
+    {
+      "dimension": "counsel",
+      "finding": 2,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "A1",
+          "artifact_type": "access_log",
+          "citation": "fixture/access-log.csv",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [],
+      "rationale": "Review logs show access to underlying case evidence before disposition in every sampled decision.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "judgment",
+      "finding": 2,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "A2",
+          "artifact_type": "reviewer_reasoning",
+          "citation": "fixture/reviewer-notes.json",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [],
+      "rationale": "The sample contains independent reasons, alternatives, and documented disagreement with the AI recommendation.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "command",
+      "finding": 2,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "A3",
+          "artifact_type": "override_log",
+          "citation": "fixture/override-log.json",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [],
+      "rationale": "Named reviewers could approve, reject, modify, stop, and escalate, and those powers were exercised.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "correction",
+      "finding": 2,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "A4",
+          "artifact_type": "appeal_register",
+          "citation": "fixture/appeals.csv",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [],
+      "rationale": "The appeal process produced substantive reconsideration and reversals on the merits.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "repair",
+      "finding": 2,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "A5",
+          "artifact_type": "remediation_record",
+          "citation": "fixture/remediation.json",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [],
+      "rationale": "Substantiated harm led to corrected records, restitution, notification, and assigned remediation ownership.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "reform",
+      "finding": 2,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "A6",
+          "artifact_type": "system_change_record",
+          "citation": "fixture/change-log.json",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [],
+      "rationale": "The institution changed thresholds and workflow controls under named human authority after the incident.",
+      "ambiguity_note": null
+    }
+  ],
+  "telemetry_integrity": {
+    "status": "adequate",
+    "provenance": "All artifacts have traceable source identifiers.",
+    "completeness": "All requested record classes were produced.",
+    "edit_authority": "Edits require a separately logged records-administration role.",
+    "independence": "Audit storage is operationally separate from the decision service.",
+    "tamper_evidence": "Records are hash-sealed after closure.",
+    "retention": "Seven-year retention policy applies.",
+    "rationale": "The record system provides sufficient provenance, separation, retention, and tamper evidence for the assessment."
+  },
+  "summary": "The fictional process shows substantive human influence across all six dimensions with adequate telemetry integrity.",
+  "limitations": [
+    "Synthetic fixture; it does not establish institutional effectiveness."
+  ]
+}

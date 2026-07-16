@@ -1,0 +1,44 @@
+{
+  "submission_id": "HIT-IR-REPLACE-WITH-SCORER-ID",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "protocol_version": "1.0.0",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "scorer": {
+    "public_id": "REPLACE",
+    "name": null,
+    "organization": null,
+    "orcid": null,
+    "qualification_summary": "REPLACE with a concise description of relevant professional or research competence.",
+    "conflict_of_interest_disclosure": "REPLACE with none identified or a specific disclosure."
+  },
+  "attestations": {
+    "not_the_hit_author": true,
+    "no_material_contribution_to_method_or_case": true,
+    "no_author_consultation_on_findings": true,
+    "no_other_scorer_consultation": true,
+    "no_prior_access_to_author_cigna_scores": true,
+    "used_only_frozen_packet_case_sources": true,
+    "assessment_boundary_acknowledged": true
+  },
+  "source_access": [
+    {"source_id": "S1", "accessed_on": "YYYY-MM-DD", "access_complete": null, "access_note": null, "content_digest": null},
+    {"source_id": "S2", "accessed_on": "YYYY-MM-DD", "access_complete": null, "access_note": null, "content_digest": null},
+    {"source_id": "S3", "accessed_on": "YYYY-MM-DD", "access_complete": null, "access_note": null, "content_digest": null}
+  ],
+  "substantive_findings": [
+    {"dimension": "counsel", "finding": null, "evidence_refs": [], "rationale": "REPLACE", "ambiguity_note": null},
+    {"dimension": "judgment", "finding": null, "evidence_refs": [], "rationale": "REPLACE", "ambiguity_note": null},
+    {"dimension": "command", "finding": null, "evidence_refs": [], "rationale": "REPLACE", "ambiguity_note": null},
+    {"dimension": "correction", "finding": null, "evidence_refs": [], "rationale": "REPLACE", "ambiguity_note": null},
+    {"dimension": "repair", "finding": null, "evidence_refs": [], "rationale": "REPLACE", "ambiguity_note": null},
+    {"dimension": "reform", "finding": null, "evidence_refs": [], "rationale": "REPLACE", "ambiguity_note": null}
+  ],
+  "telemetry_integrity": {
+    "status": null,
+    "evidence_refs": [],
+    "rationale": "REPLACE",
+    "ambiguity_note": null
+  },
+  "submitted_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "general_limitations": []
+}

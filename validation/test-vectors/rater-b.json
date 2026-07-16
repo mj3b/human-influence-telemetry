@@ -1,0 +1,44 @@
+{
+  "submission_id": "HIT-IR-TEST-B",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "protocol_version": "1.0.0",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "scorer": {
+    "public_id": "TEST-B",
+    "name": null,
+    "organization": null,
+    "orcid": null,
+    "qualification_summary": "Synthetic validation scorer used only to test deterministic comparison tooling.",
+    "conflict_of_interest_disclosure": "Synthetic test vector; no empirical scorer claim."
+  },
+  "attestations": {
+    "not_the_hit_author": true,
+    "no_material_contribution_to_method_or_case": true,
+    "no_author_consultation_on_findings": true,
+    "no_other_scorer_consultation": true,
+    "no_prior_access_to_author_cigna_scores": true,
+    "used_only_frozen_packet_case_sources": true,
+    "assessment_boundary_acknowledged": true
+  },
+  "source_access": [
+    {"source_id": "S1", "accessed_on": "2026-07-16", "access_complete": true, "access_note": "Synthetic test access record.", "content_digest": null},
+    {"source_id": "S2", "accessed_on": "2026-07-16", "access_complete": true, "access_note": "Synthetic test access record.", "content_digest": null},
+    {"source_id": "S3", "accessed_on": "2026-07-16", "access_complete": true, "access_note": "Synthetic test access record.", "content_digest": null}
+  ],
+  "substantive_findings": [
+    {"dimension": "counsel", "finding": 0, "evidence_refs": ["S1"], "rationale": "Synthetic rationale long enough to validate the scorer submission schema for Counsel.", "ambiguity_note": null},
+    {"dimension": "judgment", "finding": 0, "evidence_refs": ["S1", "S3"], "rationale": "Synthetic rationale long enough to validate the scorer submission schema for Judgment.", "ambiguity_note": null},
+    {"dimension": "command", "finding": 1, "evidence_refs": ["S1", "S2"], "rationale": "Synthetic rationale long enough to validate the scorer submission schema for Command.", "ambiguity_note": null},
+    {"dimension": "correction", "finding": 1, "evidence_refs": ["S1", "S2"], "rationale": "Synthetic rationale long enough to validate the scorer submission schema for Correction.", "ambiguity_note": null},
+    {"dimension": "repair", "finding": "IE", "evidence_refs": ["S3"], "rationale": "Synthetic rationale long enough to validate the scorer submission schema for Repair.", "ambiguity_note": null},
+    {"dimension": "reform", "finding": 2, "evidence_refs": ["S2"], "rationale": "Synthetic rationale long enough to validate the scorer submission schema for Reform.", "ambiguity_note": "Synthetic adjacent ordinal disagreement used to test a passing six-of-seven comparison."}
+  ],
+  "telemetry_integrity": {
+    "status": "IE",
+    "evidence_refs": ["S1", "S2", "S3"],
+    "rationale": "Synthetic rationale long enough to validate the scorer submission schema for Telemetry Integrity.",
+    "ambiguity_note": null
+  },
+  "submitted_at": "2026-07-16T20:05:00Z",
+  "general_limitations": ["Synthetic test vector; not an empirical assessment or reliability result."]
+}
