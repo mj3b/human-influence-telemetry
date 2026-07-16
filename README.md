@@ -8,11 +8,12 @@
 
 Human Influence Telemetry (HIT) evaluates what contemporaneous records can show about human participation in a consequential decision. It does not infer intentions, certify legal compliance, or treat a signature as proof of substantive judgment.
 
-**Current release:** 0.1.0  
-**Development milestone:** public evidence pack planned for 0.2.0  
+**Current release:** 0.2.0  
+**Specification version:** 0.1.0  
+**Assessment schema version:** 0.1.0  
 **Current maturity:** Level 1, Defined  
 **Originating research DOI:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)  
-**Software DOI:** Pending completion of Zenodo processing for the first GitHub release
+**Software DOI:** Pending the first successful Zenodo archive of a GitHub release
 
 ## Research question
 
@@ -52,7 +53,7 @@ python -m pip install --requirement requirements-dev.txt
 python scripts/validate.py
 ```
 
-A passing run validates the schema, dimension catalog, deterministic fixtures, public case assessments, negative cases, release files, and synchronized citation metadata.
+A passing run validates the schema, dimension catalog, deterministic fixtures, released public case assessments, negative cases, release files, and citation metadata.
 
 ## Current maturity
 
@@ -64,16 +65,16 @@ HIT is a research instrument, not a certified standard.
 | Machine-readable assessment schema | Available |
 | Deterministic substantive, ceremonial, and insufficient-evidence fixtures | Available |
 | Automated positive, negative, case-record, and metadata validation | Available |
-| Retrospective public-record case studies | Three public review drafts with four actor-specific JSON assessments |
+| Retrospective public-record case studies | Released in v0.2.0: three narratives and four actor-specific JSON assessments |
 | Inter-rater reliability result | Pending |
 | Prospective institutional validation | Pending |
 | Legal or standards conformity determination | Not claimed |
 
-The case studies add public evidence, but the repository remains at Level 1 until a documented independent inter-rater exercise satisfies the Level 2 entry criterion. See [`ROADMAP.md`](ROADMAP.md).
+The released case studies add public evidence, but the repository remains at Level 1 until a documented independent inter-rater exercise satisfies the Level 2 entry criterion. See [`ROADMAP.md`](ROADMAP.md).
 
 ## Public evidence pack
 
-The [`case-studies/`](case-studies/) directory contains:
+The v0.2.0 evidence pack in [`case-studies/`](case-studies/) contains:
 
 - the Dutch childcare-benefits scandal during the documented harm period;
 - the Obermeyer population-health algorithm, separating deploying institutions from the manufacturer;
@@ -90,7 +91,7 @@ These cases demonstrate application of the rubric to heterogeneous public record
 | [`ROADMAP.md`](ROADMAP.md) | Evidence-gated release plan through 1.0.0 |
 | [`schema/`](schema/) | Assessment schema and machine-readable dimension catalog |
 | [`fixtures/`](fixtures/) | Deterministic substantive, ceremonial, and insufficient-evidence cases |
-| [`case-studies/`](case-studies/) | Public case narratives and actor-specific machine-readable assessments |
+| [`case-studies/`](case-studies/) | Released public case narratives and actor-specific machine-readable assessments |
 | [`docs/application-handbook.md`](docs/application-handbook.md) | Practitioner application procedure |
 | [`LIMITATIONS.md`](LIMITATIONS.md) | Known limitations and interpretation rules |
 | [`PROVENANCE.md`](PROVENANCE.md) | Public/private extraction lineage and canonical-source rule |
@@ -101,13 +102,13 @@ These cases demonstrate application of the rubric to heterogeneous public record
 
 ## Validation boundary
 
-A passing run demonstrates structural validity, deterministic fixture behavior, case-record schema conformance, negative-case rejection, and metadata synchronization for the included artifacts. It does not establish scoring reliability, field effectiveness, legal compliance, certification, or independent adoption.
+A passing run demonstrates structural validity, deterministic fixture behavior, case-record schema conformance, negative-case rejection, and metadata consistency for the included artifacts. It does not establish scoring reliability, field effectiveness, legal compliance, certification, or independent adoption.
 
 ## Relationship to adjacent work
 
 - **[Governed Decision Intelligence](https://github.com/mj3b/governed-decision-intelligence)** records the institutional decision question, evidence, alternatives, uncertainty, authority, outcome, and conditions.
 - **HIT** tests whether the human authority represented in those records had practical force.
-- **Decision Evidence Portability Specification (DEPS)** examines what resulting evidence can support across governance regimes and where apparent equivalence fails.
+- **Decision Evidence Portability Specification (DEPS)** examines what resulting evidence may support under different governance regimes and where apparent equivalence fails.
 - Runtime governors, audit-event systems, signed-receipt protocols, and portable record standards may supply evidence to HIT. HIT does not replace them.
 
 HIT can be applied to a Governed Decision Record or to another sufficiently documented institutional decision record.
@@ -118,7 +119,7 @@ A high HIT finding means the available records show substantive human influence 
 
 ## Citation and DOI status
 
-Use [`CITATION.cff`](CITATION.cff) for citation metadata. The originating DOI identifies the research concept, not the standalone software release. Zenodo should assign a separate software concept DOI and version DOI when tag `v0.1.0` is processed. See the [DOI and release strategy](docs/doi-and-release-strategy.md).
+Use [`CITATION.cff`](CITATION.cff) for repository citation metadata and identify the exact release used. The originating DOI identifies the research concept, not the standalone software. No standalone software DOI has been assigned yet. The first successful Zenodo archive of a GitHub release should establish a HIT software concept DOI and a version DOI. See the [DOI and release strategy](docs/doi-and-release-strategy.md).
 
 ## Contributing and security
 
