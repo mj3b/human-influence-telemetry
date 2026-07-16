@@ -21,6 +21,10 @@ The project follows Semantic Versioning for the public technical artifact. A ver
 - README maturity table and repository map now distinguish public evidence from independent scoring reliability
 - Research status now records that the public case-study workstream is complete while inter-rater reliability remains unresolved
 
+### Fixed
+
+- Normalized `case-studies/assessments/cigna-pxdx.json` and `case-studies/assessments/obermeyer-manufacturer.json` to the repository-standard indented JSON format without changing assessment findings, evidence claims, or schema semantics
+
 ### Planned
 
 - Independent inter-rater exercise and disagreement record
