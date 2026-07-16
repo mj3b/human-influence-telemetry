@@ -54,7 +54,7 @@ The process is legible because journalism, litigation, and regulatory scrutiny f
 
 ## Public sources
 
-- Patrick Rucker and Maya Miller/Kelman's ProPublica and Capitol Forum investigation, “How Cigna Saves Millions by Having Its Doctors Reject Claims Without Reading Them,” 25 March 2023: <https://www.propublica.org/article/cigna-pxdx-medical-health-insurance-rejection-claims>
+- Patrick Rucker of The Capitol Forum, with Maya Miller and David Armstrong of ProPublica, “How Cigna Saves Millions by Having Its Doctors Reject Claims Without Reading Them,” 25 March 2023: <https://www.propublica.org/article/cigna-pxdx-medical-health-insurance-rejection-claims>
 - ProPublica follow-up reporting Cigna's response and regulatory scrutiny, 25 April 2023: <https://www.propublica.org/article/cigna-health-insurance-denials-pxdx-congress-investigation>
 - *Kisting-Leung v. Cigna Corp.*, No. 2:23-cv-01477-DAD-CSK, order granting in part and denying in part the motion to dismiss, E.D. Cal., 31 March 2025, docket 55: <https://docs.justia.com/cases/federal/district-courts/california/caedce/2%3A2023cv01477/431351/55>
 
