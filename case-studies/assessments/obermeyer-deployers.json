@@ -1,0 +1,75 @@
+{
+  "assessment_id": "HIT-CASE-OBERMEYER-DEPLOYERS-2019",
+  "schema_version": "0.1.0",
+  "institutional_unit": "Health systems deploying the studied population-health risk algorithm",
+  "decision_process": "Selection of patients for high-risk care-management resources using an algorithmic risk score",
+  "period": {"start": "2019-10-25", "end": "2019-10-25"},
+  "sampling_rule": "Retrospective assessment of the public record available at the study publication cutoff; the public sources do not disclose a complete deployment-period record.",
+  "assessor": {"name": "Mark Julius Banasihan", "organization": null, "assessment_date": "2026-07-17"},
+  "substantive_findings": [
+    {
+      "dimension": "counsel",
+      "finding": "IE",
+      "supporting_artifacts": [{"artifact_id": "O1", "artifact_type": "peer_reviewed_article", "citation": "Obermeyer, Powers, Vogeli, and Mullainathan, Dissecting racial bias in an algorithm used to manage the health of populations, Science 366 (2019) 447-453, doi:10.1126/science.aax2342: https://doi.org/10.1126/science.aax2342", "provenance_status": "verified"}],
+      "requested_missing_artifacts": ["Reviewer access logs and evidence packets used before a patient was selected or excluded"],
+      "rationale": "The article establishes the allocation mechanism and disparity but does not disclose what evidence individual enrolling reviewers could access.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "judgment",
+      "finding": "IE",
+      "supporting_artifacts": [{"artifact_id": "O1", "artifact_type": "peer_reviewed_article", "citation": "Obermeyer, Powers, Vogeli, and Mullainathan, Dissecting racial bias in an algorithm used to manage the health of populations, Science 366 (2019) 447-453, doi:10.1126/science.aax2342: https://doi.org/10.1126/science.aax2342", "provenance_status": "verified"}],
+      "requested_missing_artifacts": ["Individualized clinical rationales, exception records, or disagreement logs"],
+      "rationale": "The public record does not distinguish independent clinical judgment from routine acceptance of the risk score.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "command",
+      "finding": "IE",
+      "supporting_artifacts": [{"artifact_id": "O1", "artifact_type": "peer_reviewed_article", "citation": "Obermeyer, Powers, Vogeli, and Mullainathan, Dissecting racial bias in an algorithm used to manage the health of populations, Science 366 (2019) 447-453, doi:10.1126/science.aax2342: https://doi.org/10.1126/science.aax2342", "provenance_status": "verified"}],
+      "requested_missing_artifacts": ["Authority matrix, override permissions, and exercised override records at deploying institutions"],
+      "rationale": "No public artifact shows whether a named deployer-side authority could reject, modify, or stop the score-driven allocation path.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "correction",
+      "finding": "IE",
+      "supporting_artifacts": [{"artifact_id": "O1", "artifact_type": "peer_reviewed_article", "citation": "Obermeyer, Powers, Vogeli, and Mullainathan, Dissecting racial bias in an algorithm used to manage the health of populations, Science 366 (2019) 447-453, doi:10.1126/science.aax2342: https://doi.org/10.1126/science.aax2342", "provenance_status": "verified"}],
+      "requested_missing_artifacts": ["Patient notice, appeal register, escalation log, and reversal records"],
+      "rationale": "The public record does not establish an operative patient or reviewer contestability channel for the allocation decision.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "repair",
+      "finding": "IE",
+      "supporting_artifacts": [{"artifact_id": "O1", "artifact_type": "peer_reviewed_article", "citation": "Obermeyer, Powers, Vogeli, and Mullainathan, Dissecting racial bias in an algorithm used to manage the health of populations, Science 366 (2019) 447-453, doi:10.1126/science.aax2342: https://doi.org/10.1126/science.aax2342", "provenance_status": "verified"}],
+      "requested_missing_artifacts": ["Identification and remediation records for patients under-selected under the original proxy"],
+      "rationale": "No deployer-side public record shows whether previously affected patients were identified, reviewed, notified, or remediated.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "reform",
+      "finding": "IE",
+      "supporting_artifacts": [{"artifact_id": "O1", "artifact_type": "peer_reviewed_article", "citation": "Obermeyer, Powers, Vogeli, and Mullainathan, Dissecting racial bias in an algorithm used to manage the health of populations, Science 366 (2019) 447-453, doi:10.1126/science.aax2342: https://doi.org/10.1126/science.aax2342", "provenance_status": "verified"}],
+      "requested_missing_artifacts": ["Deploying-institution records revising, suspending, or retiring use of the tool"],
+      "rationale": "The public record does not establish whether deploying health systems changed their own workflows after publication.",
+      "ambiguity_note": null
+    }
+  ],
+  "telemetry_integrity": {
+    "status": "IE",
+    "provenance": "The peer-reviewed article is traceable, but deployer-side operational records are not public.",
+    "completeness": "The public record is rich on model effects and sparse on institutional oversight artifacts.",
+    "edit_authority": "The public sources do not identify who controlled or could modify deployer-side decision records.",
+    "independence": "No independent deployer-side audit record is available.",
+    "tamper_evidence": "No public tamper-evidence controls are documented for the deployment records.",
+    "retention": "No public retention rule is documented for the relevant allocation records.",
+    "rationale": "The evidence supports analysis of the algorithmic mechanism but is insufficient to assess the integrity of deployer-side oversight records."
+  },
+  "summary": "Every deployer-side substantive dimension returns insufficient evidence; the absence of public oversight records is itself the central finding.",
+  "limitations": [
+    "The period fields represent the public evidence cutoff because deployment start and end dates are not disclosed in the reviewed sources.",
+    "The assessment does not infer absence of oversight from nonpublication.",
+    "The studied algorithm influenced allocation to additional care-management resources; this assessment does not characterize it as a direct denial-of-care system."
+  ]
+}

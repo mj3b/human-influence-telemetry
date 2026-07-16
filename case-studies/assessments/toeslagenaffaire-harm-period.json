@@ -1,0 +1,143 @@
+{
+  "assessment_id": "HIT-CASE-TOESLAGENAFFAIRE-HARM-2013-2019",
+  "schema_version": "0.1.0",
+  "institutional_unit": "Belastingdienst/Toeslagen childcare-benefits administration",
+  "decision_process": "Designation of a childcare-benefit recipient as fraudulent followed by full clawback of benefits",
+  "period": {
+    "start": "2013-01-01",
+    "end": "2019-12-31"
+  },
+  "sampling_rule": "Retrospective public-record reconstruction of the institutional decision architecture during the documented harm period; no individual claimant sample is asserted.",
+  "assessor": {
+    "name": "Mark Julius Banasihan",
+    "organization": null,
+    "assessment_date": "2026-07-17"
+  },
+  "substantive_findings": [
+    {
+      "dimension": "counsel",
+      "finding": 0,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "T1",
+          "artifact_type": "parliamentary_inquiry_report",
+          "citation": "Parliamentary Inquiry Committee on Childcare Allowance, Unprecedented Injustice (Ongekend Onrecht), 17 Dec. 2020, English reference CDL-REF(2021)073-e: https://www.venice.coe.int/webforms/documents/?pdf=CDL-REF%282021%29073-e",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [
+        "Contemporaneous case-file access logs showing what evidence reviewers opened before designation"
+      ],
+      "rationale": "The inquiry record indicates that risk classification and institutional presumptions displaced access to case-specific evidence before designation.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "judgment",
+      "finding": 0,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "T1",
+          "artifact_type": "parliamentary_inquiry_report",
+          "citation": "Parliamentary Inquiry Committee on Childcare Allowance, Unprecedented Injustice (Ongekend Onrecht), 17 Dec. 2020, English reference CDL-REF(2021)073-e: https://www.venice.coe.int/webforms/documents/?pdf=CDL-REF%282021%29073-e",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [
+        "Individual disposition rationales addressing alternatives, proportionality, and claimant circumstances"
+      ],
+      "rationale": "The public reconstruction shows an all-or-nothing enforcement architecture with no demonstrated individualized weighing of relevant circumstances.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "command",
+      "finding": 1,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "T1",
+          "artifact_type": "parliamentary_inquiry_report",
+          "citation": "Parliamentary Inquiry Committee on Childcare Allowance, Unprecedented Injustice (Ongekend Onrecht), 17 Dec. 2020, English reference CDL-REF(2021)073-e: https://www.venice.coe.int/webforms/documents/?pdf=CDL-REF%282021%29073-e",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [
+        "Reasoned decision orders and override records showing that named officials could direct otherwise in practice"
+      ],
+      "rationale": "Formal administrative authority remained present, but the record does not show that it operated as an effective capacity to reject or modify the system-driven path.",
+      "ambiguity_note": "A scorer could argue for zero where formal authority was structurally unusable; this assessment records ceremonial authority as one."
+    },
+    {
+      "dimension": "correction",
+      "finding": 1,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "T1",
+          "artifact_type": "parliamentary_inquiry_report",
+          "citation": "Parliamentary Inquiry Committee on Childcare Allowance, Unprecedented Injustice (Ongekend Onrecht), 17 Dec. 2020, English reference CDL-REF(2021)073-e: https://www.venice.coe.int/webforms/documents/?pdf=CDL-REF%282021%29073-e",
+          "provenance_status": "verified"
+        },
+        {
+          "artifact_id": "T2",
+          "artifact_type": "parliamentary_follow_up",
+          "citation": "Dutch House of Representatives, follow-up record for Ongekend Onrecht: https://www.tweedekamer.nl/kamerstukken/plenaire_verslagen/kamer_in_het_kort/opvolging-rapport-ongekend-onrecht",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [
+        "A harm-period appeal register showing timely, merits-based reversals and interruption of clawback"
+      ],
+      "rationale": "Objection and appeal channels existed, but the public inquiry documents delay and limited practical effect during the assessed period.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "repair",
+      "finding": 0,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "T1",
+          "artifact_type": "parliamentary_inquiry_report",
+          "citation": "Parliamentary Inquiry Committee on Childcare Allowance, Unprecedented Injustice (Ongekend Onrecht), 17 Dec. 2020, English reference CDL-REF(2021)073-e: https://www.venice.coe.int/webforms/documents/?pdf=CDL-REF%282021%29073-e",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [
+        "Harm-period restitution, corrected records, notification, and named remediation ownership"
+      ],
+      "rationale": "The assessed harm period contains no demonstrated remediation process for affected families; repair began after institutional and political intervention.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "reform",
+      "finding": 0,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "T1",
+          "artifact_type": "parliamentary_inquiry_report",
+          "citation": "Parliamentary Inquiry Committee on Childcare Allowance, Unprecedented Injustice (Ongekend Onrecht), 17 Dec. 2020, English reference CDL-REF(2021)073-e: https://www.venice.coe.int/webforms/documents/?pdf=CDL-REF%282021%29073-e",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [
+        "Harm-period authorization records changing risk criteria, thresholds, workflow, or the underlying enforcement architecture"
+      ],
+      "rationale": "The public record does not show an exercised authority that changed the harmful decision architecture during the assessed period.",
+      "ambiguity_note": null
+    }
+  ],
+  "telemetry_integrity": {
+    "status": "IE",
+    "provenance": "The principal evidence is a parliamentary reconstruction with a stable public reference.",
+    "completeness": "The inquiry documented incomplete and withheld records; contemporaneous operational logs are not publicly complete.",
+    "edit_authority": "The assessed administration controlled many of the underlying records before external inquiry.",
+    "independence": "The later parliamentary inquiry was external to the operating unit, but the source records originated within the governed institutions.",
+    "tamper_evidence": "No public evidence establishes tamper-evident storage for the contemporaneous decision records.",
+    "retention": "Public materials do not establish a complete retention history for all relevant operational artifacts.",
+    "rationale": "The inquiry provides substantial reconstruction evidence, but missing and institution-controlled source records prevent an adequate integrity finding."
+  },
+  "summary": "The harm-period record shows absent counsel, judgment, repair, and reform, with command and correction preserved mainly in ceremonial form.",
+  "limitations": [
+    "Retrospective public-record assessment; it does not reconstruct every individual claimant decision.",
+    "The period start is a conservative boundary for the documented harm architecture, not a claim that all relevant conduct began on one exact date.",
+    "The assessment evaluates documentary evidence and does not determine legal liability, institutional intent, or outcome correctness.",
+    "Post-2020 repair and reform are outside this machine-readable harm-period assessment."
+  ]
+}
