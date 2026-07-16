@@ -1,0 +1,19 @@
+{
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "protocol_version": "1.0.0",
+  "target_repository_release": "0.3.0",
+  "method_specification_version": "0.1.0",
+  "assessment_schema_version": "0.1.0",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "prepared_on": "2026-07-16",
+  "status": "candidate",
+  "primary_measure": "exact_agreement_across_seven_items",
+  "minimum_exact_agreements": 6,
+  "minimum_exact_agreement_proportion": 0.8571,
+  "critical_disagreements_allowed": 0,
+  "supplementary_measure": "unweighted_cohens_kappa_across_six_substantive_dimensions",
+  "required_scorers": 2,
+  "author_may_score": false,
+  "post_adjudication_rescoring_changes_primary_result": false,
+  "failure_result_must_be_published": true
+}
