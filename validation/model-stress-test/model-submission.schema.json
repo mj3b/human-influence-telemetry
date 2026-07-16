@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HIT Model Stress-Test Submission",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "submission_id",
+    "protocol_id",
+    "packet_id",
+    "model",
+    "contamination_attestation",
+    "substantive_findings",
+    "telemetry_integrity",
+    "submitted_at"
+  ],
+  "properties": {
+    "submission_id": {"type": "string", "pattern": "^HIT-MST-[A-Za-z0-9._-]+$"},
+    "protocol_id": {"const": "HIT-MST-CIGNA-001"},
+    "packet_id": {"const": "HIT-IR-CIGNA-PXDX-001"},
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["public_id", "provider", "product_label", "run_date", "access_mode"],
+      "properties": {
+        "public_id": {"type": "string", "minLength": 2},
+        "provider": {"type": "string", "minLength": 2},
+        "product_label": {"type": "string", "minLength": 2},
+        "version_detail": {"type": ["string", "null"]},
+        "run_date": {"type": "string", "format": "date"},
+        "access_mode": {"type": "string", "minLength": 2},
+        "settings_note": {"type": ["string", "null"]}
+      }
+    },
+    "contamination_attestation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fresh_session",
+        "no_author_scores",
+        "no_other_model_output",
+        "no_additional_case_sources",
+        "no_substantive_author_coaching"
+      ],
+      "properties": {
+        "fresh_session": {"const": true},
+        "no_author_scores": {"const": true},
+        "no_other_model_output": {"const": true},
+        "no_additional_case_sources": {"const": true},
+        "no_substantive_author_coaching": {"const": true}
+      }
+    },
+    "substantive_findings": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["dimension", "finding", "evidence_refs", "rationale", "ambiguity_note"],
+        "properties": {
+          "dimension": {"enum": ["counsel", "judgment", "command", "correction", "repair", "reform"]},
+          "finding": {
+            "oneOf": [
+              {"type": "integer", "enum": [0, 1, 2]},
+              {"const": "IE"}
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"enum": ["S1", "S2", "S3"]}
+          },
+          "rationale": {"type": "string", "minLength": 30},
+          "ambiguity_note": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "telemetry_integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "evidence_refs", "rationale", "ambiguity_note"],
+      "properties": {
+        "status": {"enum": ["adequate", "limited", "unreliable", "IE"]},
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["S1", "S2", "S3"]}
+        },
+        "rationale": {"type": "string", "minLength": 30},
+        "ambiguity_note": {"type": ["string", "null"]}
+      }
+    },
+    "submitted_at": {"type": "string", "format": "date-time"},
+    "general_limitations": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 10}
+    }
+  }
+}
