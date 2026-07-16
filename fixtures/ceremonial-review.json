@@ -1,1 +1,122 @@
-{"assessment_id":"HIT-FIXTURE-CEREMONIAL","schema_version":"0.1.0","institutional_unit":"Fictional Benefits Review Unit","decision_process":"Approval or denial of public-benefit eligibility using an AI risk score","period":{"start":"2026-01-01","end":"2026-03-31"},"sampling_rule":"All appeals and overrides plus a fixed sample of routine decisions","assessor":{"name":"Fixture Assessor","organization":"Node & Norm","assessment_date":"2026-07-16"},"substantive_findings":[{"dimension":"counsel","finding":1,"supporting_artifacts":[{"artifact_id":"C1","artifact_type":"screen_access_log","citation":"fixture/recommendation-screen.csv","provenance_status":"verified"}],"requested_missing_artifacts":["underlying evidence access logs"],"rationale":"Reviewers opened the recommendation screen but the record does not show access to the underlying case evidence.","ambiguity_note":null},{"dimension":"judgment","finding":1,"supporting_artifacts":[{"artifact_id":"C2","artifact_type":"reviewer_note","citation":"fixture/notes.json","provenance_status":"verified"}],"requested_missing_artifacts":["independent reasoning or dissent records"],"rationale":"Reviewer notes restate the system recommendation and contain no independent reasons or alternatives.","ambiguity_note":null},{"dimension":"command","finding":1,"supporting_artifacts":[{"artifact_id":"C3","artifact_type":"approval_signature","citation":"fixture/signatures.csv","provenance_status":"verified"}],"requested_missing_artifacts":["evidence of exercised override or stop authority"],"rationale":"Human signatures are present, but the record cannot show that reviewers could practically direct a different outcome.","ambiguity_note":null},{"dimension":"correction","finding":1,"supporting_artifacts":[{"artifact_id":"C4","artifact_type":"appeal_register","citation":"fixture/appeals.csv","provenance_status":"verified"}],"requested_missing_artifacts":["substantive reversal records"],"rationale":"Appeals were accepted and logged, but all received the same template disposition and none changed the outcome.","ambiguity_note":null},{"dimension":"repair","finding":0,"supporting_artifacts":[],"requested_missing_artifacts":["remediation owner","restitution record","corrected decision record"],"rationale":"No record shows remediation ownership or repair after a substantiated error.","ambiguity_note":null},{"dimension":"reform","finding":0,"supporting_artifacts":[],"requested_missing_artifacts":["authorized system-change record"],"rationale":"No record shows authority to change the scoring threshold, workflow, or model after repeated failures.","ambiguity_note":null}],"telemetry_integrity":{"status":"limited","provenance":"Core records have identifiers, but supporting evidence is incomplete.","completeness":"Several requested artifact classes were not produced.","edit_authority":"The same operational team can edit decision and review records.","independence":"Audit records are stored in the decision platform.","tamper_evidence":"No tamper-evident sealing is documented.","retention":"Retention is stated but not independently verified.","rationale":"The records permit a bounded assessment but their completeness and independence are limited."},"summary":"The process preserves the form of human review while the record shows little capacity for human influence after the AI recommendation.","limitations":["Synthetic fixture; no claim is made about actual institutions."]}
+{
+  "assessment_id": "HIT-FIXTURE-CEREMONIAL",
+  "schema_version": "0.1.0",
+  "institutional_unit": "Fictional Benefits Review Unit",
+  "decision_process": "Approval or denial of public-benefit eligibility using an AI risk score",
+  "period": {
+    "start": "2026-01-01",
+    "end": "2026-03-31"
+  },
+  "sampling_rule": "All appeals and overrides plus a fixed sample of routine decisions",
+  "assessor": {
+    "name": "Fixture Assessor",
+    "organization": "Node & Norm",
+    "assessment_date": "2026-07-16"
+  },
+  "substantive_findings": [
+    {
+      "dimension": "counsel",
+      "finding": 1,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "C1",
+          "artifact_type": "screen_access_log",
+          "citation": "fixture/recommendation-screen.csv",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [
+        "underlying evidence access logs"
+      ],
+      "rationale": "Reviewers opened the recommendation screen but the record does not show access to the underlying case evidence.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "judgment",
+      "finding": 1,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "C2",
+          "artifact_type": "reviewer_note",
+          "citation": "fixture/notes.json",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [
+        "independent reasoning or dissent records"
+      ],
+      "rationale": "Reviewer notes restate the system recommendation and contain no independent reasons or alternatives.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "command",
+      "finding": 1,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "C3",
+          "artifact_type": "approval_signature",
+          "citation": "fixture/signatures.csv",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [
+        "evidence of exercised override or stop authority"
+      ],
+      "rationale": "Human signatures are present, but the record cannot show that reviewers could practically direct a different outcome.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "correction",
+      "finding": 1,
+      "supporting_artifacts": [
+        {
+          "artifact_id": "C4",
+          "artifact_type": "appeal_register",
+          "citation": "fixture/appeals.csv",
+          "provenance_status": "verified"
+        }
+      ],
+      "requested_missing_artifacts": [
+        "substantive reversal records"
+      ],
+      "rationale": "Appeals were accepted and logged, but all received the same template disposition and none changed the outcome.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "repair",
+      "finding": 0,
+      "supporting_artifacts": [],
+      "requested_missing_artifacts": [
+        "remediation owner",
+        "restitution record",
+        "corrected decision record"
+      ],
+      "rationale": "No record shows remediation ownership or repair after a substantiated error.",
+      "ambiguity_note": null
+    },
+    {
+      "dimension": "reform",
+      "finding": 0,
+      "supporting_artifacts": [],
+      "requested_missing_artifacts": [
+        "authorized system-change record"
+      ],
+      "rationale": "No record shows authority to change the scoring threshold, workflow, or model after repeated failures.",
+      "ambiguity_note": null
+    }
+  ],
+  "telemetry_integrity": {
+    "status": "limited",
+    "provenance": "Core records have identifiers, but supporting evidence is incomplete.",
+    "completeness": "Several requested artifact classes were not produced.",
+    "edit_authority": "The same operational team can edit decision and review records.",
+    "independence": "Audit records are stored in the decision platform.",
+    "tamper_evidence": "No tamper-evident sealing is documented.",
+    "retention": "Retention is stated but not independently verified.",
+    "rationale": "The records permit a bounded assessment but their completeness and independence are limited."
+  },
+  "summary": "The process preserves the form of human review while the record shows little capacity for human influence after the AI recommendation.",
+  "limitations": [
+    "Synthetic fixture; no claim is made about actual institutions."
+  ]
+}
