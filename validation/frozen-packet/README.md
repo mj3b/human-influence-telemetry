@@ -32,6 +32,7 @@ Before submission, do not inspect:
 
 - `case-studies/cigna-pxdx.md`;
 - `case-studies/assessments/cigna-pxdx.json`;
+- `validation/test-vectors/`;
 - public commentary discussing the author's Cigna findings;
 - another scorer's notes or submission.
 
