@@ -24,7 +24,7 @@ HIT contains six substantive dimensions and one cross-cutting integrity dimensio
 6. **Reform**: Did a named authority have power to change the decision architecture that produced the failure?
 7. **Telemetry Integrity**: Are the records complete, traceable, resistant to silent alteration, and sufficiently independent to audit?
 
-The first six dimensions assess substantive human influence. Telemetry Integrity evaluates whether the evidence used to score those dimensions can itself be trusted.
+The first six dimensions assess substantive human influence. Telemetry Integrity evaluates whether the evidence used to assess those dimensions can itself be trusted.
 
 ## Findings
 
@@ -44,12 +44,45 @@ HIT is a research instrument, not a certified standard.
 | Capability | Status |
 |---|---|
 | Stable construct definitions | Available |
-| Machine-readable assessment schema | Initialization in progress |
-| Deterministic fixtures | Initialization in progress |
+| Machine-readable assessment schema | Available on the initialization branch |
+| Deterministic substantive, ceremonial, and insufficient-evidence fixtures | Available on the initialization branch |
+| Automated repository validation | Available on the initialization branch |
 | Retrospective public-record case studies | Completed in source research; public release pending provenance review |
 | Inter-rater reliability result | Pending |
 | Prospective institutional validation | Pending |
 | Legal or standards conformity determination | Not claimed |
+
+## Repository structure
+
+```text
+.
+├── README.md
+├── SPECIFICATION.md
+├── RESEARCH.md
+├── PROVENANCE.md
+├── LIMITATIONS.md
+├── CITATION.cff
+├── schema/
+│   ├── hit-assessment.schema.json
+│   └── hit-dimension-catalog.json
+├── fixtures/
+│   ├── substantive-human-influence.json
+│   ├── ceremonial-review.json
+│   └── insufficient-evidence.json
+├── scripts/
+│   └── validate.py
+└── docs/
+    └── application-handbook.md
+```
+
+## Validation
+
+```bash
+python -m pip install --requirement requirements-dev.txt
+python scripts/validate.py
+```
+
+A passing run demonstrates structural validity and fixture consistency for the included artifacts. It does not establish field effectiveness or scoring reliability.
 
 ## Relationship to adjacent work
 
