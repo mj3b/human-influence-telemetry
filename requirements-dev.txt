@@ -1,1 +1,2 @@
 jsonschema[format]==4.25.1
+PyYAML==6.0.3
