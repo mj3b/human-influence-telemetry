@@ -1,6 +1,6 @@
 # Public-record case studies
 
-This directory contains retrospective Human Influence Telemetry applications to publicly documented institutional decision processes.
+This directory contains retrospective Human Influence Telemetry applications to publicly documented institutional decision processes released with repository version 0.2.0.
 
 The cases are evidence demonstrations, not legal opinions, compliance determinations, certifications, or causal validation of HIT. Each assessment is bounded by the records available to the public. A finding of `IE` means the record cannot distinguish absence from unavailable evidence.
 
@@ -14,7 +14,7 @@ The cases are evidence demonstrations, not legal opinions, compliance determinat
 
 ## Method
 
-Each case follows the public [HIT Application Handbook](../docs/application-handbook.md):
+Each case follows the public [HIT Application Handbook](../docs/application-handbook.md), specification version 0.1.0:
 
 1. define one decision process, institutional unit, period, and evidence boundary;
 2. request or identify artifacts by type rather than accepting oversight claims;
@@ -23,10 +23,12 @@ Each case follows the public [HIT Application Handbook](../docs/application-hand
 5. report Telemetry Integrity separately;
 6. preserve source limitations and rival interpretations.
 
+The machine-readable files conform to assessment schema version 0.1.0. Repository version 0.2.0 adds these evidence records without changing the schema or scoring semantics.
+
 ## Provenance rule
 
 The case narratives were extracted from the private *Poenitentia Institutionum* research repository under the controls recorded in [`PROVENANCE.md`](../PROVENANCE.md). The public files are canonical for HIT use. Private annotations and chapter materials are not required to reproduce these assessments.
 
 ## Current research status
 
-The cases demonstrate that the rubric can be applied to heterogeneous public records and can produce differentiated profiles. They do not establish inter-rater reliability. The next empirical gate is independent scoring using the public source packets and the protocol planned in [`ROADMAP.md`](../ROADMAP.md).
+The released cases demonstrate that the rubric can be applied to heterogeneous public records and can produce differentiated profiles. They do not establish inter-rater reliability. The next empirical gate is independent scoring using the public source packets and the protocol planned in [`ROADMAP.md`](../ROADMAP.md).

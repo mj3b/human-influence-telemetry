@@ -8,9 +8,10 @@ This roadmap treats version advancement as an evidence claim. Dates are secondar
 - `1.0.0` means the public method is stable enough for independent implementation, not that HIT is legally certified, causally validated, or institutionally adopted.
 - Missing evidence must remain `IE`; it is never converted to zero for aggregation convenience.
 - Normative changes require migration notes, synchronized schema and handbook updates, and revised fixtures.
-- Every numbered release must pass repository validation and identify its exact archival record.
+- Repository release versions remain distinct from component versions when the specification, schema, or catalog does not change.
+- Every numbered release must pass repository validation and identify its exact GitHub tag. Zenodo identifiers are recorded after successful archival and are not fabricated or anticipated.
 
-## Current baseline: 0.1.0
+## Foundation release: 0.1.0
 
 Completed:
 
@@ -20,7 +21,7 @@ Completed:
 - deterministic substantive, ceremonial, and insufficient-evidence fixtures;
 - public application handbook;
 - automated positive, negative, and metadata validation;
-- citable GitHub release and archival workflow.
+- citable GitHub release and Zenodo archival workflow.
 
 Research boundary:
 
@@ -29,15 +30,18 @@ Research boundary:
 - no legal or standards conformity determination;
 - no independent adoption claim.
 
-## 0.2.0: Public evidence pack
+## Current release: 0.2.0 public evidence pack
 
-### Required artifacts
+**Status:** Complete for release.
+
+### Released artifacts
 
 - three public case-study narratives with source provenance;
-- machine-readable assessments for each institutional actor;
-- public/private extraction boundary documented;
+- four machine-readable assessments covering each institutional actor;
+- documented public/private extraction boundary;
 - case-derived ambiguities recorded rather than silently resolved;
-- validator checks every machine-readable case assessment.
+- validator coverage for every machine-readable case assessment;
+- release notes and compatibility statement.
 
 ### Included cases
 
@@ -45,9 +49,11 @@ Research boundary:
 2. Obermeyer population-health algorithm: deploying health systems and manufacturer scored separately.
 3. Cigna PxDx: claims-review workflow with a designed Command disagreement.
 
-### Completion test
+### Completion result
 
-A reader with no access to the private source repository can inspect the cited public record, reproduce the assessment boundary, validate the JSON records, and identify where findings depend on interpretation.
+A reader with no access to the private source repository can inspect the cited public record, reproduce each assessment boundary, validate the JSON records, and identify where findings depend on interpretation.
+
+Version 0.2.0 does not change the 0.1.0 specification, assessment schema, dimension catalog, or scoring semantics. Its contribution is public evidence and reproducible application records.
 
 ## 0.3.0: Inter-rater protocol and result
 

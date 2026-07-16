@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use Human Influence Telemetry, cite the software release and identify the version used."
 title: "Human Influence Telemetry"
 type: software
-version: "0.1.0"
+version: "0.2.0"
 date-released: "2026-07-16"
 authors:
   - family-names: Banasihan
@@ -18,7 +18,7 @@ identifiers:
     description: "Canonical public software repository."
   - type: doi
     value: "10.5281/zenodo.21204892"
-    description: "Originating research concept DOI. This is not the version DOI for the standalone software release."
+    description: "Originating research concept DOI. This is not a version DOI for the standalone software release."
 keywords:
   - AI governance
   - human oversight
