@@ -11,6 +11,7 @@ Human Influence Telemetry (HIT) evaluates what contemporaneous records can show 
 **Current release:** 0.2.0  
 **Specification version:** 0.1.0  
 **Assessment schema version:** 0.1.0  
+**Development workstream:** v0.3.0 inter-rater protocol and tooling  
 **Current maturity:** Level 1, Defined  
 **Originating research DOI:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)  
 **Software DOI:** Pending the first successful Zenodo archive of a GitHub release
@@ -53,7 +54,7 @@ python -m pip install --requirement requirements-dev.txt
 python scripts/validate.py
 ```
 
-A passing run validates the schema, dimension catalog, deterministic fixtures, released public case assessments, negative cases, release files, and citation metadata.
+A passing run validates the schema, dimension catalog, deterministic fixtures, released public case assessments, inter-rater protocol artifacts, comparison test vectors, negative cases, release files, and citation metadata.
 
 ## Current maturity
 
@@ -64,13 +65,14 @@ HIT is a research instrument, not a certified standard.
 | Stable construct definitions | Available |
 | Machine-readable assessment schema | Available |
 | Deterministic substantive, ceremonial, and insufficient-evidence fixtures | Available |
-| Automated positive, negative, case-record, and metadata validation | Available |
+| Automated positive, negative, case-record, protocol, and metadata validation | Available |
 | Retrospective public-record case studies | Released in v0.2.0: three narratives and four actor-specific JSON assessments |
-| Inter-rater reliability result | Pending |
+| Blinded inter-rater protocol and comparison tooling | Prepared for v0.3.0; protocol review and lock pending |
+| Independent scorer submissions and reliability result | Pending |
 | Prospective institutional validation | Pending |
 | Legal or standards conformity determination | Not claimed |
 
-The released case studies add public evidence, but the repository remains at Level 1 until a documented independent inter-rater exercise satisfies the Level 2 entry criterion. See [`ROADMAP.md`](ROADMAP.md).
+The released case studies add public evidence, but the repository remains at Level 1 until a documented independent inter-rater exercise satisfies the Level 2 entry criterion. Protocol and tooling do not count as an empirical result. See [`ROADMAP.md`](ROADMAP.md).
 
 ## Public evidence pack
 
@@ -82,6 +84,12 @@ The v0.2.0 evidence pack in [`case-studies/`](case-studies/) contains:
 
 These cases demonstrate application of the rubric to heterogeneous public records. They do not establish scoring reliability, causal effectiveness, legal liability, or independent validation.
 
+## v0.3.0 inter-rater workstream
+
+The [`validation/`](validation/) directory contains the candidate blinded protocol, fixed scorer packet, submission schema, deterministic comparison tool, disagreement taxonomy, and adjudication controls.
+
+The release gate still requires two eligible scorers who are independent of the author and of each other. A passing or failing result will be published without replacing original scores after adjudication. Maturity advancement depends on the predeclared pre-adjudication threshold, not on post-hoc consensus.
+
 ## Repository map
 
 | Path | Purpose |
@@ -92,6 +100,7 @@ These cases demonstrate application of the rubric to heterogeneous public record
 | [`schema/`](schema/) | Assessment schema and machine-readable dimension catalog |
 | [`fixtures/`](fixtures/) | Deterministic substantive, ceremonial, and insufficient-evidence cases |
 | [`case-studies/`](case-studies/) | Released public case narratives and actor-specific machine-readable assessments |
+| [`validation/`](validation/) | Inter-rater protocol, frozen packet, submission contract, comparison tests, and pending results |
 | [`docs/application-handbook.md`](docs/application-handbook.md) | Practitioner application procedure |
 | [`LIMITATIONS.md`](LIMITATIONS.md) | Known limitations and interpretation rules |
 | [`PROVENANCE.md`](PROVENANCE.md) | Public/private extraction lineage and canonical-source rule |
@@ -99,10 +108,11 @@ These cases demonstrate application of the rubric to heterogeneous public record
 | [`GOVERNANCE.md`](GOVERNANCE.md) | Decision authority and release governance |
 | [`docs/doi-and-release-strategy.md`](docs/doi-and-release-strategy.md) | Software DOI and archival strategy |
 | [`scripts/validate.py`](scripts/validate.py) | Repository-wide validation command |
+| [`scripts/compare_raters.py`](scripts/compare_raters.py) | Deterministic pre-adjudication scorer comparison |
 
 ## Validation boundary
 
-A passing run demonstrates structural validity, deterministic fixture behavior, case-record schema conformance, negative-case rejection, and metadata consistency for the included artifacts. It does not establish scoring reliability, field effectiveness, legal compliance, certification, or independent adoption.
+A passing repository run demonstrates structural validity, deterministic fixture behavior, case-record schema conformance, protocol-artifact consistency, comparison-tool behavior, negative-case rejection, and metadata consistency for the included artifacts. It does not establish scorer independence, scoring reliability, field effectiveness, legal compliance, certification, or independent adoption.
 
 ## Relationship to adjacent work
 
