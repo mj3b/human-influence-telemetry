@@ -15,12 +15,19 @@ The project follows Semantic Versioning for the public technical artifact. Repos
 - Synthetic comparison test vectors
 - Disagreement taxonomy and adjudication template
 - Results directory with an explicit pending-evidence boundary
+- Human-readable fixture index explaining each synthetic scenario and its expected finding pattern
+- Automated fixture-formatting check requiring two-space indented JSON with a final newline
 
 ### Changed
 
 - README now distinguishes prepared reliability infrastructure from an empirical reliability result
 - Repository validation is extended to protocol identifiers, packet identifiers, scorer-schema validity, source-manifest completeness, synthetic comparison behavior, and absence of unsupported result claims
+- GitHub Actions now rejects minified or non-canonical deterministic fixture JSON
 - The v0.3.0 roadmap now separates protocol completion, scorer enrollment, independent submission, comparison, adjudication, and maturity advancement
+
+### Fixed
+
+- Reformatted all three deterministic fixture records as human-readable, two-space indented JSON without changing assessment IDs, findings, evidence claims, schema versions, or limitations
 
 ### Planned
 
