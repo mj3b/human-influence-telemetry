@@ -8,7 +8,7 @@ The project follows Semantic Versioning for the public technical artifact. Repos
 
 ### Added
 
-- Candidate blinded inter-rater protocol `HIT-IRP-CIGNA-001`
+- Locked blinded inter-rater protocol `HIT-IRP-CIGNA-001`
 - Frozen Cigna PxDx scorer packet with a fixed decision boundary and three-source manifest
 - Machine-readable scorer-submission schema and neutral submission template
 - Deterministic scorer-comparison tool reporting exact agreement, critical disagreements, and supplementary Cohen's kappa
@@ -17,6 +17,12 @@ The project follows Semantic Versioning for the public technical artifact. Repos
 - Results directory with an explicit pending-evidence boundary
 - Human-readable fixture index explaining each synthetic scenario and its expected finding pattern
 - Automated fixture-formatting check requiring two-space indented JSON with a final newline
+- Adversarial rubric-friction review `HIT-ARFR-001` and machine-readable friction register
+- Coordinator toolkit index and corrected comparison runbook
+- Individual scorer-submission validator
+- SHA-256 scorer-submission receipt generator
+- Independent human-scorer recruitment package
+- Separate model-based rubric stress-test protocol `HIT-MST-CIGNA-001`, prompt, schema, template, and pending-result boundary
 
 ### Changed
 
@@ -24,25 +30,27 @@ The project follows Semantic Versioning for the public technical artifact. Repos
 - Repository validation is extended to protocol identifiers, packet identifiers, scorer-schema validity, source-manifest completeness, synthetic comparison behavior, and absence of unsupported result claims
 - GitHub Actions now rejects minified or non-canonical deterministic fixture JSON
 - The v0.3.0 roadmap now separates protocol completion, scorer enrollment, independent submission, comparison, adjudication, and maturity advancement
+- The human protocol is locked on `main`; scoring remains pending because two eligible independent scorers have not yet been enrolled
+- Coordinator comparison instructions now use the actual `compare_raters.py` interface: `--format` and `--output`
 
 ### Fixed
 
 - Reformatted all three deterministic fixture records as human-readable, two-space indented JSON without changing assessment IDs, findings, evidence claims, schema versions, or limitations
+- Corrected the coordinator operating procedure, which previously referenced unsupported `--json-output` and `--markdown-output` flags
 
 ### Planned
 
-- Review and lock the protocol on `main` before scoring begins
 - Enroll two scorers independent of the author and of each other
 - Collect and preserve two blinded scorer submissions
 - Publish the deterministic pre-adjudication comparison
 - Classify disagreements and publish an adjudication record without overwriting original scores
-- Release v0.3.0 with either a passing or failing result
+- Release v0.3.0 with either a passing or failing human result
 - Begin rubric revisions under the v0.4.0 stabilization workstream
 - Develop a preregistered prospective validation protocol
 
 ### Research boundary
 
-The protocol, packet, schema, and comparison tool do not establish inter-rater reliability. Claim H3 and Maturity Level 2 remain unresolved until two eligible independent submissions are compared under the locked protocol. Adjudication cannot retroactively change the pre-adjudication advancement result.
+The locked human protocol, packet, schema, coordinator tooling, friction review, and model stress-test procedure do not establish human inter-rater reliability. Claim H3 and Maturity Level 2 remain unresolved until two eligible independent human submissions are compared under the locked protocol. A model stress test has no maturity consequence. Adjudication cannot retroactively change the pre-adjudication advancement result.
 
 ## [0.2.0] - 2026-07-16
 
