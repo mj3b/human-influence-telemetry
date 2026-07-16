@@ -1,7 +1,7 @@
 # Case Study 1: Dutch Childcare-Benefits Scandal
 
 **Method:** Human Influence Telemetry 0.1.0  
-**Status:** Public review draft for repository release 0.2.0  
+**Status:** Released with repository version 0.2.0  
 **Assessment:** [`assessments/toeslagenaffaire-harm-period.json`](assessments/toeslagenaffaire-harm-period.json)  
 **Author:** Mark Julius Banasihan
 
