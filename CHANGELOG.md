@@ -6,11 +6,36 @@ The project follows Semantic Versioning for the public technical artifact. Repos
 
 ## [Unreleased]
 
+### Added
+
+- Candidate blinded inter-rater protocol `HIT-IRP-CIGNA-001`
+- Frozen Cigna PxDx scorer packet with a fixed decision boundary and three-source manifest
+- Machine-readable scorer-submission schema and neutral submission template
+- Deterministic scorer-comparison tool reporting exact agreement, critical disagreements, and supplementary Cohen's kappa
+- Synthetic comparison test vectors
+- Disagreement taxonomy and adjudication template
+- Results directory with an explicit pending-evidence boundary
+
+### Changed
+
+- README now distinguishes prepared reliability infrastructure from an empirical reliability result
+- Repository validation is extended to protocol identifiers, packet identifiers, scorer-schema validity, source-manifest completeness, synthetic comparison behavior, and absence of unsupported result claims
+- The v0.3.0 roadmap now separates protocol completion, scorer enrollment, independent submission, comparison, adjudication, and maturity advancement
+
 ### Planned
 
-- Independent inter-rater exercise and disagreement record
-- Rubric revisions derived from public cases and scorer disagreement
-- Validation protocol with a preregistered population and statistical method
+- Review and lock the protocol on `main` before scoring begins
+- Enroll two scorers independent of the author and of each other
+- Collect and preserve two blinded scorer submissions
+- Publish the deterministic pre-adjudication comparison
+- Classify disagreements and publish an adjudication record without overwriting original scores
+- Release v0.3.0 with either a passing or failing result
+- Begin rubric revisions under the v0.4.0 stabilization workstream
+- Develop a preregistered prospective validation protocol
+
+### Research boundary
+
+The protocol, packet, schema, and comparison tool do not establish inter-rater reliability. Claim H3 and Maturity Level 2 remain unresolved until two eligible independent submissions are compared under the locked protocol. Adjudication cannot retroactively change the pre-adjudication advancement result.
 
 ## [0.2.0] - 2026-07-16
 
