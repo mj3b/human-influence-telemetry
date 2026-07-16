@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate HIT schemas, fixtures, metadata, and release-governance files."""
+"""Validate HIT schemas, fixtures, public cases, metadata, and release files."""
 
 from __future__ import annotations
 
@@ -16,15 +16,24 @@ ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_PATH = ROOT / "schema" / "hit-assessment.schema.json"
 CATALOG_PATH = ROOT / "schema" / "hit-dimension-catalog.json"
 FIXTURES_DIR = ROOT / "fixtures"
+CASE_STUDIES_DIR = ROOT / "case-studies"
+CASE_ASSESSMENTS_DIR = CASE_STUDIES_DIR / "assessments"
 CITATION_PATH = ROOT / "CITATION.cff"
 ZENODO_PATH = ROOT / ".zenodo.json"
 EXPECTED_VERSION = "0.1.0"
 EXPECTED_DIMENSIONS = {"counsel", "judgment", "command", "correction", "repair", "reform"}
+EXPECTED_CASE_ASSESSMENT_IDS = {
+    "HIT-CASE-TOESLAGENAFFAIRE-HARM-2013-2019",
+    "HIT-CASE-OBERMEYER-DEPLOYERS-2019",
+    "HIT-CASE-OBERMEYER-MANUFACTURER-2019",
+    "HIT-CASE-CIGNA-PXDX-2022-2025",
+}
 ORIGINATING_CONCEPT_DOI = "10.5281/zenodo.21204892"
 REQUIRED_RELEASE_FILES = {
     "README.md",
     "SPECIFICATION.md",
     "RESEARCH.md",
+    "ROADMAP.md",
     "PROVENANCE.md",
     "LIMITATIONS.md",
     "CHANGELOG.md",
@@ -36,6 +45,10 @@ REQUIRED_RELEASE_FILES = {
     "NOTICE",
     "CITATION.cff",
     ".zenodo.json",
+    "case-studies/README.md",
+    "case-studies/toeslagenaffaire.md",
+    "case-studies/obermeyer.md",
+    "case-studies/cigna-pxdx.md",
     "docs/application-handbook.md",
     "docs/doi-and-release-strategy.md",
     "docs/releases/v0.1.0.md",
@@ -67,7 +80,7 @@ def validate_finding_set(instance: dict[str, Any], label: str) -> list[str]:
     return messages
 
 
-def validate_fixture(
+def validate_assessment(
     validator: Draft202012Validator, path: Path
 ) -> tuple[list[str], dict[str, Any] | None]:
     instance = load_json(path)
@@ -206,15 +219,33 @@ def main() -> int:
     if len(fixtures) < 3:
         failures.append("at least three deterministic fixtures are required")
 
-    valid_instances: list[dict[str, Any]] = []
+    valid_fixtures: list[dict[str, Any]] = []
     for fixture in fixtures:
-        fixture_failures, instance = validate_fixture(validator, fixture)
+        fixture_failures, instance = validate_assessment(validator, fixture)
         failures.extend(fixture_failures)
         if instance is not None and not fixture_failures:
-            valid_instances.append(instance)
+            valid_fixtures.append(instance)
 
-    if valid_instances:
-        failures.extend(validate_negative_cases(validator, valid_instances[0]))
+    case_assessments = sorted(CASE_ASSESSMENTS_DIR.glob("*.json"))
+    if len(case_assessments) < 4:
+        failures.append("at least four actor-specific public case assessments are required")
+
+    observed_case_ids: set[str] = set()
+    for case_path in case_assessments:
+        case_failures, instance = validate_assessment(validator, case_path)
+        failures.extend(case_failures)
+        if instance is not None:
+            assessment_id = instance.get("assessment_id")
+            if isinstance(assessment_id, str):
+                if assessment_id in observed_case_ids:
+                    failures.append(f"duplicate public case assessment_id: {assessment_id}")
+                observed_case_ids.add(assessment_id)
+
+    if observed_case_ids != EXPECTED_CASE_ASSESSMENT_IDS:
+        failures.append("public case assessment IDs do not match the expected evidence pack")
+
+    if valid_fixtures:
+        failures.extend(validate_negative_cases(validator, valid_fixtures[0]))
     else:
         failures.append("negative tests could not run because no valid fixture was available")
 
@@ -227,7 +258,8 @@ def main() -> int:
 
     print(
         "HIT validation: PASS "
-        f"({len(fixtures)} fixtures, 4 negative tests, release metadata synchronized)"
+        f"({len(fixtures)} fixtures, {len(case_assessments)} public case assessments, "
+        "4 negative tests, release metadata synchronized)"
     )
     return 0
 
