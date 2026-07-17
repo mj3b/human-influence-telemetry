@@ -6,6 +6,22 @@ The project follows Semantic Versioning for the public technical artifact. Repos
 
 ## [Unreleased]
 
+### Planned
+
+- Enroll two scorers independent of the author and of each other
+- Collect and preserve two blinded scorer submissions
+- Publish the deterministic pre-adjudication comparison
+- Classify disagreements and publish an adjudication record without overwriting original scores
+- Release v0.3.0 with either a passing or failing human result
+- Begin rubric revisions under the v0.4.0 stabilization workstream
+- Develop a preregistered prospective validation protocol
+
+### Research boundary
+
+Claim H3 and Maturity Level 2 remain unresolved until two eligible independent human submissions are compared under the locked protocol. A model stress test has no maturity consequence. Adjudication cannot retroactively change the pre-adjudication advancement result.
+
+## [0.2.1] - 2026-07-16
+
 ### Added
 
 - Locked blinded inter-rater protocol `HIT-IRP-CIGNA-001`
@@ -23,6 +39,7 @@ The project follows Semantic Versioning for the public technical artifact. Repos
 - SHA-256 scorer-submission receipt generator
 - Independent human-scorer recruitment package
 - Separate model-based rubric stress-test protocol `HIT-MST-CIGNA-001`, prompt, schema, template, and pending-result boundary
+- DOI-readiness plan and release notes for v0.2.1
 
 ### Changed
 
@@ -32,25 +49,21 @@ The project follows Semantic Versioning for the public technical artifact. Repos
 - The v0.3.0 roadmap now separates protocol completion, scorer enrollment, independent submission, comparison, adjudication, and maturity advancement
 - The human protocol is locked on `main`; scoring remains pending because two eligible independent scorers have not yet been enrolled
 - Coordinator comparison instructions now use the actual `compare_raters.py` interface: `--format` and `--output`
+- Repository release metadata advances to 0.2.1 while the specification, assessment schema, and dimension catalog remain at 0.1.0
 
 ### Fixed
 
 - Reformatted all three deterministic fixture records as human-readable, two-space indented JSON without changing assessment IDs, findings, evidence claims, schema versions, or limitations
 - Corrected the coordinator operating procedure, which previously referenced unsupported `--json-output` and `--markdown-output` flags
+- Decoupled the current repository release from the original v0.2.0 case-study release marker so maintenance releases do not rewrite evidence-pack provenance
 
-### Planned
+### Compatibility
 
-- Enroll two scorers independent of the author and of each other
-- Collect and preserve two blinded scorer submissions
-- Publish the deterministic pre-adjudication comparison
-- Classify disagreements and publish an adjudication record without overwriting original scores
-- Release v0.3.0 with either a passing or failing human result
-- Begin rubric revisions under the v0.4.0 stabilization workstream
-- Develop a preregistered prospective validation protocol
+Version 0.2.1 adds research-readiness, coordinator, recruitment, and archival infrastructure. It does not change the 0.1.0 specification, assessment schema, dimension catalog, scoring semantics, or the four public case assessments. Existing v0.2.0 assessments remain structurally compatible and retain their original release provenance.
 
 ### Research boundary
 
-The locked human protocol, packet, schema, coordinator tooling, friction review, and model stress-test procedure do not establish human inter-rater reliability. Claim H3 and Maturity Level 2 remain unresolved until two eligible independent human submissions are compared under the locked protocol. A model stress test has no maturity consequence. Adjudication cannot retroactively change the pre-adjudication advancement result.
+The locked human protocol, packet, schema, coordinator tooling, friction review, and model stress-test procedure do not establish human inter-rater reliability. HIT remains at Maturity Level 1 until two eligible independent human submissions are compared under the locked protocol. A software DOI identifies the archived repository artifact; it does not certify the method or imply completion of the human exercise.
 
 ## [0.2.0] - 2026-07-16
 
@@ -104,6 +117,7 @@ The public case studies demonstrate that HIT can be applied to heterogeneous doc
 
 Version 0.1.0 demonstrates that the method can be represented structurally and exercised against included fixtures. It does not establish inter-rater reliability, causal effectiveness, legal compliance, certification, or independent adoption.
 
-[Unreleased]: https://github.com/mj3b/human-influence-telemetry/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/mj3b/human-influence-telemetry/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/mj3b/human-influence-telemetry/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/mj3b/human-influence-telemetry/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.1.0
