@@ -1,0 +1,70 @@
+{
+  "manifest_id": "HIT-V040-CASE-MIGRATION-001",
+  "candidate_version": "0.4.0-candidate",
+  "governing_decision": "ADR-0002",
+  "historical_specification_version": "0.1.0",
+  "historical_schema_version": "0.1.0",
+  "case_count": 4,
+  "cases": [
+    {
+      "assessment_id": "HIT-CASE-TOESLAGENAFFAIRE-HARM-2013-2019",
+      "path": "case-studies/assessments/toeslagenaffaire-harm-period.json",
+      "original_blob_sha": "1f0a8099974ce0970df97d42cd4f10079e5e0e09",
+      "disposition": "historical_version_bound",
+      "candidate_record_path": null,
+      "release_exception": true,
+      "findings_changed": false,
+      "blockers": [
+        "The released record does not contain structured evidence propositions with precise locators and support relations.",
+        "The released record does not contain the candidate actor-authority matrix or split Telemetry Integrity components.",
+        "Existing findings were assigned under specification and schema 0.1.0 and require a fresh source review before candidate relabeling."
+      ],
+      "update_condition": "Create a separate candidate record only after a fresh source review reconstructs evidence claims, actor boundaries, Repair trigger, aggregation, and both integrity components under the 0.4.0 candidate contract."
+    },
+    {
+      "assessment_id": "HIT-CASE-OBERMEYER-DEPLOYERS-2019",
+      "path": "case-studies/assessments/obermeyer-deployers.json",
+      "original_blob_sha": "2290b4504156a0eaff0c4c6939bd67f9ee269e00",
+      "disposition": "historical_version_bound",
+      "candidate_record_path": null,
+      "release_exception": true,
+      "findings_changed": false,
+      "blockers": [
+        "The released record lacks candidate structured locators, evidence-state fields, and source-conflict records.",
+        "The deployer actor boundary must be reconstructed in the candidate actor-authority matrix rather than inferred from narrative text.",
+        "The public record does not yet support a complete candidate sampling, aggregation, and split-integrity representation."
+      ],
+      "update_condition": "Produce a separate candidate migration after reconstructing deployer-specific authority, evidence propositions, aggregation, and integrity components without attributing manufacturer authority to deployers."
+    },
+    {
+      "assessment_id": "HIT-CASE-OBERMEYER-MANUFACTURER-2019",
+      "path": "case-studies/assessments/obermeyer-manufacturer.json",
+      "original_blob_sha": "a0218f42e27afd8013af25c51ca3bc692ecab2a4",
+      "disposition": "historical_version_bound",
+      "candidate_record_path": null,
+      "release_exception": true,
+      "findings_changed": false,
+      "blockers": [
+        "The released record lacks candidate structured evidence propositions, locators, and evidence-state rationales.",
+        "Manufacturer design and reform authority must remain separate from deployer decision authority in a candidate actor matrix.",
+        "Telemetry Integrity must be split into institutional-record and assessment-packet components before migration."
+      ],
+      "update_condition": "Produce a separate manufacturer candidate record after a fresh authority and evidence reconstruction under the 0.4.0 candidate schema."
+    },
+    {
+      "assessment_id": "HIT-CASE-CIGNA-PXDX-2022-2025",
+      "path": "case-studies/assessments/cigna-pxdx.json",
+      "original_blob_sha": "e1a9458b656b103f0160d89c02fc6da5cacab746",
+      "disposition": "deferred_locked_protocol",
+      "candidate_record_path": null,
+      "release_exception": true,
+      "findings_changed": false,
+      "blockers": [
+        "The Cigna assessment is tied to locked protocol HIT-IRP-CIGNA-001 and its frozen 0.1.0 scorer contract.",
+        "A candidate re-score before original submissions and the pre-adjudication result are published could contaminate or appear to reinterpret the locked exercise.",
+        "Candidate locators, actor matrix, Repair trigger, aggregation, and split integrity fields require a separate post-protocol reconstruction."
+      ],
+      "update_condition": "Do not create or publish a 0.4.0 candidate Cigna assessment until the locked human exercise has produced and published its original submissions and pre-adjudication result, passing or failing."
+    }
+  ]
+}

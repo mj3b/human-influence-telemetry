@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mj3b/human-influence-telemetry/blob/main/schema/candidates/hit-case-migration-manifest-0.4.0-candidate.schema.json",
+  "title": "HIT v0.4.0 Candidate Case Migration Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_id",
+    "candidate_version",
+    "governing_decision",
+    "historical_specification_version",
+    "historical_schema_version",
+    "case_count",
+    "cases"
+  ],
+  "properties": {
+    "manifest_id": {"const": "HIT-V040-CASE-MIGRATION-001"},
+    "candidate_version": {"const": "0.4.0-candidate"},
+    "governing_decision": {"const": "ADR-0002"},
+    "historical_specification_version": {"const": "0.1.0"},
+    "historical_schema_version": {"const": "0.1.0"},
+    "case_count": {"const": 4},
+    "cases": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "assessment_id",
+          "path",
+          "original_blob_sha",
+          "disposition",
+          "candidate_record_path",
+          "release_exception",
+          "findings_changed",
+          "blockers",
+          "update_condition"
+        ],
+        "properties": {
+          "assessment_id": {"type": "string", "pattern": "^HIT-CASE-[A-Z0-9-]+$"},
+          "path": {"type": "string", "pattern": "^case-studies/assessments/.+\\.json$"},
+          "original_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+          "disposition": {"enum": ["historical_version_bound", "deferred_locked_protocol"]},
+          "candidate_record_path": {"type": "null"},
+          "release_exception": {"const": true},
+          "findings_changed": {"const": false},
+          "blockers": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 20}},
+          "update_condition": {"type": "string", "minLength": 50}
+        }
+      }
+    }
+  }
+}
