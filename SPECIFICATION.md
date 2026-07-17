@@ -14,9 +14,35 @@ The unit of analysis is one defined decision process, within one institutional u
 
 ## 2. Scope
 
-HIT evaluates records. It does not infer unrecorded intentions, evaluate model quality, certify legal compliance, or determine whether an outcome was substantively correct.
+HIT evaluates records. It does not infer unrecorded intentions, evaluate model quality, certify legal compliance, determine whether an outcome was substantively correct, or enforce agent actions at runtime.
 
-HIT may consume governed decision records, case-management records, access logs, reviewer notes, authority records, override and escalation events, appeal registers, remediation records, system-change records, and provenance metadata.
+HIT may consume governed decision records, case-management records, access logs, reviewer notes, authority records, override and escalation events, appeal registers, remediation records, system-change records, cryptographically verified receipts, and provenance metadata.
+
+### 2.1 Terminology and system boundary
+
+#### Documentary telemetry
+
+In HIT, telemetry means observable, time-bounded documentary evidence that may reveal whether human influence existed and had practical force. It does not mean a runtime observability SDK, event collector, tracing system, agent middleware, or enforcement layer.
+
+#### HIT assessment record
+
+The output of applying HIT is a **HIT assessment record** containing findings for Counsel, Judgment, Command, Correction, Repair, Reform, and Telemetry Integrity.
+
+A HIT assessment record is not:
+
+- a runtime policy decision;
+- a Governed Decision Record;
+- a signed cryptographic receipt;
+- a compliance determination;
+- an evidence-applicability determination under DEAS.
+
+#### Assessment-contract conformance
+
+HIT conformance means conformance to the declared HIT assessment contract. Structural conformance establishes that the record satisfies the published schema. Substantive conformance requires application of the published rubric and traceable evidence citations.
+
+Unqualified claims of agent-governance conformance, legal conformity, standards certification, receipt interoperability, or cross-regime evidence portability are prohibited.
+
+The normative adjacent-system boundary appears in `docs/adjacent-system-boundaries.md`.
 
 ## 3. Construct model
 
@@ -80,6 +106,8 @@ Telemetry Integrity evaluates provenance, completeness, edit authority, independ
 
 Telemetry Integrity is reported separately because poor record integrity can invalidate confidence in every substantive finding.
 
+Cryptographic verification may strengthen evidence about attribution, integrity, ordering, or chain linkage. HIT does not itself define or verify a signed-receipt protocol.
+
 ## 4. Findings
 
 Each substantive dimension receives one of four findings:
@@ -105,13 +133,23 @@ A record conforms structurally when it validates against `schema/hit-assessment.
 
 Structural conformance does not establish scoring correctness. Substantive conformance additionally requires application of the published rubric and traceable evidence citations.
 
-## 7. Relationship to GDI
+## 7. Relationship to adjacent systems
 
-A Governed Decision Record may supply HIT inputs, including decision authority, evidence access, recorded reasoning, conditions, escalation, and audit metadata. HIT remains independent of GDI and may be applied to other decision-record systems.
+A Governed Decision Record may supply HIT inputs, including decision authority, evidence access, recorded reasoning, conditions, escalation, and audit metadata. HIT remains independent of GDI and may be applied to other sufficiently documented institutional decision records.
+
+Runtime governance systems such as Microsoft Agent Governance Toolkit may supply policy, approval, identity, capability, enforcement, and audit events. HIT evaluates what those records establish about the broader institutional decision process; it does not intercept, allow, deny, block, sandbox, or terminate the action.
+
+Signed-receipt systems and conformance suites such as ScopeBlind/Acta may supply independently verifiable evidence about attribution, integrity, ordering, canonicalization, and chain linkage. HIT does not define or verify the receipt protocol.
+
+Governance platforms such as Credo AI may supply policy-pack, risk, control, workflow, monitoring, and evidence artifacts. HIT does not provide policy packs, compliance automation, universal control mappings, or runtime agent governance.
+
+Decision Evidence Applicability Specification (DEAS) evaluates what a defined evidence artifact may support under a specified governance regime, what additional local evidence is required, and where apparent equivalence fails. HIT does not make governance findings, controls, or legal conclusions portable across regimes.
 
 ## 8. Non-claims
 
 HIT does not claim that human involvement is always preferable to automation, that a high finding proves a good decision, that a low finding proves unlawful conduct, that recorded reasoning is truthful, or that the framework is statistically validated or independently adopted.
+
+HIT also does not claim to provide runtime policy enforcement, agent identity or privilege verification, signed-receipt interoperability, cryptographic receipt verification, policy-pack harmonization, compliance automation, or legal portability of evidence.
 
 ## 9. Version stability and research maturity
 
@@ -135,6 +173,7 @@ Version `1.0.0` must not be declared stable until:
 8. limitations, claim statuses, update conditions, citation metadata, and non-claims are current;
 9. a public implementation package can be used without private author explanation;
 10. one release candidate has been published and no release-blocking defect remains open;
-11. repository validation passes for the exact release commit.
+11. an adjacent-system claim audit confirms that HIT is not represented as runtime enforcement, signed-receipt interoperability, policy-pack harmonization, compliance automation, or evidence portability;
+12. repository validation passes for the exact release commit.
 
 The independent human inter-rater exercise remains the entry condition for claim H3 and Maturity Level 2. It is not a semantic-version condition. The locked protocol and its publication rules remain unchanged.
