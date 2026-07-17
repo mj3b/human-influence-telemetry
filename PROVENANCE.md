@@ -10,13 +10,13 @@ The public technical instrument is extracted from that program without publishin
 - ORCID: 0009-0001-8121-2878
 - Originating concept DOI: 10.5281/zenodo.21204892
 - Source repository: private and retained by the author
-- Public repository release: 0.2.0
+- Public repository release: 0.2.1
 - Public specification version: 0.1.0
 - Assessment schema version: 0.1.0
 - Dimension catalog version: 0.1.0
 - Canonical public repository: `mj3b/human-influence-telemetry`
 
-Repository release 0.2.0 adds public evidence artifacts without changing the 0.1.0 specification, schema, dimension catalog, or scoring contract.
+Repository release 0.2.1 adds locked evaluation procedures, coordinator tooling, recruitment materials, an adversarial rubric-friction review, a model stress-test protocol, and software-archival metadata. It does not change the 0.1.0 specification, assessment schema, dimension catalog, or scoring contract.
 
 ## Canonical construct decision
 
@@ -33,6 +33,8 @@ The v0.2.0 public evidence pack contains normalized versions of three retrospect
 - Cigna PxDx assessment, with reporting and litigation artifacts distinguished by evidentiary status.
 
 The canonical machine-readable records are located in `case-studies/assessments/`. Each public case cites sources that can be inspected without access to the source repository. Private annotations may preserve additional research history, but they are not normative dependencies of the public assessments.
+
+The v0.2.1 maintenance release retains the v0.2.0 evidence-pack provenance. A repository maintenance release does not rewrite the release in which a case artifact first became public.
 
 ## Source-control rule
 
