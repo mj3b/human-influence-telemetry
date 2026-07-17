@@ -11,7 +11,7 @@ Human Influence Telemetry (HIT) evaluates what contemporaneous records can show 
 **Current release:** 0.2.0  
 **Specification version:** 0.1.0  
 **Assessment schema version:** 0.1.0  
-**Development workstream:** v0.2.1 archival readiness; v0.3.0 human inter-rater result  
+**Development workstream:** v0.3.0 inter-rater protocol and tooling; v0.2.1 archival readiness  
 **Current maturity:** Level 1, Defined  
 **Originating research DOI:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)  
 **Software DOI:** Pending the first successful Zenodo archive of a GitHub release
