@@ -4,9 +4,9 @@
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Status: Working Specification](https://img.shields.io/badge/status-working%20specification-orange.svg)](SPECIFICATION.md)
 
-**A decision-record method for testing whether formal human oversight retained practical force in AI-mediated institutional decisions.**
+**A documentary assurance method for evaluating whether human authority retained practical force in AI-mediated institutional decisions.**
 
-Human Influence Telemetry (HIT) evaluates what contemporaneous records can show about human participation in a consequential decision. It does not infer intentions, certify legal compliance, or treat a signature as proof of substantive judgment.
+Human Influence Telemetry (HIT) evaluates what contemporaneous records can show about human participation in a consequential decision. It does not infer intentions, certify legal compliance, perform runtime enforcement, or treat a signature as proof of substantive judgment.
 
 **Current release:** 0.2.1  
 **Specification version:** 0.1.0  
@@ -18,7 +18,7 @@ Human Influence Telemetry (HIT) evaluates what contemporaneous records can show 
 
 ## Research question
 
-> Can observable decision-record artifacts distinguish substantive human influence from ceremonial human presence in AI-mediated institutional decisions?
+> Can observable records distinguish substantive human influence from ceremonial human presence in AI-mediated institutional decisions?
 
 ## The six-plus-one model
 
@@ -54,7 +54,7 @@ python -m pip install --requirement requirements-dev.txt
 python scripts/validate.py
 ```
 
-A passing run validates the schema, dimension catalog, deterministic fixtures, released public case assessments, inter-rater protocol artifacts, comparison test vectors, negative cases, release files, and citation metadata.
+A passing run validates the schema, dimension catalog, deterministic assessment fixtures, released public case assessments, inter-rater protocol artifacts, comparison cases, negative cases, release files, and citation metadata.
 
 ## Current maturity
 
@@ -112,6 +112,7 @@ The coordinator-only [`validation/adversarial-rubric-friction-review.md`](valida
 | [`coordinator/`](coordinator/) | Coordinator-only preservation and comparison procedure |
 | [`recruitment/`](recruitment/) | Human scorer invitation, eligibility screen, and neutral instructions |
 | [`docs/application-handbook.md`](docs/application-handbook.md) | Practitioner application procedure |
+| [`docs/adjacent-system-boundaries.md`](docs/adjacent-system-boundaries.md) | Terminology and claim boundaries against runtime governors, signed receipts, Credo AI, GDI, and DEAS |
 | [`LIMITATIONS.md`](LIMITATIONS.md) | Known limitations and interpretation rules |
 | [`PROVENANCE.md`](PROVENANCE.md) | Public/private extraction lineage and canonical-source rule |
 | [`CHANGELOG.md`](CHANGELOG.md) | Version history and research boundary |
@@ -128,12 +129,20 @@ A passing repository run demonstrates structural validity, deterministic fixture
 
 ## Relationship to adjacent work
 
+- **[Microsoft Agent Governance Toolkit](https://github.com/microsoft/agent-governance-toolkit)** intercepts agent actions and applies runtime policy, identity, capability, sandboxing, approval, and audit controls. Its events may supply evidence to HIT; HIT does not enforce actions.
+- **[ScopeBlind agent-governance test vectors](https://github.com/ScopeBlind/agent-governance-testvectors)** test signed-receipt schemas, canonicalization, signatures, and chain integrity across implementations. Verified receipts may strengthen provenance; HIT does not define or verify the receipt protocol.
+- **[Credo AI](https://www.credo.ai/)** provides policy packs, risk and control mappings, governance workflows, evidence collection, and runtime agent-governance capabilities. Credo artifacts may become evidence inputs; HIT does not provide policy packs, compliance automation, or universal control mappings.
 - **[Governed Decision Intelligence](https://github.com/mj3b/governed-decision-intelligence)** records the institutional decision question, evidence, alternatives, uncertainty, authority, outcome, and conditions.
-- **HIT** tests whether the human authority represented in those records had practical force.
-- **Decision Evidence Portability Specification (DEPS)** examines what resulting evidence may support under different governance regimes and where apparent equivalence fails.
-- Runtime governors, audit-event systems, signed-receipt protocols, and portable record standards may supply evidence to HIT. HIT does not replace them.
+- **HIT** evaluates whether the human authority represented in those records retained practical force.
+- **Decision Evidence Applicability Specification (DEAS)** evaluates what resulting evidence may support under a specified governance regime, what local evidence is additionally required, and where apparent equivalence fails.
 
-HIT can be applied to a Governed Decision Record or to another sufficiently documented institutional decision record.
+The detailed terminology and composition rules are in [`docs/adjacent-system-boundaries.md`](docs/adjacent-system-boundaries.md).
+
+## What HIT does not implement
+
+HIT does not intercept, allow, deny, block, sandbox, or terminate agent actions. It does not compile policy into runtime configuration, verify agent identity or privileges, create signed receipts, define receipt wire formats, provide cryptographic receipt conformance, supply policy packs, automate legal compliance, or make evidence legally portable across regimes.
+
+HIT produces a **HIT assessment record**. Runtime policy decisions, Governed Decision Records, cryptographic receipts, and DEAS evidence-applicability determinations remain separate artifacts.
 
 ## Claims boundary
 
