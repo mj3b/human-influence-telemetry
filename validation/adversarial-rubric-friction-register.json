@@ -1,0 +1,27 @@
+{
+  "review_id": "HIT-ARFR-001",
+  "version": "1.0.0",
+  "status": "non_empirical_coordinator_only",
+  "case_sources_reviewed": false,
+  "case_findings_assigned": false,
+  "maturity_consequence": "none",
+  "do_not_distribute_to_scorers_before_lock": true,
+  "frictions": [
+    {"id": "FR-01", "topic": "affirmative absence versus missing evidence", "likely_mismatch": "0_vs_IE", "critical_risk": true},
+    {"id": "FR-02", "topic": "formal role evidence as ceremonial presence versus insufficient evidence", "likely_mismatch": "1_vs_IE", "critical_risk": true},
+    {"id": "FR-03", "topic": "minimum evidence for finding 2", "likely_mismatch": "1_vs_2", "critical_risk": false},
+    {"id": "FR-04", "topic": "Counsel access capability versus actual access", "likely_mismatch": "ordinal_or_IE", "critical_risk": true},
+    {"id": "FR-05", "topic": "negative inference in Judgment", "likely_mismatch": "0_1_or_IE", "critical_risk": true},
+    {"id": "FR-06", "topic": "Command legal authority versus practical intervention", "likely_mismatch": "1_vs_2", "critical_risk": false},
+    {"id": "FR-07", "topic": "Correction path versus effective reconsideration", "likely_mismatch": "ordinal_or_IE", "critical_risk": true},
+    {"id": "FR-08", "topic": "Repair trigger and substantiated harm", "likely_mismatch": "0_vs_IE_or_trigger", "critical_risk": true},
+    {"id": "FR-09", "topic": "Reform linkage and temporal leakage", "likely_mismatch": "ordinal_or_IE", "critical_risk": true},
+    {"id": "FR-10", "topic": "object of Telemetry Integrity", "likely_mismatch": "IE_vs_determinate", "critical_risk": true},
+    {"id": "FR-11", "topic": "Telemetry Integrity status thresholds", "likely_mismatch": "status_mismatch", "critical_risk": true},
+    {"id": "FR-12", "topic": "period aggregation and rare exercised capacity", "likely_mismatch": "1_vs_2", "critical_risk": false},
+    {"id": "FR-13", "topic": "actor decomposition", "likely_mismatch": "boundary_or_actor", "critical_risk": true},
+    {"id": "FR-14", "topic": "contradictory evidence and evidentiary weight", "likely_mismatch": "IE_vs_determinate_or_ordinal", "critical_risk": true},
+    {"id": "FR-15", "topic": "cross-dimensional reuse of evidence", "likely_mismatch": "multiple", "critical_risk": false},
+    {"id": "FR-16", "topic": "citation precision", "likely_mismatch": "diagnostic_limit", "critical_risk": false}
+  ]
+}

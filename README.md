@@ -11,7 +11,7 @@ Human Influence Telemetry (HIT) evaluates what contemporaneous records can show 
 **Current release:** 0.2.0  
 **Specification version:** 0.1.0  
 **Assessment schema version:** 0.1.0  
-**Development workstream:** v0.3.0 inter-rater protocol and tooling  
+**Development workstream:** v0.3.0 inter-rater protocol and tooling; v0.2.1 archival readiness  
 **Current maturity:** Level 1, Defined  
 **Originating research DOI:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)  
 **Software DOI:** Pending the first successful Zenodo archive of a GitHub release
@@ -67,12 +67,14 @@ HIT is a research instrument, not a certified standard.
 | Deterministic substantive, ceremonial, and insufficient-evidence fixtures | Available |
 | Automated positive, negative, case-record, protocol, and metadata validation | Available |
 | Retrospective public-record case studies | Released in v0.2.0: three narratives and four actor-specific JSON assessments |
-| Blinded inter-rater protocol and comparison tooling | Prepared for v0.3.0; protocol review and lock pending |
-| Independent scorer submissions and reliability result | Pending |
+| Blinded inter-rater protocol and comparison tooling | Protocol locked on `main`; coordinator infrastructure available |
+| Independent human scorer submissions and reliability result | Pending; no eligible pair enrolled |
+| Adversarial rubric-friction review | Available as a non-scoring coordinator artifact |
+| Model-based rubric stress test | Protocol prepared; no conforming result claimed |
 | Prospective institutional validation | Pending |
 | Legal or standards conformity determination | Not claimed |
 
-The released case studies add public evidence, but the repository remains at Level 1 until a documented independent inter-rater exercise satisfies the Level 2 entry criterion. Protocol and tooling do not count as an empirical result. See [`ROADMAP.md`](ROADMAP.md).
+The released case studies add public evidence, but the repository remains at Level 1 until a documented independent human inter-rater exercise satisfies the Level 2 entry criterion. Protocols, model runs, and tooling do not count as an empirical human result. See [`ROADMAP.md`](ROADMAP.md).
 
 ## Public evidence pack
 
@@ -84,11 +86,17 @@ The v0.2.0 evidence pack in [`case-studies/`](case-studies/) contains:
 
 These cases demonstrate application of the rubric to heterogeneous public records. They do not establish scoring reliability, causal effectiveness, legal liability, or independent validation.
 
-## v0.3.0 inter-rater workstream
+## v0.3.0 human inter-rater workstream
 
-The [`validation/`](validation/) directory contains the candidate blinded protocol, fixed scorer packet, submission schema, deterministic comparison tool, disagreement taxonomy, and adjudication controls.
+The [`validation/`](validation/) directory contains the locked blinded protocol, fixed scorer packet, submission schema, deterministic comparison tool, disagreement taxonomy, and adjudication controls.
 
-The release gate still requires two eligible scorers who are independent of the author and of each other. A passing or failing result will be published without replacing original scores after adjudication. Maturity advancement depends on the predeclared pre-adjudication threshold, not on post-hoc consensus.
+The release gate still requires two eligible human scorers who are independent of the author and of each other. A passing or failing result will be published without replacing original scores after adjudication. Maturity advancement depends on the predeclared pre-adjudication threshold, not on post-hoc consensus.
+
+The coordinator-only [`validation/adversarial-rubric-friction-review.md`](validation/adversarial-rubric-friction-review.md) identifies plausible construct-level disagreement before any case evidence is scored. It assigns no findings and must not be distributed to scorers before their submissions are locked.
+
+## Model stress-test workstream
+
+[`validation/model-stress-test/`](validation/model-stress-test/) defines a separate exploratory procedure using two fresh language-model sessions. It may expose rubric ambiguity, boundary drift, evidence-weighting differences, and unsupported claims. It does not replace the human exercise, satisfy claim H3, or advance maturity.
 
 ## Repository map
 
@@ -100,7 +108,9 @@ The release gate still requires two eligible scorers who are independent of the 
 | [`schema/`](schema/) | Assessment schema and machine-readable dimension catalog |
 | [`fixtures/`](fixtures/) | Deterministic substantive, ceremonial, and insufficient-evidence cases |
 | [`case-studies/`](case-studies/) | Released public case narratives and actor-specific machine-readable assessments |
-| [`validation/`](validation/) | Inter-rater protocol, frozen packet, submission contract, comparison tests, and pending results |
+| [`validation/`](validation/) | Human protocol, frozen packet, model stress test, friction review, comparison tests, and pending results |
+| [`coordinator/`](coordinator/) | Coordinator-only preservation and comparison procedure |
+| [`recruitment/`](recruitment/) | Human scorer invitation, eligibility screen, and neutral instructions |
 | [`docs/application-handbook.md`](docs/application-handbook.md) | Practitioner application procedure |
 | [`LIMITATIONS.md`](LIMITATIONS.md) | Known limitations and interpretation rules |
 | [`PROVENANCE.md`](PROVENANCE.md) | Public/private extraction lineage and canonical-source rule |
@@ -109,6 +119,8 @@ The release gate still requires two eligible scorers who are independent of the 
 | [`docs/doi-and-release-strategy.md`](docs/doi-and-release-strategy.md) | Software DOI and archival strategy |
 | [`scripts/validate.py`](scripts/validate.py) | Repository-wide validation command |
 | [`scripts/compare_raters.py`](scripts/compare_raters.py) | Deterministic pre-adjudication scorer comparison |
+| [`scripts/validate_scorer_submission.py`](scripts/validate_scorer_submission.py) | Individual scorer-submission validation |
+| [`scripts/record_submission.py`](scripts/record_submission.py) | SHA-256 receipt generation for unchanged submissions |
 
 ## Validation boundary
 
