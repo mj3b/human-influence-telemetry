@@ -8,10 +8,10 @@
 
 Human Influence Telemetry (HIT) evaluates what contemporaneous records can show about human participation in a consequential decision. It does not infer intentions, certify legal compliance, or treat a signature as proof of substantive judgment.
 
-**Current release:** 0.2.0  
+**Current release:** 0.2.1  
 **Specification version:** 0.1.0  
 **Assessment schema version:** 0.1.0  
-**Development workstream:** v0.3.0 inter-rater protocol and tooling; v0.2.1 archival readiness  
+**Development workstream:** v0.3.0 human inter-rater result, pending eligible scorers; v0.4.0 rubric stabilization  
 **Current maturity:** Level 1, Defined  
 **Originating research DOI:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)  
 **Software DOI:** Pending the first successful Zenodo archive of a GitHub release
