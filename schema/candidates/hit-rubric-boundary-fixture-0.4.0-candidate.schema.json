@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mj3b/human-influence-telemetry/blob/main/schema/candidates/hit-rubric-boundary-fixture-0.4.0-candidate.schema.json",
+  "title": "HIT v0.4.0 Candidate Rubric Boundary Fixture Set",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fixture_set_id",
+    "candidate_version",
+    "governing_decision",
+    "source_review",
+    "case_count",
+    "cases"
+  ],
+  "properties": {
+    "fixture_set_id": {
+      "const": "HIT-V040-RUBRIC-BOUNDARIES-001"
+    },
+    "candidate_version": {
+      "const": "0.4.0-candidate"
+    },
+    "governing_decision": {
+      "const": "ADR-0002"
+    },
+    "source_review": {
+      "const": "HIT-ARFR-001"
+    },
+    "case_count": {
+      "type": "integer",
+      "const": 48
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 48,
+      "maxItems": 48,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "friction_id",
+          "role",
+          "description",
+          "facts",
+          "expected"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "pattern": "^FR-(0[1-9]|1[0-6])-[ARB]$"
+          },
+          "friction_id": {
+            "type": "string",
+            "pattern": "^FR-(0[1-9]|1[0-6])$"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "accepted",
+              "rejected",
+              "boundary"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "minLength": 20
+          },
+          "facts": {
+            "type": "object"
+          },
+          "expected": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": [
+                "string",
+                "integer",
+                "boolean",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
