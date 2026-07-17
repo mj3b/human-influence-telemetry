@@ -113,14 +113,28 @@ A Governed Decision Record may supply HIT inputs, including decision authority, 
 
 HIT does not claim that human involvement is always preferable to automation, that a high finding proves a good decision, that a low finding proves unlawful conduct, that recorded reasoning is truthful, or that the framework is statistically validated or independently adopted.
 
-## 9. Advancement criteria
+## 9. Version stability and research maturity
 
-Version 1.0 should not be declared stable until:
+Repository and component versions describe the stability and compatibility of the public technical contract.
 
-1. the schema and catalog are internally consistent;
-2. deterministic fixtures cover substantive, ceremonial, and insufficient-evidence cases;
-3. two independent scorers apply the method to the same fixture;
-4. disagreement handling is documented;
-5. at least three public-record case studies are released with source provenance;
-6. limitations and update conditions are current;
-7. the repository passes automated validation.
+Research maturity describes the strength of the evidence supporting HIT claims.
+
+A stable version does not imply human inter-rater reliability, causal validity, legal conformity, certification, or independent adoption. Those claims remain governed by `RESEARCH.md` and its maturity model.
+
+## 10. Advancement criteria
+
+Version `1.0.0` must not be declared stable until:
+
+1. the six substantive dimensions and Telemetry Integrity have stable normative definitions;
+2. the decision rules for `0`, `1`, `2`, and `IE` govern the known ambiguity classes recorded in the public rubric-friction register;
+3. the schema and dimension catalog are internally consistent with the specification and handbook;
+4. deterministic fixtures cover substantive, ceremonial, insufficient-evidence, invalid, and boundary cases;
+5. disagreement handling remains documented and executable for future independent scoring;
+6. at least three public-record case studies are released with source provenance and validate under the candidate contract;
+7. migration notes and a breaking-change review from component version `0.1.0` are published;
+8. limitations, claim statuses, update conditions, citation metadata, and non-claims are current;
+9. a public implementation package can be used without private author explanation;
+10. one release candidate has been published and no release-blocking defect remains open;
+11. repository validation passes for the exact release commit.
+
+The independent human inter-rater exercise remains the entry condition for claim H3 and Maturity Level 2. It is not a semantic-version condition. The locked protocol and its publication rules remain unchanged.
