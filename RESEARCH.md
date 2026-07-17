@@ -24,7 +24,7 @@ Human Influence Telemetry is a design-science research artifact. It operationali
 |---|---|---|---|
 | H1 | HIT can represent six substantive dimensions and one cross-cutting integrity dimension in one machine-readable assessment | Demonstrated by schema, fixtures, and public case records once CI passes | Revise when a required finding cannot be represented |
 | H2 | The 0/1/2/IE rubric distinguishes absence, ceremonial presence, substantive exercise, and missing evidence | Demonstrated for included fixtures and author-scored public cases only | Revise after independent scoring or failed discrimination cases |
-| H3 | Independent reviewers can reach substantial agreement using the published handbook | Unresolved; protocol, packet, submission schema, and comparison tooling prepared for v0.3.0 | Requires two eligible independent submissions and a published pre-adjudication result |
+| H3 | Independent reviewers can reach substantial agreement using the published handbook | Unresolved; protocol, packet, submission schema, and comparison tooling prepared | Requires two eligible independent submissions and a published pre-adjudication result |
 | H4 | HIT can identify oversight theater that binary human-in-the-loop labels miss | Supported by design logic and three released public case studies; not independently validated | Requires external replication |
 | H5 | Higher HIT findings predict lower harm or better repair | Hypothesis | Requires preregistered population, outcomes, and statistical method |
 | H6 | A high HIT finding proves meaningful human control | Unsupported | Would require stronger causal and institutional evidence than documentary assessment alone |
@@ -45,7 +45,7 @@ These are retrospective, author-scored applications released in repository versi
 
 | Field | Current state |
 |---|---|
-| Protocol | `HIT-IRP-CIGNA-001`, candidate version 1.0.0 |
+| Protocol | `HIT-IRP-CIGNA-001`, locked version 1.0.0 |
 | Frozen packet | `HIT-IR-CIGNA-PXDX-001` |
 | Method version | Specification and assessment schema 0.1.0 |
 | Primary measure | Exact agreement across six substantive dimensions plus Telemetry Integrity |
@@ -63,7 +63,7 @@ Prepared protocol infrastructure is E1 and E2 evidence about study design and re
 
 The research program uses artifact construction, schema validation, deterministic fixtures, retrospective public-record case studies, blinded inter-rater reliability testing, comparative mapping, and prospective validation when institutional access becomes available.
 
-The v0.3.0 inter-rater design predeclares scorer eligibility, blinding, source boundaries, exact-agreement threshold, critical-disagreement rules, supplementary kappa, preservation of original scores, and publication of both passing and failing results.
+The locked inter-rater design predeclares scorer eligibility, blinding, source boundaries, exact-agreement threshold, critical-disagreement rules, supplementary kappa, preservation of original scores, and publication of both passing and failing results.
 
 ## Threats to validity
 
@@ -81,12 +81,23 @@ The first inter-rater exercise has additional limits: only two scorers, seven co
 | 4 | Validated | Preregistered validation design and pilot result |
 | 5 | Adopted | Independent institutional use and external reference |
 
-The levels are cumulative. The repository remains at Level 1 until the inter-rater requirement for Level 2 is completed, even though repository version 0.2.0 satisfies the three-case evidence condition required later at Level 3.
+The levels are cumulative. The repository remains at Level 1 until the inter-rater requirement for Level 2 is completed, even when the public technical contract reaches version `1.0.0`.
 
-A v0.3.0 release may publish a failed exercise without advancing the maturity level.
+A stable repository version communicates compatibility. It does not advance research maturity by itself.
+
+A completed human exercise may publish a passing or failing result without requiring a major version change when the stable contract remains compatible.
 
 ## Release discipline
 
-A numbered release requires passing validation, synchronized release metadata, updated limitations, accurate claim status, migration or compatibility notes, and citation metadata pointing to the exact release. Specification, schema, and catalog versions change only when their own contracts change.
+A numbered release requires passing validation, synchronized release metadata, updated limitations, accurate claim status, migration or compatibility notes, and citation metadata pointing to the exact release.
 
-The evidence and version gates through 1.0.0 are defined in [`ROADMAP.md`](ROADMAP.md).
+Specification, schema, and catalog versions change only when their own contracts change.
+
+Semantic versioning and research maturity are governed separately under `docs/decisions/ADR-0001-separate-semantic-versioning-from-research-maturity.md`:
+
+- semantic versions communicate contract stability and compatibility;
+- maturity levels communicate evidence strength;
+- H3 and Level 2 remain unavailable until the locked human exercise is completed;
+- version `1.0.0` may remain at Level 1 when its stable-contract gates are satisfied.
+
+The evidence and version gates through `1.0.0` are defined in [`ROADMAP.md`](ROADMAP.md).
