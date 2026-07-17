@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate HIT schemas, evidence packs, inter-rater artifacts, metadata, and releases."""
+"""Validate HIT schemas, evidence packs, evaluation artifacts, metadata, and releases."""
 
 from __future__ import annotations
 
@@ -35,8 +35,17 @@ TEST_VECTOR_B_PATH = VALIDATION_DIR / "test-vectors" / "rater-b.json"
 COMPARISON_SCRIPT_PATH = ROOT / "scripts" / "compare_raters.py"
 RESULTS_DIR = VALIDATION_DIR / "results"
 
-RELEASE_VERSION = "0.2.0"
+MODEL_STRESS_DIR = VALIDATION_DIR / "model-stress-test"
+MODEL_PROTOCOL_PATH = MODEL_STRESS_DIR / "protocol.md"
+MODEL_SCHEMA_PATH = MODEL_STRESS_DIR / "model-submission.schema.json"
+MODEL_TEMPLATE_PATH = MODEL_STRESS_DIR / "model-submission.template.json"
+MODEL_RESULTS_DIR = MODEL_STRESS_DIR / "results"
+FRICTION_REVIEW_PATH = VALIDATION_DIR / "adversarial-rubric-friction-review.md"
+FRICTION_REGISTER_PATH = VALIDATION_DIR / "adversarial-rubric-friction-register.json"
+
+RELEASE_VERSION = "0.2.1"
 RELEASE_DATE = "2026-07-16"
+CASE_EVIDENCE_RELEASE_VERSION = "0.2.0"
 SPECIFICATION_VERSION = "0.1.0"
 SCHEMA_VERSION = "0.1.0"
 CATALOG_VERSION = "0.1.0"
@@ -47,6 +56,10 @@ INTER_RATER_PROTOCOL_VERSION = "1.0.0"
 INTER_RATER_PACKET_ID = "HIT-IR-CIGNA-PXDX-001"
 INTER_RATER_TARGET_RELEASE = "0.3.0"
 EXPECTED_PACKET_SOURCE_IDS = {"S1", "S2", "S3"}
+
+MODEL_STRESS_PROTOCOL_ID = "HIT-MST-CIGNA-001"
+MODEL_STRESS_PROTOCOL_VERSION = "1.0.0"
+FRICTION_REVIEW_ID = "HIT-ARFR-001"
 
 EXPECTED_DIMENSIONS = {
     "counsel",
@@ -84,6 +97,25 @@ INTER_RATER_REQUIRED_FILES = {
     "validation/test-vectors/rater-b.json",
     "scripts/compare_raters.py",
 }
+READINESS_REQUIRED_FILES = {
+    "validation/adversarial-rubric-friction-review.md",
+    "validation/adversarial-rubric-friction-register.json",
+    "validation/model-stress-test/README.md",
+    "validation/model-stress-test/protocol.md",
+    "validation/model-stress-test/prompt.md",
+    "validation/model-stress-test/model-submission.schema.json",
+    "validation/model-stress-test/model-submission.template.json",
+    "validation/model-stress-test/results/README.md",
+    "coordinator/README.md",
+    "coordinator/comparison-runbook.md",
+    "recruitment/README.md",
+    "recruitment/invitation.md",
+    "recruitment/eligibility-screen.md",
+    "recruitment/scorer-instructions.md",
+    "scripts/validate_scorer_submission.py",
+    "scripts/record_submission.py",
+    "docs/doi-deadline-plan.md",
+}
 REQUIRED_RELEASE_FILES = {
     "README.md",
     "SPECIFICATION.md",
@@ -106,7 +138,9 @@ REQUIRED_RELEASE_FILES = {
     "docs/doi-and-release-strategy.md",
     "docs/releases/v0.1.0.md",
     "docs/releases/v0.2.0.md",
+    "docs/releases/v0.2.1.md",
     *INTER_RATER_REQUIRED_FILES,
+    *READINESS_REQUIRED_FILES,
 }
 
 
@@ -245,8 +279,8 @@ def validate_release_text() -> list[str]:
     require_text(
         failures,
         "README.md",
-        "**Development workstream:** v0.3.0 inter-rater protocol and tooling",
-        "inter-rater development status",
+        "**Development workstream:** v0.3.0 human inter-rater result",
+        "human inter-rater development status",
     )
     require_text(
         failures,
@@ -273,12 +307,16 @@ def validate_release_text() -> list[str]:
         "release-note title",
     )
 
-    expected_status = f"**Status:** Released with repository version {RELEASE_VERSION}"
+    expected_status = (
+        f"**Status:** Released with repository version "
+        f"{CASE_EVIDENCE_RELEASE_VERSION}"
+    )
     for relative_path in sorted(CASE_STUDY_PATHS):
         text = load_text(ROOT / relative_path)
         if expected_status not in text:
             failures.append(
-                f"{relative_path}: case study is not marked released for {RELEASE_VERSION}"
+                f"{relative_path}: case-study release provenance must remain "
+                f"{CASE_EVIDENCE_RELEASE_VERSION}"
             )
         if "Public review draft" in text:
             failures.append(
@@ -438,10 +476,8 @@ def validate_inter_rater_artifacts() -> tuple[list[str], str]:
             )
 
     protocol_status = str(protocol_lock.get("status", "unknown"))
-    if protocol_status not in {"candidate", "locked"}:
-        failures.append(
-            "validation/protocol-lock.json: status must be candidate or locked"
-        )
+    if protocol_status != "locked":
+        failures.append("validation/protocol-lock.json: status must be locked")
     if protocol_lock.get("minimum_exact_agreements") != 6:
         failures.append("protocol lock must require six exact agreements")
     if protocol_lock.get("minimum_exact_agreement_proportion") != 0.8571:
@@ -509,7 +545,7 @@ def validate_inter_rater_artifacts() -> tuple[list[str], str]:
 
     try:
         Draft202012Validator.check_schema(submission_schema)
-    except Exception as exc:  # jsonschema exposes several schema-error subclasses
+    except Exception as exc:
         failures.append(f"invalid scorer-submission schema: {exc}")
         return failures, protocol_status
 
@@ -586,7 +622,7 @@ def validate_inter_rater_artifacts() -> tuple[list[str], str]:
     if not result_files:
         pending_text = load_text(RESULTS_DIR / "README.md")
         if "No inter-rater result is currently available." not in pending_text:
-            failures.append("pending results boundary is missing")
+            failures.append("pending human results boundary is missing")
     else:
         required_result_files = {
             "scorer-a.json",
@@ -601,10 +637,96 @@ def validate_inter_rater_artifacts() -> tuple[list[str], str]:
             failures.append(
                 "empirical result directory does not contain the exact required result set"
             )
-        if protocol_status != "locked":
-            failures.append("empirical results require protocol status locked")
 
     return failures, protocol_status
+
+
+def validate_readiness_artifacts() -> list[str]:
+    failures: list[str] = []
+
+    friction_text = load_text(FRICTION_REVIEW_PATH)
+    for required_text in (
+        FRICTION_REVIEW_ID,
+        "did not assign any HIT finding",
+        "must not be distributed to scorers",
+    ):
+        if required_text not in friction_text:
+            failures.append(
+                f"validation/adversarial-rubric-friction-review.md: missing {required_text}"
+            )
+
+    friction_register = load_json(FRICTION_REGISTER_PATH)
+    if not isinstance(friction_register, dict):
+        failures.append("rubric-friction register must be a JSON object")
+    else:
+        if friction_register.get("review_id") != FRICTION_REVIEW_ID:
+            failures.append("rubric-friction review ID is inconsistent")
+        if friction_register.get("case_sources_reviewed") is not False:
+            failures.append("rubric-friction review must declare no case-source review")
+        if friction_register.get("case_findings_assigned") is not False:
+            failures.append("rubric-friction review must declare no case findings")
+        if friction_register.get("maturity_consequence") != "none":
+            failures.append("rubric-friction review must have no maturity consequence")
+
+    model_protocol_text = load_text(MODEL_PROTOCOL_PATH)
+    for required_text in (
+        MODEL_STRESS_PROTOCOL_ID,
+        MODEL_STRESS_PROTOCOL_VERSION,
+        INTER_RATER_PROTOCOL_ID,
+        INTER_RATER_PACKET_ID,
+    ):
+        if required_text not in model_protocol_text:
+            failures.append(
+                f"validation/model-stress-test/protocol.md: missing {required_text}"
+            )
+
+    model_schema = load_json(MODEL_SCHEMA_PATH)
+    if not isinstance(model_schema, dict):
+        failures.append("model stress-test schema must be a JSON object")
+    else:
+        try:
+            Draft202012Validator.check_schema(model_schema)
+        except Exception as exc:
+            failures.append(f"invalid model stress-test schema: {exc}")
+
+    model_template = load_json(MODEL_TEMPLATE_PATH)
+    if not isinstance(model_template, dict):
+        failures.append("model stress-test template must be a JSON object")
+    else:
+        if model_template.get("protocol_id") != MODEL_STRESS_PROTOCOL_ID:
+            failures.append("model stress-test template protocol ID is inconsistent")
+        if model_template.get("packet_id") != INTER_RATER_PACKET_ID:
+            failures.append("model stress-test template packet ID is inconsistent")
+        dimensions = {
+            item.get("dimension")
+            for item in model_template.get("substantive_findings", [])
+            if isinstance(item, dict)
+        }
+        if dimensions != EXPECTED_DIMENSIONS:
+            failures.append("model stress-test template lacks the six dimensions")
+
+    model_result_files = {
+        path.name
+        for path in MODEL_RESULTS_DIR.iterdir()
+        if path.is_file() and path.name != "README.md"
+    }
+    if model_result_files:
+        failures.append(
+            "v0.2.1 must not contain model stress-test result files; use a separate result branch"
+        )
+    else:
+        pending_text = load_text(MODEL_RESULTS_DIR / "README.md")
+        if "No protocol-conforming model stress-test result is currently available." not in pending_text:
+            failures.append("pending model stress-test result boundary is missing")
+
+    coordinator_text = load_text(ROOT / "coordinator" / "comparison-runbook.md")
+    for required_text in ("--format", "--output", "Do not disclose"):
+        if required_text not in coordinator_text:
+            failures.append(
+                f"coordinator/comparison-runbook.md: missing {required_text}"
+            )
+
+    return failures
 
 
 def main() -> int:
@@ -681,6 +803,7 @@ def main() -> int:
     failures.extend(validate_metadata(schema, catalog))
     inter_rater_failures, protocol_status = validate_inter_rater_artifacts()
     failures.extend(inter_rater_failures)
+    failures.extend(validate_readiness_artifacts())
 
     if failures:
         for failure in failures:
@@ -691,8 +814,10 @@ def main() -> int:
         "HIT validation: PASS "
         f"(release {RELEASE_VERSION}; specification {SPECIFICATION_VERSION}; "
         f"schema {SCHEMA_VERSION}; catalog {CATALOG_VERSION}; "
+        f"case evidence release {CASE_EVIDENCE_RELEASE_VERSION}; "
         f"{len(fixtures)} fixtures; {len(case_assessments)} public case assessments; "
-        f"inter-rater protocol {protocol_status}; 4 negative tests)"
+        f"inter-rater protocol {protocol_status}; readiness artifacts present; "
+        "4 negative tests)"
     )
     return 0
 
