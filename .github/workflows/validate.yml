@@ -37,3 +37,6 @@ jobs:
 
       - name: Validate HIT v0.4.0 boundary fixtures
         run: python scripts/validate_v040_boundaries.py
+
+      - name: Validate HIT v0.4.0 case migrations
+        run: python scripts/validate_v040_migrations.py
