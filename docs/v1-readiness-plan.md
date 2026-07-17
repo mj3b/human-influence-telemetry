@@ -32,6 +32,8 @@ Convert the adversarial rubric-friction review into explicit decision rules.
 8. **Contradictory evidence.** Define how source type, procedural posture, specificity, corroboration, institutional response, and unresolved conflict affect a finding.
 9. **Sampling and aggregation.** Define whether a finding represents any demonstrated capacity, dominant practice, sampled frequency, or a specified worst-case condition.
 10. **Citation precision.** Require source IDs plus passage, page, paragraph, event, or record locators when the source permits them.
+11. **Adjacent-system terminology.** Define institutional decision, runtime policy decision, Governed Decision Record, HIT assessment record, documentary telemetry, assessment-contract conformance, cryptographic receipt, and evidence-applicability determination.
+12. **Portfolio boundary.** Preserve the separate roles of Microsoft AGT, ScopeBlind/Acta, Credo AI, GDI, HIT, and DEAS. Prohibit claims that HIT performs runtime enforcement, receipt interoperability, policy-pack harmonization, compliance automation, or evidence portability.
 
 ### Required artifacts
 
@@ -39,13 +41,14 @@ Convert the adversarial rubric-friction review into explicit decision rules.
 - revised application handbook;
 - synchronized assessment schema and dimension catalog;
 - normative decision tables;
+- `docs/adjacent-system-boundaries.md`;
 - migration notes from component version `0.1.0`;
 - updated public cases or explicit migration exceptions;
 - changelog and compatibility statement.
 
 ### Completion test
 
-A reader can assign each finding without relying on private author interpretation for any ambiguity class recorded in `HIT-ARFR-001`.
+A reader can assign each finding without relying on private author interpretation for any ambiguity class recorded in `HIT-ARFR-001`, and can distinguish HIT from runtime governance, signed-receipt verification, policy-pack systems, decision-record infrastructure, and cross-regime evidence applicability.
 
 ## Workstream B: Executable conformance
 
@@ -70,21 +73,24 @@ Turn each normative rule into machine-checkable or review-checkable evidence.
 - unsupported composite score;
 - missing citation locator;
 - inconsistent component versions;
-- migration from the released `0.1.0` contract.
+- migration from the released `0.1.0` contract;
+- prohibited unqualified use of `decision record`, `conformance`, `telemetry`, or `portability` in HIT public claims;
+- unsupported claims of runtime enforcement, signed-receipt verification, policy-pack harmonization, compliance automation, or evidence portability.
 
 ### Required artifacts
 
 - positive and negative fixtures;
-- boundary test vectors;
+- boundary assessment cases;
 - validator rules;
 - fixture index;
 - conformance report format;
 - machine-readable compatibility manifest;
+- adjacent-system claim-audit checklist;
 - one-command repository validation.
 
 ### Completion test
 
-The repository rejects every known invalid state and produces deterministic results for every included boundary case.
+The repository rejects every known invalid state, produces deterministic results for every included boundary case, and detects public language that collapses HIT into an adjacent system layer.
 
 ## Workstream C: Clean-room implementation audit
 
@@ -97,9 +103,10 @@ Test whether the public package can be used without private explanation.
 1. Build a standalone implementation packet containing only public normative artifacts.
 2. Run two fresh model sessions as implementation auditors, not human scorers.
 3. Ask each session to reconstruct the finding rules, identify required fields, validate the included fixtures, and report ambiguous instructions.
-4. Preserve both original outputs and classify discrepancies.
-5. Resolve release-blocking documentation or conformance defects.
-6. Keep the model result separate from H3 and the maturity model.
+4. Ask each session to classify HIT against Microsoft AGT, ScopeBlind/Acta, Credo AI, GDI, and DEAS using only the public boundary document.
+5. Preserve both original outputs and classify discrepancies.
+6. Resolve release-blocking documentation or conformance defects.
+7. Keep the model result separate from H3 and the maturity model.
 
 ### Release-candidate gates
 
@@ -108,6 +115,8 @@ Test whether the public package can be used without private explanation.
 - migration guide complete;
 - no known ambiguity can systematically change a finding without a documented rule;
 - implementation packet complete;
+- adjacent-system claim audit passes;
+- the public package distinguishes documentary telemetry from runtime observability and cryptographic receipt evidence;
 - README, research register, limitations, provenance, citation, and release metadata synchronized;
 - one public `v0.9.0` release candidate published;
 - no release-blocking defect remains open.
@@ -122,11 +131,13 @@ Test whether the public package can be used without private explanation.
 - assessment schema `1.0.0`;
 - dimension catalog `1.0.0`;
 - application handbook `1.0.0`;
+- terminology and adjacent-system boundary contract;
 - conformance suite and report;
 - migration guide from `0.1.0`;
 - breaking-change review;
 - implementation packet;
 - revalidated public cases;
+- adjacent-system claim-audit report;
 - current claim register and limitations;
 - release notes and citation metadata;
 - exact release commit with passing CI.
@@ -139,6 +150,7 @@ The release must state:
 - H3 remains unresolved;
 - the locked human protocol remains pending;
 - model stress tests are development evidence only;
+- HIT is a documentary assurance method, not a runtime governor, signed-receipt protocol, policy-pack platform, compliance engine, or evidence-portability mechanism;
 - the stable contract does not establish legal compliance, causal validity, certification, or independent adoption.
 
 ## Parallel DOI path
@@ -153,8 +165,8 @@ The resulting DOI must be added only after the public Zenodo record exists.
 
 | Date | Decision target |
 |---|---|
-| 17 to 21 July | Complete `0.4.0` normative rules and migration design |
-| 22 to 24 July | Complete `0.5.0` conformance fixtures and validator coverage |
+| 17 to 21 July | Complete `0.4.0` normative rules, terminology boundary, and migration design |
+| 22 to 24 July | Complete `0.5.0` conformance fixtures, claim audit, and validator coverage |
 | 25 to 27 July | Publish `0.9.0` release candidate and run clean-room implementation audit |
 | 28 to 30 July | Correct release-blocking defects and perform release audit |
 | 31 July | Publish `1.0.0` only when every stable-contract gate passes |
@@ -167,5 +179,7 @@ Withhold `1.0.0` when any of the following remains true:
 - schema, catalog, handbook, fixtures, cases, or validator disagree;
 - public cases cannot migrate cleanly;
 - the implementation packet requires private explanation;
+- HIT public language implies runtime enforcement, signed-receipt interoperability, policy-pack harmonization, compliance automation, or evidence portability;
+- overloaded terms such as `decision record`, `telemetry`, `conformance`, or `portability` remain unqualified where they can change system interpretation;
 - a release-blocking defect remains open;
 - release metadata implies H3, Level 2, validation, certification, or adoption.
