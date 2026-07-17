@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use Human Influence Telemetry, cite the software release and identify the version used."
 title: "Human Influence Telemetry"
 type: software
-version: "0.2.0"
+version: "0.2.1"
 date-released: "2026-07-16"
 authors:
   - family-names: Banasihan
