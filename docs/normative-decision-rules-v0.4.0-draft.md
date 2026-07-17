@@ -1,18 +1,21 @@
-# HIT Normative Decision Rules — v0.4.0 Draft
+# HIT Normative Decision Rules — v0.4.0 Approved Design Target
 
-**Status:** Candidate normative text; not part of a released HIT contract  
+**Status:** Approved prospective design target; not yet a released HIT contract  
 **Target release:** `v0.4.0`  
+**Governing decision:** `ADR-0002`  
 **Source review:** `HIT-ARFR-001`  
 **Applies prospectively:** Yes  
 **Changes locked protocol `HIT-IRP-CIGNA-001`:** No
 
 ## 1. Purpose
 
-This document converts the ambiguity classes recorded in `HIT-ARFR-001` into candidate decision rules for Human Influence Telemetry.
+This document preserves the friction-to-rule derivation for the approved Human Influence Telemetry `0.4.0` design target.
 
-The rules are designed to reduce reasonable scorer divergence without weakening the distinction between evidence of absence and absence of evidence. They do not revise completed assessments, alter the locked Cigna inter-rater protocol, or establish human inter-rater reliability.
+The operational candidate specification is `specification/HIT-SPECIFICATION-v0.4.0-candidate.md`. The practitioner procedure is `docs/application-handbook-v0.4.0-candidate.md`.
 
-The rules become normative only when they are synchronized with the specification, application handbook, assessment schema, dimension catalog, fixtures, case migrations, validator, changelog, and release metadata.
+The rules reduce reasonable scorer divergence without weakening the distinction between evidence of absence and absence of evidence. They do not revise completed assessments, alter the locked Cigna inter-rater protocol, or establish human inter-rater reliability.
+
+The rules become part of a released contract only when the specification, handbook, assessment schema, dimension catalog, fixtures, case migrations, validator, changelog, and release metadata are synchronized and released together.
 
 ## 2. Governing evidence states
 
@@ -341,7 +344,7 @@ A source identifier without a locator is insufficient for substantive conformanc
 
 ## 11. Friction-register resolution map
 
-| Friction ID | Candidate rule location |
+| Friction ID | Approved rule location |
 |---|---|
 | `FR-01` | Sections 2.1 and 3.1–3.4 |
 | `FR-02` | Sections 2.2 and 3.2 |
@@ -362,7 +365,7 @@ A source identifier without a locator is insufficient for substantive conformanc
 
 ## 12. Prospective application and locked-protocol boundary
 
-These candidate rules do not alter:
+These approved rules do not alter:
 
 - the frozen materials or scoring instructions for `HIT-IRP-CIGNA-001`;
 - any original public case finding released under specification `0.1.0`;
@@ -374,13 +377,13 @@ When v0.4.0 is released, existing case assessments must either be migrated under
 
 ## 13. Release conditions
 
-This draft must not be represented as the released HIT rubric until:
+This design target must not be represented as the released HIT rubric until:
 
-1. each rule is incorporated into `SPECIFICATION.md` and `docs/application-handbook.md`;
+1. the candidate specification and handbook remain synchronized;
 2. the schema and dimension catalog express required fields and statuses;
 3. positive, negative, and boundary fixtures exist for every friction class;
 4. the validator deterministically checks the new contract;
-5. the public cases are migrated or explicitly version-bounded;
+5. public cases are migrated or explicitly version-bounded;
 6. a breaking-change and migration review is published;
 7. claim, limitation, provenance, citation, and release metadata are synchronized;
 8. CI passes on the exact release commit.
