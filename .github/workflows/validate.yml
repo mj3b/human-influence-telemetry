@@ -40,6 +40,9 @@ jobs:
           python -m src.cli conformance --all --format json
           --output hit-conformance-report.json
 
+      - name: Smoke-test public CLI commands
+        run: python scripts/validate_v050_cli.py
+
       - name: Upload validation reports
         if: always()
         uses: actions/upload-artifact@v4

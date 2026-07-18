@@ -42,19 +42,7 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 
 ## What changed in 0.4.0
 
-Release `0.4.0` is a breaking normative and data-contract revision. It resolves all 16 ambiguity classes in the public friction register by adding:
-
-- affirmative-absence, formal-presence, operational-capability, observed-exercise, and indeterminate evidence states;
-- explicit finding thresholds;
-- dimension-specific decision rules;
-- a Repair trigger;
-- split institutional-record and assessment-packet integrity;
-- deterministic overall integrity derivation;
-- sampling and aggregation declarations;
-- actor-authority attribution;
-- contradictory-evidence rules;
-- structured evidence propositions and precise locators;
-- 48 executable boundary fixtures.
+Release `0.4.0` is a breaking normative and data-contract revision. It resolves all 16 ambiguity classes in the public friction register by adding evidence states, explicit finding thresholds, dimension-specific rules, a Repair trigger, split Telemetry Integrity, sampling and aggregation declarations, actor-authority attribution, contradictory-evidence rules, structured evidence propositions, precise locators, and 48 executable boundary fixtures.
 
 See [`docs/breaking-change-review-v0.4.0.md`](docs/breaking-change-review-v0.4.0.md) and [`docs/migration-guide-v0.1.0-to-v0.4.0.md`](docs/migration-guide-v0.1.0-to-v0.4.0.md).
 
@@ -67,7 +55,26 @@ python -m pip install --requirement requirements-dev.txt
 python scripts/validate.py
 ```
 
-A passing run validates the released `0.4.0` contract, canonical synthetic example, 48 boundary fixtures, historical case preservation, migration dispositions, locked protocol artifacts, adjacent-system claim boundaries, and release metadata.
+A passing release-validation run checks the released `0.4.0` contract, canonical synthetic example, 48 boundary fixtures, historical case preservation, migration dispositions, locked protocol artifacts, adjacent-system claim boundaries, and release metadata.
+
+## Executable conformance development
+
+The `v0.5.0` workstream adds reusable complete-assessment conformance while retaining specification, schema, and catalog `0.4.0`.
+
+```bash
+# Validate the repository and all deterministic suites.
+python -m src.cli conformance --all
+
+# Validate one complete 0.4.0 assessment.
+python -m src.cli conformance --path assessment.json
+
+# Produce a non-mutating reconstruction plan for a historical 0.1.0 assessment.
+python -m src.cli migration-plan --path historical-assessment.json
+```
+
+The implementation checks cross-record references, evidence relations, actor attribution, finding and evidence-state consistency, Repair triggers, Telemetry Integrity derivation, aggregation scope, citation precision, and protected migration behavior. See [`docs/executable-conformance.md`](docs/executable-conformance.md), the [`conformance error catalog`](docs/conformance-error-catalog.md), and the [machine-readable compatibility manifest](compatibility/hit-compatibility-manifest.json).
+
+A passing conformance report establishes contract consistency for the supplied record. It does not establish evidentiary truth, legal sufficiency, human reviewer agreement, certification, or institutional effectiveness.
 
 ## Research status
 
@@ -78,6 +85,7 @@ HIT remains a research instrument, not a certified standard.
 | Normative 0.4.0 rubric | Released |
 | Machine-readable 0.4.0 assessment schema and catalog | Released |
 | 48 accepted, rejected, and boundary fixtures | Released |
+| Complete-record executable conformance | In development for repository release 0.5.0 |
 | Historical public case studies | Four `0.1.0` assessments preserved |
 | Public-case 0.4.0 migrations | Not claimed; explicit exceptions recorded |
 | Locked human inter-rater protocol | Available under 0.1.0 contract |
@@ -101,7 +109,15 @@ They remain immutable historical artifacts. Three are `historical_version_bound`
 
 ```text
 src/
-  rubric/                         -- Deterministic 0.4.0 boundary-rule evaluators
+  cli.py                         -- CLI entry point
+  commands/                      -- Conformance and migration commands
+  config/                        -- Repository paths and implementation configuration
+  models/                        -- Typed conformance results and issues
+  validation/                    -- Complete-assessment semantic checks
+  conformance/                   -- Suite, compatibility, migration, and report orchestration
+  rubric/                        -- Deterministic 0.4.0 boundary-rule evaluators
+compatibility/
+  hit-compatibility-manifest.json -- Supported contracts and migration rules
 schema/
   hit-assessment.schema.json      -- Canonical public assessment contract
   hit-dimension-catalog.json      -- Canonical construct and rule catalog
@@ -109,15 +125,16 @@ schema/
 fixtures/
   v0.4.0-canonical-example.json   -- Canonical synthetic assessment
   v0.4.0-boundaries/              -- 48 executable ambiguity fixtures
+  v0.5.0-conformance/             -- Complete-record valid and invalid vectors
 case-studies/
   assessments/                    -- Immutable historical 0.1.0 records
   migrations/v0.4.0/              -- Explicit migration dispositions
 validation/                       -- Locked human and model protocols
 coordinator/                      -- Submission preservation and comparison procedures
 recruitment/                      -- Neutral human-scorer materials
-docs/                             -- Handbook, decisions, boundaries, migration, and releases
+docs/                             -- Handbook, decisions, conformance, migration, and releases
 archive/v0.1.0/                   -- Superseded public contract preserved for reproducibility
-scripts/                          -- Repository, boundary, migration, and protocol validation
+scripts/                          -- Release validation and CLI smoke tests
 ```
 
 ## Relationship to adjacent systems
