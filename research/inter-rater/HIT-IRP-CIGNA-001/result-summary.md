@@ -18,6 +18,8 @@ Two eligible independent scorers applied the locked materials to the same frozen
 | Advancement threshold | Met | Must be met |
 | Substantive-dimension Cohen's kappa | Undefined | Supplementary only |
 
+The result contains seven exact agreements and zero critical disagreements.
+
 Cohen's kappa is undefined because both scorers assigned the same category across all six substantive dimensions. The data contain no category variance from which to estimate chance-corrected agreement.
 
 ## Finding-level comparison
