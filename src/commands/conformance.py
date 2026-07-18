@@ -21,6 +21,8 @@ def _render_text(report: dict[str, Any]) -> str:
                 f"- fixture formatting: {'PASS' if report['checks']['fixture_format']['passed'] else 'FAIL'}",
                 f"- compatibility manifest: {'PASS' if report['checks']['compatibility_manifest']['valid'] else 'FAIL'}",
                 f"- complete-record cases: {suite['passed_case_count']}/{suite['case_count']}",
+                f"- deterministic report: {'PASS' if report['checks']['self_tests']['deterministic_report']['valid'] else 'FAIL'}",
+                f"- protected migration plans: {'PASS' if all(item['valid'] for item in report['checks']['self_tests']['historical_migration_plans']) else 'FAIL'}",
                 "- specification/schema/catalog: 0.4.0",
                 "- research maturity: unchanged",
             ]

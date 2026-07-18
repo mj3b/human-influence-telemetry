@@ -19,14 +19,16 @@ RECONSTRUCTION_REQUIREMENTS = [
 ]
 
 
-def build_migration_plan(path: Path) -> dict[str, Any]:
+def build_migration_plan(
+    path: Path, *, source_label: str | None = None
+) -> dict[str, Any]:
     raw = path.read_bytes()
     instance = load_json(path)
     source_version = instance.get("schema_version")
     supported_source = source_version == "0.1.0"
     return {
         "plan_version": "0.1.0",
-        "source": str(path),
+        "source": source_label or str(path),
         "source_assessment_id": instance.get("assessment_id"),
         "source_schema_version": source_version,
         "source_sha256": hashlib.sha256(raw).hexdigest(),

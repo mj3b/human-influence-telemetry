@@ -16,6 +16,7 @@ from src.config.paths import (
     SCHEMA_PATH,
 )
 from src.conformance.compatibility import validate_compatibility_manifest
+from src.conformance.selftest import run_self_tests
 from src.conformance.suite import run_complete_record_suite
 from src.validation.assessment import load_json, validate_assessment
 
@@ -53,11 +54,18 @@ def run_repository_conformance() -> dict[str, Any]:
         base_record_path=CANONICAL_EXAMPLE_PATH,
         suite_path=COMPLETE_RECORD_SUITE_PATH,
     )
+    self_tests = run_self_tests(
+        root=SCHEMA_PATH.parents[1],
+        schema_path=SCHEMA_PATH,
+        base_record_path=CANONICAL_EXAMPLE_PATH,
+        suite_path=COMPLETE_RECORD_SUITE_PATH,
+    )
     valid = (
         fixture_format["passed"]
         and release_validation["passed"]
         and compatibility["valid"]
         and complete_records["valid"]
+        and self_tests["valid"]
     )
     return {
         "report_version": "0.1.0",
@@ -73,5 +81,6 @@ def run_repository_conformance() -> dict[str, Any]:
             "released_contract": release_validation,
             "compatibility_manifest": compatibility,
             "complete_record_suite": complete_records,
+            "self_tests": self_tests,
         },
     }
