@@ -8,7 +8,8 @@
 
 HIT evaluates what contemporaneous records establish about human access, judgment, authority, correction, repair, and reform. It does not infer intention, certify legal compliance, perform runtime enforcement, or treat a signature as proof of substantive judgment.
 
-**Current release:** 0.4.0  
+**Current release:** 0.5.0  
+**Conformance engine version:** 0.5.0  
 **Specification version:** 0.4.0  
 **Assessment schema version:** 0.4.0  
 **Dimension catalog version:** 0.4.0  
@@ -29,7 +30,7 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 4. **Correction:** Could the decision be contested, interrupted, reconsidered, modified, reversed, or appealed in practice?
 5. **Repair:** After qualifying harm, did a named actor own and deliver remediation to affected persons?
 6. **Reform:** Did a named authority have and exercise power to change the decision architecture?
-7. **Telemetry Integrity:** Can the institutional records and the assessment packet be trusted as bounded audit evidence?
+7. **Telemetry Integrity:** Can the institutional records and assessment packet be trusted as bounded audit evidence?
 
 ## Findings
 
@@ -40,11 +41,11 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 
 `IE` is not converted to zero and is not averaged into an ordinal total.
 
-## What changed in 0.4.0
+## Release layers
 
-Release `0.4.0` is a breaking normative and data-contract revision. It resolves all 16 ambiguity classes in the public friction register by adding evidence states, explicit finding thresholds, dimension-specific rules, a Repair trigger, split Telemetry Integrity, sampling and aggregation declarations, actor-authority attribution, contradictory-evidence rules, structured evidence propositions, precise locators, and 48 executable boundary fixtures.
+Release `0.4.0` stabilized the normative assessment contract. It introduced evidence states, explicit finding thresholds, dimension-specific rules, Repair triggers, split Telemetry Integrity, sampling and aggregation declarations, actor-authority attribution, contradiction handling, structured evidence propositions, precise locators, and 48 executable boundary fixtures.
 
-See [`docs/breaking-change-review-v0.4.0.md`](docs/breaking-change-review-v0.4.0.md) and [`docs/migration-guide-v0.1.0-to-v0.4.0.md`](docs/migration-guide-v0.1.0-to-v0.4.0.md).
+Release `0.5.0` adds executable complete-record conformance without changing the `0.4.0` specification, schema, catalog, or scoring semantics. It provides reusable semantic checks, stable machine-readable error codes, deterministic reports, compatibility metadata, protected migration planning, and a public CLI.
 
 ## Quick start
 
@@ -52,29 +53,20 @@ See [`docs/breaking-change-review-v0.4.0.md`](docs/breaking-change-review-v0.4.0
 git clone https://github.com/mj3b/human-influence-telemetry.git
 cd human-influence-telemetry
 python -m pip install --requirement requirements-dev.txt
-python scripts/validate.py
-```
 
-A passing release-validation run checks the released `0.4.0` contract, canonical synthetic example, 48 boundary fixtures, historical case preservation, migration dispositions, locked protocol artifacts, adjacent-system claim boundaries, and release metadata.
-
-## Executable conformance development
-
-The `v0.5.0` workstream adds reusable complete-assessment conformance while retaining specification, schema, and catalog `0.4.0`.
-
-```bash
 # Validate the repository and all deterministic suites.
-python -m src.cli conformance --all
+python -m src conformance --all
 
 # Validate one complete 0.4.0 assessment.
-python -m src.cli conformance --path assessment.json
+python -m src conformance --path assessment.json
 
 # Produce a non-mutating reconstruction plan for a historical 0.1.0 assessment.
-python -m src.cli migration-plan --path historical-assessment.json
+python -m src migration-plan --path historical-assessment.json
 ```
 
-The implementation checks cross-record references, evidence relations, actor attribution, finding and evidence-state consistency, Repair triggers, Telemetry Integrity derivation, aggregation scope, citation precision, and protected migration behavior. See [`docs/executable-conformance.md`](docs/executable-conformance.md), the [`conformance error catalog`](docs/conformance-error-catalog.md), and the [machine-readable compatibility manifest](compatibility/hit-compatibility-manifest.json).
+The complete-record engine checks cross-record references, evidence relations, actor attribution, finding and evidence-state consistency, Repair triggers, Telemetry Integrity derivation, aggregation scope, citation precision, and protected migration behavior. See [`docs/executable-conformance.md`](docs/executable-conformance.md), the [`conformance error catalog`](docs/conformance-error-catalog.md), and the [compatibility manifest](compatibility/hit-compatibility-manifest.json).
 
-A passing conformance report establishes contract consistency for the supplied record. It does not establish evidentiary truth, legal sufficiency, human reviewer agreement, certification, or institutional effectiveness.
+A passing report establishes assessment-contract conformance for the supplied record. It does not establish evidentiary truth, legal sufficiency, human reviewer agreement, certification, or institutional effectiveness.
 
 ## Research status
 
@@ -85,7 +77,7 @@ HIT remains a research instrument, not a certified standard.
 | Normative 0.4.0 rubric | Released |
 | Machine-readable 0.4.0 assessment schema and catalog | Released |
 | 48 accepted, rejected, and boundary fixtures | Released |
-| Complete-record executable conformance | In development for repository release 0.5.0 |
+| Complete-record executable conformance | Released in 0.5.0 |
 | Historical public case studies | Four `0.1.0` assessments preserved |
 | Public-case 0.4.0 migrations | Not claimed; explicit exceptions recorded |
 | Locked human inter-rater protocol | Available under 0.1.0 contract |
@@ -93,7 +85,7 @@ HIT remains a research instrument, not a certified standard.
 | Prospective institutional validation | Pending |
 | Legal or standards conformity determination | Not claimed |
 
-The locked human exercise remains the entry condition for claim H3 and Maturity Level 2. The previous planned `v0.3.0` result label is superseded; the result must use the next available repository version when completed. Its original submissions and pre-adjudication result must be published, passing or failing.
+The locked human exercise remains the entry condition for claim H3 and Maturity Level 2. The earlier planned `v0.3.0` result label is superseded; the result must use the next available repository version when completed. Its original submissions and pre-adjudication result must be published, passing or failing.
 
 ## Historical public evidence pack
 
@@ -103,13 +95,15 @@ The `case-studies/` directory contains three retrospective narratives and four a
 - Obermeyer deployer and manufacturer assessments;
 - Cigna PxDx assessment.
 
-They remain immutable historical artifacts. Three are `historical_version_bound`; Cigna is `deferred_locked_protocol`. No `0.4.0` case finding is claimed. See [`case-studies/migrations/v0.4.0/`](case-studies/migrations/v0.4.0/).
+They remain immutable historical artifacts. Three are `historical_version_bound`; Cigna is `deferred_locked_protocol`. No `0.4.0` public-case finding is claimed. See [`case-studies/migrations/v0.4.0/`](case-studies/migrations/v0.4.0/).
 
 ## Project structure
 
 ```text
 src/
-  cli.py                         -- CLI entry point
+  __main__.py                    -- Package entry point
+  cli.py                         -- CLI execution harness
+  cli_args.py                    -- Argument parsing
   commands/                      -- Conformance and migration commands
   config/                        -- Repository paths and implementation configuration
   models/                        -- Typed conformance results and issues

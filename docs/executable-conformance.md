@@ -1,6 +1,6 @@
 # Executable Assessment Conformance
 
-HIT executable conformance evaluates whether a complete assessment record satisfies the released `0.4.0` schema and the cross-record consistency rules needed to interpret that schema safely.
+HIT executable conformance engine version `0.5.0` evaluates whether a complete assessment record satisfies the released contract `0.4.0`: specification, schema, catalog, handbook, and cross-record consistency rules.
 
 ## Commands
 
@@ -57,7 +57,7 @@ The assessment command performs:
 11. scope and aggregation checks;
 12. citation handling for nonstandard locators.
 
-The repository command additionally runs the released `0.4.0` validator, the compatibility-manifest check, sixteen complete-record cases, report-determinism tests, and protected migration plans for all four historical assessments.
+The repository command additionally runs the `0.5.0` release validator, the compatibility-manifest check, sixteen complete-record cases, report-determinism tests, protected migration plans for all four historical assessments, and the existing 48 isolated rubric-boundary fixtures.
 
 ## Determinism
 

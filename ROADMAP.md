@@ -28,7 +28,7 @@ Added three public narratives, four actor-specific historical assessments, prove
 
 The repository remained Maturity Level 1 and H3 remained unresolved.
 
-## 0.4.0: Normative rubric stabilization — current release
+## 0.4.0: Normative rubric stabilization — complete
 
 Completed:
 
@@ -74,18 +74,26 @@ Cohen's kappa across the six substantive dimensions remains supplementary.
 
 A passing or failing result must be released under the next available repository version. Only a passing predeclared result permits H3 and Maturity Level 2.
 
-## 0.5.0: Executable assessment conformance
+## 0.5.0: Executable assessment conformance — current release
 
-Required:
+Completed:
 
-- promote boundary rules from fixture evaluator to reusable assessment-conformance checks;
-- validate actor and evidence-claim references across complete assessment records;
-- deterministic checks for integrity derivation, Repair triggers, evidence states, sampling, aggregation, contradictions, and citation precision;
+- reusable assessment-conformance checks for complete `0.4.0` records;
+- actor and evidence-claim reference validation;
+- deterministic checks for evidence states, Repair triggers, integrity derivation, aggregation, contradictions, and citation precision;
+- stable machine-facing error codes;
 - machine-readable compatibility manifest;
-- migration tooling that preserves historical records;
-- one-command conformance report.
+- protected migration planning that preserves historical records;
+- one valid and fifteen invalid complete-record vectors;
+- byte-stable text and JSON reports;
+- one-command repository conformance;
+- public CLI smoke tests and exact-head CI.
 
-Completion test: the repository rejects every known invalid complete-record state and produces deterministic results for included valid and boundary records.
+Completion test: the repository rejects every included invalid complete-record state, accepts the canonical valid record, preserves all four historical assessments during migration planning, and produces deterministic reports.
+
+Compatibility: repository and engine version `0.5.0`; specification, schema, catalog, handbook, and scoring semantics remain `0.4.0`.
+
+Research status: Maturity Level 1; H3 unresolved.
 
 ## 0.9.0: Stable release candidate
 

@@ -8,7 +8,6 @@ The project uses Semantic Versioning for the public technical artifact. Research
 
 ### Planned
 
-- Extend complete-record conformance checks in `0.5.0`
 - Prepare a public release candidate in `0.9.0`
 - Continue neutral recruitment for the locked human inter-rater exercise
 - Publish the original human result, passing or failing, under the next available version
@@ -17,6 +16,37 @@ The project uses Semantic Versioning for the public technical artifact. Research
 ### Research boundary
 
 H3 and Maturity Level 2 remain unresolved. Synthetic fixtures and internal conformance checks do not substitute for independent human scoring.
+
+## [0.5.0] - 2026-07-18
+
+### Added
+
+- Reusable complete-assessment conformance engine for the `0.4.0` contract
+- Public package entry point and commands for repository conformance, individual-record conformance, and migration planning
+- Stable machine-facing error codes and public error catalog
+- Deterministic text and JSON reports with byte-stability checks
+- One valid and fifteen invalid complete-record vectors
+- Machine-readable compatibility manifest
+- Non-mutating `0.1.0` to `0.4.0` migration planning with original-preservation checks
+- CLI smoke tests and report artifacts in CI
+- Package-oriented `src/` architecture separating entry point, argument parsing, commands, configuration, models, validation, conformance orchestration, and rubric rules
+
+### Changed
+
+- Repository and conformance-engine version advance to `0.5.0`
+- Specification, assessment schema, dimension catalog, handbook, and scoring semantics remain `0.4.0`
+- Repository validation now checks executable-conformance release metadata and compatibility boundaries
+- README and provenance now distinguish implementation version from normative contract version
+
+### Compatibility
+
+Version `0.5.0` is implementation-compatible with the `0.4.0` normative assessment contract. It does not require reassessment of conforming `0.4.0` records.
+
+Historical `0.1.0` records remain historical-validation-only artifacts. Automatic migration remains prohibited; reconstruction requires a fresh reassessment that preserves the original file.
+
+### Research boundary
+
+Release `0.5.0` remains Maturity Level 1. Executable conformance establishes deterministic contract checking, not evidence truth, independent human agreement, field effectiveness, legal compliance, certification, or institutional adoption.
 
 ## [0.4.0] - 2026-07-18
 
@@ -112,7 +142,8 @@ Historical applications do not establish reliability, causal effectiveness, lega
 
 The foundation release demonstrated structural representation only.
 
-[Unreleased]: https://github.com/mj3b/human-influence-telemetry/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/mj3b/human-influence-telemetry/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/mj3b/human-influence-telemetry/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/mj3b/human-influence-telemetry/compare/v0.2.1...v0.4.0
 [0.2.1]: https://github.com/mj3b/human-influence-telemetry/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/mj3b/human-influence-telemetry/compare/v0.1.0...v0.2.0

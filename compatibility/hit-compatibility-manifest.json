@@ -1,6 +1,6 @@
 {
   "manifest_version": "0.1.0",
-  "engine_version": "0.5.0-development",
+  "engine_version": "0.5.0",
   "supported_contracts": [
     {
       "specification_version": "0.4.0",
