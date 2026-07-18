@@ -41,9 +41,9 @@ Validate `overall_status` against `unreliable>IE>limited>adequate`. Exclude the 
 The deterministic comparison must report:
 
 - exact pairwise matches and denominator;
-- pooled pairwise exact proportion;
-- packet-level pairwise exact counts and proportions;
-- unanimous packet-item count and proportion;
+- pooled pairwise exact agreement count and proportion;
+- packet-level pairwise exact agreement counts and proportions;
+- item unanimity count and proportion across packet-item units;
 - every disagreement with packet, item, scorer pair, values, and critical status;
 - threshold decision;
 - input filenames and SHA-256 digests;
