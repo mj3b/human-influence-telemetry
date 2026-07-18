@@ -1,0 +1,20 @@
+{
+  "record_type": "HIT pre-adjudication comparison execution record",
+  "record_version": "1.0.0",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "repository_release_used": "v0.5.0",
+  "repository_release_commit": "4d917e4ad7a28fdb1b4284b621a17259dfe7e128",
+  "comparison_script": "scripts/compare_raters.py",
+  "submission_schema": "validation/scorer-submission.schema.json",
+  "inputs": {
+    "scorer_a": "submissions/HIT-IR-SCORER-A.json",
+    "scorer_b": "submissions/HIT-IR-SCORER-B.json"
+  },
+  "outputs": {
+    "json": "pre-adjudication-comparison.json",
+    "markdown": "pre-adjudication-comparison.md"
+  },
+  "pre_adjudication_frozen": true,
+  "comparison_before_adjudication": true
+}

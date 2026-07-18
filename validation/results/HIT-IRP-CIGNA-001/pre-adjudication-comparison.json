@@ -1,0 +1,16 @@
+{
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "protocol_version": "1.0.0",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "scorer_a": "HIT-SCORER-A",
+  "scorer_b": "HIT-SCORER-B",
+  "items_compared": 7,
+  "exact_agreements": 7,
+  "exact_agreement_proportion": 1.0,
+  "minimum_exact_agreements": 6,
+  "critical_disagreement_count": 0,
+  "disagreements": [],
+  "substantive_dimension_cohens_kappa": null,
+  "advancement_threshold_met": true,
+  "interpretation_boundary": "This comparison measures agreement for one frozen packet. It does not establish general reliability, causal validity, or legal correctness."
+}

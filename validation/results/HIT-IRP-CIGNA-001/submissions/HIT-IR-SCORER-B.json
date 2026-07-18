@@ -1,0 +1,79 @@
+{
+  "submission_id": "HIT-IR-SCORER-B",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "protocol_version": "1.0.0",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "scorer": {
+    "public_id": "HIT-SCORER-B",
+    "name": null,
+    "organization": null,
+    "orcid": null,
+    "qualification_summary": "Retrospective systems analysis and governance audit\nconducted by an evaluator utilizing principles of\nepistemic rationality, control theory, and alignment\nconstraints to assess a non-agentic technical\narchitecture based strictly on public reporting and\nregulatory records.",
+    "conflict_of_interest_disclosure": "No financial, institutional, or regulatory alignment with\nCigna Corporation, its competitors, or evaluating\ncongressional bodies."
+  },
+  "attestations": {
+    "not_the_hit_author": true,
+    "no_material_contribution_to_method_or_case": true,
+    "no_author_consultation_on_findings": true,
+    "no_other_scorer_consultation": true,
+    "no_prior_access_to_author_cigna_scores": true,
+    "used_only_frozen_packet_case_sources": true,
+    "assessment_boundary_acknowledged": true
+  },
+  "source_access": [
+    {"source_id": "S1", "accessed_on": "2026-07-18", "access_complete": true, "access_note": null, "content_digest": null},
+    {"source_id": "S2", "accessed_on": "2026-07-18", "access_complete": true, "access_note": null, "content_digest": null},
+    {"source_id": "S3", "accessed_on": "2026-07-18", "access_complete": true, "access_note": null, "content_digest": null}
+  ],
+  "substantive_findings": [
+    {
+      "dimension": "counsel",
+      "finding": 1,
+      "evidence_refs": ["S2"],
+      "rationale": "The PxDx architecture routes summary algorithmic verdicts to medical directors without natively provisioning the \nunderlying medical charts within the active operational loop. The system operates at a velocity that allocates \nroughly 1.2 s per signature, prioritizing high-throughput batch execution. \nFrom a systems-alignment perspective, epistemic access requires more than theoretical data availability; it \nrequires infrastructural affordance. A strict temporal constraint (𝑡𝑟𝑒𝑣𝑖𝑒𝑤≈1.2 s) establishes a hard physical limit \non information bandwidth (bits processed per second). Consequently, the human reviewer functions not as an \nindependent Bayesian updating node, but as a thermodynamic sink for legal liability. The interface physically \npreempts the ingestion of relevant clinical evidence prior to the signature execution. \nThe causal graph of this decision architecture deliberately routes around the human’s cognitive faculties. The \ninstitution utilizes the medical director merely to generate a cryptographic signature that satisfies compliance \nthresholds, intentionally avoiding the \"alignment tax\" (decreased throughput and higher processing costs) that \nwould occur if true evidentiary access were operationalized.",
+      "ambiguity_note": "None identified."
+    },
+    {
+      "dimension": "judgment",
+      "finding": 1,
+      "evidence_refs": ["S2"],
+      "rationale": "The batch-processing interface affords no procedural mechanism or temporal window for documenting epistemic \nuncertainty, exploring counterfactual diagnostic models, or logging substantive clinical disagreements with the \ndeterministic output of the non-agentic technical architecture. Substantive judgment requires the computational \ncapacity to evaluate alternative causal models of a patient's pathology. By mathematically eliminating the time \nrequired to map context against the algorithmic baseline, the architecture enforces an acceptance mode where \nthe probability of human override 𝑃(𝑂∣System Output) ≈0. The human acts as a passive relay, echoing the \nmachine's deterministic output without injecting stochastic, independent evaluation. The institutional utility \nfunction optimizes aggressively for algorithmic determinism over case-specific accuracy. This structural pressure \ncollapses the human's theoretical judgmental capacity into a predictable, zero-variance bureaucratic reflex.",
+      "ambiguity_note": "None identified."
+    },
+    {
+      "dimension": "command",
+      "finding": 1,
+      "evidence_refs": ["S2"],
+      "rationale": "While medical directors possess nominal credentialed authority to halt a denial, the structural mechanics of the \nbatch-clearance system require them to authorize massive blocks of algorithmic decisions simultaneously. In \ncontrol theory, a veto mechanism decoupled from the sensory apparatus required to detect a failure is \nindistinguishable from a nonexistent veto. The human authority lacks the necessary operational affordance to \ninterrupt the automated pipeline mid-execution. The technical system retains unilateral command over the \ndecision vector, treating the human override essentially as an inaccessible, untoggled binary state. The interface \nwas explicitly designed to maximize the friction of intervention, ensuring the human operator acts as a compliant \ncompliance token rather than a robust safeguard against model misalignment or localized failure modes.",
+      "ambiguity_note": "None identified."
+    },
+    {
+      "dimension": "correction",
+      "finding": 1,
+      "evidence_refs": ["S2"],
+      "rationale": "Institutional responses to congressional and regulatory scrutiny frequently point to the standard post-denial \nappeals process as the primary safeguard for beneficiaries. However, the initial algorithmic execution occurs \nwith zero intermediate human friction, shifting the entirety of the error-correction burden onto external agents \n(patients and physicians).This architecture represents an asymmetric friction model. The algorithm generates \ndenials with near-zero marginal cost, while reversing a false positive requires massive expenditure of time and \nresources by the affected party. Relying on high- friction exogenous appeals—which predictable human \nbehavioral economics suggest most users will abandon—creates a system practically devoid of endogenous, in-\nworkflow correction mechanisms. The institutional design weaponizes administrative fatigue. By offloading the \ncost of algorithmic error correction onto the consumer, the system successfully insulates the automated \npipeline's operational dominance, relying on patient attrition to minimize the actual rate of reversed decisions.",
+      "ambiguity_note": "None identified."
+    },
+    {
+      "dimension": "repair",
+      "finding": 1,
+      "evidence_refs": ["S2"],
+      "rationale": "Modifications to the PxDx pipeline and subsequent institutional responses have historically been driven by \nexternal adversarial pressure—specifically regulatory inquiries and separate congressional criticisms—rather \nthan proactive internal accountability. There is no publicly documented evidence of a designated internal locus \nof control tasked with retroactively identifying and restituting patients harmed by systemic false positives. A \nrobust AI governance framework necessitates a predefined agent assigned to own the remediation of systemic \nfailures. Here, the remediation model is purely reactive and distributed. Individual harm is absorbed as an \nacceptable negative externality of the system's overarching optimization for cost containment. The institutional \narchitecture successfully diffuses responsibility. By failing to designate a specific corporate owner to internalize \nthe cost of restitution, the enterprise ensures that when the technical architecture misaligns with patient well-\nbeing, the resulting harm remains an uncompensated externality.",
+      "ambiguity_note": "None identified."
+    },
+    {
+      "dimension": "reform",
+      "finding": 1,
+      "evidence_refs": ["S2"],
+      "rationale": "The underlying matching logic (procedure-to-diagnosis mapping thresholds) and the batch-processing interface \nare dictated by central corporate engineering. Institutional responses to external regulatory scrutiny originate \nstrictly from executive and legal leadership, rather than the clinical directors embedded within the daily workflow. \nThe human operators tasked with systemic oversight are entirely decoupled from the system's metaparameters. \nThey lack the administrative privileges to adjust the model's sensitivity, alter routing constraints, or deprecate \nfaulty rulesets. Consequently, their oversight is strictly local and entirely ceremonial, lacking the architectural \nleverage necessary to enact systemic governance reform. The deployment strategy intentionally air-gaps the \nalgorithmic core from end-user modification, preserving the model's macro-level optimization targets against \nmicro-level clinical objections or individual operator friction.",
+      "ambiguity_note": "None identified."
+    }
+  ],
+  "telemetry_integrity": {
+    "status": "limited",
+    "evidence_refs": ["S2"],
+    "rationale": "The evidentiary substrate relies on external investigative journalism, leaked internal temporal metrics, \nand documented regulatory and congressional scrutiny, rather than native, cryptographic audit trails or \nstructured system logs provided directly by the enterprise. From an epistemic rationality standpoint, \nthis evaluation operates in a low-trust environment with bounded observability. While the available \ndata points (e.g., clearance speeds and batch UI structures) provide high-confidence signals regarding \nthe system's structural constraints, we lack the foundational telemetry, edit-authority logs, and missing-\nrecord disclosures required for a mathematically rigorous, \"adequate\" institutional audit. Cigna’s \ninternal telemetry architecture is optimized for proprietary operational efficiency rather than external \nlegibility, deliberately obscuring the true contours of the algorithmic decision boundary from public or \nregulatory oversight unless compelled by legal discovery.",
+    "ambiguity_note": null
+  },
+  "submitted_at": "2026-07-18T16:00:38-04:00"
+}

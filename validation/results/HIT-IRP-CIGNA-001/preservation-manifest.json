@@ -1,0 +1,28 @@
+{
+  "record_type": "HIT inter-rater candidate preservation manifest",
+  "record_version": "1.0.0",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "candidate_status": "text artifacts staged; three binary manual originals remain release-blocking",
+  "text_artifacts": [
+    "README.md",
+    "adjudication-record.md",
+    "claim-maturity-decision.md",
+    "execution-record.json",
+    "manual-originals-manifest.json",
+    "pre-adjudication-comparison.json",
+    "pre-adjudication-comparison.md",
+    "receipt-register.json",
+    "submissions/HIT-IR-SCORER-A.json",
+    "submissions/HIT-IR-SCORER-B.json",
+    "transcription-verifications.json"
+  ],
+  "manual_originals_manifest": "manual-originals-manifest.json",
+  "comparison_result": {
+    "exact_agreements": 7,
+    "items_compared": 7,
+    "exact_agreement_proportion": 1.0,
+    "critical_disagreement_count": 0,
+    "advancement_threshold_met": true
+  }
+}

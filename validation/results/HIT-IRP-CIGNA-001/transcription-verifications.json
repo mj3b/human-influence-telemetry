@@ -1,0 +1,23 @@
+{
+  "record_type": "HIT scorer transcription verification record",
+  "record_version": "1.0.0",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "confirmations": [
+    {
+      "scorer_public_id": "HIT-SCORER-B",
+      "confirmation": "Confirmed exact.",
+      "received_at": "2026-07-18T17:20:00-04:00",
+      "received_at_raw_user_statement": "7/18/2026, 5:20PM EST",
+      "verified_json_filename": "HIT-IR-SCORER-B.json"
+    },
+    {
+      "scorer_public_id": "HIT-SCORER-A",
+      "confirmation": "Confirmed exact.",
+      "received_at": "2026-07-18T17:27:00-04:00",
+      "received_at_raw_user_statement": "5:27PM EST same day",
+      "verified_json_filename": "HIT-IR-SCORER-A.json"
+    }
+  ],
+  "status": "both final JSON submissions verified and locked"
+}

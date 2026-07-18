@@ -35,6 +35,12 @@ jobs:
           set -o pipefail
           python scripts/validate.py 2>&1 | tee hit-validation-report.txt
 
+      - name: Validate human-result candidate package
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_human_result_candidate.py 2>&1 | tee hit-human-result-report.txt
+
       - name: Run executable assessment conformance
         run: >-
           python -m src conformance --all --format json
@@ -50,5 +56,6 @@ jobs:
           name: hit-validation-reports
           path: |
             hit-validation-report.txt
+            hit-human-result-report.txt
             hit-conformance-report.json
           if-no-files-found: error

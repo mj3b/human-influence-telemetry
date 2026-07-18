@@ -1,0 +1,34 @@
+{
+  "record_type": "HIT manual originals publication manifest",
+  "record_version": "1.0.0",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "publication_status": "pending repository upload of three binary originals",
+  "release_blocking": true,
+  "files": [
+    {
+      "role": "Scorer A superseded incomplete original",
+      "target_path": "validation/results/HIT-IRP-CIGNA-001/manual/HIT-SCORER-A-superseded-original.docx",
+      "original_email_filename": "HIT_Manual_Scorer_Packet_NonTechnical_v1.0.docx",
+      "size_bytes": 133325,
+      "sha256": "6d1674cd476879ce4792e6dbf55c8ea1b834da4ca8da7cf366d572506d0cceca",
+      "received_at": "2026-07-18T15:43:11-04:00"
+    },
+    {
+      "role": "Scorer A locked corrected original",
+      "target_path": "validation/results/HIT-IRP-CIGNA-001/manual/HIT-SCORER-A-locked-corrected.docx",
+      "original_email_filename": "HIT_Manual_Scorer_Packet_NonTechnical_v1.0.docx",
+      "size_bytes": 108449,
+      "sha256": "53369878cd58f78a820f4281dacd6d83240dea7fd934d857fe64b3f0e3208567",
+      "received_at": "2026-07-18T15:53:00-04:00"
+    },
+    {
+      "role": "Scorer B locked original",
+      "target_path": "validation/results/HIT-IRP-CIGNA-001/manual/HIT-SCORER-B-locked-original.pdf",
+      "original_email_filename": "HIT_Manual_Scorer_Packet_NonTechnical_v1.0.pdf",
+      "size_bytes": 359965,
+      "sha256": "f387874663ce8a52b7febc11f7b23ba339f71815bc47ea418496e6cfa7888cee",
+      "received_at": "2026-07-18T16:08:00-04:00"
+    }
+  ]
+}

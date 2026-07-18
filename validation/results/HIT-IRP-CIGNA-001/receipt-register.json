@@ -1,0 +1,34 @@
+{
+  "record_type": "HIT coordinator receipt register",
+  "record_version": "1.0.0",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "records": [
+    {
+      "scorer": "HIT-SCORER-A",
+      "role": "superseded_original",
+      "received_at": "2026-07-18T15:43:11-04:00",
+      "channel": "email",
+      "sender_described_as_final": true,
+      "sha256": "6d1674cd476879ce4792e6dbf55c8ea1b834da4ca8da7cf366d572506d0cceca",
+      "status": "incomplete; Reform finding and source fields blank; preserved"
+    },
+    {
+      "scorer": "HIT-SCORER-A",
+      "role": "locked_corrected_manual_submission",
+      "received_at": "2026-07-18T15:53:00-04:00",
+      "channel": "email",
+      "sender_described_as_final": true,
+      "sha256": "53369878cd58f78a820f4281dacd6d83240dea7fd934d857fe64b3f0e3208567",
+      "status": "scorer personally made and returned exact correction; locked"
+    },
+    {
+      "scorer": "HIT-SCORER-B",
+      "role": "locked_original_manual_submission",
+      "received_at": "2026-07-18T16:08:00-04:00",
+      "channel": "email",
+      "sender_described_as_final": true,
+      "sha256": "f387874663ce8a52b7febc11f7b23ba339f71815bc47ea418496e6cfa7888cee",
+      "status": "scorer personally completed, exported, and returned exact PDF; locked"
+    }
+  ]
+}
