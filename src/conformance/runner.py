@@ -69,7 +69,7 @@ def run_repository_conformance() -> dict[str, Any]:
     )
     return {
         "report_version": "0.1.0",
-        "engine_version": "0.5.0-development",
+        "engine_version": "0.5.0",
         "contract": {
             "specification_version": "0.4.0",
             "schema_version": "0.4.0",

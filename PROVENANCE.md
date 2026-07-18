@@ -11,7 +11,8 @@ The public technical instrument is extracted from that program without publishin
 - Originating concept DOI: 10.5281/zenodo.21204892
 - Source repository: private and retained by the author
 - Canonical public repository: `mj3b/human-influence-telemetry`
-- Public repository release: 0.4.0
+- Public repository release: 0.5.0
+- Conformance engine version: 0.5.0
 - Public specification version: 0.4.0
 - Assessment schema version: 0.4.0
 - Dimension catalog version: 0.4.0
@@ -33,9 +34,15 @@ Added locked evaluation procedures, coordinator tooling, recruitment materials, 
 
 ### 0.4.0
 
-Promotes a breaking normative and data-contract revision derived from all 16 friction classes in `HIT-ARFR-001`. It introduces the evidence-state model, explicit finding thresholds, split Telemetry Integrity, actor-authority attribution, Repair triggers, sampling and aggregation controls, contradiction handling, evidence propositions, precise locators, and 48 executable boundary fixtures.
+Promoted a breaking normative and data-contract revision derived from all 16 friction classes in `HIT-ARFR-001`. It introduced the evidence-state model, explicit finding thresholds, split Telemetry Integrity, actor-authority attribution, Repair triggers, sampling and aggregation controls, contradiction handling, evidence propositions, precise locators, and 48 executable boundary fixtures.
 
 The superseded `0.1.0` contract is preserved under `archive/v0.1.0/`. The `0.2.1` validator is preserved under `archive/v0.2.1/`.
+
+### 0.5.0
+
+Added executable complete-record conformance for the `0.4.0` contract. The release introduced reusable semantic validation, stable error codes, deterministic reports, a compatibility manifest, protected migration planning, complete-record mutation vectors, CLI operation, and a package-oriented implementation structure.
+
+Release `0.5.0` does not revise the specification, assessment schema, dimension catalog, handbook, or scoring semantics. Those remain `0.4.0`.
 
 ## Canonical construct decision
 

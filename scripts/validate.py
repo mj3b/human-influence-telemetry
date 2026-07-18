@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Validate the released HIT 0.4.0 contract, evidence, and governance artifacts."""
+"""Validate the released HIT 0.5.0 implementation and preserved 0.4.0 contract."""
 
 from __future__ import annotations
 
-import copy
 import hashlib
 import json
 import subprocess
@@ -15,8 +14,13 @@ import yaml
 from jsonschema import Draft202012Validator, FormatChecker
 
 ROOT = Path(__file__).resolve().parents[1]
-RELEASE_VERSION = "0.4.0"
+sys.path.insert(0, str(ROOT))
+
+from src.validation.assessment import validate_assessment
+
+RELEASE_VERSION = "0.5.0"
 RELEASE_DATE = "2026-07-18"
+ENGINE_VERSION = "0.5.0"
 SPECIFICATION_VERSION = "0.4.0"
 SCHEMA_VERSION = "0.4.0"
 CATALOG_VERSION = "0.4.0"
@@ -29,6 +33,7 @@ EXAMPLE_PATH = ROOT / "fixtures" / "v0.4.0-canonical-example.json"
 LEGACY_SCHEMA_PATH = ROOT / "archive" / "v0.1.0" / "schema" / "hit-assessment.schema.json"
 MIGRATION_MANIFEST_PATH = ROOT / "case-studies" / "migrations" / "v0.4.0" / "migration-manifest.json"
 PROTOCOL_LOCK_PATH = ROOT / "validation" / "protocol-lock.json"
+COMPATIBILITY_PATH = ROOT / "compatibility" / "hit-compatibility-manifest.json"
 CITATION_PATH = ROOT / "CITATION.cff"
 ZENODO_PATH = ROOT / ".zenodo.json"
 
@@ -75,11 +80,16 @@ REQUIRED_FILES = {
     "CODE_OF_CONDUCT.md",
     "LICENSE",
     "NOTICE",
+    "compatibility/hit-compatibility-manifest.json",
     "docs/application-handbook.md",
+    "docs/executable-conformance.md",
+    "docs/conformance-error-catalog.md",
+    "docs/v0.5.0-release-readiness.md",
+    "docs/releases/v0.4.0.md",
+    "docs/releases/v0.5.0.md",
     "docs/breaking-change-review-v0.4.0.md",
     "docs/migration-guide-v0.1.0-to-v0.4.0.md",
     "docs/adjacent-system-claim-audit-v0.4.0.md",
-    "docs/releases/v0.4.0.md",
     "docs/decisions/ADR-0001-separate-semantic-versioning-from-research-maturity.md",
     "docs/decisions/ADR-0002-approve-v0.4.0-rubric-rules.md",
     "docs/decisions/ADR-0003-chronological-result-versioning.md",
@@ -87,7 +97,14 @@ REQUIRED_FILES = {
     "schema/hit-dimension-catalog.json",
     "fixtures/v0.4.0-canonical-example.json",
     "fixtures/v0.4.0-boundaries/rubric-boundary-fixtures.json",
+    "fixtures/v0.5.0-conformance/complete-record-cases.json",
+    "src/__main__.py",
+    "src/cli.py",
+    "src/cli_args.py",
+    "src/conformance/runner.py",
+    "src/validation/assessment.py",
     "src/rubric/rules_v040.py",
+    "scripts/validate_v050_cli.py",
     "case-studies/README.md",
     "case-studies/migrations/v0.4.0/migration-manifest.json",
     "validation/README.md",
@@ -102,24 +119,15 @@ REQUIRED_FILES = {
 
 
 def load_text(path: Path) -> str:
-    try:
-        return path.read_text(encoding="utf-8")
-    except OSError as exc:
-        raise RuntimeError(f"cannot load {path}: {exc}") from exc
+    return path.read_text(encoding="utf-8")
 
 
 def load_json(path: Path) -> Any:
-    try:
-        return json.loads(load_text(path))
-    except json.JSONDecodeError as exc:
-        raise RuntimeError(f"cannot parse JSON {path}: {exc}") from exc
+    return json.loads(load_text(path))
 
 
 def load_yaml(path: Path) -> Any:
-    try:
-        return yaml.safe_load(load_text(path))
-    except yaml.YAMLError as exc:
-        raise RuntimeError(f"cannot parse YAML {path}: {exc}") from exc
+    return yaml.safe_load(load_text(path))
 
 
 def git_blob_sha(path: Path) -> str:
@@ -128,16 +136,8 @@ def git_blob_sha(path: Path) -> str:
     return hashlib.sha1(framed).hexdigest()
 
 
-def schema_failures(validator: Draft202012Validator, instance: Any, label: str) -> list[str]:
-    return [
-        f"{label}: {error.message}"
-        for error in sorted(validator.iter_errors(instance), key=lambda item: list(item.path))
-    ]
-
-
 def require_text(failures: list[str], relative_path: str, phrase: str) -> None:
-    text = load_text(ROOT / relative_path)
-    if phrase not in text:
+    if phrase not in load_text(ROOT / relative_path):
         failures.append(f"{relative_path}: missing required text: {phrase}")
 
 
@@ -152,7 +152,7 @@ def validate_required_files() -> list[str]:
     return failures
 
 
-def validate_canonical_contract() -> list[str]:
+def validate_contract() -> list[str]:
     failures: list[str] = []
     schema = load_json(SCHEMA_PATH)
     catalog = load_json(CATALOG_PATH)
@@ -162,9 +162,6 @@ def validate_canonical_contract() -> list[str]:
         Draft202012Validator.check_schema(schema)
     except Exception as exc:  # pragma: no cover
         return [f"canonical schema is invalid: {exc}"]
-
-    validator = Draft202012Validator(schema, format_checker=FormatChecker())
-    failures.extend(schema_failures(validator, example, "canonical example"))
 
     if schema.get("properties", {}).get("schema_version", {}).get("const") != SCHEMA_VERSION:
         failures.append("canonical schema_version constant is inconsistent")
@@ -182,61 +179,10 @@ def validate_canonical_contract() -> list[str]:
     if states != EXPECTED_EVIDENCE_STATES:
         failures.append("dimension catalog evidence states are inconsistent")
 
-    findings = example.get("substantive_findings", [])
-    finding_dimensions = [item.get("dimension") for item in findings if isinstance(item, dict)]
-    if set(finding_dimensions) != EXPECTED_DIMENSIONS or len(finding_dimensions) != len(set(finding_dimensions)):
-        failures.append("canonical example must contain each substantive dimension exactly once")
-
-    claim_ids = {item.get("claim_id") for item in example.get("evidence_claims", []) if isinstance(item, dict)}
-    actor_ids = {item.get("actor_id") for item in example.get("actors", []) if isinstance(item, dict)}
-    for actor in example.get("actors", []):
-        for claim_id in actor.get("evidence_claim_ids", []):
-            if claim_id not in claim_ids:
-                failures.append(f"actor references unknown evidence claim: {claim_id}")
-        for actor_id in actor.get("related_actor_ids", []):
-            if actor_id not in actor_ids:
-                failures.append(f"actor references unknown related actor: {actor_id}")
-    for claim in example.get("evidence_claims", []):
-        for actor_id in claim.get("actor_ids", []):
-            if actor_id not in actor_ids:
-                failures.append(f"evidence claim references unknown actor: {actor_id}")
-    for finding in findings:
-        for field in ("supporting_claim_ids", "contradicting_claim_ids", "limiting_claim_ids"):
-            for claim_id in finding.get(field, []):
-                if claim_id not in claim_ids:
-                    failures.append(f"finding references unknown evidence claim: {claim_id}")
-
-    integrity = example.get("telemetry_integrity", {})
-    statuses = {
-        integrity.get("institutional_record_integrity", {}).get("status"),
-        integrity.get("assessment_packet_integrity", {}).get("status"),
-    }
-    if "unreliable" in statuses:
-        expected = "unreliable"
-    elif "IE" in statuses:
-        expected = "IE"
-    elif "limited" in statuses:
-        expected = "limited"
-    else:
-        expected = "adequate"
-    if integrity.get("overall_status") != expected:
-        failures.append("canonical example Telemetry Integrity derivation is inconsistent")
-
-    negative = copy.deepcopy(example)
-    negative["schema_version"] = "0.4.0-candidate"
-    if not schema_failures(validator, negative, "negative candidate version"):
-        failures.append("canonical schema accepted candidate schema_version")
-
-    negative = copy.deepcopy(example)
-    negative["substantive_findings"][0]["finding"] = 0
-    negative["substantive_findings"][0]["evidence_state"] = "formal_presence"
-    if not schema_failures(validator, negative, "negative zero state"):
-        failures.append("canonical schema accepted finding 0 without affirmative absence")
-
-    negative = copy.deepcopy(example)
-    negative["substantive_findings"][4]["unresolved_proposition"] = None
-    if not schema_failures(validator, negative, "negative IE proposition"):
-        failures.append("canonical schema accepted IE without unresolved proposition")
+    result = validate_assessment(example, schema, source=str(EXAMPLE_PATH.relative_to(ROOT)))
+    if not result.valid:
+        for issue in result.issues:
+            failures.append(f"canonical example {issue.code} {issue.path}: {issue.message}")
 
     return failures
 
@@ -248,6 +194,7 @@ def validate_historical_cases() -> list[str]:
         Draft202012Validator.check_schema(legacy_schema)
     except Exception as exc:  # pragma: no cover
         return [f"archived 0.1.0 schema is invalid: {exc}"]
+
     validator = Draft202012Validator(legacy_schema, format_checker=FormatChecker())
     manifest = load_json(MIGRATION_MANIFEST_PATH)
     manifest_cases = {
@@ -256,13 +203,13 @@ def validate_historical_cases() -> list[str]:
         if isinstance(item, dict)
     }
     if set(manifest_cases) != set(EXPECTED_CASES):
-        failures.append("migration manifest must cover the four historical assessments exactly")
-        return failures
+        return ["migration manifest must cover the four historical assessments exactly"]
 
     for assessment_id, (relative_path, expected_sha) in EXPECTED_CASES.items():
         path = ROOT / relative_path
         instance = load_json(path)
-        failures.extend(schema_failures(validator, instance, relative_path))
+        for error in validator.iter_errors(instance):
+            failures.append(f"{relative_path}: {error.message}")
         if instance.get("assessment_id") != assessment_id:
             failures.append(f"{relative_path}: assessment ID changed")
         if instance.get("schema_version") != LEGACY_VERSION:
@@ -320,6 +267,7 @@ def validate_metadata_and_text() -> list[str]:
     failures: list[str] = []
     citation = load_yaml(CITATION_PATH)
     zenodo = load_json(ZENODO_PATH)
+    compatibility = load_json(COMPATIBILITY_PATH)
 
     if citation.get("version") != RELEASE_VERSION:
         failures.append("CITATION.cff version is inconsistent")
@@ -328,7 +276,11 @@ def validate_metadata_and_text() -> list[str]:
     if citation.get("license") != "Apache-2.0":
         failures.append("CITATION.cff license is inconsistent")
     identifiers = citation.get("identifiers", [])
-    doi_values = {str(item.get("value")) for item in identifiers if isinstance(item, dict) and item.get("type") == "doi"}
+    doi_values = {
+        str(item.get("value"))
+        for item in identifiers
+        if isinstance(item, dict) and item.get("type") == "doi"
+    }
     if doi_values != {ORIGINATING_DOI}:
         failures.append("CITATION.cff must contain only the originating research DOI until a software DOI exists")
 
@@ -339,13 +291,31 @@ def validate_metadata_and_text() -> list[str]:
     if zenodo.get("license") != "Apache-2.0":
         failures.append(".zenodo.json license is inconsistent")
 
+    if compatibility.get("engine_version") != ENGINE_VERSION:
+        failures.append("compatibility manifest engine version is inconsistent")
+    supported = compatibility.get("supported_contracts", [])
+    if len(supported) != 1:
+        failures.append("compatibility manifest must declare one fully supported contract")
+    else:
+        contract = supported[0]
+        expected_contract = {
+            "specification_version": SPECIFICATION_VERSION,
+            "schema_version": SCHEMA_VERSION,
+            "catalog_version": CATALOG_VERSION,
+            "conformance_mode": "full",
+        }
+        for key, value in expected_contract.items():
+            if contract.get(key) != value:
+                failures.append(f"compatibility manifest contract field is inconsistent: {key}")
+
     required_phrases = {
         "README.md": [
-            "**Current release:** 0.4.0",
+            "**Current release:** 0.5.0",
+            "**Conformance engine version:** 0.5.0",
             "**Specification version:** 0.4.0",
             "**Assessment schema version:** 0.4.0",
             "**Current maturity:** Level 1, Defined",
-            "No `0.4.0` case finding is claimed",
+            "No `0.4.0` public-case finding is claimed",
         ],
         "SPECIFICATION.md": [
             "**Version:** 0.4.0",
@@ -354,24 +324,68 @@ def validate_metadata_and_text() -> list[str]:
             "assessment-packet integrity",
             "next available repository version",
         ],
-        "RESEARCH.md": ["H3", "Unresolved", "Release `0.4.0` remains Level 1"],
-        "ROADMAP.md": ["0.4.0: Normative rubric stabilization", "0.5.0: Executable assessment conformance", "1.0.0: Stable public contract"],
-        "PROVENANCE.md": ["Public repository release: 0.4.0", "No `0.4.0` public-case findings are claimed"],
-        "CHANGELOG.md": ["## [0.4.0] - 2026-07-18", "breaking normative and data-contract release"],
-        "docs/releases/v0.4.0.md": ["# Human Influence Telemetry v0.4.0", "Maturity Level 1"],
-        "docs/adjacent-system-claim-audit-v0.4.0.md": ["Audit status:** Passed", "Microsoft Agent Governance Toolkit", "ScopeBlind/Acta", "Credo AI"],
+        "RESEARCH.md": ["H3", "Unresolved", "Release `0.5.0` remains Level 1"],
+        "ROADMAP.md": [
+            "0.4.0: Normative rubric stabilization — complete",
+            "0.5.0: Executable assessment conformance — current release",
+            "1.0.0: Stable public contract",
+        ],
+        "PROVENANCE.md": [
+            "Public repository release: 0.5.0",
+            "Conformance engine version: 0.5.0",
+            "No `0.4.0` public-case findings are claimed",
+        ],
+        "CHANGELOG.md": [
+            "## [0.5.0] - 2026-07-18",
+            "implementation-compatible with the `0.4.0` normative assessment contract",
+        ],
+        "docs/releases/v0.5.0.md": [
+            "# Human Influence Telemetry v0.5.0",
+            "Maturity Level 1",
+            "specification, assessment schema, dimension catalog, handbook, and scoring semantics remain `0.4.0`",
+        ],
+        "docs/v0.5.0-release-readiness.md": [
+            "Status:** Promotion candidate",
+            "tagging and release publication require separate maintainer approval",
+        ],
+        "docs/executable-conformance.md": [
+            "engine version `0.5.0`",
+            "contract `0.4.0`",
+        ],
+        "docs/adjacent-system-claim-audit-v0.4.0.md": [
+            "Audit status:** Passed",
+            "Microsoft Agent Governance Toolkit",
+            "ScopeBlind/Acta",
+            "Credo AI",
+        ],
     }
     for relative_path, phrases in required_phrases.items():
         for phrase in phrases:
             require_text(failures, relative_path, phrase)
 
-    current_docs = ["README.md", "ROADMAP.md", "RESEARCH.md", "CHANGELOG.md", "validation/README.md"]
-    for relative_path in current_docs:
+    current_files = [
+        "README.md",
+        "RESEARCH.md",
+        "ROADMAP.md",
+        "PROVENANCE.md",
+        "CHANGELOG.md",
+        "compatibility/hit-compatibility-manifest.json",
+        "src/conformance/runner.py",
+        "docs/executable-conformance.md",
+    ]
+    for relative_path in current_files:
         text = load_text(ROOT / relative_path)
-        if "Release v0.3.0" in text or "targeted for repository release `v0.3.0`" in text:
-            failures.append(f"{relative_path}: contains unsuperseded future v0.3.0 language")
+        if "0.5.0-development" in text:
+            failures.append(f"{relative_path}: development engine marker remains")
+        if "In development for repository release 0.5.0" in text:
+            failures.append(f"{relative_path}: development release status remains")
 
-    for relative_path in ("SPECIFICATION.md", "schema/hit-assessment.schema.json", "schema/hit-dimension-catalog.json", "docs/application-handbook.md"):
+    for relative_path in (
+        "SPECIFICATION.md",
+        "schema/hit-assessment.schema.json",
+        "schema/hit-dimension-catalog.json",
+        "docs/application-handbook.md",
+    ):
         text = load_text(ROOT / relative_path)
         if "0.4.0-candidate" in text or "not yet released" in text:
             failures.append(f"{relative_path}: candidate marker remains in canonical contract")
@@ -397,22 +411,25 @@ def main() -> int:
     failures: list[str] = []
     failures.extend(validate_required_files())
     if not failures:
-        failures.extend(validate_canonical_contract())
+        failures.extend(validate_contract())
         failures.extend(validate_historical_cases())
         failures.extend(validate_protocol())
         failures.extend(validate_metadata_and_text())
         failures.extend(run_subvalidator("scripts/validate_v040_boundaries.py"))
         failures.extend(run_subvalidator("scripts/validate_v040_migrations.py"))
+        failures.extend(run_subvalidator("scripts/validate_v050_cli.py"))
 
     if failures:
         for failure in failures:
             print(f"FAIL: {failure}")
         return 1
 
-    print("HIT 0.4.0 validation passed")
+    print("HIT 0.5.0 release validation passed")
+    print("- repository and conformance engine: 0.5.0")
     print("- canonical specification/schema/catalog: 0.4.0")
     print("- canonical synthetic assessments: 1")
     print("- executable rubric boundary cases: 48")
+    print("- complete-record conformance cases: 16")
     print("- historical 0.1.0 assessments preserved: 4")
     print("- locked human protocol: unchanged and pending")
     print("- research maturity: Level 1, Defined")
@@ -421,4 +438,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())

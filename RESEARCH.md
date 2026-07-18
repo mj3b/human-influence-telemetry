@@ -20,7 +20,7 @@ Human Influence Telemetry is a design-science research artifact that operational
 
 ## Claim register
 
-| ID | Claim | Status after 0.4.0 | Update condition |
+| ID | Claim | Status after 0.5.0 | Update condition |
 |---|---|---|---|
 | H1 | HIT can represent six substantive dimensions and split Telemetry Integrity in a machine-readable assessment | Demonstrated structurally by the 0.4.0 schema, catalog, canonical example, and CI | Revise when a required construct cannot be represented |
 | H2 | The evidence-state and `0/1/2/IE` rules distinguish affirmative absence, ceremonial presence, substantive exercise, and missing evidence | Demonstrated for 48 synthetic boundary cases; not independently validated | Revise after independent scoring or failed discrimination cases |
@@ -33,15 +33,19 @@ Human Influence Telemetry is a design-science research artifact that operational
 
 ## Executable evidence register
 
-Release `0.4.0` includes:
+Release `0.5.0` includes:
 
-- one canonical schema-valid synthetic assessment;
+- one canonical schema-valid synthetic assessment under contract `0.4.0`;
 - 48 deterministic rubric boundary cases;
 - one accepted, one rejected, and one boundary case for each `FR-01` through `FR-16`;
-- mutation tests for changed outcomes, missing coverage, and duplicate identifiers;
-- validators for the contract, historical case preservation, migration dispositions, protocol artifacts, claim boundaries, and metadata.
+- one valid and fifteen invalid complete-record vectors;
+- reusable semantic checks across actors, claims, findings, Repair triggers, integrity, aggregation, and citations;
+- deterministic text and JSON reports with stable ordering and no runtime timestamps;
+- a machine-readable compatibility manifest;
+- protected migration planning for all four historical assessments;
+- CLI smoke tests and exact-head repository validation.
 
-This is E1 evidence about internal representation and deterministic behavior. It is not E5 evidence about independent reviewer agreement or field effectiveness.
+This is E1 evidence about internal representation, rejection behavior, determinism, and compatibility controls. It is not E5 evidence about independent reviewer agreement or field effectiveness.
 
 ## Historical public application register
 
@@ -76,7 +80,7 @@ Prepared infrastructure is evidence about study design and reproducibility contr
 
 ## Methods
 
-The research program uses artifact construction, normative specification, JSON Schema validation, deterministic fixtures, retrospective public-record case studies, blinded inter-rater testing, comparative boundary analysis, and prospective validation when institutional access becomes available.
+The research program uses artifact construction, normative specification, JSON Schema validation, deterministic fixtures, complete-record mutation testing, retrospective public-record case studies, blinded inter-rater testing, comparative boundary analysis, and prospective validation when institutional access becomes available.
 
 The locked inter-rater design predeclares eligibility, blinding, source boundaries, agreement threshold, critical disagreements, supplementary kappa, preservation of original scores, and publication of passing and failing results.
 
@@ -92,8 +96,9 @@ The locked inter-rater design predeclares eligibility, blinding, source boundari
 8. Litigation records vary by procedural posture.
 9. Framework comparisons may overstate equivalence.
 10. Synthetic fixtures demonstrate deterministic design choices, not empirical correctness.
-11. The first human exercise has only two scorers, seven compared items, and one retrospective case.
-12. A passing first exercise would demonstrate reproducibility under one frozen packet, not general reliability across sectors.
+11. Complete-record mutation tests demonstrate rejection behavior, not evidence truth.
+12. The first human exercise has only two scorers, seven compared items, and one retrospective case.
+13. A passing first exercise would demonstrate reproducibility under one frozen packet, not general reliability across sectors.
 
 ## Maturity model
 
@@ -105,7 +110,7 @@ The locked inter-rater design predeclares eligibility, blinding, source boundari
 | 4 | Validated | Preregistered prospective design and pilot result |
 | 5 | Adopted | Independent institutional use and external reference |
 
-The levels are cumulative. Release `0.4.0` remains Level 1. A stable semantic version does not advance maturity by itself.
+The levels are cumulative. Release `0.5.0` remains Level 1. A stable semantic version or passing conformance suite does not advance maturity by itself.
 
 ## Release discipline
 
@@ -118,5 +123,3 @@ A numbered release requires:
 - accurate citation metadata;
 - preserved historical and locked artifacts;
 - explicit adjacent-system non-claims.
-
-Semantic versioning and research maturity are governed separately by ADR-0001. Normative 0.4.0 rules are governed by ADR-0002. Chronological empirical-result versioning is governed by ADR-0003.
