@@ -1,1 +1,1 @@
-"""HIT candidate implementation modules."""
+"""Human Influence Telemetry reference implementation."""
