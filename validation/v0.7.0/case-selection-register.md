@@ -45,6 +45,17 @@ A documented source search must leave material propositions unresolved. The pack
 
 The unresolved state must arise from evidence limits. A coordinator may not manufacture `IE` by excluding a readily available source that would resolve the proposition.
 
+## Cross-sample evidence-state coverage
+
+The combined three-packet source surface must contain all four tests below before lock:
+
+1. an explicit nonexistence statement, structural impossibility, credibly complete search, or contemporaneous exclusion capable of testing affirmative absence;
+2. a process-specific role, mechanism, step, or channel capable of testing formal presence;
+3. a documented human action with an identifiable decision consequence capable of testing observed exercise;
+4. a documented search or request that leaves a material proposition unresolved and capable of testing indeterminate evidence.
+
+These are packet-selection conditions. They do not assign findings. Independent scorers determine whether the source artifacts satisfy the contract.
+
 ## General inclusion criteria
 
 Every selected case must have:
@@ -88,6 +99,8 @@ For every candidate, record:
 | Proposed period |  |
 | Proposed follow-up period |  |
 | Source classes available |  |
+| Affirmative-absence test artifact |  |
+| Formal-presence test artifact |  |
 | Direct human-action evidence |  |
 | Ceremonial-constraint indicators |  |
 | Material unresolved propositions |  |
@@ -107,15 +120,16 @@ For every candidate, record:
 3. Record what each source can support and what it cannot support.
 4. Test whether the unit, period, actor roster, sampling rule, and Repair trigger can be fixed before scoring.
 5. Conduct a contamination review against public HIT materials and known scorer exposure.
-6. Select one candidate per slot.
-7. Publish the selected-case rationale without publishing expected findings.
-8. Freeze the decision boundary, source manifest, source archive, packet digest, and exclusion list.
-9. Update the protocol lock with three packet IDs.
-10. Run exact-commit validation before recruitment.
+6. Confirm that the combined set covers all four evidence-state tests.
+7. Select one candidate per slot.
+8. Publish the selected-case rationale without publishing expected findings.
+9. Freeze the decision boundary, source manifest, source archive, packet digest, and exclusion list.
+10. Update the protocol lock with three packet IDs.
+11. Run exact-commit validation before recruitment.
 
 ## Decision rule
 
-The selected set must contain credible opportunities for more than one finding category across the 18 substantive dimension units. The coordinator documents the source-surface basis for that expectation. The record must avoid assigning target scores before independent review.
+The selected set must contain credible source surfaces for affirmative absence, formal presence, observed exercise, and indeterminate evidence across the 18 substantive dimension units. The coordinator documents the source basis for this coverage. The record must avoid assigning target scores before independent review.
 
 ## Current decisions
 
