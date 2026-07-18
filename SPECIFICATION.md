@@ -202,8 +202,8 @@ Externally compelled change supports `2` only when a named institutional authori
 
 Assess two objects separately:
 
-1. **Institutional-record integrity:** records generated or retained by the institution and governed systems.
-2. **Assessment-packet integrity:** provenance, completeness, transformation history, and preservation of materials supplied to the assessor.
+1. **institutional-record integrity:** records generated or retained by the institution and governed systems;
+2. **assessment-packet integrity:** provenance, completeness, transformation history, and preservation of materials supplied to the assessor.
 
 Each component receives:
 
