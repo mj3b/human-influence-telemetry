@@ -37,7 +37,7 @@ jobs:
 
       - name: Run executable assessment conformance
         run: >-
-          python -m src.cli conformance --all --format json
+          python -m src conformance --all --format json
           --output hit-conformance-report.json
 
       - name: Smoke-test public CLI commands

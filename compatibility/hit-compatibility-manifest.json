@@ -7,7 +7,7 @@
       "schema_version": "0.4.0",
       "catalog_version": "0.4.0",
       "conformance_mode": "full",
-      "entry_point": "python -m src.cli conformance --path <assessment.json>"
+      "entry_point": "python -m src conformance --path <assessment.json>"
     }
   ],
   "historical_contracts": [
@@ -27,13 +27,13 @@
       "automatic": false,
       "preserve_original": true,
       "method": "fresh_reassessment",
-      "command": "python -m src.cli migration-plan --path <historical-assessment.json>"
+      "command": "python -m src migration-plan --path <historical-assessment.json>"
     }
   ],
   "commands": {
-    "assessment_conformance": "python -m src.cli conformance --path <assessment.json>",
-    "repository_conformance": "python -m src.cli conformance --all",
-    "migration_plan": "python -m src.cli migration-plan --path <historical-assessment.json>"
+    "assessment_conformance": "python -m src conformance --path <assessment.json>",
+    "repository_conformance": "python -m src conformance --all",
+    "migration_plan": "python -m src migration-plan --path <historical-assessment.json>"
   },
   "determinism": {
     "timestamps_in_reports": false,

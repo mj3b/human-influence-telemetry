@@ -27,7 +27,7 @@ HISTORICAL = (
 
 def run_cli(*arguments: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        [sys.executable, "-m", "src.cli", *arguments],
+        [sys.executable, "-m", "src", *arguments],
         cwd=ROOT,
         capture_output=True,
         text=True,

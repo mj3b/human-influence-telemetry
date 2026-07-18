@@ -7,19 +7,19 @@ HIT executable conformance evaluates whether a complete assessment record satisf
 Validate the repository and all deterministic suites:
 
 ```bash
-python -m src.cli conformance --all
+python -m src conformance --all
 ```
 
 Validate one complete `0.4.0` assessment:
 
 ```bash
-python -m src.cli conformance --path assessment.json
+python -m src conformance --path assessment.json
 ```
 
 Produce a JSON report:
 
 ```bash
-python -m src.cli conformance \
+python -m src conformance \
   --path assessment.json \
   --format json \
   --output hit-conformance-report.json
@@ -28,9 +28,11 @@ python -m src.cli conformance \
 Produce a non-mutating plan for reconstructing a historical `0.1.0` assessment under `0.4.0`:
 
 ```bash
-python -m src.cli migration-plan \
+python -m src migration-plan \
   --path case-studies/assessments/toeslagenaffaire-harm-period.json
 ```
+
+`python -m src.cli` remains a compatible direct harness invocation, but `python -m src` is the public package entry point.
 
 ## Exit codes
 
