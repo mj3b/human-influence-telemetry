@@ -1,0 +1,27 @@
+{
+  "record_type": "HIT manual scorer submission receipt",
+  "record_version": "1.0.0",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "scorer_public_id": "HIT-SCORER-A",
+  "submission_role": "superseded_original",
+  "file": {
+    "original_email_attachment_filename": "HIT_Manual_Scorer_Packet_NonTechnical_v1.0.docx",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "size_bytes": 133325,
+    "sha256": "6d1674cd476879ce4792e6dbf55c8ea1b834da4ca8da7cf366d572506d0cceca"
+  },
+  "receipt": {
+    "received_at": "2026-07-18T15:43:11-04:00",
+    "channel": "email",
+    "sender_described_as_final": true
+  },
+  "technical_intake": {
+    "opens_successfully": true,
+    "rendered_pages": 12,
+    "completeness_status": "incomplete",
+    "defect": "Reform finding and frozen source selection were blank.",
+    "preservation_status": "preserved unchanged"
+  },
+  "research_status": "superseded by a scorer-authored correction; retained as part of the audit trail"
+}

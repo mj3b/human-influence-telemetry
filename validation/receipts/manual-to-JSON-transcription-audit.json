@@ -1,0 +1,29 @@
+{
+  "record_type": "HIT manual-to-JSON transcription audit",
+  "record_version": "1.0.0",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "comparison_performed_after_verification": true,
+  "transcriptions": [
+    {
+      "scorer_public_id": "HIT-SCORER-A",
+      "manual_source_role": "corrected_locked",
+      "manual_source_sha256": "53369878cd58f78a820f4281dacd6d83240dea7fd934d857fe64b3f0e3208567",
+      "json_filename": "HIT-IR-SCORER-A.json",
+      "json_sha256": "9c90e2eaf0785cd83f4962058d622a948c2ba60c1de830e06a2474eb85542a33",
+      "scorer_verification": "Confirmed exact.",
+      "schema_valid": true,
+      "status": "locked"
+    },
+    {
+      "scorer_public_id": "HIT-SCORER-B",
+      "manual_source_role": "original_locked",
+      "manual_source_sha256": "f387874663ce8a52b7febc11f7b23ba339f71815bc47ea418496e6cfa7888cee",
+      "json_filename": "HIT-IR-SCORER-B.json",
+      "json_sha256": "553669d57679fc2034b27021a4b021333c94770ecc656d9b18c1c438f494dd9b",
+      "scorer_verification": "Confirmed exact.",
+      "schema_valid": true,
+      "status": "locked"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "record_type": "HIT manual scorer submission receipt",
+  "record_version": "1.0.0",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "scorer_public_id": "HIT-SCORER-A",
+  "submission_role": "locked_corrected_manual_submission",
+  "file": {
+    "original_email_attachment_filename": "HIT_Manual_Scorer_Packet_NonTechnical_v1.0.docx",
+    "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "size_bytes": 108449,
+    "sha256": "53369878cd58f78a820f4281dacd6d83240dea7fd934d857fe64b3f0e3208567",
+    "rendered_pages": 12
+  },
+  "receipt": {
+    "received_at": "2026-07-18T15:53:00-04:00",
+    "received_at_raw_user_statement": "Scorer A: 3:53PM EST",
+    "timezone_normalization_note": "The user used EST colloquially. The timestamp is normalized to Eastern local time on 2026-07-18, UTC-04:00.",
+    "channel": "email",
+    "sender_described_as_final": true
+  },
+  "provenance": {
+    "scorer_personally_made_and_returned_exact_correction": true,
+    "coordinator_edits": false,
+    "correction_scope": "Completed previously blank Reform finding and frozen source fields."
+  },
+  "relationship_to_prior_submission": {
+    "supersedes_sha256": "6d1674cd476879ce4792e6dbf55c8ea1b834da4ca8da7cf366d572506d0cceca",
+    "superseded_file_preserved": true
+  },
+  "lock_status": {
+    "manual_submission_locked": true,
+    "substantive_editing_prohibited": true,
+    "json_transcription_status": "verified and locked",
+    "comparison_status": "completed"
+  }
+}

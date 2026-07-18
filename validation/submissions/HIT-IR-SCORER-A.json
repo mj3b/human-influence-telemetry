@@ -1,0 +1,111 @@
+{
+  "submission_id": "HIT-IR-SCORER-A",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "protocol_version": "1.0.0",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "scorer": {
+    "public_id": "HIT-SCORER-A",
+    "name": null,
+    "organization": null,
+    "orcid": null,
+    "qualification_summary": "Retrospective case study and structural process audit conducted by an AI policy professional, utilizing public investigative journalism, legal data, and internal corporate metrics to evaluate the integrity of human-in-the-loop oversight frameworks.",
+    "conflict_of_interest_disclosure": "The evaluator maintains no commercial, legal, or institutional alignment with Cigna Corporation, its subsidiaries, or the investigating journalistic bodies."
+  },
+  "attestations": {
+    "not_the_hit_author": true,
+    "no_material_contribution_to_method_or_case": true,
+    "no_author_consultation_on_findings": true,
+    "no_other_scorer_consultation": true,
+    "no_prior_access_to_author_cigna_scores": true,
+    "used_only_frozen_packet_case_sources": true,
+    "assessment_boundary_acknowledged": true
+  },
+  "source_access": [
+    {
+      "source_id": "S1",
+      "accessed_on": "2026-07-18",
+      "access_complete": true,
+      "access_note": null,
+      "content_digest": null
+    },
+    {
+      "source_id": "S2",
+      "accessed_on": "2026-07-18",
+      "access_complete": true,
+      "access_note": null,
+      "content_digest": null
+    },
+    {
+      "source_id": "S3",
+      "accessed_on": "2026-07-18",
+      "access_complete": true,
+      "access_note": null,
+      "content_digest": null
+    }
+  ],
+  "substantive_findings": [
+    {
+      "dimension": "counsel",
+      "finding": 1,
+      "evidence_refs": [
+        "S1"
+      ],
+      "rationale": "What the records show: According to the ProPublica investigative reporting, Cigna’s PxDx (procedure-to-diagnosis) review workflow operates as an automated administrative clearinghouse that rejects claims based strictly on algorithmic code mismatches. The system processes medical claims in high-volume electronic batches, allowing medical directors to sign off on thousands of denials simultaneously. Internal tracking logs revealed that medical directors spent an average of only 1.2 seconds per claim disposition, executing these denials without opening the individual case files or reviewing the clinical documentation.\n\nHow this supports the finding: From a policy and process perspective, this workflow exhibits classic indicators of a purely ceremonial human-in-the-loop mechanism. While a formal step exists requiring a credentialed medical director's signature to finalize the adverse determination, the structural constraints of the process—specifically the 1.2-second processing speed—render substantive clinical evaluation impossible. The human authority relies exclusively on a high-level system recommendation, operating without active exposure to or engagement with the underlying clinical evidence before the decision is rendered.\n\nWhat is being inferred: It is inferred that while the underlying medical evidence may have existed within Cigna's broader enterprise data systems, the PxDx operational framework was explicitly optimized to suppress active case-file retrieval. By designing a workflow where human review is reduced to a frictionless batch-approval action, the institution effectively decoupled the human authority from the evidentiary record, ensuring that access to relevant patient particulars occurred only hypothetically, rather than as a prerequisite for decision-making.",
+      "ambiguity_note": "None identified."
+    },
+    {
+      "dimension": "judgment",
+      "finding": 1,
+      "evidence_refs": [
+        "S1"
+      ],
+      "rationale": "What the records show: Internal Cigna logs demonstrate that medical directors processed automated PxDx denials in mass electronic batches, averaging just 1.2 seconds per claim. The records indicate no instances within this workflow of medical directors documenting independent clinical reasoning, weighing alternative diagnostic contexts, or registering formal disagreements with the algorithmic output.\nHow this supports the finding: The metrics present unambiguous signs of a ceremonial process. A 1.2-second decision window is structurally incompatible with the cognitive requirements of substantive evaluation. The process relies entirely on \"boilerplate acceptance\" and a passive \"restatement of system output,\" demonstrating that while the regulatory and institutional capacity to exercise judgment exists on paper, it was not functionally operationalized.\nWhat is being inferred: It is inferred that the operational architecture of the PxDx workflow effectively neutralized the medical directors' discretionary authority. The system was optimized to treat human interaction as a high-speed, non-evaluative bureaucratic checkpoint rather than an independent qualitative layer of clinical review.",
+      "ambiguity_note": "None identified."
+    },
+    {
+      "dimension": "command",
+      "finding": 1,
+      "evidence_refs": [
+        "S1"
+      ],
+      "rationale": "What the records show: The fixed public records indicate that Cigna’s automated PxDx workflow requires a medical director's signature to finalize post-service claim rejections. However, the system is structured to execute these actions via rapid, high-volume electronic batch processing. Internal logs confirm that medical directors cleared these adverse determinations in an average of 1.2 seconds per claim, with no recorded instances within this workflow of a director halting, modifying, or escalating an individual system recommendation.\nHow this supports the finding: This configuration represents a clear failure sign where the human authority provides a \"signature without practical discretion.\" While the medical directors possess the formal, legal authority to execute the action on paper, the operational environment relies completely on the technical system controlling the meaningful intervention. The structural mechanics of the batch-clearance system effectively preempt any realistic window for a human reviewer to reject or modify the algorithmic output.\nWhat is being inferred: It is inferred that the institutional framework was explicitly optimized to disincentivize human intervention within the PxDx pipeline. By establishing an operational baseline where deviation from the automated output requires an unfeasible expenditure of time per claim, the workflow effectively reduced the named human authority to a rubber-stamping mechanism, leaving the true commanding influence to the technical system.",
+      "ambiguity_note": "None identified."
+    },
+    {
+      "dimension": "correction",
+      "finding": 1,
+      "evidence_refs": [
+        "S1"
+      ],
+      "rationale": "What the records show: The public record notes that patients whose claims are denied via the PxDx process retain the formal right to appeal the decision through Cigna's standard administrative channels. However, the ProPublica reporting highlights that only a tiny fraction of policyholders actually pursue the appeal process, and for those who do, the system relies heavily on standardized, boilerplate denials unless extensive secondary documentation is forced through. Furthermore, the PxDx pipeline itself functions as a post-service clearing system that operates without an internal mechanization for real-time human interruption or mid-workflow contestation by the medical directors during the batch-clearance process.\nHow this supports the finding: The appeal system demonstrates the structural characteristics of a \"formal channel with no effect\" in practice. While an operative path exists on paper to satisfy regulatory requirements, the immense procedural friction placed on the consumer means the vast majority of algorithmic rejections stand unappealed. The reliance on template dispositions to manage high-volume disputes further shows that substantive reconsideration is an outlier rather than a systemic check, reinforcing a ceremonial finding where the pathway for correction is structurally suppressed.\nWhat is being inferred: It is inferred that Cigna's post-service architecture intentionally relies on consumer inertia and the complexity of the formal appeal framework as a cost-containment barrier. By isolating the rapid-fire PxDx workflow from any direct, immediate interruption capability, the operational design ensures that reversals occur ex-post, shifting the entire administrative burden of correcting algorithmic errors onto the patient and provider.",
+      "ambiguity_note": "None identified."
+    },
+    {
+      "dimension": "repair",
+      "finding": 1,
+      "evidence_refs": [
+        "S1"
+      ],
+      "rationale": "What the records show: The public record surrounding Cigna's PxDx workflow indicates that while federal court oversight and regulatory scrutiny forced modifications to how these automated processes are managed, there is no evidence of an internal, proactive remediation framework owned by a specific named actor within the company. The ProPublica report details that when automated denials are issued incorrectly, the system relies on individual patients and providers to initiate appeals independently, rather than triggering systemic corporate restitution.\nHow this supports the finding: From a policy and governance perspective, this indicates a failure sign where the operational process is corrected at a macro level (via legal/regulatory settlement or administrative modification), but previously affected individual policyholders remain unrepaired unless they navigate the complex appeal apparatus themselves. Because Cigna's internal architecture does not map a named corporate actor to actively own individual patient restitution or retroactive correction for batch-denied claims, the repair dimension remains ceremonial.\nWhat is being inferred: It is inferred that the institutional framework treats the \"harm\" of an incorrect automated denial as an acceptable administrative externality. By withholding a proactive, systemic remediation owner, the company ensures that the costs and administrative burdens of repairing erroneous rejections are offloaded permanently onto external consumers, keeping internal corporate repair purely reactive and high-friction.",
+      "ambiguity_note": "None identified"
+    },
+    {
+      "dimension": "reform",
+      "finding": 1,
+      "evidence_refs": [
+        "S1"
+      ],
+      "rationale": "What the records show: The public record demonstrates that the structural parameters of the PxDx system—such as the algorithmic procedure-to-diagnosis matching rules and the high-volume batch-clearance interface—are corporate-level technical architectures. The medical directors or physician reviewers acting within the workflow have no authority to edit matching thresholds, modify the automated routing rules, or retire the model. Any substantive structural reform or modification noted within the designated period was mandated externally by a federal court order or controlled by separate corporate executive and technical leadership.\nHow this supports the finding: From an institutional governance perspective, this indicates a clear failure sign where \"material change is controlled only by another actor.\" The human authorities tasked with executing the daily claim dispositions operate downstream from the system's design. Because the power to enact a baseline workflow redesign or threshold revision is completely divorced from the named reviewers who interface with the system, the reform capacity for the evaluated human role is strictly ceremonial.\nWhat is being inferred: It is inferred that the institutional decision architecture purposefully encapsulates the PxDx system to insulate it from discretionary field adjustments. By denying medical directors the technical permissions or administrative authority to override the fundamental logic of the algorithmic pipeline, the organization ensures that the underlying system architecture remains rigid and standardized across all processed claims.",
+      "ambiguity_note": "None identified."
+    }
+  ],
+  "telemetry_integrity": {
+    "status": "limited",
+    "evidence_refs": [
+      "S1"
+    ],
+    "rationale": "What the records show: The primary source evidence driving the previous dimension findings consists of a high-profile public investigative journalism report (ProPublica) and secondary references to corporate logging metrics and legal filings. The core telemetry includes concrete internal metrics—specifically the tracking logs establishing the 1.2-second mean clearance time per claim disposition—and specific details regarding batch electronic signatures.\nHow this supports the finding: From a policy and audit professional perspective, the evidentiary packet warrants a \"limited\" integrity finding. While the data points are highly usable, derived from an established investigative body, and sufficient to identify systemic operational patterns, they represent a retrospective reconstruction from a fixed public record rather than a primary, unredacted system audit log. Because this evaluation relies on selected public disclosures, it lacks the raw transactional completeness, systemic independence, and tamper-evident metadata validation required for an \"adequate\" institutional audit rating.\nWhat is being inferred: It is inferred that while the internal tracking logs cited are authentic and indicative of institutional practice, the complete dataset or full schema of Cigna's PxDx administrative telemetry remains closed or proprietary. Consequently, the assessment operates under bounded confidence, relying on public and legal summaries to establish workflow mechanics.",
+    "ambiguity_note": "The exact data structure, full baseline sample of the internal logs, and explicit system-level audit-trail controls remain unobserved outside of the public court and media disclosures."
+  },
+  "submitted_at": "2026-07-18T15:29:42-05:00"
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate HIT v0.4.0 public-case migration dispositions."""
+"""Validate HIT v0.4.0 public-case migration dispositions after the human result."""
 
 from __future__ import annotations
 
@@ -43,18 +43,13 @@ EXPECTED = {
     "HIT-CASE-CIGNA-PXDX-2022-2025": (
         "case-studies/assessments/cigna-pxdx.json",
         "e1a9458b656b103f0160d89c02fc6da5cacab746",
-        "deferred_locked_protocol",
+        "protocol_completed_historical_version_bound",
     ),
 }
 
 
 def load_json(path: Path) -> Any:
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except OSError as exc:
-        raise RuntimeError(f"cannot load {path}: {exc}") from exc
-    except json.JSONDecodeError as exc:
-        raise RuntimeError(f"cannot parse JSON {path}: {exc}") from exc
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def git_blob_sha(path: Path) -> str:
@@ -86,9 +81,9 @@ def validate_manifest(manifest: dict[str, Any]) -> list[str]:
         if case.get("original_blob_sha") != blob_sha:
             failures.append(f"{assessment_id}: recorded historical blob SHA changed")
         if case.get("disposition") != disposition:
-            failures.append(f"{assessment_id}: migration disposition changed")
+            failures.append(f"{assessment_id}: migration disposition is inconsistent")
         if case.get("candidate_record_path") is not None:
-            failures.append(f"{assessment_id}: candidate record claimed without fresh migration")
+            failures.append(f"{assessment_id}: current-contract record claimed without fresh migration")
         if case.get("findings_changed") is not False:
             failures.append(f"{assessment_id}: historical findings may not be changed")
         if case.get("release_exception") is not True:
@@ -128,10 +123,10 @@ def validate_mutation_detection(manifest: dict[str, Any]) -> list[str]:
 
     claimed_candidate = copy.deepcopy(manifest)
     claimed_candidate["cases"][0]["candidate_record_path"] = (
-        "case-studies/migrations/v0.4.0/candidate.json"
+        "case-studies/migrations/v0.4.0/current.json"
     )
     if not validate_manifest(claimed_candidate):
-        failures.append("migration validator failed to detect unsupported candidate claim")
+        failures.append("migration validator failed to detect unsupported current-contract claim")
 
     return failures
 
@@ -142,7 +137,7 @@ def validate_readme() -> list[str]:
     for required in (
         "immutable historical artifacts",
         "historical_version_bound",
-        "deferred_locked_protocol",
+        "protocol_completed_historical_version_bound",
         "prevent silent reinterpretation",
     ):
         if required not in text:
@@ -158,25 +153,21 @@ def main() -> int:
         elif path.stat().st_size == 0:
             failures.append(f"empty migration artifact: {path.relative_to(ROOT)}")
 
-    if failures:
-        for failure in failures:
-            print(f"FAIL: {failure}")
-        return 1
+    if not failures:
+        schema = load_json(SCHEMA_PATH)
+        manifest = load_json(MANIFEST_PATH)
+        try:
+            Draft202012Validator.check_schema(schema)
+        except Exception as exc:
+            failures.append(f"migration manifest schema is invalid: {exc}")
+        else:
+            validator = Draft202012Validator(schema)
+            for error in sorted(validator.iter_errors(manifest), key=lambda item: list(item.path)):
+                failures.append(f"migration manifest: {error.message}")
 
-    schema = load_json(SCHEMA_PATH)
-    manifest = load_json(MANIFEST_PATH)
-    try:
-        Draft202012Validator.check_schema(schema)
-    except Exception as exc:  # pragma: no cover
-        failures.append(f"migration manifest schema is invalid: {exc}")
-    else:
-        validator = Draft202012Validator(schema)
-        for error in sorted(validator.iter_errors(manifest), key=lambda item: list(item.path)):
-            failures.append(f"migration manifest: {error.message}")
-
-    failures.extend(validate_manifest(manifest))
-    failures.extend(validate_mutation_detection(manifest))
-    failures.extend(validate_readme())
+        failures.extend(validate_manifest(manifest))
+        failures.extend(validate_mutation_detection(manifest))
+        failures.extend(validate_readme())
 
     if failures:
         for failure in failures:
@@ -186,8 +177,8 @@ def main() -> int:
     print("HIT v0.4.0 case migration validation passed")
     print("- historical assessments preserved: 4")
     print("- historical version bounds: 3")
-    print("- locked-protocol deferrals: 1")
-    print("- candidate case findings claimed: 0")
+    print("- protocol-completed historical bounds: 1")
+    print("- current-contract case findings claimed: 0")
     print("- mutation checks: 3")
     return 0
 

@@ -1,0 +1,62 @@
+{
+  "record_type": "HIT inter-rater preservation manifest",
+  "record_version": "1.0.0",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "files": [
+    {
+      "role": "manual/A/original-incomplete",
+      "filename": "HIT_Manual_Scorer_Packet_NonTechnical_v1.0(1).docx",
+      "size_bytes": 133325,
+      "sha256": "6d1674cd476879ce4792e6dbf55c8ea1b834da4ca8da7cf366d572506d0cceca"
+    },
+    {
+      "role": "manual/A/corrected-locked",
+      "filename": "HIT_Manual_Scorer_Packet_NonTechnical_v1.0(2).docx",
+      "size_bytes": 108449,
+      "sha256": "53369878cd58f78a820f4281dacd6d83240dea7fd934d857fe64b3f0e3208567"
+    },
+    {
+      "role": "manual/B/locked",
+      "filename": "HIT_Manual_Scorer_Packet_NonTechnical_v1.0.pdf",
+      "size_bytes": 359965,
+      "sha256": "f387874663ce8a52b7febc11f7b23ba339f71815bc47ea418496e6cfa7888cee"
+    },
+    {
+      "role": "json/A",
+      "filename": "HIT-IR-SCORER-A.json",
+      "size_bytes": 14079,
+      "sha256": "9c90e2eaf0785cd83f4962058d622a948c2ba60c1de830e06a2474eb85542a33"
+    },
+    {
+      "role": "json/B",
+      "filename": "HIT-IR-SCORER-B.json",
+      "size_bytes": 10231,
+      "sha256": "553669d57679fc2034b27021a4b021333c94770ecc656d9b18c1c438f494dd9b"
+    },
+    {
+      "role": "comparison/json",
+      "filename": "pre-adjudication-comparison.json",
+      "size_bytes": 604,
+      "sha256": "91b28ec23f6f446be3ccd4868d9975a7f143da917de87ab5c2f5ac0123b3ced2"
+    },
+    {
+      "role": "comparison/markdown",
+      "filename": "pre-adjudication-comparison.md",
+      "size_bytes": 1020,
+      "sha256": "8814abfff2a198deaf2dd461d637c8d14aa84bdd02ecb63ece0289aa0123e6e8"
+    }
+  ],
+  "comparison_result": {
+    "exact_agreements": 7,
+    "items_compared": 7,
+    "exact_agreement_proportion": 1.0,
+    "critical_disagreement_count": 0,
+    "advancement_threshold_met": true
+  },
+  "release_asset_bundle": {
+    "filename": "HIT-v0.6.0-human-inter-rater-result-assets.zip",
+    "size_bytes": 555666,
+    "sha256": "de655f5766009e8cd8a7c52652c53cc7930586f072007839877d542f4138617f"
+  }
+}
