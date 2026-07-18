@@ -2,14 +2,14 @@ cff-version: 1.2.0
 message: "If you use Human Influence Telemetry, cite the software release and identify the version used."
 title: "Human Influence Telemetry"
 type: software
-version: "0.2.1"
-date-released: "2026-07-16"
+version: "0.4.0"
+date-released: "2026-07-18"
 authors:
   - family-names: Banasihan
     given-names: Mark Julius
     orcid: "https://orcid.org/0009-0001-8121-2878"
     affiliation: "Node & Norm"
-abstract: "A documentary assurance method for testing whether formal human oversight retained practical force in AI-mediated institutional decisions."
+abstract: "An open documentary assurance method for evaluating whether human authority retained practical force in AI-mediated institutional decisions."
 license: Apache-2.0
 repository-code: "https://github.com/mj3b/human-influence-telemetry"
 identifiers:
@@ -18,11 +18,14 @@ identifiers:
     description: "Canonical public software repository."
   - type: doi
     value: "10.5281/zenodo.21204892"
-    description: "Originating research concept DOI. This is not a version DOI for the standalone software release."
+    description: "Originating research concept DOI; not a standalone software version DOI."
 keywords:
   - AI governance
   - human oversight
   - decision accountability
-  - assurance
+  - AI assurance
+  - algorithmic accountability
   - institutional decision-making
   - human influence telemetry
+  - documentary evidence
+  - agentic AI

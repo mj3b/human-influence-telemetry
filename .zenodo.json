@@ -1,6 +1,6 @@
 {
   "title": "Human Influence Telemetry",
-  "description": "A documentary assurance method for testing whether formal human oversight retained practical force in AI-mediated institutional decisions.",
+  "description": "An open documentary assurance method for evaluating whether human authority retained practical force in AI-mediated institutional decisions.",
   "creators": [
     {
       "name": "Banasihan, Mark Julius",
@@ -8,7 +8,7 @@
       "affiliation": "Node & Norm"
     }
   ],
-  "version": "0.2.1",
+  "version": "0.4.0",
   "upload_type": "software",
   "access_right": "open",
   "license": "Apache-2.0",
@@ -17,9 +17,12 @@
     "AI governance",
     "human oversight",
     "decision accountability",
-    "assurance",
+    "AI assurance",
+    "algorithmic accountability",
     "institutional decision-making",
-    "human influence telemetry"
+    "human influence telemetry",
+    "documentary evidence",
+    "agentic AI"
   ],
   "related_identifiers": [
     {

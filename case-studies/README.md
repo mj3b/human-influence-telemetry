@@ -1,34 +1,35 @@
 # Public-record case studies
 
-This directory contains retrospective Human Influence Telemetry applications to publicly documented institutional decision processes released with repository version 0.2.0.
+This directory contains retrospective Human Influence Telemetry applications released with repository version `0.2.0` under specification and assessment schema `0.1.0`.
 
-The cases are evidence demonstrations, not legal opinions, compliance determinations, certifications, or causal validation of HIT. Each assessment is bounded by the records available to the public. A finding of `IE` means the record cannot distinguish absence from unavailable evidence.
+The cases are evidence demonstrations, not legal opinions, compliance determinations, certifications, or causal validation. A finding of `IE` means the historical record could not distinguish absence from unavailable evidence under the `0.1.0` contract.
 
-## Cases
+## Historical cases
 
-| Case | Institutional setting | Public assessment files | Primary contribution |
+| Case | Institutional setting | Historical assessment files | 0.4.0 disposition |
 |---|---|---|---|
-| [Dutch childcare-benefits scandal](toeslagenaffaire.md) | Public-benefits fraud designation and clawback | [`toeslagenaffaire-harm-period.json`](assessments/toeslagenaffaire-harm-period.json) | Separates ceremonial authority and appeal from effective counsel, judgment, repair, and reform |
-| [Obermeyer population-health algorithm](obermeyer.md) | Algorithmic allocation of care-management attention | [`obermeyer-deployers.json`](assessments/obermeyer-deployers.json), [`obermeyer-manufacturer.json`](assessments/obermeyer-manufacturer.json) | Shows why deployers and manufacturers must be assessed as separate actors |
-| [Cigna PxDx](cigna-pxdx.md) | Algorithmic post-service claims review | [`cigna-pxdx.json`](assessments/cigna-pxdx.json) | Creates a designed disagreement for inter-rater testing of Command and evidentiary weight |
+| [Dutch childcare-benefits scandal](toeslagenaffaire.md) | Public-benefits fraud designation and clawback | [`toeslagenaffaire-harm-period.json`](assessments/toeslagenaffaire-harm-period.json) | `historical_version_bound` |
+| [Obermeyer population-health algorithm](obermeyer.md) | Algorithmic allocation of care-management attention | [`obermeyer-deployers.json`](assessments/obermeyer-deployers.json), [`obermeyer-manufacturer.json`](assessments/obermeyer-manufacturer.json) | `historical_version_bound` |
+| [Cigna PxDx](cigna-pxdx.md) | Algorithmic post-service claims review | [`cigna-pxdx.json`](assessments/cigna-pxdx.json) | `deferred_locked_protocol` |
 
-## Method
+## Contract boundary
 
-Each case follows the public [HIT Application Handbook](../docs/application-handbook.md), specification version 0.1.0:
+The four machine-readable files conform to schema `0.1.0`. They are immutable historical artifacts and do not conform automatically to `0.4.0`.
 
-1. define one decision process, institutional unit, period, and evidence boundary;
-2. request or identify artifacts by type rather than accepting oversight claims;
-3. assign `0`, `1`, `2`, or `IE` by dimension;
-4. resolve genuine ordinal ambiguity downward and document it;
-5. report Telemetry Integrity separately;
-6. preserve source limitations and rival interpretations.
+Migration requires a fresh bounded reassessment under the current specification, schema, actor-authority matrix, evidence-state rules, Repair trigger, sampling and aggregation contract, structured locators, and split Telemetry Integrity model.
 
-The machine-readable files conform to assessment schema version 0.1.0. Repository version 0.2.0 adds these evidence records without changing the schema or scoring semantics.
+No `0.4.0` public-case finding is claimed in release `0.4.0`.
 
-## Provenance rule
+## Migration controls
 
-The case narratives were extracted from the private *Poenitentia Institutionum* research repository under the controls recorded in [`PROVENANCE.md`](../PROVENANCE.md). The public files are canonical for HIT use. Private annotations and chapter materials are not required to reproduce these assessments.
+The migration manifest in [`migrations/v0.4.0/`](migrations/v0.4.0/) pins every historical file by Git blob SHA and records its explicit disposition and update condition.
 
-## Current research status
+Cigna migration is deferred until the locked human exercise publishes its original submissions and pre-adjudication result. This prevents the new rubric from contaminating or retrospectively changing the locked `0.1.0` scorer contract.
 
-The released cases demonstrate that the rubric can be applied to heterogeneous public records and can produce differentiated profiles. They do not establish inter-rater reliability. The next empirical gate is independent scoring using the public source packets and the protocol planned in [`ROADMAP.md`](../ROADMAP.md).
+## Provenance
+
+The narratives were extracted from the private *Poenitentia Institutionum* research repository under the controls in [`PROVENANCE.md`](../PROVENANCE.md). The public files are canonical for HIT use. Private annotations are not normative dependencies.
+
+## Research status
+
+The historical cases demonstrate that the initial rubric could be applied to heterogeneous public records and produce differentiated actor profiles. They do not establish independent reviewer agreement, field validity, causal effectiveness, legal liability, certification, or independent adoption.

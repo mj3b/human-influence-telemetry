@@ -1,31 +1,42 @@
 # Limitations
 
-Human Influence Telemetry is a documentary assessment method. Its principal limitation is that records can fail in two directions: they may omit genuine human influence, or they may create a ceremonial appearance of influence that did not affect the decision.
+Human Influence Telemetry is a documentary assessment method. Records can fail in two directions: they may omit genuine human influence, or they may create a ceremonial appearance of influence that did not affect the decision.
 
 ## Current limitations
 
 1. **Documentary dependence.** HIT cannot observe unrecorded deliberation or informal intervention.
-2. **Record manipulation.** Institutions may curate, omit, or retrospectively rationalize records.
-3. **Ordinal compression.** Findings of 0, 1, and 2 simplify variation within each dimension.
-4. **Threshold sensitivity.** The distinction between ceremonial and substantive exercise may depend on sample size and context.
-5. **Selection bias.** Retrospective public cases often involve known failures and may not represent routine practice.
-6. **Sector dependence.** Evidence artifacts differ across insurance, public benefits, healthcare, hiring, finance, and other domains.
-7. **Causal uncertainty.** A high HIT finding does not prove that human influence improved the outcome.
-8. **Integrity dependence.** Weak telemetry integrity can make substantive findings unreliable.
-9. **Legal boundary.** HIT does not determine compliance, liability, due process, fiduciary duty, or conformity with a standard.
-10. **Human fallibility.** Substantive human participation can still produce biased, irrational, unlawful, or harmful decisions.
+2. **Record manipulation.** Institutions may curate, omit, transform, or retrospectively rationalize records.
+3. **Integrity uncertainty.** Split Telemetry Integrity improves diagnosis but does not prove that recorded content is true.
+4. **Ordinal compression.** Findings `0`, `1`, and `2` simplify variation within each dimension.
+5. **Threshold sensitivity.** Formal presence, operational capability, and observed exercise may be difficult to distinguish in sparse records.
+6. **Sampling sensitivity.** Dominant-pattern findings depend on a credible record universe and selection rule.
+7. **Rare-event ambiguity.** One observed exercise may represent a general capacity, a narrow exception, or conduct outside the dominant architecture.
+8. **Actor-boundary risk.** Distributed authority may be misattributed across vendors, deployers, affiliates, professionals, regulators, and courts.
+9. **Contradictory evidence.** Weighting factors structure judgment but do not eliminate reasonable disagreement.
+10. **Repair-trigger uncertainty.** Public records may establish allegations or indicators without establishing qualifying harm.
+11. **Temporal leakage.** Later correction, repair, or reform may be unrelated to the assessed failure unless linkage is documented.
+12. **Selection bias.** Retrospective public cases often involve known failures and may not represent routine practice.
+13. **Sector dependence.** Evidence artifacts differ across insurance, public benefits, healthcare, employment, finance, and other domains.
+14. **Causal uncertainty.** A high HIT finding does not prove that human influence improved an outcome or reduced harm.
+15. **Legal boundary.** HIT does not determine compliance, liability, due process, admissibility, fiduciary duty, or standards conformity.
+16. **Human fallibility.** Substantive human participation can still produce biased, irrational, unlawful, or harmful decisions.
+17. **Synthetic-fixture boundary.** The 48 boundary fixtures demonstrate deterministic implementation of chosen rules; they do not establish empirical validity.
+18. **Historical-case compatibility.** The released public cases use `0.1.0` and have not been represented as `0.4.0` assessments.
+19. **Reliability evidence absent.** No eligible independent human pair has completed the locked inter-rater protocol.
+20. **No independent adoption.** The repository does not establish use by an institution outside the author's control.
 
 ## Known open questions
 
-- What inter-rater reliability threshold should govern advancement to a stable release?
-- How should exercised capacity be calibrated across small and large decision samples?
-- Should some dimensions contain subscales without weakening interpretability?
-- How should HIT assess distributed authority across several institutional actors?
-- How should system-level reform be distinguished from local process repair?
-- Which telemetry-integrity controls are necessary for high-stakes deployment?
+- How stable are `0.4.0` findings across independent reviewers and sectors?
+- Which tested capabilities may legitimately substitute for observed exercise in different sample designs?
+- How should dominant-pattern aggregation be calibrated for low-frequency but high-consequence interventions?
+- When should distributed authority be reported as separate actor findings rather than one combined architecture?
+- Which Telemetry Integrity attributes are necessary for production assurance in different sectors?
+- How should HIT findings be linked to outcomes without overstating causality?
+- Which external legal or standards requirements can HIT evidence support, and under what local conditions?
 
-## Interpretation rule
+## Interpretation rules
 
-HIT findings must be reported as evidence about the decision record, not as claims about intentions or moral character.
+HIT findings are evidence claims about a bounded documentary record, not claims about intentions, moral character, legal guilt, or outcome quality.
 
-A finding of insufficient evidence is not evidence that human influence was absent. A high finding is not evidence that the decision was correct.
+`IE` is not evidence of absence. A high finding is not evidence that the decision was correct. Structural schema validity is not substantive conformance. Conformance is not certification.
