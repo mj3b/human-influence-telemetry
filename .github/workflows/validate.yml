@@ -40,3 +40,6 @@ jobs:
 
       - name: Validate HIT v0.4.0 case migrations
         run: python scripts/validate_v040_migrations.py
+
+      - name: Validate HIT v0.4.0 release readiness
+        run: python scripts/validate_v040_release_readiness.py
