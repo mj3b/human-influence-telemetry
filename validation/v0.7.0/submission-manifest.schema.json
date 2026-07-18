@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mj3b/human-influence-telemetry/blob/main/validation/v0.7.0/submission-manifest.schema.json",
+  "title": "HIT 0.4.0 Replication Submission Manifest",
+  "description": "Identity-separated manifest for one independent scorer submission under HIT-IRP-HIT040-002.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "submission_id",
+    "protocol_id",
+    "protocol_version",
+    "packet_id",
+    "packet_version",
+    "scorer_public_id",
+    "qualification_summary",
+    "conflict_of_interest_disclosure",
+    "attestations",
+    "source_access",
+    "tool_use",
+    "assessment_file",
+    "submitted_at"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "sourceAccess": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "access_complete", "accessed_on", "access_note"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "access_complete": {"type": "boolean"},
+        "accessed_on": {"type": "string", "format": "date"},
+        "access_note": {"type": ["string", "null"]},
+        "local_copy_sha256": {"oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]}
+      }
+    },
+    "toolUse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool_name", "tool_version", "purpose", "substantive_role"],
+      "properties": {
+        "tool_name": {"type": "string", "minLength": 1},
+        "tool_version": {"type": ["string", "null"]},
+        "purpose": {"type": "string", "minLength": 5},
+        "substantive_role": {"const": false}
+      }
+    },
+    "fileRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["filename", "media_type", "size_bytes", "sha256"],
+      "properties": {
+        "filename": {"type": "string", "minLength": 1},
+        "media_type": {"type": "string", "minLength": 3},
+        "size_bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  },
+  "properties": {
+    "submission_id": {"type": "string", "pattern": "^HIT-IR-HIT040-[A-Za-z0-9._-]+$"},
+    "protocol_id": {"const": "HIT-IRP-HIT040-002"},
+    "protocol_version": {"type": "string", "minLength": 3},
+    "packet_id": {"type": "string", "pattern": "^HIT-IR-HIT040-PKT-[A-Za-z0-9._-]+$"},
+    "packet_version": {"type": "string", "minLength": 3},
+    "scorer_public_id": {"type": "string", "pattern": "^HIT-SCORER-[A-Za-z0-9._-]+$"},
+    "qualification_summary": {"type": "string", "minLength": 30},
+    "conflict_of_interest_disclosure": {"type": "string", "minLength": 5},
+    "attestations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "not_the_hit_author",
+        "no_material_contribution_to_current_contract",
+        "no_material_contribution_to_protocol_or_packet",
+        "no_author_consultation_on_findings",
+        "no_other_scorer_consultation",
+        "no_prior_access_to_author_or_coordinator_findings",
+        "used_only_frozen_packet_sources",
+        "no_generative_ai_for_substantive_scoring",
+        "boundary_and_publication_rules_acknowledged"
+      ],
+      "properties": {
+        "not_the_hit_author": {"const": true},
+        "no_material_contribution_to_current_contract": {"const": true},
+        "no_material_contribution_to_protocol_or_packet": {"const": true},
+        "no_author_consultation_on_findings": {"const": true},
+        "no_other_scorer_consultation": {"const": true},
+        "no_prior_access_to_author_or_coordinator_findings": {"const": true},
+        "used_only_frozen_packet_sources": {"const": true},
+        "no_generative_ai_for_substantive_scoring": {"const": true},
+        "boundary_and_publication_rules_acknowledged": {"const": true}
+      }
+    },
+    "source_access": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/sourceAccess"}
+    },
+    "tool_use": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/toolUse"}
+    },
+    "assessment_file": {"$ref": "#/$defs/fileRecord"},
+    "original_working_record": {
+      "oneOf": [
+        {"$ref": "#/$defs/fileRecord"},
+        {"type": "null"}
+      ]
+    },
+    "submitted_at": {"type": "string", "format": "date-time"},
+    "general_limitations": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 10}
+    }
+  }
+}
