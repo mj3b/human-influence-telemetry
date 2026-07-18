@@ -24,6 +24,8 @@ The study contains three packets selected before scoring:
 
 These labels govern case selection. Scorers do not receive the labels or any expected findings.
 
+Across the selected set, the frozen source surfaces must include all four evidence-state tests: an artifact capable of establishing affirmative absence, a process-specific artifact establishing formal presence, a documented observed exercise, and a documented unresolved proposition after a defined search. This is a source-coverage rule. It does not assign target findings.
+
 Each packet fixes:
 
 - institutional unit and decision process;
