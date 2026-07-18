@@ -35,6 +35,12 @@ jobs:
           set -o pipefail
           python scripts/validate.py 2>&1 | tee hit-validation-report.txt
 
+      - name: Validate HIT 0.7.0 current-contract replication candidate
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_v070_candidate.py 2>&1 | tee hit-v070-candidate-report.txt
+
       - name: Run executable assessment conformance
         run: >-
           python -m src conformance --all --format json
@@ -50,5 +56,6 @@ jobs:
           name: hit-validation-reports
           path: |
             hit-validation-report.txt
+            hit-v070-candidate-report.txt
             hit-conformance-report.json
           if-no-files-found: error
