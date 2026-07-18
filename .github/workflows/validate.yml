@@ -29,5 +29,17 @@ jobs:
       - name: Check fixture readability
         run: python scripts/check_fixture_format.py
 
-      - name: Validate HIT artifacts
+      - name: Validate released HIT artifacts
         run: python scripts/validate.py
+
+      - name: Validate HIT v0.4.0 candidate contract
+        run: python scripts/validate_v040_candidate.py
+
+      - name: Validate HIT v0.4.0 boundary fixtures
+        run: python scripts/validate_v040_boundaries.py
+
+      - name: Validate HIT v0.4.0 case migrations
+        run: python scripts/validate_v040_migrations.py
+
+      - name: Validate HIT v0.4.0 release readiness
+        run: python scripts/validate_v040_release_readiness.py
