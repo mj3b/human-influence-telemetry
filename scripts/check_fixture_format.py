@@ -10,8 +10,8 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE_PATHS = [
-    ROOT / "fixtures" / "substantive.json",
-    ROOT / "fixtures" / "ceremonial.json",
+    ROOT / "fixtures" / "substantive-human-influence.json",
+    ROOT / "fixtures" / "ceremonial-review.json",
     ROOT / "fixtures" / "insufficient-evidence.json",
 ]
 CANONICAL_EXAMPLE = ROOT / "fixtures" / "v0.4.0-canonical-example.json"
