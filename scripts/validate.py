@@ -1,441 +1,199 @@
 #!/usr/bin/env python3
-"""Validate the released HIT 0.5.0 implementation and preserved 0.4.0 contract."""
-
+"""Validate HIT 0.6.0, the bounded human result, and preserved contracts."""
 from __future__ import annotations
-
-import hashlib
-import json
-import subprocess
-import sys
+import hashlib, importlib.util, json, subprocess, sys
 from pathlib import Path
 from typing import Any
-
 import yaml
 from jsonschema import Draft202012Validator, FormatChecker
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-
 from src.validation.assessment import validate_assessment
 
-RELEASE_VERSION = "0.5.0"
-RELEASE_DATE = "2026-07-18"
-ENGINE_VERSION = "0.5.0"
-SPECIFICATION_VERSION = "0.4.0"
-SCHEMA_VERSION = "0.4.0"
-CATALOG_VERSION = "0.4.0"
-LEGACY_VERSION = "0.1.0"
-ORIGINATING_DOI = "10.5281/zenodo.21204892"
+RELEASE, DATE, ENGINE, CONTRACT, LEGACY = "0.6.0", "2026-07-18", "0.5.0", "0.4.0", "0.1.0"
+DOI = "10.5281/zenodo.21204892"
+A_SHA = "9c90e2eaf0785cd83f4962058d622a948c2ba60c1de830e06a2474eb85542a33"
+B_SHA = "553669d57679fc2034b27021a4b021333c94770ecc656d9b18c1c438f494dd9b"
+CMP_SHA = "91b28ec23f6f446be3ccd4868d9975a7f143da917de87ab5c2f5ac0123b3ced2"
+BUNDLE_SHA = "de655f5766009e8cd8a7c52652c53cc7930586f072007839877d542f4138617f"
 
-SCHEMA_PATH = ROOT / "schema" / "hit-assessment.schema.json"
-CATALOG_PATH = ROOT / "schema" / "hit-dimension-catalog.json"
-EXAMPLE_PATH = ROOT / "fixtures" / "v0.4.0-canonical-example.json"
-LEGACY_SCHEMA_PATH = ROOT / "archive" / "v0.1.0" / "schema" / "hit-assessment.schema.json"
-MIGRATION_MANIFEST_PATH = ROOT / "case-studies" / "migrations" / "v0.4.0" / "migration-manifest.json"
-PROTOCOL_LOCK_PATH = ROOT / "validation" / "protocol-lock.json"
-COMPATIBILITY_PATH = ROOT / "compatibility" / "hit-compatibility-manifest.json"
-CITATION_PATH = ROOT / "CITATION.cff"
-ZENODO_PATH = ROOT / ".zenodo.json"
-
-EXPECTED_DIMENSIONS = {"counsel", "judgment", "command", "correction", "repair", "reform"}
-EXPECTED_EVIDENCE_STATES = {
-    "affirmative_absence",
-    "formal_presence",
-    "operational_capability",
-    "observed_exercise",
-    "indeterminate",
-}
-EXPECTED_CASES = {
-    "HIT-CASE-TOESLAGENAFFAIRE-HARM-2013-2019": (
-        "case-studies/assessments/toeslagenaffaire-harm-period.json",
-        "1f0a8099974ce0970df97d42cd4f10079e5e0e09",
-    ),
-    "HIT-CASE-OBERMEYER-DEPLOYERS-2019": (
-        "case-studies/assessments/obermeyer-deployers.json",
-        "2290b4504156a0eaff0c4c6939bd67f9ee269e00",
-    ),
-    "HIT-CASE-OBERMEYER-MANUFACTURER-2019": (
-        "case-studies/assessments/obermeyer-manufacturer.json",
-        "a0218f42e27afd8013af25c51ca3bc692ecab2a4",
-    ),
-    "HIT-CASE-CIGNA-PXDX-2022-2025": (
-        "case-studies/assessments/cigna-pxdx.json",
-        "e1a9458b656b103f0160d89c02fc6da5cacab746",
-    ),
+P = {
+    "schema": ROOT / "schema/hit-assessment.schema.json",
+    "catalog": ROOT / "schema/hit-dimension-catalog.json",
+    "example": ROOT / "fixtures/v0.4.0-canonical-example.json",
+    "legacy_schema": ROOT / "archive/v0.1.0/schema/hit-assessment.schema.json",
+    "scorer_schema": ROOT / "validation/scorer-submission.schema.json",
+    "a": ROOT / "validation/submissions/HIT-IR-SCORER-A.json",
+    "b": ROOT / "validation/submissions/HIT-IR-SCORER-B.json",
+    "comparison": ROOT / "validation/results/pre-adjudication-comparison.json",
+    "verification": ROOT / "validation/receipts/scorer-transcription-verifications.json",
+    "execution": ROOT / "validation/results/pre-adjudication-execution-record.json",
+    "preservation": ROOT / "validation/results/preservation-manifest.json",
+    "assets": ROOT / "validation/results/release-assets-manifest.json",
+    "migration": ROOT / "case-studies/migrations/v0.4.0/migration-manifest.json",
+    "protocol": ROOT / "validation/protocol-lock.json",
 }
 
-REQUIRED_FILES = {
-    "README.md",
-    "SPECIFICATION.md",
-    "RESEARCH.md",
-    "ROADMAP.md",
-    "LIMITATIONS.md",
-    "PROVENANCE.md",
-    "CHANGELOG.md",
-    "CITATION.cff",
-    ".zenodo.json",
-    "GOVERNANCE.md",
-    "CONTRIBUTING.md",
-    "SECURITY.md",
-    "CODE_OF_CONDUCT.md",
-    "LICENSE",
-    "NOTICE",
-    "compatibility/hit-compatibility-manifest.json",
-    "docs/application-handbook.md",
-    "docs/executable-conformance.md",
-    "docs/conformance-error-catalog.md",
-    "docs/v0.5.0-release-readiness.md",
-    "docs/releases/v0.4.0.md",
-    "docs/releases/v0.5.0.md",
-    "docs/breaking-change-review-v0.4.0.md",
-    "docs/migration-guide-v0.1.0-to-v0.4.0.md",
-    "docs/adjacent-system-claim-audit-v0.4.0.md",
-    "docs/decisions/ADR-0001-separate-semantic-versioning-from-research-maturity.md",
-    "docs/decisions/ADR-0002-approve-v0.4.0-rubric-rules.md",
-    "docs/decisions/ADR-0003-chronological-result-versioning.md",
-    "schema/hit-assessment.schema.json",
-    "schema/hit-dimension-catalog.json",
-    "fixtures/v0.4.0-canonical-example.json",
-    "fixtures/v0.4.0-boundaries/rubric-boundary-fixtures.json",
-    "fixtures/v0.5.0-conformance/complete-record-cases.json",
-    "src/__main__.py",
-    "src/cli.py",
-    "src/cli_args.py",
-    "src/conformance/runner.py",
-    "src/validation/assessment.py",
-    "src/rubric/rules_v040.py",
+REQUIRED = {
+    "README.md", "RESEARCH.md", "ROADMAP.md", "LIMITATIONS.md", "PROVENANCE.md",
+    "CHANGELOG.md", "CITATION.cff", ".zenodo.json", "SPECIFICATION.md",
+    "compatibility/hit-compatibility-manifest.json", "docs/application-handbook.md",
+    "docs/releases/v0.6.0.md", "docs/v0.6.0-release-readiness.md",
+    "docs/decisions/ADR-0004-advance-hit-to-maturity-level-2.md",
+    "validation/README.md", "validation/inter-rater-protocol.md", "validation/protocol-lock.json",
+    "validation/scorer-submission.schema.json", "validation/submissions/HIT-IR-SCORER-A.json",
+    "validation/submissions/HIT-IR-SCORER-B.json",
+    "validation/receipts/HIT-IR-SCORER-A-original-incomplete.receipt.json",
+    "validation/receipts/HIT-IR-SCORER-A-corrected-locked.receipt.json",
+    "validation/receipts/HIT-IR-SCORER-B-locked.receipt.json",
+    "validation/receipts/scorer-transcription-verifications.json",
+    "validation/receipts/manual-to-JSON-transcription-audit.json",
+    "validation/results/pre-adjudication-comparison.json",
+    "validation/results/pre-adjudication-comparison.md",
+    "validation/results/pre-adjudication-execution-record.json",
+    "validation/results/preservation-manifest.json", "validation/results/release-assets-manifest.json",
+    "validation/results/adjudication-record.md", "validation/results/H3-maturity-decision.md",
+    "case-studies/migrations/v0.4.0/migration-manifest.json", "scripts/compare_raters.py",
+    "scripts/validate_v040_boundaries.py", "scripts/validate_v040_migrations.py",
     "scripts/validate_v050_cli.py",
-    "case-studies/README.md",
-    "case-studies/migrations/v0.4.0/migration-manifest.json",
-    "validation/README.md",
-    "validation/inter-rater-protocol.md",
-    "validation/protocol-lock.json",
-    "archive/v0.1.0/SPECIFICATION.md",
-    "archive/v0.1.0/docs/application-handbook.md",
-    "archive/v0.1.0/schema/hit-assessment.schema.json",
-    "archive/v0.1.0/schema/hit-dimension-catalog.json",
-    "archive/v0.2.1/scripts/validate.py",
 }
 
+HISTORICAL = {
+    "HIT-CASE-TOESLAGENAFFAIRE-HARM-2013-2019": ("case-studies/assessments/toeslagenaffaire-harm-period.json", "1f0a8099974ce0970df97d42cd4f10079e5e0e09"),
+    "HIT-CASE-OBERMEYER-DEPLOYERS-2019": ("case-studies/assessments/obermeyer-deployers.json", "2290b4504156a0eaff0c4c6939bd67f9ee269e00"),
+    "HIT-CASE-OBERMEYER-MANUFACTURER-2019": ("case-studies/assessments/obermeyer-manufacturer.json", "a0218f42e27afd8013af25c51ca3bc692ecab2a4"),
+    "HIT-CASE-CIGNA-PXDX-2022-2025": ("case-studies/assessments/cigna-pxdx.json", "e1a9458b656b103f0160d89c02fc6da5cacab746"),
+}
 
-def load_text(path: Path) -> str:
-    return path.read_text(encoding="utf-8")
+def read(path: str | Path) -> str:
+    return (path if isinstance(path, Path) else ROOT / path).read_text(encoding="utf-8")
 
+def load(path: str | Path) -> Any:
+    return json.loads(read(path))
 
-def load_json(path: Path) -> Any:
-    return json.loads(load_text(path))
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
-
-def load_yaml(path: Path) -> Any:
-    return yaml.safe_load(load_text(path))
-
-
-def git_blob_sha(path: Path) -> str:
+def git_blob(path: Path) -> str:
     data = path.read_bytes()
-    framed = f"blob {len(data)}\0".encode("utf-8") + data
-    return hashlib.sha1(framed).hexdigest()
+    return hashlib.sha1(f"blob {len(data)}\0".encode() + data).hexdigest()
 
+def require(failures: list[str], path: str, value: str) -> None:
+    if value not in read(path): failures.append(f"{path}: missing text: {value}")
 
-def require_text(failures: list[str], relative_path: str, phrase: str) -> None:
-    if phrase not in load_text(ROOT / relative_path):
-        failures.append(f"{relative_path}: missing required text: {phrase}")
+def subcheck(path: str) -> list[str]:
+    run = subprocess.run([sys.executable, str(ROOT / path)], cwd=ROOT, capture_output=True, text=True)
+    return [] if run.returncode == 0 else [f"{path} failed:\n{(run.stdout + run.stderr).strip()}"]
 
+def compare_module():
+    spec = importlib.util.spec_from_file_location("hit_compare", ROOT / "scripts/compare_raters.py")
+    if spec is None or spec.loader is None: raise RuntimeError("cannot load compare_raters.py")
+    module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module); return module
 
-def validate_required_files() -> list[str]:
-    failures: list[str] = []
-    for relative_path in sorted(REQUIRED_FILES):
-        path = ROOT / relative_path
-        if not path.is_file():
-            failures.append(f"required file is missing: {relative_path}")
-        elif path.stat().st_size == 0:
-            failures.append(f"required file is empty: {relative_path}")
-    return failures
+def validate() -> list[str]:
+    f: list[str] = []
+    for item in sorted(REQUIRED):
+        path = ROOT / item
+        if not path.is_file() or path.stat().st_size == 0: f.append(f"missing or empty file: {item}")
+    if f: return f
 
+    schema, catalog, example = load(P["schema"]), load(P["catalog"]), load(P["example"])
+    Draft202012Validator.check_schema(schema)
+    if schema["properties"]["schema_version"].get("const") != CONTRACT: f.append("schema version changed")
+    if schema["properties"]["specification_version"].get("const") != CONTRACT: f.append("specification version changed")
+    if catalog.get("catalog_version") != CONTRACT: f.append("catalog version changed")
+    result = validate_assessment(example, schema, source=str(P["example"].relative_to(ROOT)))
+    f += [f"canonical example {x.code} {x.path}: {x.message}" for x in result.issues if not result.valid]
+    if '"engine_version": "0.5.0"' not in read("compatibility/hit-compatibility-manifest.json"): f.append("compatibility engine changed")
+    if '"engine_version": "0.5.0"' not in read("src/conformance/runner.py"): f.append("runner engine changed")
 
-def validate_contract() -> list[str]:
-    failures: list[str] = []
-    schema = load_json(SCHEMA_PATH)
-    catalog = load_json(CATALOG_PATH)
-    example = load_json(EXAMPLE_PATH)
-
-    try:
-        Draft202012Validator.check_schema(schema)
-    except Exception as exc:  # pragma: no cover
-        return [f"canonical schema is invalid: {exc}"]
-
-    if schema.get("properties", {}).get("schema_version", {}).get("const") != SCHEMA_VERSION:
-        failures.append("canonical schema_version constant is inconsistent")
-    if schema.get("properties", {}).get("specification_version", {}).get("const") != SPECIFICATION_VERSION:
-        failures.append("canonical specification_version constant is inconsistent")
-    if catalog.get("catalog_version") != CATALOG_VERSION:
-        failures.append("dimension catalog version is inconsistent")
-    if catalog.get("specification_version") != SPECIFICATION_VERSION:
-        failures.append("dimension catalog specification version is inconsistent")
-
-    dimensions = {item.get("id") for item in catalog.get("substantive_dimensions", []) if isinstance(item, dict)}
-    if dimensions != EXPECTED_DIMENSIONS:
-        failures.append("dimension catalog must contain each substantive dimension exactly once")
-    states = {item.get("id") for item in catalog.get("evidence_states", []) if isinstance(item, dict)}
-    if states != EXPECTED_EVIDENCE_STATES:
-        failures.append("dimension catalog evidence states are inconsistent")
-
-    result = validate_assessment(example, schema, source=str(EXAMPLE_PATH.relative_to(ROOT)))
-    if not result.valid:
-        for issue in result.issues:
-            failures.append(f"canonical example {issue.code} {issue.path}: {issue.message}")
-
-    return failures
-
-
-def validate_historical_cases() -> list[str]:
-    failures: list[str] = []
-    legacy_schema = load_json(LEGACY_SCHEMA_PATH)
-    try:
-        Draft202012Validator.check_schema(legacy_schema)
-    except Exception as exc:  # pragma: no cover
-        return [f"archived 0.1.0 schema is invalid: {exc}"]
-
-    validator = Draft202012Validator(legacy_schema, format_checker=FormatChecker())
-    manifest = load_json(MIGRATION_MANIFEST_PATH)
-    manifest_cases = {
-        item.get("assessment_id"): item
-        for item in manifest.get("cases", [])
-        if isinstance(item, dict)
-    }
-    if set(manifest_cases) != set(EXPECTED_CASES):
-        return ["migration manifest must cover the four historical assessments exactly"]
-
-    for assessment_id, (relative_path, expected_sha) in EXPECTED_CASES.items():
-        path = ROOT / relative_path
-        instance = load_json(path)
-        for error in validator.iter_errors(instance):
-            failures.append(f"{relative_path}: {error.message}")
-        if instance.get("assessment_id") != assessment_id:
-            failures.append(f"{relative_path}: assessment ID changed")
-        if instance.get("schema_version") != LEGACY_VERSION:
-            failures.append(f"{relative_path}: historical schema version changed")
-        actual_sha = git_blob_sha(path)
-        if actual_sha != expected_sha:
-            failures.append(f"{relative_path}: historical blob changed; expected {expected_sha}, got {actual_sha}")
-        manifest_item = manifest_cases[assessment_id]
-        if manifest_item.get("original_blob_sha") != expected_sha:
-            failures.append(f"{relative_path}: migration manifest SHA is inconsistent")
-        if manifest_item.get("candidate_record_path") is not None:
-            failures.append(f"{relative_path}: unsupported 0.4.0 candidate record claimed")
-        if manifest_item.get("findings_changed") is not False:
-            failures.append(f"{relative_path}: historical findings marked as changed")
-
-    return failures
-
-
-def validate_protocol() -> list[str]:
-    failures: list[str] = []
-    lock = load_json(PROTOCOL_LOCK_PATH)
-    expected = {
-        "protocol_id": "HIT-IRP-CIGNA-001",
-        "protocol_version": "1.0.0",
-        "target_repository_release": "0.3.0",
-        "method_specification_version": "0.1.0",
-        "assessment_schema_version": "0.1.0",
-        "packet_id": "HIT-IR-CIGNA-PXDX-001",
-        "status": "locked",
-        "minimum_exact_agreements": 6,
-        "minimum_exact_agreement_proportion": 0.8571,
-        "critical_disagreements_allowed": 0,
-        "required_scorers": 2,
-        "author_may_score": False,
-        "post_adjudication_rescoring_changes_primary_result": False,
-        "failure_result_must_be_published": True,
-    }
-    for key, value in expected.items():
-        if lock.get(key) != value:
-            failures.append(f"protocol lock field changed: {key}")
-
-    require_text(failures, "validation/README.md", "superseded under ADR-0003")
-    require_text(failures, "validation/README.md", "next available repository version")
-    require_text(failures, "docs/decisions/ADR-0003-chronological-result-versioning.md", "does not modify the protocol")
-
-    results_dir = ROOT / "validation" / "results"
-    unexpected = [path for path in results_dir.glob("*.json") if path.is_file()]
-    if unexpected:
-        failures.append("human result JSON exists before the locked exercise is complete")
-
-    return failures
-
-
-def validate_metadata_and_text() -> list[str]:
-    failures: list[str] = []
-    citation = load_yaml(CITATION_PATH)
-    zenodo = load_json(ZENODO_PATH)
-    compatibility = load_json(COMPATIBILITY_PATH)
-
-    if citation.get("version") != RELEASE_VERSION:
-        failures.append("CITATION.cff version is inconsistent")
-    if citation.get("date-released") != RELEASE_DATE:
-        failures.append("CITATION.cff release date is inconsistent")
-    if citation.get("license") != "Apache-2.0":
-        failures.append("CITATION.cff license is inconsistent")
-    identifiers = citation.get("identifiers", [])
-    doi_values = {
-        str(item.get("value"))
-        for item in identifiers
-        if isinstance(item, dict) and item.get("type") == "doi"
-    }
-    if doi_values != {ORIGINATING_DOI}:
-        failures.append("CITATION.cff must contain only the originating research DOI until a software DOI exists")
-
-    if zenodo.get("version") != RELEASE_VERSION:
-        failures.append(".zenodo.json version is inconsistent")
-    if zenodo.get("upload_type") != "software":
-        failures.append(".zenodo.json upload_type is inconsistent")
-    if zenodo.get("license") != "Apache-2.0":
-        failures.append(".zenodo.json license is inconsistent")
-
-    if compatibility.get("engine_version") != ENGINE_VERSION:
-        failures.append("compatibility manifest engine version is inconsistent")
-    supported = compatibility.get("supported_contracts", [])
-    if len(supported) != 1:
-        failures.append("compatibility manifest must declare one fully supported contract")
+    legacy_validator = Draft202012Validator(load(P["legacy_schema"]), format_checker=FormatChecker())
+    for assessment_id, (relative, expected_blob) in HISTORICAL.items():
+        path, record = ROOT / relative, load(relative)
+        f += [f"{relative}: {e.message}" for e in legacy_validator.iter_errors(record)]
+        if record.get("assessment_id") != assessment_id or record.get("schema_version") != LEGACY: f.append(f"{relative}: identity changed")
+        if git_blob(path) != expected_blob: f.append(f"{relative}: blob changed")
+    migration = {x["assessment_id"]: x for x in load(P["migration"])["cases"]}
+    expected_disp = {k: "historical_version_bound" for k in HISTORICAL}
+    expected_disp["HIT-CASE-CIGNA-PXDX-2022-2025"] = "protocol_completed_historical_version_bound"
+    if set(migration) != set(expected_disp): f.append("migration case set changed")
     else:
-        contract = supported[0]
-        expected_contract = {
-            "specification_version": SPECIFICATION_VERSION,
-            "schema_version": SCHEMA_VERSION,
-            "catalog_version": CATALOG_VERSION,
-            "conformance_mode": "full",
-        }
-        for key, value in expected_contract.items():
-            if contract.get(key) != value:
-                failures.append(f"compatibility manifest contract field is inconsistent: {key}")
+        for key, disposition in expected_disp.items():
+            item = migration[key]
+            if item.get("disposition") != disposition: f.append(f"{key}: migration disposition incorrect")
+            if item.get("candidate_record_path") is not None or item.get("findings_changed") is not False: f.append(f"{key}: historical boundary weakened")
 
-    required_phrases = {
-        "README.md": [
-            "**Current release:** 0.5.0",
-            "**Conformance engine version:** 0.5.0",
-            "**Specification version:** 0.4.0",
-            "**Assessment schema version:** 0.4.0",
-            "**Current maturity:** Level 1, Defined",
-            "No `0.4.0` public-case finding is claimed",
-        ],
-        "SPECIFICATION.md": [
-            "**Version:** 0.4.0",
-            "Affirmative absence",
-            "Operational capability",
-            "assessment-packet integrity",
-            "next available repository version",
-        ],
-        "RESEARCH.md": ["H3", "Unresolved", "Release `0.5.0` remains Level 1"],
-        "ROADMAP.md": [
-            "0.4.0: Normative rubric stabilization — complete",
-            "0.5.0: Executable assessment conformance — current release",
-            "1.0.0: Stable public contract",
-        ],
-        "PROVENANCE.md": [
-            "Public repository release: 0.5.0",
-            "Conformance engine version: 0.5.0",
-            "No `0.4.0` public-case findings are claimed",
-        ],
-        "CHANGELOG.md": [
-            "## [0.5.0] - 2026-07-18",
-            "implementation-compatible with the `0.4.0` normative assessment contract",
-        ],
-        "docs/releases/v0.5.0.md": [
-            "# Human Influence Telemetry v0.5.0",
-            "Maturity Level 1",
-            "specification, assessment schema, dimension catalog, handbook, and scoring semantics remain `0.4.0`",
-        ],
-        "docs/v0.5.0-release-readiness.md": [
-            "Status:** Promotion candidate",
-            "tagging and release publication require separate maintainer approval",
-        ],
-        "docs/executable-conformance.md": [
-            "engine version `0.5.0`",
-            "contract `0.4.0`",
-        ],
-        "docs/adjacent-system-claim-audit-v0.4.0.md": [
-            "Audit status:** Passed",
-            "Microsoft Agent Governance Toolkit",
-            "ScopeBlind/Acta",
-            "Credo AI",
-        ],
-    }
-    for relative_path, phrases in required_phrases.items():
-        for phrase in phrases:
-            require_text(failures, relative_path, phrase)
+    lock = load(P["protocol"])
+    locked = {"protocol_id":"HIT-IRP-CIGNA-001","protocol_version":"1.0.0","target_repository_release":"0.3.0","method_specification_version":"0.1.0","assessment_schema_version":"0.1.0","packet_id":"HIT-IR-CIGNA-PXDX-001","status":"locked","minimum_exact_agreements":6,"minimum_exact_agreement_proportion":0.8571,"critical_disagreements_allowed":0,"required_scorers":2,"author_may_score":False,"post_adjudication_rescoring_changes_primary_result":False,"failure_result_must_be_published":True}
+    for key, value in locked.items():
+        if lock.get(key) != value: f.append(f"protocol lock changed: {key}")
 
-    current_files = [
-        "README.md",
-        "RESEARCH.md",
-        "ROADMAP.md",
-        "PROVENANCE.md",
-        "CHANGELOG.md",
-        "compatibility/hit-compatibility-manifest.json",
-        "src/conformance/runner.py",
-        "docs/executable-conformance.md",
-    ]
-    for relative_path in current_files:
-        text = load_text(ROOT / relative_path)
-        if "0.5.0-development" in text:
-            failures.append(f"{relative_path}: development engine marker remains")
-        if "In development for repository release 0.5.0" in text:
-            failures.append(f"{relative_path}: development release status remains")
+    for path, expected in ((P["a"], A_SHA), (P["b"], B_SHA), (P["comparison"], CMP_SHA)):
+        if sha256(path) != expected: f.append(f"SHA-256 changed: {path.relative_to(ROOT)}")
+    scorer_validator = Draft202012Validator(load(P["scorer_schema"]), format_checker=FormatChecker())
+    module = compare_module()
+    a = module.validate_submission(load(P["a"]), scorer_validator, "A")
+    b = module.validate_submission(load(P["b"]), scorer_validator, "B")
+    published = load(P["comparison"])
+    if module.compare_submissions(a, b) != published: f.append("comparison recomputation mismatch")
+    expected_result = {"items_compared":7,"exact_agreements":7,"exact_agreement_proportion":1.0,"critical_disagreement_count":0,"disagreements":[],"substantive_dimension_cohens_kappa":None,"advancement_threshold_met":True}
+    for key, value in expected_result.items():
+        if published.get(key) != value: f.append(f"comparison field incorrect: {key}")
 
-    for relative_path in (
-        "SPECIFICATION.md",
-        "schema/hit-assessment.schema.json",
-        "schema/hit-dimension-catalog.json",
-        "docs/application-handbook.md",
-    ):
-        text = load_text(ROOT / relative_path)
-        if "0.4.0-candidate" in text or "not yet released" in text:
-            failures.append(f"{relative_path}: candidate marker remains in canonical contract")
+    confirmations = {x["scorer_public_id"]: x for x in load(P["verification"])["confirmations"]}
+    for scorer, digest in {"HIT-SCORER-A":A_SHA,"HIT-SCORER-B":B_SHA}.items():
+        item = confirmations.get(scorer, {})
+        if item.get("confirmation") != "Confirmed exact." or item.get("verified_json_sha256") != digest: f.append(f"{scorer}: verification incorrect")
+    execution = load(P["execution"])
+    if execution.get("inputs",{}).get("scorer_a_sha256") != A_SHA: f.append("execution A hash incorrect")
+    if execution.get("inputs",{}).get("scorer_b_sha256") != B_SHA: f.append("execution B hash incorrect")
+    if execution.get("outputs",{}).get("json_sha256") != CMP_SHA: f.append("execution comparison hash incorrect")
+    if execution.get("pre_adjudication_frozen") is not True: f.append("pre-adjudication result not frozen")
 
-    return failures
+    assets = load(P["assets"]); asset_map = {x.get("path"):x for x in assets.get("files",[])}
+    binary = {
+      "manual-submissions/HIT-SCORER-A/original-incomplete/HIT_Manual_Scorer_Packet_NonTechnical_v1.0.docx":"6d1674cd476879ce4792e6dbf55c8ea1b834da4ca8da7cf366d572506d0cceca",
+      "manual-submissions/HIT-SCORER-A/corrected-locked/HIT_Manual_Scorer_Packet_NonTechnical_v1.0.docx":"53369878cd58f78a820f4281dacd6d83240dea7fd934d857fe64b3f0e3208567",
+      "manual-submissions/HIT-SCORER-B/locked/HIT_Manual_Scorer_Packet_NonTechnical_v1.0.pdf":"f387874663ce8a52b7febc11f7b23ba339f71815bc47ea418496e6cfa7888cee"}
+    for path, digest in binary.items():
+        if asset_map.get(path,{}).get("sha256") != digest: f.append(f"asset hash incorrect: {path}")
+    if assets.get("release_bundle",{}).get("sha256") != BUNDLE_SHA: f.append("bundle hash incorrect")
+    if load(P["preservation"]).get("release_asset_bundle",{}).get("sha256") != BUNDLE_SHA: f.append("preservation bundle hash incorrect")
 
-
-def run_subvalidator(relative_path: str) -> list[str]:
-    result = subprocess.run(
-        [sys.executable, str(ROOT / relative_path)],
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    if result.returncode == 0:
-        return []
-    output = (result.stdout + "\n" + result.stderr).strip()
-    return [f"{relative_path} failed:\n{output}"]
-
+    citation, zenodo = yaml.safe_load(read("CITATION.cff")), load(".zenodo.json")
+    if citation.get("version") != RELEASE or citation.get("date-released") != DATE: f.append("citation metadata incorrect")
+    dois = {str(x.get("value")) for x in citation.get("identifiers",[]) if x.get("type") == "doi"}
+    if dois != {DOI}: f.append("citation DOI boundary changed")
+    if zenodo.get("version") != RELEASE or zenodo.get("upload_type") != "software": f.append("Zenodo metadata incorrect")
+    phrases = {
+      "README.md":["**Current release:** 0.6.0","**Conformance engine version:** 0.5.0","**Current maturity:** Level 2, Applicable","7 of 7 exact agreements"],
+      "RESEARCH.md":["Supported for one frozen Cigna packet","Level 2, Applicable"],
+      "ROADMAP.md":["0.6.0: First human inter-rater result, current release"],
+      "LIMITATIONS.md":["Narrow reliability evidence","Kappa indeterminacy"],
+      "PROVENANCE.md":["Public repository release: 0.6.0","Research maturity: Level 2, Applicable"],
+      "CHANGELOG.md":["## [0.6.0] - 2026-07-18","Exact agreements: 7 of 7"],
+      "docs/releases/v0.6.0.md":["Maturity Level 2, Applicable","Conformance engine: `0.5.0`"],
+      "docs/v0.6.0-release-readiness.md":["Tagging and release publication require separate maintainer approval"],
+      "validation/results/H3-maturity-decision.md":["Level 2, Applicable"],
+      "validation/results/adjudication-record.md":["No substantive adjudication required"],
+      "case-studies/README.md":["protocol_completed_historical_version_bound"]}
+    for path, values in phrases.items():
+        for value in values: require(f, path, value)
+    return f
 
 def main() -> int:
-    failures: list[str] = []
-    failures.extend(validate_required_files())
+    failures = validate()
     if not failures:
-        failures.extend(validate_contract())
-        failures.extend(validate_historical_cases())
-        failures.extend(validate_protocol())
-        failures.extend(validate_metadata_and_text())
-        failures.extend(run_subvalidator("scripts/validate_v040_boundaries.py"))
-        failures.extend(run_subvalidator("scripts/validate_v040_migrations.py"))
-        failures.extend(run_subvalidator("scripts/validate_v050_cli.py"))
-
+        for path in ("scripts/validate_v040_boundaries.py","scripts/validate_v040_migrations.py","scripts/validate_v050_cli.py"):
+            failures += subcheck(path)
     if failures:
-        for failure in failures:
-            print(f"FAIL: {failure}")
+        for item in failures: print(f"FAIL: {item}")
         return 1
-
-    print("HIT 0.5.0 release validation passed")
-    print("- repository and conformance engine: 0.5.0")
-    print("- canonical specification/schema/catalog: 0.4.0")
-    print("- canonical synthetic assessments: 1")
-    print("- executable rubric boundary cases: 48")
-    print("- complete-record conformance cases: 16")
-    print("- historical 0.1.0 assessments preserved: 4")
-    print("- locked human protocol: unchanged and pending")
-    print("- research maturity: Level 1, Defined")
-    print("- software DOI: pending")
+    print("HIT 0.6.0 result release validation passed")
+    print("- repository 0.6.0; engine 0.5.0; contract 0.4.0; scorer contract 0.1.0")
+    print("- exact agreement: 7 / 7; critical disagreements: 0")
+    print("- H3 supported for one frozen packet; maturity Level 2, Applicable")
     return 0
 
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+if __name__ == "__main__": raise SystemExit(main())

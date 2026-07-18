@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use Human Influence Telemetry, cite the software release and identify the version used."
 title: "Human Influence Telemetry"
 type: software
-version: "0.5.0"
+version: "0.6.0"
 date-released: "2026-07-18"
 authors:
   - family-names: Banasihan
@@ -28,4 +28,4 @@ keywords:
   - institutional decision-making
   - human influence telemetry
   - documentary evidence
-  - agentic AI
+  - inter-rater agreement

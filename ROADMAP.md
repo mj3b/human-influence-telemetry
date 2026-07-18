@@ -9,91 +9,66 @@ Dates are secondary. A milestone is complete only when its artifacts and tests e
 - `0.x` releases may change assessment semantics.
 - `1.0.0` means the public assessment contract is stable enough for independent implementation.
 - Research maturity is reported separately from repository and component versions.
-- A stable contract may remain at Maturity Level 1 while human reliability evidence is pending.
 - Missing evidence remains `IE`.
 - Normative changes require migration notes, synchronized contracts, deterministic fixtures, and exact-commit validation.
-- Release versions remain chronological. The earlier planned `v0.3.0` human-result label is superseded under ADR-0003.
-- The locked human result uses the next available version when complete and must be published, passing or failing.
+- Release versions remain chronological.
 - Zenodo identifiers are recorded only after successful archival.
+- Human-result releases must preserve original submissions and the pre-adjudication result whether the exercise passes or fails.
 
-## 0.1.0: Foundation contract — complete
+## 0.1.0: Foundation contract, complete
 
 Established the six substantive dimensions, Telemetry Integrity, `0/1/2/IE`, the initial schema and catalog, basic fixtures, handbook, validator, and public release controls.
 
-Research boundary: no independent scoring, prospective validation, conformity determination, or adoption claim.
-
-## 0.2.0–0.2.1: Evidence and research-readiness infrastructure — complete
+## 0.2.0 to 0.2.1: Evidence and research-readiness infrastructure, complete
 
 Added three public narratives, four actor-specific historical assessments, provenance controls, the locked inter-rater protocol and frozen packet, comparison tooling, coordinator and recruitment materials, the adversarial friction review, model stress-test protocol, and archival metadata.
 
-The repository remained Maturity Level 1 and H3 remained unresolved.
+## 0.4.0: Normative rubric stabilization, complete
 
-## 0.4.0: Normative rubric stabilization — complete
+Completed the evidence-state model, finding thresholds, dimension-specific rules, Repair trigger, split Telemetry Integrity, actor and authority rules, sampling and aggregation contract, contradiction handling, structured evidence propositions, precise locators, 48 executable boundary fixtures, migration dispositions, and adjacent-system claim audit.
+
+## 0.5.0: Executable assessment conformance, complete
+
+Added reusable complete-record checks, stable error codes, compatibility metadata, protected migration planning, 16 complete-record vectors, deterministic reports, public CLI operation, and exact-head CI.
+
+Repository and engine version: `0.5.0`. Normative contract: `0.4.0`.
+
+## 0.6.0: First human inter-rater result, current release
 
 Completed:
 
-- governing rules for every `FR-01` through `FR-16` ambiguity;
-- evidence-state model and explicit finding thresholds;
-- dimension-specific Counsel, Judgment, Command, Correction, Repair, and Reform rules;
-- Repair trigger;
-- split Telemetry Integrity and deterministic derivation;
-- actor-authority, sampling, aggregation, contradiction, reuse, and citation rules;
-- canonical 0.4.0 schema, catalog, handbook, and synthetic example;
-- 48 executable boundary fixtures;
-- explicit historical-case migration dispositions;
-- breaking-change review and migration guide;
-- adjacent-system claim audit;
-- chronological result-versioning decision.
-
-Completion test: the canonical contract and all validation layers pass on the exact release commit.
-
-Research status: Maturity Level 1; no independent human result.
-
-## Human inter-rater research track — prepared, unresolved
-
-Locked artifacts:
-
-- protocol `HIT-IRP-CIGNA-001` version 1.0.0;
-- frozen packet `HIT-IR-CIGNA-PXDX-001`;
-- specification and schema 0.1.0 scorer contract;
-- neutral submission template and schema;
-- deterministic comparison tooling;
-- disagreement taxonomy and adjudication controls.
-
-Remaining empirical gates:
-
-- two eligible human scorers independent of the author and each other;
-- two complete, unchanged submissions;
+- two eligible independent scorers;
+- two preserved manual submissions;
+- two scorer-verified schema-valid JSON transcriptions;
 - deterministic pre-adjudication comparison;
-- publication of original submissions and all disagreements;
-- at least six exact agreements across seven items;
-- at least `0.8571` exact agreement;
-- zero critical disagreements.
+- 7 of 7 exact agreements;
+- exact-agreement proportion `1.0000`;
+- zero critical disagreements;
+- no-disagreement adjudication record;
+- H3 bounded-support decision;
+- Maturity Level 2 decision;
+- public preservation and release-asset manifests.
 
-Cohen's kappa across the six substantive dimensions remains supplementary.
+Completion test: the result files validate, recomputation matches the published comparison, the declared hashes match, and the exact release commit passes repository CI.
 
-A passing or failing result must be released under the next available repository version. Only a passing predeclared result permits H3 and Maturity Level 2.
+Version layers:
 
-## 0.5.0: Executable assessment conformance — current release
+- repository release `0.6.0`;
+- conformance engine `0.5.0`;
+- normative contract `0.4.0`;
+- scorer contract used by the exercise `0.1.0`;
+- maturity Level 2, Applicable.
 
-Completed:
+## Next empirical track
 
-- reusable assessment-conformance checks for complete `0.4.0` records;
-- actor and evidence-claim reference validation;
-- deterministic checks for evidence states, Repair triggers, integrity derivation, aggregation, contradictions, and citation precision;
-- stable machine-facing error codes;
-- machine-readable compatibility manifest;
-- protected migration planning that preserves historical records;
-- one valid and fifteen invalid complete-record vectors;
-- byte-stable text and JSON reports;
-- one-command repository conformance;
-- public CLI smoke tests and exact-head CI.
+The first passing result does not establish general reliability. The next work should create evidence with more discriminating power:
 
-Completion test: the repository rejects every included invalid complete-record state, accepts the canonical valid record, preserves all four historical assessments during migration planning, and produces deterministic reports.
-
-Compatibility: repository and engine version `0.5.0`; specification, schema, catalog, handbook, and scoring semantics remain `0.4.0`.
-
-Research status: Maturity Level 1; H3 unresolved.
+- apply a compatible current contract to additional public cases;
+- include cases likely to produce more than one rating category;
+- recruit additional independent scorers;
+- predeclare treatment of source-reference disagreement and rationale divergence;
+- conduct a clean-room implementation audit;
+- design a preregistered prospective pilot when institutional access becomes available.
 
 ## 0.9.0: Stable release candidate
 
@@ -106,8 +81,6 @@ Required:
 - clean-room implementation audit with original outputs preserved;
 - citation and archival metadata synchronized;
 - no release-blocking defect.
-
-Completion test: an independent reader can implement the method, reproduce fixtures and included assessments, and identify all non-claims from public artifacts alone.
 
 ## 1.0.0: Stable public contract
 
@@ -124,13 +97,12 @@ Version `1.0.0` may be declared only when:
 9. one public release candidate has been completed;
 10. exact-release validation passes.
 
-`1.0.0` will not establish independent reviewer agreement, Maturity Level 2, causal effectiveness, legal conformity, certification, truthful reasoning, or independent adoption.
+`1.0.0` will not establish causal effectiveness, legal conformity, certification, truthful reasoning, or independent adoption.
 
 ## Beyond 1.0.0
 
-- **Maturity Level 2, Applicable:** locked human exercise completed and predeclared threshold passed.
-- **Maturity Level 3, Evidenced:** Level 2 plus at least three public applications under a compatible contract.
-- **Maturity Level 4, Validated:** preregistered prospective design and pilot result.
-- **Maturity Level 5, Adopted:** independent institutional use and external reference.
+- Maturity Level 3, Evidenced: Level 2 plus at least three public applications under a compatible contract.
+- Maturity Level 4, Validated: preregistered prospective design and pilot result.
+- Maturity Level 5, Adopted: independent institutional use and external reference.
 - Compatible research results and profiles may use `1.x` releases.
 - Breaking normative changes require `2.0.0`.

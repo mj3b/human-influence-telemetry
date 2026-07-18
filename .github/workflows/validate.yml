@@ -29,7 +29,7 @@ jobs:
       - name: Check deterministic fixture formatting
         run: python scripts/check_fixture_format.py
 
-      - name: Validate HIT 0.5.0 release and preserved 0.4.0 contract
+      - name: Validate HIT 0.6.0 result release and preserved component contracts
         shell: bash
         run: |
           set -o pipefail

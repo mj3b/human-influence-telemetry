@@ -14,12 +14,24 @@
     "cases"
   ],
   "properties": {
-    "manifest_id": {"const": "HIT-V040-CASE-MIGRATION-001"},
-    "candidate_version": {"const": "0.4.0-candidate"},
-    "governing_decision": {"const": "ADR-0002"},
-    "historical_specification_version": {"const": "0.1.0"},
-    "historical_schema_version": {"const": "0.1.0"},
-    "case_count": {"const": 4},
+    "manifest_id": {
+      "const": "HIT-V040-CASE-MIGRATION-001"
+    },
+    "candidate_version": {
+      "const": "0.4.0-candidate"
+    },
+    "governing_decision": {
+      "const": "ADR-0002"
+    },
+    "historical_specification_version": {
+      "const": "0.1.0"
+    },
+    "historical_schema_version": {
+      "const": "0.1.0"
+    },
+    "case_count": {
+      "const": 4
+    },
     "cases": {
       "type": "array",
       "minItems": 4,
@@ -39,15 +51,46 @@
           "update_condition"
         ],
         "properties": {
-          "assessment_id": {"type": "string", "pattern": "^HIT-CASE-[A-Z0-9-]+$"},
-          "path": {"type": "string", "pattern": "^case-studies/assessments/.+\\.json$"},
-          "original_blob_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
-          "disposition": {"enum": ["historical_version_bound", "deferred_locked_protocol"]},
-          "candidate_record_path": {"type": "null"},
-          "release_exception": {"const": true},
-          "findings_changed": {"const": false},
-          "blockers": {"type": "array", "minItems": 2, "items": {"type": "string", "minLength": 20}},
-          "update_condition": {"type": "string", "minLength": 50}
+          "assessment_id": {
+            "type": "string",
+            "pattern": "^HIT-CASE-[A-Z0-9-]+$"
+          },
+          "path": {
+            "type": "string",
+            "pattern": "^case-studies/assessments/.+\\.json$"
+          },
+          "original_blob_sha": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "disposition": {
+            "enum": [
+              "historical_version_bound",
+              "deferred_locked_protocol",
+              "protocol_completed_historical_version_bound"
+            ]
+          },
+          "candidate_record_path": {
+            "type": "null"
+          },
+          "release_exception": {
+            "const": true
+          },
+          "findings_changed": {
+            "const": false
+          },
+          "blockers": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "string",
+              "minLength": 20
+            }
+          },
+          "update_condition": {
+            "type": "string",
+            "minLength": 50
+          }
         }
       }
     }

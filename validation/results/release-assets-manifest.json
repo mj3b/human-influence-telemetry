@@ -1,0 +1,70 @@
+{
+  "manifest_id": "HIT-IR-CIGNA-001-RELEASE-ASSETS-001",
+  "release_version": "0.6.0",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "files": [
+    {
+      "path": "H3-maturity-decision.md",
+      "size_bytes": 2306,
+      "sha256": "787f289691e59ecf95735f403d539a053e7bbbb64a9eca186e0deaec3d85c82d"
+    },
+    {
+      "path": "HIT-IR-SCORER-A.json",
+      "size_bytes": 14079,
+      "sha256": "9c90e2eaf0785cd83f4962058d622a948c2ba60c1de830e06a2474eb85542a33"
+    },
+    {
+      "path": "HIT-IR-SCORER-B.json",
+      "size_bytes": 10231,
+      "sha256": "553669d57679fc2034b27021a4b021333c94770ecc656d9b18c1c438f494dd9b"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 580,
+      "sha256": "1e2aef7101a3eaa032848875c2e1c1d2bcce51c08179323a1c90541bdc983ed1"
+    },
+    {
+      "path": "adjudication-record.md",
+      "size_bytes": 2677,
+      "sha256": "cd7d1f7c503402d542c2049fe43bbe3febcfef4c542d6c6f934c56906b714318"
+    },
+    {
+      "path": "manual-submissions/HIT-SCORER-A/corrected-locked/HIT_Manual_Scorer_Packet_NonTechnical_v1.0.docx",
+      "size_bytes": 108449,
+      "sha256": "53369878cd58f78a820f4281dacd6d83240dea7fd934d857fe64b3f0e3208567"
+    },
+    {
+      "path": "manual-submissions/HIT-SCORER-A/original-incomplete/HIT_Manual_Scorer_Packet_NonTechnical_v1.0.docx",
+      "size_bytes": 133325,
+      "sha256": "6d1674cd476879ce4792e6dbf55c8ea1b834da4ca8da7cf366d572506d0cceca"
+    },
+    {
+      "path": "manual-submissions/HIT-SCORER-B/locked/HIT_Manual_Scorer_Packet_NonTechnical_v1.0.pdf",
+      "size_bytes": 359965,
+      "sha256": "f387874663ce8a52b7febc11f7b23ba339f71815bc47ea418496e6cfa7888cee"
+    },
+    {
+      "path": "pre-adjudication-comparison.json",
+      "size_bytes": 604,
+      "sha256": "91b28ec23f6f446be3ccd4868d9975a7f143da917de87ab5c2f5ac0123b3ced2"
+    },
+    {
+      "path": "pre-adjudication-comparison.md",
+      "size_bytes": 1020,
+      "sha256": "8814abfff2a198deaf2dd461d637c8d14aa84bdd02ecb63ece0289aa0123e6e8"
+    },
+    {
+      "path": "pre-adjudication-execution-record.json",
+      "size_bytes": 2036,
+      "sha256": "b52cb8c9bfc189b762c719c5f8704d94c50eb63af030d494b2f789ebe114d92e"
+    }
+  ],
+  "binary_originals_in_git": false,
+  "publication_method": "Attach the ZIP archive to the GitHub v0.6.0 release. Git contains the verified JSON, receipts, comparisons, decisions, and hashes.",
+  "release_bundle": {
+    "filename": "HIT-v0.6.0-human-inter-rater-result-assets.zip",
+    "size_bytes": 555666,
+    "sha256": "de655f5766009e8cd8a7c52652c53cc7930586f072007839877d542f4138617f"
+  }
+}

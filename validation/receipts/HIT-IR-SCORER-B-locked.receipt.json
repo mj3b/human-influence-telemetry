@@ -1,0 +1,39 @@
+{
+  "record_type": "HIT manual scorer submission receipt",
+  "record_version": "1.0.0",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "scorer_public_id": "HIT-SCORER-B",
+  "submission_role": "locked_original_manual_submission",
+  "file": {
+    "original_email_attachment_filename": "HIT_Manual_Scorer_Packet_NonTechnical_v1.0.pdf",
+    "media_type": "application/pdf",
+    "size_bytes": 359965,
+    "sha256": "f387874663ce8a52b7febc11f7b23ba339f71815bc47ea418496e6cfa7888cee",
+    "page_count": 12,
+    "encrypted": false
+  },
+  "receipt": {
+    "received_at": "2026-07-18T16:08:00-04:00",
+    "received_at_raw_user_statement": "7/18/2026, EST, 4:08PM",
+    "timezone_normalization_note": "The user used EST colloquially. The timestamp is normalized to Eastern local time on 2026-07-18, UTC-04:00.",
+    "channel": "email",
+    "sender_described_as_final": true
+  },
+  "provenance": {
+    "scorer_personally_completed_exported_and_returned_exact_file": true,
+    "coordinator_edits": false
+  },
+  "technical_intake": {
+    "opens_successfully": true,
+    "rendered_pages": 12,
+    "manual_completeness_status": "complete",
+    "blank_optional_notes_treatment": "Represented as null in the verified JSON transcription."
+  },
+  "lock_status": {
+    "manual_submission_locked": true,
+    "substantive_editing_prohibited": true,
+    "json_transcription_status": "verified and locked",
+    "comparison_status": "completed"
+  }
+}

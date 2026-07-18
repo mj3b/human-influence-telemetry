@@ -1,23 +1,11 @@
-# Inter-rater Results
+# HIT-IRP-CIGNA-001 Result Summary
 
-No inter-rater result is currently available.
+The first locked human inter-rater exercise passed its predeclared advancement gate.
 
-This directory will contain the public result only after:
+Two eligible independent scorers evaluated the same frozen Cigna PxDx packet under the `0.1.0` scorer contract. Both assigned `1` to Counsel, Judgment, Command, Correction, Repair, and Reform. Both assigned `limited` to Telemetry Integrity.
 
-1. protocol `HIT-IRP-CIGNA-001` is reviewed and locked on `main`;
-2. two eligible scorers submit independently;
-3. both submissions pass schema and independence checks;
-4. the deterministic pre-adjudication comparison is generated;
-5. the disagreement register and adjudication record are completed.
+The deterministic pre-adjudication comparison produced 7 of 7 exact agreements, an exact-agreement proportion of `1.0000`, and zero critical disagreements. The required gate was at least 6 of 7 exact agreements and zero critical disagreements.
 
-Expected release artifacts:
+H3 is supported for this bounded exercise. HIT advances to Maturity Level 2, Applicable.
 
-- `scorer-a.json`
-- `scorer-b.json`
-- `pre-adjudication-comparison.json`
-- `pre-adjudication-comparison.md`
-- `disagreement-register.md`
-- `adjudication.md`
-- `result-summary.md`
-
-A missing result must remain visible as pending. Placeholder files must not be presented as empirical evidence.
+The result remains narrow. It contains two scorers, one retrospective insurance case, seven categorical items, and no category variance across the six substantive dimensions. It does not establish general inter-rater reliability, causal validity, legal correctness, evidence truth, field effectiveness, certification, or independent institutional adoption.

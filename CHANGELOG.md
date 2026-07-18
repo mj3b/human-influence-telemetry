@@ -8,141 +8,85 @@ The project uses Semantic Versioning for the public technical artifact. Research
 
 ### Planned
 
+- Replicate human scoring under a compatible current contract
+- Produce additional public `0.4.x` assessments
+- Conduct a clean-room implementation audit
 - Prepare a public release candidate in `0.9.0`
-- Continue neutral recruitment for the locked human inter-rater exercise
-- Publish the original human result, passing or failing, under the next available version
 - Develop a preregistered prospective validation protocol
 
 ### Research boundary
 
-H3 and Maturity Level 2 remain unresolved. Synthetic fixtures and internal conformance checks do not substitute for independent human scoring.
+One passing frozen-packet exercise does not establish general inter-rater reliability, field effectiveness, causal validity, legal correctness, certification, or adoption.
+
+## [0.6.0] - 2026-07-18
+
+### Added
+
+- Two verified independent scorer JSON submissions under locked protocol `HIT-IRP-CIGNA-001`
+- Original, correction, receipt, and transcription-verification records
+- Deterministic pre-adjudication comparison in JSON and Markdown
+- Preservation and release-asset manifests
+- No-disagreement adjudication record
+- H3 and Maturity Level 2 decision
+- ADR-0004
+- Human-result release notes and exact-head validation rules
+
+### Result
+
+- Exact agreements: 7 of 7
+- Exact-agreement proportion: `1.0000`
+- Critical disagreements: 0
+- Advancement threshold: met
+- Supplementary Cohen's kappa: `null` because all six substantive ratings used one category
+
+### Changed
+
+- Repository version advances to `0.6.0`
+- Research maturity advances to Level 2, Applicable
+- H3 changes from unresolved to supported for one frozen packet
+- Cigna migration disposition changes from protocol-deferred to protocol-completed historical version binding
+- Conformance engine remains `0.5.0`
+- Specification, schema, catalog, handbook, and scoring semantics remain `0.4.0`
+
+### Research boundary
+
+This release reports one exercise with two scorers, seven categorical items, one retrospective insurance case, and the preserved `0.1.0` scorer contract. It does not estimate population reliability.
 
 ## [0.5.0] - 2026-07-18
 
 ### Added
 
 - Reusable complete-assessment conformance engine for the `0.4.0` contract
-- Public package entry point and commands for repository conformance, individual-record conformance, and migration planning
-- Stable machine-facing error codes and public error catalog
-- Deterministic text and JSON reports with byte-stability checks
-- One valid and fifteen invalid complete-record vectors
-- Machine-readable compatibility manifest
-- Non-mutating `0.1.0` to `0.4.0` migration planning with original-preservation checks
-- CLI smoke tests and report artifacts in CI
-- Package-oriented `src/` architecture separating entry point, argument parsing, commands, configuration, models, validation, conformance orchestration, and rubric rules
-
-### Changed
-
-- Repository and conformance-engine version advance to `0.5.0`
-- Specification, assessment schema, dimension catalog, handbook, and scoring semantics remain `0.4.0`
-- Repository validation now checks executable-conformance release metadata and compatibility boundaries
-- README and provenance now distinguish implementation version from normative contract version
+- Public CLI, stable error codes, deterministic reports, compatibility metadata, migration planning, and complete-record vectors
 
 ### Compatibility
 
-Version `0.5.0` is implementation-compatible with the `0.4.0` normative assessment contract. It does not require reassessment of conforming `0.4.0` records.
-
-Historical `0.1.0` records remain historical-validation-only artifacts. Automatic migration remains prohibited; reconstruction requires a fresh reassessment that preserves the original file.
-
-### Research boundary
-
-Release `0.5.0` remains Maturity Level 1. Executable conformance establishes deterministic contract checking, not evidence truth, independent human agreement, field effectiveness, legal compliance, certification, or institutional adoption.
+Version `0.5.0` is implementation-compatible with the `0.4.0` normative assessment contract.
 
 ## [0.4.0] - 2026-07-18
 
 ### Added
 
-- Evidence-state model: affirmative absence, formal presence, operational capability, observed exercise, and indeterminate
-- Explicit thresholds for `0`, `1`, `2`, and `IE`
-- Dimension-specific decision rules for Counsel, Judgment, Command, Correction, Repair, and Reform
-- Repair trigger states: `triggered`, `not_triggered`, and `indeterminate`
-- Separate institutional-record and assessment-packet integrity components
-- Deterministic overall Telemetry Integrity derivation
-- Sampling and aggregation contract with a dominant-pattern default
-- Actor-authority matrix and cross-institution attribution rules
-- Contradictory-evidence weighting procedure
-- Structured evidence propositions, support relations, and precise locators
-- Canonical specification, schema, dimension catalog, handbook, and synthetic example version 0.4.0
-- 48 executable accepted, rejected, and boundary fixtures covering `FR-01` through `FR-16`
-- Deterministic rubric rule engine under `src/rubric/`
-- Migration manifest pinning all four historical assessments by Git blob SHA
-- Breaking-change review and 0.1.0-to-0.4.0 migration guide
-- Adjacent-system claim audit against Microsoft AGT, ScopeBlind/Acta, Credo AI, GDI, and DEAS
-- ADR-0002 approving the normative rule set
-- ADR-0003 preserving chronological release versioning
-- Archived copies of the superseded 0.1.0 contract and 0.2.1 validator
-
-### Changed
-
-- Repository, specification, assessment schema, and dimension catalog advance to 0.4.0
-- `0` now requires affirmative evidence of absence
-- `1` now requires process-specific formal presence
-- `2` now requires observed exercise or directly demonstrated operational capability under bounded conditions
-- `IE` now requires an unresolved proposition and search or request record
-- The prior planned `v0.3.0` human-result label is superseded; the eventual result uses the next available repository version
-- Validation now covers the canonical 0.4.0 contract, boundary fixtures, historical-case preservation, migration dispositions, locked protocol artifacts, adjacent-system claims, and release metadata
+- Evidence states, explicit finding thresholds, dimension-specific rules, Repair triggers, split Telemetry Integrity, actor-authority controls, structured evidence propositions, precise locators, and 48 boundary fixtures
 
 ### Compatibility
 
-Version 0.4.0 is a breaking normative and data-contract release. A 0.1.0 assessment does not become a 0.4.0 assessment by changing its version field. Migration requires a fresh bounded reassessment.
-
-The four historical public assessments remain unchanged under schema 0.1.0. Three are `historical_version_bound`; Cigna is `deferred_locked_protocol`. No 0.4.0 public-case findings are claimed.
-
-### Research boundary
-
-Release 0.4.0 remains Maturity Level 1. It does not establish human inter-rater reliability, field effectiveness, legal compliance, certification, causal validity, or independent adoption.
+Version `0.4.0` is a breaking normative and data-contract release. Historical `0.1.0` assessments remain immutable.
 
 ## [0.2.1] - 2026-07-16
 
-### Added
-
-- Locked blinded inter-rater protocol `HIT-IRP-CIGNA-001`
-- Frozen Cigna scorer packet and source manifest
-- Scorer-submission schema, template, comparison tooling, synthetic vectors, disagreement taxonomy, and adjudication controls
-- Adversarial rubric-friction review `HIT-ARFR-001`
-- Coordinator, recruitment, and model stress-test infrastructure
-- Software-archival metadata and release-readiness documentation
-
-### Compatibility
-
-Added research-readiness infrastructure without changing the 0.1.0 component contracts or historical case findings.
-
-### Research boundary
-
-Prepared infrastructure does not establish independent reviewer agreement.
+Added the locked inter-rater protocol, frozen scorer packet, comparison tooling, coordinator materials, recruitment package, rubric-friction review, model stress-test protocol, and archival metadata.
 
 ## [0.2.0] - 2026-07-16
 
-### Added
-
-- Three public retrospective case narratives
-- Four actor-specific machine-readable assessments
-- Public provenance and evidence-gated roadmap
-
-### Compatibility
-
-Added evidence artifacts without changing the 0.1.0 contract.
-
-### Research boundary
-
-Historical applications do not establish reliability, causal effectiveness, legal liability, certification, or independent adoption.
+Added three public retrospective case narratives and four actor-specific machine-readable assessments.
 
 ## [0.1.0] - 2026-07-16
 
-### Added
+Established the first public HIT specification, schema, catalog, handbook, fixtures, validator, governance files, and release controls.
 
-- Initial public HIT specification
-- Six substantive dimensions and Telemetry Integrity
-- `0`, `1`, `2`, and `IE`
-- Machine-readable schema and catalog
-- Basic deterministic fixtures
-- Application handbook, research register, provenance, limitations, validator, and release governance
-
-### Research boundary
-
-The foundation release demonstrated structural representation only.
-
-[Unreleased]: https://github.com/mj3b/human-influence-telemetry/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/mj3b/human-influence-telemetry/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/mj3b/human-influence-telemetry/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mj3b/human-influence-telemetry/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/mj3b/human-influence-telemetry/compare/v0.2.1...v0.4.0
 [0.2.1]: https://github.com/mj3b/human-influence-telemetry/compare/v0.2.0...v0.2.1
