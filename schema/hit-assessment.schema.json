@@ -2,63 +2,261 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/mj3b/human-influence-telemetry/blob/main/schema/hit-assessment.schema.json",
   "title": "Human Influence Telemetry Assessment",
-  "description": "Machine-readable assessment of substantive human influence in one AI-mediated institutional decision process.",
+  "description": "Machine-readable assessment under HIT specification 0.4.0.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["assessment_id","schema_version","institutional_unit","decision_process","period","sampling_rule","assessor","substantive_findings","telemetry_integrity","limitations"],
+  "required": [
+    "assessment_id",
+    "schema_version",
+    "specification_version",
+    "migration_status",
+    "institutional_unit",
+    "decision_process",
+    "assessment_scope",
+    "period",
+    "ai_system_role",
+    "sampling",
+    "aggregation",
+    "actors",
+    "assessor",
+    "evidence_claims",
+    "substantive_findings",
+    "telemetry_integrity",
+    "limitations"
+  ],
   "$defs": {
-    "artifact": {
+    "dateRange": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["artifact_id","artifact_type","citation","provenance_status"],
+      "required": ["start", "end"],
       "properties": {
-        "artifact_id": {"type":"string","minLength":1},
-        "artifact_type": {"type":"string","minLength":1},
-        "citation": {"type":"string","minLength":1},
-        "provenance_status": {"type":"string","enum":["verified","partially_verified","unverified","not_produced"]},
-        "notes": {"type":"string"}
+        "start": {"type": "string", "format": "date"},
+        "end": {"type": "string", "format": "date"}
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor_id",
+        "institutional_identity",
+        "role_type",
+        "role_name",
+        "authority_types",
+        "mechanisms_controlled",
+        "decision_stages",
+        "relationship",
+        "evidence_claim_ids"
+      ],
+      "properties": {
+        "actor_id": {"type": "string", "pattern": "^ACT-[A-Za-z0-9._-]+$"},
+        "institutional_identity": {"type": "string", "minLength": 2},
+        "role_type": {"enum": ["human", "automated", "institutional", "external_authority"]},
+        "role_name": {"type": "string", "minLength": 2},
+        "authority_types": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["direct", "delegated", "shared", "advisory", "appellate", "remedial", "reformative", "technical_control", "none"]}
+        },
+        "mechanisms_controlled": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "decision_stages": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "relationship": {"enum": ["assessed_actor", "vendor", "deployer", "regulator", "court", "corporate_affiliate", "affected_person", "other"]},
+        "related_actor_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^ACT-[A-Za-z0-9._-]+$"}},
+        "evidence_claim_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^EC-[A-Za-z0-9._-]+$"}},
+        "notes": {"type": ["string", "null"]}
+      }
+    },
+    "evidenceClaim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim_id",
+        "artifact_id",
+        "artifact_type",
+        "source_id",
+        "locator",
+        "proposition",
+        "relation",
+        "dimensions",
+        "actor_ids",
+        "provenance_status",
+        "independence_status",
+        "transformation_history"
+      ],
+      "properties": {
+        "claim_id": {"type": "string", "pattern": "^EC-[A-Za-z0-9._-]+$"},
+        "artifact_id": {"type": "string", "pattern": "^ART-[A-Za-z0-9._-]+$"},
+        "artifact_type": {"type": "string", "minLength": 2},
+        "source_id": {"type": "string", "minLength": 1},
+        "locator": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["locator_type", "value"],
+          "properties": {
+            "locator_type": {"enum": ["page", "paragraph", "section", "timestamp", "event_id", "record_id", "line", "url_fragment", "other"]},
+            "value": {"type": "string", "minLength": 1},
+            "reproducibility_note": {"type": ["string", "null"]}
+          }
+        },
+        "proposition": {"type": "string", "minLength": 10},
+        "relation": {"enum": ["supports", "contradicts", "limits"]},
+        "dimensions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["counsel", "judgment", "command", "correction", "repair", "reform", "telemetry_integrity"]}
+        },
+        "actor_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^ACT-[A-Za-z0-9._-]+$"}},
+        "event_date": {"type": ["string", "null"], "format": "date"},
+        "provenance_status": {"enum": ["verified", "partially_verified", "unverified", "not_produced"]},
+        "independence_status": {"enum": ["independent", "institutional_self_report", "dependent", "unknown"]},
+        "transformation_history": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "notes": {"type": ["string", "null"]}
       }
     },
     "finding": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["dimension","finding","supporting_artifacts","requested_missing_artifacts","rationale"],
+      "required": [
+        "dimension",
+        "evidence_state",
+        "finding",
+        "repair_trigger",
+        "supporting_claim_ids",
+        "contradicting_claim_ids",
+        "limiting_claim_ids",
+        "requested_missing_artifacts",
+        "unresolved_proposition",
+        "search_or_request_summary",
+        "aggregation_basis",
+        "rationale"
+      ],
       "properties": {
-        "dimension": {"type":"string","enum":["counsel","judgment","command","correction","repair","reform"]},
-        "finding": {"oneOf":[{"type":"integer","enum":[0,1,2]},{"const":"IE"}]},
-        "supporting_artifacts": {"type":"array","items":{"$ref":"#/$defs/artifact"}},
-        "requested_missing_artifacts": {"type":"array","items":{"type":"string"}},
-        "rationale": {"type":"string","minLength":20},
-        "ambiguity_note": {"type":["string","null"]}
-      }
+        "dimension": {"enum": ["counsel", "judgment", "command", "correction", "repair", "reform"]},
+        "evidence_state": {"enum": ["affirmative_absence", "formal_presence", "operational_capability", "observed_exercise", "indeterminate"]},
+        "finding": {"oneOf": [{"type": "integer", "enum": [0, 1, 2]}, {"const": "IE"}]},
+        "repair_trigger": {"enum": ["triggered", "not_triggered", "indeterminate", "not_applicable"]},
+        "supporting_claim_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^EC-[A-Za-z0-9._-]+$"}},
+        "contradicting_claim_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^EC-[A-Za-z0-9._-]+$"}},
+        "limiting_claim_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^EC-[A-Za-z0-9._-]+$"}},
+        "requested_missing_artifacts": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "unresolved_proposition": {"type": ["string", "null"]},
+        "search_or_request_summary": {"type": ["string", "null"]},
+        "aggregation_basis": {"enum": ["dominant_pattern", "event_specific", "tested_capability", "other_predeclared"]},
+        "rationale": {"type": "string", "minLength": 30}
+      },
+      "allOf": [
+        {"if": {"properties": {"finding": {"const": 0}}, "required": ["finding"]}, "then": {"properties": {"evidence_state": {"const": "affirmative_absence"}}}},
+        {"if": {"properties": {"finding": {"const": 1}}, "required": ["finding"]}, "then": {"properties": {"evidence_state": {"const": "formal_presence"}}}},
+        {"if": {"properties": {"finding": {"const": 2}}, "required": ["finding"]}, "then": {"properties": {"evidence_state": {"enum": ["operational_capability", "observed_exercise"]}}}},
+        {"if": {"properties": {"finding": {"const": "IE"}}, "required": ["finding"]}, "then": {"properties": {"evidence_state": {"const": "indeterminate"}, "unresolved_proposition": {"type": "string", "minLength": 10}, "search_or_request_summary": {"type": "string", "minLength": 10}}}},
+        {"if": {"properties": {"dimension": {"const": "repair"}}, "required": ["dimension"]}, "then": {"properties": {"repair_trigger": {"enum": ["triggered", "not_triggered", "indeterminate"]}}}, "else": {"properties": {"repair_trigger": {"const": "not_applicable"}}}},
+        {"if": {"properties": {"dimension": {"const": "repair"}, "repair_trigger": {"const": "indeterminate"}}, "required": ["dimension", "repair_trigger"]}, "then": {"properties": {"finding": {"const": "IE"}, "evidence_state": {"const": "indeterminate"}}}}
+      ]
     },
-    "integrityFinding": {
+    "integrityComponent": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["status","provenance","completeness","edit_authority","independence","tamper_evidence","retention","rationale"],
+      "required": [
+        "status",
+        "provenance",
+        "scope_and_completeness",
+        "edit_authority",
+        "independence",
+        "tamper_evidence",
+        "retention",
+        "contradictions",
+        "affected_dimensions",
+        "evidence_claim_ids",
+        "unresolved_proposition",
+        "rationale"
+      ],
       "properties": {
-        "status": {"type":"string","enum":["adequate","limited","unreliable","IE"]},
-        "provenance": {"type":"string"},
-        "completeness": {"type":"string"},
-        "edit_authority": {"type":"string"},
-        "independence": {"type":"string"},
-        "tamper_evidence": {"type":"string"},
-        "retention": {"type":"string"},
-        "rationale": {"type":"string","minLength":20}
+        "status": {"enum": ["adequate", "limited", "unreliable", "IE"]},
+        "provenance": {"type": "string", "minLength": 10},
+        "scope_and_completeness": {"type": "string", "minLength": 10},
+        "edit_authority": {"type": "string", "minLength": 10},
+        "independence": {"type": "string", "minLength": 10},
+        "tamper_evidence": {"type": "string", "minLength": 10},
+        "retention": {"type": "string", "minLength": 10},
+        "contradictions": {"type": "string", "minLength": 10},
+        "affected_dimensions": {"type": "array", "uniqueItems": true, "items": {"enum": ["counsel", "judgment", "command", "correction", "repair", "reform"]}},
+        "evidence_claim_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^EC-[A-Za-z0-9._-]+$"}},
+        "unresolved_proposition": {"type": ["string", "null"]},
+        "rationale": {"type": "string", "minLength": 30}
+      },
+      "allOf": [
+        {"if": {"properties": {"status": {"const": "IE"}}, "required": ["status"]}, "then": {"properties": {"unresolved_proposition": {"type": "string", "minLength": 10}}}}
+      ]
+    },
+    "telemetryIntegrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["institutional_record_integrity", "assessment_packet_integrity", "overall_status", "derivation_rule"],
+      "properties": {
+        "institutional_record_integrity": {"$ref": "#/$defs/integrityComponent"},
+        "assessment_packet_integrity": {"$ref": "#/$defs/integrityComponent"},
+        "overall_status": {"enum": ["adequate", "limited", "unreliable", "IE"]},
+        "derivation_rule": {"const": "unreliable>IE>limited>adequate"}
       }
     }
   },
   "properties": {
-    "assessment_id": {"type":"string","pattern":"^HIT-[A-Za-z0-9._-]+$"},
-    "schema_version": {"type":"string","const":"0.1.0"},
-    "institutional_unit": {"type":"string","minLength":2},
-    "decision_process": {"type":"string","minLength":10},
-    "period": {"type":"object","additionalProperties":false,"required":["start","end"],"properties":{"start":{"type":"string","format":"date"},"end":{"type":"string","format":"date"}}},
-    "sampling_rule": {"type":"string","minLength":10},
-    "assessor": {"type":"object","additionalProperties":false,"required":["name","assessment_date"],"properties":{"name":{"type":"string","minLength":2},"organization":{"type":["string","null"]},"assessment_date":{"type":"string","format":"date"}}},
-    "substantive_findings": {"type":"array","minItems":6,"maxItems":6,"items":{"$ref":"#/$defs/finding"}},
-    "telemetry_integrity": {"$ref":"#/$defs/integrityFinding"},
-    "summary": {"type":"string"},
-    "limitations": {"type":"array","minItems":1,"items":{"type":"string"}}
+    "assessment_id": {"type": "string", "pattern": "^HIT-[A-Za-z0-9._-]+$"},
+    "schema_version": {"const": "0.4.0"},
+    "specification_version": {"const": "0.4.0"},
+    "predecessor_schema_version": {"const": "0.1.0"},
+    "migration_status": {"enum": ["native_0.4.0", "migrated_from_0.1.0", "historical_0.1.0_reference"]},
+    "institutional_unit": {"type": "string", "minLength": 2},
+    "decision_process": {"type": "string", "minLength": 10},
+    "assessment_scope": {"enum": ["period_level", "event_specific"]},
+    "period": {"$ref": "#/$defs/dateRange"},
+    "follow_up_period": {"oneOf": [{"$ref": "#/$defs/dateRange"}, {"type": "null"}]},
+    "ai_system_role": {"type": "string", "minLength": 10},
+    "sampling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["population_or_record_universe", "selection_rule", "known_exclusions", "selection_effects"],
+      "properties": {
+        "population_or_record_universe": {"type": "string", "minLength": 10},
+        "selection_rule": {"type": "string", "minLength": 10},
+        "known_exclusions": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "selection_effects": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "aggregation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "predeclared", "rationale", "other_rule"],
+      "properties": {
+        "mode": {"enum": ["dominant_pattern", "event_specific", "tested_capability", "other_predeclared"]},
+        "predeclared": {"const": true},
+        "rationale": {"type": "string", "minLength": 20},
+        "other_rule": {"type": ["string", "null"]}
+      },
+      "allOf": [
+        {"if": {"properties": {"mode": {"const": "other_predeclared"}}, "required": ["mode"]}, "then": {"properties": {"other_rule": {"type": "string", "minLength": 10}}}}
+      ]
+    },
+    "actors": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/actor"}},
+    "assessor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "assessment_date", "conflict_disclosure"],
+      "properties": {
+        "name": {"type": "string", "minLength": 2},
+        "organization": {"type": ["string", "null"]},
+        "assessment_date": {"type": "string", "format": "date"},
+        "conflict_disclosure": {"type": "string", "minLength": 2}
+      }
+    },
+    "evidence_claims": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidenceClaim"}},
+    "substantive_findings": {"type": "array", "minItems": 6, "maxItems": 6, "items": {"$ref": "#/$defs/finding"}},
+    "telemetry_integrity": {"$ref": "#/$defs/telemetryIntegrity"},
+    "summary": {"type": ["string", "null"]},
+    "most_consequential_missing_artifact": {"type": ["string", "null"]},
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "migration_notes": {"type": ["string", "null"]}
   }
 }
