@@ -36,7 +36,10 @@ jobs:
           python scripts/validate.py 2>&1 | tee hit-validation-report.txt
 
       - name: Validate HIT inter-rater result package
-        run: python scripts/validate_inter_rater_result.py
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_inter_rater_result.py 2>&1 | tee hit-inter-rater-validation-report.txt
 
       - name: Run executable assessment conformance
         run: >-
@@ -53,5 +56,6 @@ jobs:
           name: hit-validation-reports
           path: |
             hit-validation-report.txt
+            hit-inter-rater-validation-report.txt
             hit-conformance-report.json
           if-no-files-found: error
