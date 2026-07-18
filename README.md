@@ -4,46 +4,59 @@
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 [![Status: Working Specification](https://img.shields.io/badge/status-working%20specification-orange.svg)](SPECIFICATION.md)
 
-**A documentary assurance method for evaluating whether human authority retained practical force in AI-mediated institutional decisions.**
+**An open documentary assurance method for evaluating whether human authority retained practical force in AI-mediated institutional decisions.**
 
-Human Influence Telemetry (HIT) evaluates what contemporaneous records can show about human participation in a consequential decision. It does not infer intentions, certify legal compliance, perform runtime enforcement, or treat a signature as proof of substantive judgment.
+HIT evaluates what contemporaneous records establish about human access, judgment, authority, correction, repair, and reform. It does not infer intention, certify legal compliance, perform runtime enforcement, or treat a signature as proof of substantive judgment.
 
-**Current release:** 0.2.1  
-**Specification version:** 0.1.0  
-**Assessment schema version:** 0.1.0  
-**Development workstream:** v0.3.0 human inter-rater result, pending eligible scorers; v0.4.0 rubric stabilization  
+**Current release:** 0.4.0  
+**Specification version:** 0.4.0  
+**Assessment schema version:** 0.4.0  
+**Dimension catalog version:** 0.4.0  
 **Current maturity:** Level 1, Defined  
+**Human reliability claim:** Unresolved  
 **Originating research DOI:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)  
-**Software DOI:** Pending the first successful Zenodo archive of a GitHub release
+**Software DOI:** Pending a successful standalone software archive
 
 ## Research question
 
 > Can observable records distinguish substantive human influence from ceremonial human presence in AI-mediated institutional decisions?
 
-## The six-plus-one model
+## Six substantive dimensions plus Telemetry Integrity
 
-HIT contains six substantive dimensions and one cross-cutting integrity dimension:
-
-1. **Counsel:** Did the human authority have access to the relevant evidence before the decision?
-2. **Judgment:** Did the human authority evaluate reasons, alternatives, uncertainty, and context rather than merely restating the system output?
-3. **Command:** Could a named human authority approve, reject, modify, stop, or escalate the action?
-4. **Correction:** Could an affected person or reviewer contest, interrupt, reverse, or appeal the decision in practice?
-5. **Repair:** Did a named actor own remediation after substantiated harm?
-6. **Reform:** Did a named authority have power to change the decision architecture that produced the failure?
-7. **Telemetry Integrity:** Are the records complete, traceable, resistant to silent alteration, and sufficiently independent to audit?
-
-The first six dimensions assess substantive human influence. Telemetry Integrity evaluates whether the evidence used to assess those dimensions can itself be trusted.
+1. **Counsel:** Did a named human authority have actual pre-decision access to relevant underlying evidence?
+2. **Judgment:** Did the authority independently evaluate reasons, alternatives, uncertainty, and context?
+3. **Command:** Could the authority practically approve, reject, modify, stop, or escalate?
+4. **Correction:** Could the decision be contested, interrupted, reconsidered, modified, reversed, or appealed in practice?
+5. **Repair:** After qualifying harm, did a named actor own and deliver remediation to affected persons?
+6. **Reform:** Did a named authority have and exercise power to change the decision architecture?
+7. **Telemetry Integrity:** Can the institutional records and the assessment packet be trusted as bounded audit evidence?
 
 ## Findings
 
-Each substantive dimension receives one of four findings:
+- `0`: absent; requires affirmative evidence of absence;
+- `1`: present but ceremonial; requires process-specific formal presence;
+- `2`: present and substantively exercised; requires observed exercise or directly demonstrated operational capability;
+- `IE`: insufficient evidence; records an unresolved evidentiary state.
 
-- `0`: absent;
-- `1`: present but ceremonial;
-- `2`: present and substantively exercised;
-- `IE`: insufficient evidence.
+`IE` is not converted to zero and is not averaged into an ordinal total.
 
-`IE` is not converted to zero. Missing evidence and evidence of absence are different findings.
+## What changed in 0.4.0
+
+Release `0.4.0` is a breaking normative and data-contract revision. It resolves all 16 ambiguity classes in the public friction register by adding:
+
+- affirmative-absence, formal-presence, operational-capability, observed-exercise, and indeterminate evidence states;
+- explicit finding thresholds;
+- dimension-specific decision rules;
+- a Repair trigger;
+- split institutional-record and assessment-packet integrity;
+- deterministic overall integrity derivation;
+- sampling and aggregation declarations;
+- actor-authority attribution;
+- contradictory-evidence rules;
+- structured evidence propositions and precise locators;
+- 48 executable boundary fixtures.
+
+See [`docs/breaking-change-review-v0.4.0.md`](docs/breaking-change-review-v0.4.0.md) and [`docs/migration-guide-v0.1.0-to-v0.4.0.md`](docs/migration-guide-v0.1.0-to-v0.4.0.md).
 
 ## Quick start
 
@@ -54,107 +67,80 @@ python -m pip install --requirement requirements-dev.txt
 python scripts/validate.py
 ```
 
-A passing run validates the schema, dimension catalog, deterministic assessment fixtures, released public case assessments, inter-rater protocol artifacts, comparison cases, negative cases, release files, and citation metadata.
+A passing run validates the released `0.4.0` contract, canonical synthetic example, 48 boundary fixtures, historical case preservation, migration dispositions, locked protocol artifacts, adjacent-system claim boundaries, and release metadata.
 
-## Current maturity
+## Research status
 
-HIT is a research instrument, not a certified standard.
+HIT remains a research instrument, not a certified standard.
 
 | Capability | Status |
 |---|---|
-| Stable construct definitions | Available |
-| Machine-readable assessment schema | Available |
-| Deterministic substantive, ceremonial, and insufficient-evidence fixtures | Available |
-| Automated positive, negative, case-record, protocol, and metadata validation | Available |
-| Retrospective public-record case studies | Released in v0.2.0: three narratives and four actor-specific JSON assessments |
-| Blinded inter-rater protocol and comparison tooling | Protocol locked on `main`; coordinator infrastructure available |
-| Independent human scorer submissions and reliability result | Pending; no eligible pair enrolled |
-| Adversarial rubric-friction review | Available as a non-scoring coordinator artifact |
-| Model-based rubric stress test | Protocol prepared; no conforming result claimed |
+| Normative 0.4.0 rubric | Released |
+| Machine-readable 0.4.0 assessment schema and catalog | Released |
+| 48 accepted, rejected, and boundary fixtures | Released |
+| Historical public case studies | Four `0.1.0` assessments preserved |
+| Public-case 0.4.0 migrations | Not claimed; explicit exceptions recorded |
+| Locked human inter-rater protocol | Available under 0.1.0 contract |
+| Independent human submissions and reliability result | Pending; no eligible pair enrolled |
 | Prospective institutional validation | Pending |
 | Legal or standards conformity determination | Not claimed |
 
-The released case studies add public evidence, but the repository remains at Level 1 until a documented independent human inter-rater exercise satisfies the Level 2 entry criterion. Protocols, model runs, and tooling do not count as an empirical human result. See [`ROADMAP.md`](ROADMAP.md).
+The locked human exercise remains the entry condition for claim H3 and Maturity Level 2. The previous planned `v0.3.0` result label is superseded; the result must use the next available repository version when completed. Its original submissions and pre-adjudication result must be published, passing or failing.
 
-## Public evidence pack
+## Historical public evidence pack
 
-The v0.2.0 evidence pack in [`case-studies/`](case-studies/) contains:
+The `case-studies/` directory contains three retrospective narratives and four actor-specific machine-readable assessments released under specification and schema `0.1.0`:
 
-- the Dutch childcare-benefits scandal during the documented harm period;
-- the Obermeyer population-health algorithm, separating deploying institutions from the manufacturer;
-- Cigna PxDx, including a designed disagreement for inter-rater testing.
+- Dutch childcare-benefits harm-period assessment;
+- Obermeyer deployer and manufacturer assessments;
+- Cigna PxDx assessment.
 
-These cases demonstrate application of the rubric to heterogeneous public records. They do not establish scoring reliability, causal effectiveness, legal liability, or independent validation.
+They remain immutable historical artifacts. Three are `historical_version_bound`; Cigna is `deferred_locked_protocol`. No `0.4.0` case finding is claimed. See [`case-studies/migrations/v0.4.0/`](case-studies/migrations/v0.4.0/).
 
-## v0.3.0 human inter-rater workstream
+## Project structure
 
-The [`validation/`](validation/) directory contains the locked blinded protocol, fixed scorer packet, submission schema, deterministic comparison tool, disagreement taxonomy, and adjudication controls.
+```text
+src/
+  rubric/                         -- Deterministic 0.4.0 boundary-rule evaluators
+schema/
+  hit-assessment.schema.json      -- Canonical public assessment contract
+  hit-dimension-catalog.json      -- Canonical construct and rule catalog
+  candidates/                     -- Development and migration schemas retained for provenance
+fixtures/
+  v0.4.0-canonical-example.json   -- Canonical synthetic assessment
+  v0.4.0-boundaries/              -- 48 executable ambiguity fixtures
+case-studies/
+  assessments/                    -- Immutable historical 0.1.0 records
+  migrations/v0.4.0/              -- Explicit migration dispositions
+validation/                       -- Locked human and model protocols
+coordinator/                      -- Submission preservation and comparison procedures
+recruitment/                      -- Neutral human-scorer materials
+docs/                             -- Handbook, decisions, boundaries, migration, and releases
+archive/v0.1.0/                   -- Superseded public contract preserved for reproducibility
+scripts/                          -- Repository, boundary, migration, and protocol validation
+```
 
-The release gate still requires two eligible human scorers who are independent of the author and of each other. A passing or failing result will be published without replacing original scores after adjudication. Maturity advancement depends on the predeclared pre-adjudication threshold, not on post-hoc consensus.
+## Relationship to adjacent systems
 
-The coordinator-only [`validation/adversarial-rubric-friction-review.md`](validation/adversarial-rubric-friction-review.md) identifies plausible construct-level disagreement before any case evidence is scored. It assigns no findings and must not be distributed to scorers before their submissions are locked.
+- **Microsoft Agent Governance Toolkit** enforces and audits runtime actions. Its events may supply evidence to HIT; HIT does not enforce actions.
+- **ScopeBlind/Acta** verifies signed-receipt integrity and interoperability. Verified receipts may strengthen provenance; HIT does not define or verify that protocol.
+- **Credo AI** provides policy packs, risk and control mappings, governance workflows, evidence collection, and runtime governance. HIT does not provide policy packs, compliance automation, or universal control mappings.
+- **Governed Decision Intelligence** structures consequential decisions in Governed Decision Records.
+- **Decision Evidence Applicability Specification** evaluates what evidence may support under a specified requirement and where equivalence fails.
 
-## Model stress-test workstream
-
-[`validation/model-stress-test/`](validation/model-stress-test/) defines a separate exploratory procedure using two fresh language-model sessions. It may expose rubric ambiguity, boundary drift, evidence-weighting differences, and unsupported claims. It does not replace the human exercise, satisfy claim H3, or advance maturity.
-
-## Repository map
-
-| Path | Purpose |
-|---|---|
-| [`SPECIFICATION.md`](SPECIFICATION.md) | Normative purpose, scope, constructs, findings, and conformance boundary |
-| [`RESEARCH.md`](RESEARCH.md) | Research protocol, evidence classes, claim register, and maturity model |
-| [`ROADMAP.md`](ROADMAP.md) | Evidence-gated release plan through 1.0.0 |
-| [`schema/`](schema/) | Assessment schema and machine-readable dimension catalog |
-| [`fixtures/`](fixtures/) | Deterministic substantive, ceremonial, and insufficient-evidence cases |
-| [`case-studies/`](case-studies/) | Released public case narratives and actor-specific machine-readable assessments |
-| [`validation/`](validation/) | Human protocol, frozen packet, model stress test, friction review, comparison tests, and pending results |
-| [`coordinator/`](coordinator/) | Coordinator-only preservation and comparison procedure |
-| [`recruitment/`](recruitment/) | Human scorer invitation, eligibility screen, and neutral instructions |
-| [`docs/application-handbook.md`](docs/application-handbook.md) | Practitioner application procedure |
-| [`docs/adjacent-system-boundaries.md`](docs/adjacent-system-boundaries.md) | Terminology and claim boundaries against runtime governors, signed receipts, Credo AI, GDI, and DEAS |
-| [`LIMITATIONS.md`](LIMITATIONS.md) | Known limitations and interpretation rules |
-| [`PROVENANCE.md`](PROVENANCE.md) | Public/private extraction lineage and canonical-source rule |
-| [`CHANGELOG.md`](CHANGELOG.md) | Version history and research boundary |
-| [`GOVERNANCE.md`](GOVERNANCE.md) | Decision authority and release governance |
-| [`docs/doi-and-release-strategy.md`](docs/doi-and-release-strategy.md) | Software DOI and archival strategy |
-| [`scripts/validate.py`](scripts/validate.py) | Repository-wide validation command |
-| [`scripts/compare_raters.py`](scripts/compare_raters.py) | Deterministic pre-adjudication scorer comparison |
-| [`scripts/validate_scorer_submission.py`](scripts/validate_scorer_submission.py) | Individual scorer-submission validation |
-| [`scripts/record_submission.py`](scripts/record_submission.py) | SHA-256 receipt generation for unchanged submissions |
-
-## Validation boundary
-
-A passing repository run demonstrates structural validity, deterministic fixture behavior, case-record schema conformance, protocol-artifact consistency, comparison-tool behavior, negative-case rejection, and metadata consistency for the included artifacts. It does not establish scorer independence, scoring reliability, field effectiveness, legal compliance, certification, or independent adoption.
-
-## Relationship to adjacent work
-
-- **[Microsoft Agent Governance Toolkit](https://github.com/microsoft/agent-governance-toolkit)** intercepts agent actions and applies runtime policy, identity, capability, sandboxing, approval, and audit controls. Its events may supply evidence to HIT; HIT does not enforce actions.
-- **[ScopeBlind agent-governance test vectors](https://github.com/ScopeBlind/agent-governance-testvectors)** test signed-receipt schemas, canonicalization, signatures, and chain integrity across implementations. Verified receipts may strengthen provenance; HIT does not define or verify the receipt protocol.
-- **[Credo AI](https://www.credo.ai/)** provides policy packs, risk and control mappings, governance workflows, evidence collection, and runtime agent-governance capabilities. Credo artifacts may become evidence inputs; HIT does not provide policy packs, compliance automation, or universal control mappings.
-- **[Governed Decision Intelligence](https://github.com/mj3b/governed-decision-intelligence)** records the institutional decision question, evidence, alternatives, uncertainty, authority, outcome, and conditions.
-- **HIT** evaluates whether the human authority represented in those records retained practical force.
-- **Decision Evidence Applicability Specification (DEAS)** evaluates what resulting evidence may support under a specified governance regime, what local evidence is additionally required, and where apparent equivalence fails.
-
-The detailed terminology and composition rules are in [`docs/adjacent-system-boundaries.md`](docs/adjacent-system-boundaries.md).
+See [`docs/adjacent-system-boundaries.md`](docs/adjacent-system-boundaries.md) and the [`0.4.0` claim audit](docs/adjacent-system-claim-audit-v0.4.0.md).
 
 ## What HIT does not implement
 
-HIT does not intercept, allow, deny, block, sandbox, or terminate agent actions. It does not compile policy into runtime configuration, verify agent identity or privileges, create signed receipts, define receipt wire formats, provide cryptographic receipt conformance, supply policy packs, automate legal compliance, or make evidence legally portable across regimes.
-
-HIT produces a **HIT assessment record**. Runtime policy decisions, Governed Decision Records, cryptographic receipts, and DEAS evidence-applicability determinations remain separate artifacts.
+HIT does not intercept, allow, deny, block, sandbox, or terminate agent actions. It does not compile policy into runtime configuration, verify agent identity or privileges, create signed receipts, provide cryptographic receipt conformance, supply policy packs, automate legal compliance, declare evidentiary admissibility, or make governance evidence portable across regimes.
 
 ## Claims boundary
 
-A high HIT finding means the available records show substantive human influence under the published rubric. It does not establish that the decision was correct, lawful, fair, accurate, or harmless.
+A high HIT finding means the available records satisfy the published documentary rubric. It does not establish that the decision was correct, lawful, fair, accurate, harmless, or morally justified.
 
 ## Citation and DOI status
 
-Use [`CITATION.cff`](CITATION.cff) for repository citation metadata and identify the exact release used. The originating DOI identifies the research concept, not the standalone software. No standalone software DOI has been assigned yet. The first successful Zenodo archive of a GitHub release should establish a HIT software concept DOI and a version DOI. See the [DOI and release strategy](docs/doi-and-release-strategy.md).
-
-## Contributing and security
-
-See [`CONTRIBUTING.md`](CONTRIBUTING.md), [`GOVERNANCE.md`](GOVERNANCE.md), [`SECURITY.md`](SECURITY.md), and [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
+Use [`CITATION.cff`](CITATION.cff) and identify the exact release. The originating DOI identifies the research concept, not a standalone software version. No standalone software DOI has been assigned yet.
 
 ## License
 

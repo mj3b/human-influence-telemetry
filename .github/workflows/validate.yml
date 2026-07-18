@@ -26,20 +26,19 @@ jobs:
       - name: Install validation dependencies
         run: python -m pip install --requirement requirements-dev.txt
 
-      - name: Check fixture readability
+      - name: Check deterministic fixture formatting
         run: python scripts/check_fixture_format.py
 
-      - name: Validate released HIT artifacts
-        run: python scripts/validate.py
+      - name: Validate HIT 0.4.0 release contract
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate.py 2>&1 | tee hit-validation-report.txt
 
-      - name: Validate HIT v0.4.0 candidate contract
-        run: python scripts/validate_v040_candidate.py
-
-      - name: Validate HIT v0.4.0 boundary fixtures
-        run: python scripts/validate_v040_boundaries.py
-
-      - name: Validate HIT v0.4.0 case migrations
-        run: python scripts/validate_v040_migrations.py
-
-      - name: Validate HIT v0.4.0 release readiness
-        run: python scripts/validate_v040_release_readiness.py
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hit-validation-report
+          path: hit-validation-report.txt
+          if-no-files-found: error

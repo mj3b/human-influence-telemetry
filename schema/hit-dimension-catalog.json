@@ -1,13 +1,80 @@
 {
-  "catalog_version": "0.1.0",
-  "substantive_dimensions": [
-    {"id":"counsel","name":"Counsel","governing_question":"Did the human authority have access to the relevant evidence before the decision?","evidence_examples":["case-file access logs","underlying evidence packet","retrieval timestamps","source inventory"],"ceremonial_failure_signs":["reviewer sees only a score or recommendation","underlying evidence is unavailable","access occurs only after the decision"]},
-    {"id":"judgment","name":"Judgment","governing_question":"Did the human authority evaluate reasons, alternatives, uncertainty, and context?","evidence_examples":["reviewer rationale","alternatives considered","dissent record","modification of system recommendation"],"ceremonial_failure_signs":["boilerplate acceptance","restatement of model output","no recorded independent reason"]},
-    {"id":"command","name":"Command","governing_question":"Could a named human authority approve, reject, modify, stop, or escalate the action?","evidence_examples":["authority matrix","delegation instrument","override log","stop-use record","approval order"],"ceremonial_failure_signs":["signature without practical discretion","override exists only in policy","vendor controls meaningful intervention"]},
-    {"id":"correction","name":"Correction","governing_question":"Could the decision be contested, interrupted, reversed, or appealed in practice?","evidence_examples":["appeal register","escalation log","reversal record","interruption test"],"ceremonial_failure_signs":["appeal channel with no substantive reversals","template denials","unresolved appeals"]},
-    {"id":"repair","name":"Repair","governing_question":"Did a named actor own remediation after substantiated harm?","evidence_examples":["restitution record","corrected decision","notification record","named remediation owner"],"ceremonial_failure_signs":["harm acknowledged without remedy","system corrected while affected persons remain unrepaired"]},
-    {"id":"reform","name":"Reform","governing_question":"Did a named authority have power to change the decision architecture itself?","evidence_examples":["threshold revision","workflow redesign","model retirement","control redesign","authorized governance change"],"ceremonial_failure_signs":["local compensation without system change","failure architecture persists elsewhere","change authority is unclear"]}
+  "catalog_version": "0.4.0",
+  "specification_version": "0.4.0",
+  "governing_decisions": ["ADR-0001", "ADR-0002", "ADR-0003"],
+  "evidence_states": [
+    {"id": "affirmative_absence", "meaning": "Evidence establishes nonexistence in the bounded process."},
+    {"id": "formal_presence", "meaning": "A process-specific role, mechanism, step, or channel existed."},
+    {"id": "operational_capability", "meaning": "The formally present capacity was practically usable."},
+    {"id": "observed_exercise", "meaning": "A documented use affected the decision path."},
+    {"id": "indeterminate", "meaning": "The record cannot distinguish among the other evidence states."}
   ],
-  "cross_cutting_dimension": {"id":"telemetry_integrity","name":"Telemetry Integrity","governing_question":"Can the evidence used to assess the six substantive dimensions be trusted as an audit record?","attributes":["provenance","completeness","edit authority","independence","tamper evidence","retention","missing-record disclosure","cross-record consistency"]},
-  "scoring": {"0":"Absent","1":"Present but ceremonial","2":"Present and substantively exercised","IE":"Insufficient evidence"}
+  "findings": {
+    "0": "Absent; requires affirmative absence.",
+    "1": "Present but ceremonial; requires process-specific formal presence.",
+    "2": "Present and substantively exercised; requires observed exercise or directly demonstrated operational capability.",
+    "IE": "Insufficient evidence; requires an unresolved proposition and search or request record."
+  },
+  "substantive_dimensions": [
+    {
+      "id": "counsel",
+      "name": "Counsel",
+      "governing_question": "Did the named human authority have actual pre-decision access to relevant underlying evidence?",
+      "required_distinctions": ["authorization versus actual access", "underlying evidence versus compressed output", "pre-decision versus post-decision access"]
+    },
+    {
+      "id": "judgment",
+      "name": "Judgment",
+      "governing_question": "Did the human authority independently evaluate reasons, alternatives, uncertainty, and context?",
+      "required_distinctions": ["direct reasoning evidence versus indirect indicators", "review versus ratification", "independent rationale versus system-output restatement"]
+    },
+    {
+      "id": "command",
+      "name": "Command",
+      "governing_question": "Could a named human authority practically approve, reject, modify, stop, or escalate?",
+      "required_distinctions": ["formal authority versus practical control", "institutional control versus vendor control", "nominal mechanism versus usable intervention"]
+    },
+    {
+      "id": "correction",
+      "name": "Correction",
+      "governing_question": "Could the decision be contested, interrupted, reconsidered, modified, reversed, or appealed in practice?",
+      "required_distinctions": ["channel existence", "accessibility", "procedural use", "substantive reconsideration", "practical outcome effect"]
+    },
+    {
+      "id": "repair",
+      "name": "Repair",
+      "governing_question": "After qualifying harm, did a named actor own and deliver remediation to affected persons?",
+      "required_distinctions": ["triggered versus not triggered versus indeterminate harm", "process correction versus person-level remedy", "formal ownership versus delivered remediation"]
+    },
+    {
+      "id": "reform",
+      "name": "Reform",
+      "governing_question": "Did a named authority have and exercise power to change the decision architecture?",
+      "required_distinctions": ["individual repair versus architecture change", "later change versus linked reform", "external compulsion versus substantive institutional implementation"]
+    }
+  ],
+  "telemetry_integrity": {
+    "name": "Telemetry Integrity",
+    "objects": ["institutional_record_integrity", "assessment_packet_integrity"],
+    "statuses": {
+      "adequate": "Traceable and sufficiently controlled for bounded findings.",
+      "limited": "Named weaknesses exist but bounded findings remain possible.",
+      "unreliable": "Material integrity failure makes the record unsafe for one or more findings.",
+      "IE": "The record cannot determine the integrity status."
+    },
+    "derivation_rule": "unreliable>IE>limited>adequate"
+  },
+  "aggregation_default": "dominant_pattern",
+  "actor_attribution_rule": "Do not attribute authority or conduct across actors without evidence of delegation, control, agency, shared rights, or another defined relationship.",
+  "citation_rule": "Every material evidence claim requires a source, reproducible locator, bounded proposition, relation, dimensions, actors, provenance, independence, and transformation history.",
+  "non_claims": [
+    "legal compliance",
+    "certification",
+    "causal effectiveness",
+    "human inter-rater reliability",
+    "runtime enforcement",
+    "signed-receipt verification",
+    "policy-pack harmonization",
+    "evidence portability"
+  ]
 }
