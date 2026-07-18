@@ -35,6 +35,9 @@ jobs:
           set -o pipefail
           python scripts/validate.py 2>&1 | tee hit-validation-report.txt
 
+      - name: Validate HIT inter-rater result package
+        run: python scripts/validate_inter_rater_result.py
+
       - name: Run executable assessment conformance
         run: >-
           python -m src conformance --all --format json
