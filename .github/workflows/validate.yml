@@ -35,10 +35,20 @@ jobs:
           set -o pipefail
           python scripts/validate.py 2>&1 | tee hit-validation-report.txt
 
-      - name: Upload validation report
+      - name: Run executable assessment conformance
+        run: >-
+          python -m src conformance --all --format json
+          --output hit-conformance-report.json
+
+      - name: Smoke-test public CLI commands
+        run: python scripts/validate_v050_cli.py
+
+      - name: Upload validation reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: hit-validation-report
-          path: hit-validation-report.txt
+          name: hit-validation-reports
+          path: |
+            hit-validation-report.txt
+            hit-conformance-report.json
           if-no-files-found: error

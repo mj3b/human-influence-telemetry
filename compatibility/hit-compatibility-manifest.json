@@ -1,0 +1,50 @@
+{
+  "manifest_version": "0.1.0",
+  "engine_version": "0.5.0-development",
+  "supported_contracts": [
+    {
+      "specification_version": "0.4.0",
+      "schema_version": "0.4.0",
+      "catalog_version": "0.4.0",
+      "conformance_mode": "full",
+      "entry_point": "python -m src conformance --path <assessment.json>"
+    }
+  ],
+  "historical_contracts": [
+    {
+      "specification_version": "0.1.0",
+      "schema_version": "0.1.0",
+      "catalog_version": "0.1.0",
+      "conformance_mode": "historical_validation_only",
+      "canonical_archive": "archive/v0.1.0/",
+      "public_case_dispositions": "case-studies/migrations/v0.4.0/migration-manifest.json"
+    }
+  ],
+  "migration_rules": [
+    {
+      "from_schema_version": "0.1.0",
+      "to_schema_version": "0.4.0",
+      "automatic": false,
+      "preserve_original": true,
+      "method": "fresh_reassessment",
+      "command": "python -m src migration-plan --path <historical-assessment.json>"
+    }
+  ],
+  "commands": {
+    "assessment_conformance": "python -m src conformance --path <assessment.json>",
+    "repository_conformance": "python -m src conformance --all",
+    "migration_plan": "python -m src migration-plan --path <historical-assessment.json>"
+  },
+  "determinism": {
+    "timestamps_in_reports": false,
+    "case_order": "case_id ascending",
+    "issue_order": "severity, code, path, message",
+    "record_digest": "SHA-256 over canonical JSON for derived suite records"
+  },
+  "non_claims": [
+    "Conformance does not establish empirical correctness or human inter-rater reliability.",
+    "Conformance does not establish legal compliance, standards conformity, certification, or evidentiary admissibility.",
+    "Migration planning does not re-score a historical case or produce a 0.4.0 assessment.",
+    "The implementation does not perform runtime enforcement, signed-receipt verification, or evidence portability."
+  ]
+}

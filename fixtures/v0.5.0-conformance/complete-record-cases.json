@@ -1,0 +1,172 @@
+{
+  "suite_id": "HIT-CONFORMANCE-V050-COMPLETE-001",
+  "suite_version": "0.1.0",
+  "contract": {
+    "specification_version": "0.4.0",
+    "schema_version": "0.4.0",
+    "catalog_version": "0.4.0"
+  },
+  "base_record": "fixtures/v0.4.0-canonical-example.json",
+  "cases": [
+    {
+      "case_id": "CR-VALID-001",
+      "description": "Canonical 0.4.0 record passes structural and semantic conformance.",
+      "expected_valid": true,
+      "expected_error_codes": [],
+      "mutations": []
+    },
+    {
+      "case_id": "CR-SCHEMA-VERSION-001",
+      "description": "Candidate version text is rejected by the released schema.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-SCHEMA"],
+      "mutations": [
+        {"op": "set", "path": "/schema_version", "value": "0.4.0-candidate"}
+      ]
+    },
+    {
+      "case_id": "CR-DIMENSION-DUPLICATE-001",
+      "description": "A complete record cannot repeat one dimension and omit another.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-DIMENSION-COVERAGE"],
+      "mutations": [
+        {"op": "set", "path": "/substantive_findings/1/dimension", "value": "counsel"}
+      ]
+    },
+    {
+      "case_id": "CR-ACTOR-REFERENCE-001",
+      "description": "Evidence claims cannot attribute propositions to an unknown actor.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-ACTOR-REFERENCE"],
+      "mutations": [
+        {"op": "set", "path": "/evidence_claims/0/actor_ids/0", "value": "ACT-UNKNOWN"}
+      ]
+    },
+    {
+      "case_id": "CR-CLAIM-REFERENCE-001",
+      "description": "Findings cannot cite an unknown evidence claim.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-CLAIM-REFERENCE"],
+      "mutations": [
+        {"op": "set", "path": "/substantive_findings/0/supporting_claim_ids/0", "value": "EC-UNKNOWN"}
+      ]
+    },
+    {
+      "case_id": "CR-CLAIM-RELATION-001",
+      "description": "A supporting reference must point to a claim whose relation is supports.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-CLAIM-RELATION"],
+      "mutations": [
+        {"op": "set", "path": "/evidence_claims/0/relation", "value": "limits"}
+      ]
+    },
+    {
+      "case_id": "CR-CLAIM-DIMENSION-001",
+      "description": "A reused claim must declare every dimension for which it is cited.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-CLAIM-DIMENSION"],
+      "mutations": [
+        {"op": "set", "path": "/evidence_claims/1/dimensions", "value": ["command"]}
+      ]
+    },
+    {
+      "case_id": "CR-INTEGRITY-DERIVATION-001",
+      "description": "Overall Telemetry Integrity must follow the published precedence rule.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-INTEGRITY-DERIVATION"],
+      "mutations": [
+        {"op": "set", "path": "/telemetry_integrity/overall_status", "value": "adequate"}
+      ]
+    },
+    {
+      "case_id": "CR-REPAIR-TRIGGER-001",
+      "description": "An indeterminate Repair trigger cannot coexist with a determinate finding.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-REPAIR-TRIGGER"],
+      "mutations": [
+        {"op": "set", "path": "/substantive_findings/4/finding", "value": 2},
+        {"op": "set", "path": "/substantive_findings/4/evidence_state", "value": "observed_exercise"},
+        {"op": "set", "path": "/substantive_findings/4/supporting_claim_ids", "value": ["EC-AUTHORITY"]}
+      ]
+    },
+    {
+      "case_id": "CR-EVENT-SCOPE-001",
+      "description": "Event-specific assessments require event-specific aggregation.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-AGGREGATION-SCOPE"],
+      "mutations": [
+        {"op": "set", "path": "/assessment_scope", "value": "event_specific"}
+      ]
+    },
+    {
+      "case_id": "CR-PERIOD-SCOPE-001",
+      "description": "Period-level assessments cannot declare event-specific aggregation as the assessment rule.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-AGGREGATION-SCOPE"],
+      "mutations": [
+        {"op": "set", "path": "/aggregation/mode", "value": "event_specific"}
+      ]
+    },
+    {
+      "case_id": "CR-CITATION-OTHER-001",
+      "description": "An other locator requires a reproducibility note.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-CITATION-OTHER-NOTE"],
+      "mutations": [
+        {"op": "set", "path": "/evidence_claims/0/locator/locator_type", "value": "other"}
+      ]
+    },
+    {
+      "case_id": "CR-DETERMINATE-SUPPORT-001",
+      "description": "A determinate finding requires at least one supporting claim.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-DETERMINATE-SUPPORT"],
+      "mutations": [
+        {"op": "set", "path": "/substantive_findings/3/supporting_claim_ids", "value": []}
+      ]
+    },
+    {
+      "case_id": "CR-IE-SEARCH-001",
+      "description": "IE requires a recorded search or request summary.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-IE-SEARCH"],
+      "mutations": [
+        {"op": "set", "path": "/substantive_findings/5/search_or_request_summary", "value": null}
+      ]
+    },
+    {
+      "case_id": "CR-NONREPAIR-TRIGGER-001",
+      "description": "Non-Repair dimensions cannot carry a Repair trigger.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-NONREPAIR-TRIGGER"],
+      "mutations": [
+        {"op": "set", "path": "/substantive_findings/0/repair_trigger", "value": "triggered"}
+      ]
+    },
+    {
+      "case_id": "CR-ACTOR-RECIPROCITY-001",
+      "description": "An actor cannot claim evidentiary attribution that the evidence claim does not reciprocate.",
+      "expected_valid": false,
+      "expected_error_codes": ["HIT-ACTOR-CLAIM-RECIPROCITY"],
+      "mutations": [
+        {
+          "op": "append",
+          "path": "/actors",
+          "value": {
+            "actor_id": "ACT-SECONDARY",
+            "institutional_identity": "Synthetic Appeals Unit",
+            "role_type": "human",
+            "role_name": "Secondary reviewer",
+            "authority_types": ["advisory"],
+            "mechanisms_controlled": ["recommendation"],
+            "decision_stages": ["appeal"],
+            "relationship": "other",
+            "related_actor_ids": ["ACT-REVIEWER"],
+            "evidence_claim_ids": ["EC-ACCESS"],
+            "notes": "Synthetic invalid reciprocity vector."
+          }
+        }
+      ]
+    }
+  ]
+}
