@@ -1,0 +1,46 @@
+{
+  "record_type": "HIT inter-rater publication preservation index",
+  "record_version": "1.0.0",
+  "protocol_id": "HIT-IRP-CIGNA-001",
+  "packet_id": "HIT-IR-CIGNA-PXDX-001",
+  "manual_submissions": [
+    {
+      "scorer_public_id": "HIT-SCORER-A",
+      "role": "superseded_original_incomplete",
+      "sha256": "6d1674cd476879ce4792e6dbf55c8ea1b834da4ca8da7cf366d572506d0cceca",
+      "received_at": "2026-07-18T15:43:11-04:00",
+      "preserved": true
+    },
+    {
+      "scorer_public_id": "HIT-SCORER-A",
+      "role": "locked_corrected_manual_submission",
+      "sha256": "53369878cd58f78a820f4281dacd6d83240dea7fd934d857fe64b3f0e3208567",
+      "received_at": "2026-07-18T15:53:00-04:00",
+      "preserved": true
+    },
+    {
+      "scorer_public_id": "HIT-SCORER-B",
+      "role": "locked_original_manual_submission",
+      "sha256": "f387874663ce8a52b7febc11f7b23ba339f71815bc47ea418496e6cfa7888cee",
+      "received_at": "2026-07-18T16:08:00-04:00",
+      "preserved": true
+    }
+  ],
+  "verified_json_submissions": [
+    {
+      "scorer_public_id": "HIT-SCORER-A",
+      "sha256": "9c90e2eaf0785cd83f4962058d622a948c2ba60c1de830e06a2474eb85542a33",
+      "verification_received_at": "2026-07-18T17:27:00-04:00"
+    },
+    {
+      "scorer_public_id": "HIT-SCORER-B",
+      "sha256": "553669d57679fc2034b27021a4b021333c94770ecc656d9b18c1c438f494dd9b",
+      "verification_received_at": "2026-07-18T17:20:00-04:00"
+    }
+  ],
+  "comparison_outputs": {
+    "json_sha256": "91b28ec23f6f446be3ccd4868d9975a7f143da917de87ab5c2f5ac0123b3ced2",
+    "markdown_sha256": "dc14794ae8b99694a37b9182db68875c93510f3e860e291c865caa286f75064c"
+  },
+  "publication_note": "Binary manual submissions and scorer-verified JSON records remain preserved under coordinator custody until the publication branch completes privacy, provenance, and exact-byte review. This index records their locked hashes and receipt state without substituting for the underlying files."
+}
