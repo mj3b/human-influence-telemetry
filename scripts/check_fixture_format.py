@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reject minified or non-canonical JSON in deterministic HIT fixtures."""
+"""Enforce canonical formatting for the three historical deterministic fixtures."""
 
 from __future__ import annotations
 
@@ -9,7 +9,12 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-FIXTURES_DIR = ROOT / "fixtures"
+FIXTURE_PATHS = [
+    ROOT / "fixtures" / "substantive.json",
+    ROOT / "fixtures" / "ceremonial.json",
+    ROOT / "fixtures" / "insufficient-evidence.json",
+]
+CANONICAL_EXAMPLE = ROOT / "fixtures" / "v0.4.0-canonical-example.json"
 
 
 def canonical_json(value: Any) -> str:
@@ -18,30 +23,36 @@ def canonical_json(value: Any) -> str:
 
 def main() -> int:
     failures: list[str] = []
-    fixture_paths = sorted(FIXTURES_DIR.glob("*.json"))
 
-    if not fixture_paths:
-        failures.append("no fixture JSON files were found")
-
-    for path in fixture_paths:
+    for path in FIXTURE_PATHS:
+        if not path.is_file():
+            failures.append(f"{path.relative_to(ROOT)}: historical fixture is missing")
+            continue
         try:
             text = path.read_text(encoding="utf-8")
             value = json.loads(text)
         except (OSError, json.JSONDecodeError) as exc:
             failures.append(f"{path.relative_to(ROOT)}: cannot parse JSON: {exc}")
             continue
-
         if text != canonical_json(value):
             failures.append(
                 f"{path.relative_to(ROOT)}: use two-space indented canonical JSON with a final newline"
             )
+
+    if not CANONICAL_EXAMPLE.is_file():
+        failures.append("fixtures/v0.4.0-canonical-example.json: canonical example is missing")
+    else:
+        try:
+            json.loads(CANONICAL_EXAMPLE.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            failures.append(f"fixtures/v0.4.0-canonical-example.json: cannot parse JSON: {exc}")
 
     if failures:
         for failure in failures:
             print(f"FAIL: {failure}", file=sys.stderr)
         return 1
 
-    print(f"Fixture formatting: PASS ({len(fixture_paths)} readable JSON files)")
+    print("Fixture formatting: PASS (3 historical fixtures; canonical example parseable)")
     return 0
 
 
