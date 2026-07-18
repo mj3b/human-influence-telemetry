@@ -30,4 +30,15 @@ jobs:
         run: python scripts/check_fixture_format.py
 
       - name: Validate HIT 0.4.0 release contract
-        run: python scripts/validate.py
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate.py 2>&1 | tee hit-validation-report.txt
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hit-validation-report
+          path: hit-validation-report.txt
+          if-no-files-found: error
