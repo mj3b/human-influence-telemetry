@@ -1,0 +1,52 @@
+{
+  "packet_id": "HIT-IMPLEMENTATION-V100-CANDIDATE-001",
+  "status": "candidate_incomplete",
+  "audit_protocol_id": "HIT-CRI-V100-001",
+  "audit_permitted": false,
+  "target_release": "0.9.0",
+  "target_stable_release": "1.0.0",
+  "exact_repository_commit": null,
+  "packet_digest": null,
+  "required_artifacts": [
+    {"path": "SPECIFICATION.md", "status": "present_current_0.4.0"},
+    {"path": "docs/application-handbook.md", "status": "present_current_0.4.0"},
+    {"path": "schema/hit-assessment.schema.json", "status": "present_current_0.4.0"},
+    {"path": "schema/hit-dimension-catalog.json", "status": "present_current_0.4.0"},
+    {"path": "docs/adjacent-system-boundaries.md", "status": "present"},
+    {"path": "compatibility/hit-compatibility-manifest.json", "status": "present"},
+    {"path": "docs/migration-guide-v0.4.0.md", "status": "present"},
+    {"path": "docs/conformance-error-catalog.md", "status": "present"},
+    {"path": "fixtures/v0.5.0-conformance/complete-record-cases.json", "status": "present"},
+    {"path": "RESEARCH.md", "status": "present"},
+    {"path": "LIMITATIONS.md", "status": "present"},
+    {"path": "implementation/v1.0.0-candidate/audit-protocol.md", "status": "present_candidate"}
+  ],
+  "required_runtime_tasks": [
+    "fresh_install",
+    "version_reconstruction",
+    "valid_assessment_validation",
+    "invalid_vector_error_explanation",
+    "rule_reconstruction",
+    "migration_plan_generation",
+    "comparison_reproduction",
+    "adjacent_system_boundary_explanation",
+    "private_knowledge_register",
+    "audit_disposition"
+  ],
+  "missing_before_activation": [
+    "exact_repository_commit",
+    "packet_digest",
+    "dependency_lock_or_exact_environment_record",
+    "canonical_valid_assessment_hash",
+    "selected_invalid_vector_hashes",
+    "migration_input_hash",
+    "comparison_input_hashes",
+    "expected_output_hashes",
+    "audit_submission_schema",
+    "independent_auditor_eligibility_record",
+    "exact_commit_validation"
+  ],
+  "private_author_explanation_allowed": false,
+  "model_audit_counts_as_human_reliability_evidence": false,
+  "failed_audit_must_be_published": true
+}
