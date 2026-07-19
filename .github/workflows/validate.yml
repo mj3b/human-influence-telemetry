@@ -59,6 +59,12 @@ jobs:
           set -o pipefail
           python scripts/validate_v1_readiness.py 2>&1 | tee hit-v1-readiness-report.txt
 
+      - name: Validate HIT v1 clean-room implementation packet candidate
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_v1_implementation_packet.py 2>&1 | tee hit-v1-implementation-packet-report.txt
+
       - name: Run executable assessment conformance
         run: >-
           python -m src conformance --all --format json
@@ -78,5 +84,6 @@ jobs:
             hit-v070-source-audit-report.txt
             hit-v070-recruitment-contingency-report.txt
             hit-v1-readiness-report.txt
+            hit-v1-implementation-packet-report.txt
             hit-conformance-report.json
           if-no-files-found: error
