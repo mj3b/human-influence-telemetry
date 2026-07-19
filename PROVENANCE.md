@@ -8,8 +8,8 @@ The public technical instrument is extracted from that program without publishin
 
 - Concept author: Mark Julius Banasihan
 - ORCID: 0009-0001-8121-2878
-- Originating research DOI: 10.5281/zenodo.21204892
-- Version-specific software DOI: 10.5281/zenodo.21446142
+- Concept DOI for all HIT software versions: 10.5281/zenodo.21204892
+- Version-specific software DOI for `v0.6.4`: 10.5281/zenodo.21446142
 - Zenodo software record: https://zenodo.org/records/21446142
 - Source repository: private and retained by the author
 - Canonical public repository: `mj3b/human-influence-telemetry`
@@ -24,6 +24,15 @@ The public technical instrument is extracted from that program without publishin
 - Stable public-contract target: `1.0.0`, gated candidate, release prohibited
 
 Published-release metadata is bound to `0.6.4`. Candidate `0.7.0`, `0.9.0`, and `1.0.0` files record prospective controls and do not create a release.
+
+## DOI lineage
+
+Zenodo assigns two related identifiers to the HIT software record:
+
+- `10.5281/zenodo.21204892` is the concept DOI representing the software across all published versions and resolving to the latest version;
+- `10.5281/zenodo.21446142` is the version-specific DOI for the exact `v0.6.4` archive.
+
+Use the version DOI for reproducible citation of an exact release. Use the concept DOI when referring to HIT as an evolving software project across versions.
 
 ## Version lineage
 
@@ -55,7 +64,7 @@ Release `0.6.0` advances research maturity to Level 2, Applicable. It does not r
 
 ### 0.6.4
 
-Published the standalone software archive and version-specific DOI `10.5281/zenodo.21446142`. This release synchronizes archive and citation metadata. It does not revise the normative contract, executable engine, human-result record, H3 decision, or maturity level.
+Published the standalone software archive and version-specific DOI `10.5281/zenodo.21446142` under the all-versions concept DOI `10.5281/zenodo.21204892`. This release synchronizes archive and citation metadata. It does not revise the normative contract, executable engine, human-result record, H3 decision, or maturity level.
 
 ### Post-0.6.4 readiness work, unreleased
 
