@@ -24,17 +24,5 @@
     "human influence telemetry",
     "documentary evidence",
     "inter-rater agreement"
-  ],
-  "related_identifiers": [
-    {
-      "identifier": "https://doi.org/10.5281/zenodo.21204892",
-      "relation": "isSupplementTo",
-      "resource_type": "other"
-    },
-    {
-      "identifier": "https://github.com/mj3b/governed-decision-intelligence",
-      "relation": "isRelatedTo",
-      "resource_type": "software"
-    }
   ]
 }
