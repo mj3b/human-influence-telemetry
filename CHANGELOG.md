@@ -6,17 +6,40 @@ The project uses Semantic Versioning for the public technical artifact. Research
 
 ## [Unreleased]
 
+### Added
+
+- Candidate current-contract replication architecture under protocol `HIT-IRP-HIT040-002`
+- Human-governed source-audit and case-selection controls
+- Recruitment-contingency rules that prohibit silent reduction of the empirical design
+- Draft manual workbooks for Scorers A, B, and C, plus an unassigned master template
+- Machine-readable `1.0.0` stable-contract gate ledger
+- Candidate clean-room implementation packet and protocol `HIT-CRI-V100-001`
+- Canonical release index distinguishing published releases from candidate release documents
+- Public README status table covering `0.6.0`, `0.7.0`, `0.9.0`, and the gated `1.0.0` target
+
+### Changed
+
+- Public status language now distinguishes the current published release from the stable-contract target
+- The main README now explains what `1.0.0` will and will not claim
+- Project governance, contribution, security, research, provenance, and release documentation now use the pre-`1.0.0` stabilization boundary
+- Release metadata remains pinned to `0.6.0` until a later version is actually tagged and published
+
 ### Planned
 
-- Replicate human scoring under a compatible current contract
-- Produce additional public `0.4.x` assessments
-- Conduct a clean-room implementation audit
-- Prepare a public release candidate in `0.9.0`
+- Complete the signed human selection of three current-contract cases
+- Freeze three packet boundaries, source manifests, identifiers, and digests
+- Lock and publish the `0.7.0` replication package
+- Produce additional public current-contract assessments
+- Conduct the clean-room implementation audit
+- Prepare and publish a public release candidate in `0.9.0`
+- Promote synchronized stable components to `1.0.0` only after every gate passes
 - Develop a preregistered prospective validation protocol
 
 ### Research boundary
 
 One passing frozen-packet exercise does not establish general inter-rater reliability, field effectiveness, causal validity, legal correctness, certification, or adoption.
+
+Candidate `0.7.0`, `0.9.0`, and `1.0.0` materials do not create a release, authorize scoring, or advance research maturity.
 
 ## [0.6.0] - 2026-07-18
 
