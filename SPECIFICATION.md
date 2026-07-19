@@ -1,13 +1,16 @@
 # Human Influence Telemetry Specification
 
-**Status:** Working specification  
+**Status:** Released pre-1.0 normative contract  
 **Version:** 0.4.0  
 **Released:** 2026-07-18  
 **Predecessor:** 0.1.0  
+**Stable target:** 1.0.0, gated candidate  
 **Author:** Mark Julius Banasihan  
 **ORCID:** 0009-0001-8121-2878  
 **Originating concept DOI:** 10.5281/zenodo.21204892  
-**Research maturity:** Level 1, Defined
+**Current repository research maturity:** Level 2, Applicable
+
+The normative body below is unchanged from release `0.4.0`. The `1.0.0` readiness program does not alter scoring semantics until a separately reviewed stable-contract promotion is completed.
 
 ## 1. Purpose
 

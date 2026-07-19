@@ -26,6 +26,9 @@ Human Influence Telemetry is a documentary assessment method. Records can omit g
 20. **Kappa indeterminacy.** Both scorers used one category across all six substantive dimensions, so chance-corrected agreement cannot be estimated from this exercise.
 21. **Contract-transfer uncertainty.** The exercise used the preserved `0.1.0` scorer contract. It does not establish independent application of the current `0.4.0` contract.
 22. **No independent adoption.** The repository does not establish use by an institution outside the author's control.
+23. **Clean-room implementability untested.** The candidate `1.0.0` implementation packet has not yet completed external clean-room review.
+24. **Stable-version boundary.** Candidate `0.7.0`, `0.9.0`, and `1.0.0` materials do not establish that those versions are released or stable.
+25. **Semantic-versus-empirical separation.** A future stable contract may improve compatibility without increasing the strength of the human reliability evidence.
 
 ## Known open questions
 
@@ -37,9 +40,11 @@ Human Influence Telemetry is a documentary assessment method. Records can omit g
 - Which Telemetry Integrity attributes are necessary for production assurance in different sectors?
 - How should HIT findings be linked to outcomes without overstating causality?
 - Which external legal or standards requirements can HIT evidence support, and under what local conditions?
+- Can an independent implementer apply the full public package without private author explanation?
+- Which defects, if any, block promotion from `0.9.0` to `1.0.0`?
 
 ## Interpretation rules
 
 HIT findings are evidence claims about a bounded documentary record. They are not claims about intentions, moral character, legal guilt, or outcome quality.
 
-`IE` is not evidence of absence. A high finding is not evidence that the decision was correct. Structural schema validity is not substantive conformance. Conformance is not certification. One passing human exercise is not a population reliability estimate.
+`IE` is not evidence of absence. A high finding is not evidence that the decision was correct. Structural schema validity is not substantive conformance. Conformance is not certification. One passing human exercise is not a population reliability estimate. A candidate release document is not a published release.

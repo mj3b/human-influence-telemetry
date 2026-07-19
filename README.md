@@ -1,12 +1,23 @@
 # Human Influence Telemetry
 
 [![HIT Validation](https://github.com/mj3b/human-influence-telemetry/actions/workflows/validate.yml/badge.svg)](https://github.com/mj3b/human-influence-telemetry/actions/workflows/validate.yml)
+[![Latest release: v0.6.0](https://img.shields.io/badge/latest%20release-v0.6.0-blue.svg)](https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.6.0)
+[![Stable target: v1.0.0](https://img.shields.io/badge/stable%20target-v1.0.0%20gated-orange.svg)](docs/releases/v1.0.0-candidate.md)
+[![Maturity: Level 2](https://img.shields.io/badge/research%20maturity-Level%202%20Applicable-green.svg)](RESEARCH.md)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
-[![Status: Working Specification](https://img.shields.io/badge/status-working%20specification-orange.svg)](SPECIFICATION.md)
 
 **An open documentary assurance method for evaluating whether human authority retained practical force in AI-mediated institutional decisions.**
 
 HIT evaluates what contemporaneous records establish about human access, judgment, authority, correction, repair, and reform. It does not infer intention, certify legal compliance, perform runtime enforcement, or treat a signature as proof of substantive judgment.
+
+## Public version status
+
+| Layer | Status | Meaning |
+|---|---|---|
+| Published repository release | [`0.6.0`](https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.6.0) | First bounded independent human result |
+| Active empirical package | [`0.7.0` candidate](docs/releases/v0.7.0-candidate.md) | Three-case current-contract protocol and packet construction |
+| Stable release candidate | `0.9.0` planned | Clean-room implementation audit and release-candidate freeze |
+| Stable public contract | [`1.0.0` gated candidate](docs/releases/v1.0.0-candidate.md) | Compatibility and independent-implementation commitment after all gates pass |
 
 **Current release:** 0.6.0  
 **Conformance engine version:** 0.5.0  
@@ -15,8 +26,51 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 **Dimension catalog version:** 0.4.0  
 **Current maturity:** Level 2, Applicable  
 **Human reliability claim:** Supported for one frozen packet under `HIT-IRP-CIGNA-001`  
+**Active replication protocol:** `HIT-IRP-HIT040-002`, candidate, scoring prohibited  
+**Stable target:** `1.0.0`, release prohibited until the published gates pass  
 **Originating research DOI:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)  
 **Software DOI:** Pending a successful standalone software archive
+
+The [GitHub Releases page](https://github.com/mj3b/human-influence-telemetry/releases) contains published releases. Candidate and future-version documents in the repository are planning and release-control artifacts. They are not published releases.
+
+## What `1.0.0` will mean
+
+Version `1.0.0` will declare that the public HIT assessment contract is stable enough for independent implementation, versioned compatibility commitments, and reproducible conformance checking from public artifacts.
+
+It will not declare population-wide inter-rater reliability, causal effectiveness, legal conformity, certification, truthful reasoning, or independent institutional adoption. Semantic stability and research maturity remain separate claims.
+
+The governing materials are:
+
+- [`ROADMAP.md`](ROADMAP.md), for the chronological release path;
+- [`docs/v1-readiness-plan.md`](docs/v1-readiness-plan.md), for the stable-contract gates;
+- [`docs/releases/v1.0.0-candidate.md`](docs/releases/v1.0.0-candidate.md), for the candidate release boundary;
+- [`release/v1.0.0/contract-freeze.candidate.json`](release/v1.0.0/contract-freeze.candidate.json), for the machine-readable gate ledger;
+- [`implementation/v1.0.0-candidate/`](implementation/v1.0.0-candidate/), for the clean-room implementation packet candidate.
+
+## Path to `1.0.0`
+
+| Version | State | Release function |
+|---|---|---|
+| `0.4.0` | Complete | Stabilized the normative assessment contract |
+| `0.5.0` | Complete | Added complete-record executable conformance |
+| `0.6.0` | Published | Added the first bounded independent human result and advanced maturity to Level 2 |
+| `0.7.0` | Active candidate | Freeze three current-contract packets and the multi-case replication protocol |
+| `0.8.0` | Pending | Publish current-contract applications and the empirical result or declared recruitment disposition |
+| `0.9.0` | Pending | Publish the stable release candidate after clean-room implementation review |
+| `1.0.0` | Gated | Promote synchronized stable components after every release gate passes |
+
+Current blocking gates are:
+
+1. a signed human selection of one exercise-rich, one constraint-rich, and one evidence-limited case;
+2. three frozen packet boundaries, source manifests, identifiers, and digests;
+3. locked `v0.7.0` scorer, coordinator, comparison, and workbook materials;
+4. three current-contract public applications or documented migration exceptions;
+5. a complete standalone implementation packet;
+6. a clean-room implementation audit with original outputs preserved;
+7. a public `v0.9.0` release candidate;
+8. synchronized `1.0.0` component promotion, breaking-change review, and exact-release validation.
+
+Draft manual workbooks exist for Scorers A, B, and C. They remain marked `DRAFT - SCORING PROHIBITED` until the `0.7.0` protocol and all three packets are locked.
 
 ## Research question
 
@@ -66,6 +120,10 @@ Release `0.5.0` added executable complete-record conformance without changing th
 
 Release `0.6.0` publishes the bounded human agreement result. It changes research maturity and claim status. It does not change the `0.4.0` specification, schema, catalog, handbook, or scoring semantics, and it does not change the `0.5.0` conformance engine.
 
+Release candidates `0.7.0`, `0.9.0`, and `1.0.0` remain governed by prospective gates. Their presence in `main` does not authorize tagging or publication.
+
+See the [repository release index](docs/releases/README.md) for the distinction between published releases and candidate release documents.
+
 ## Quick start
 
 ```bash
@@ -99,6 +157,9 @@ HIT remains a research instrument, not a certified standard.
 | Pre-adjudication result | 7 / 7 exact agreement; zero critical disagreements |
 | H3 | Supported for one frozen packet |
 | Research maturity | Level 2, Applicable |
+| Current-contract replication | Candidate protocol; cases and packets not yet locked |
+| Clean-room implementation audit | Candidate protocol; audit prohibited until packet freeze |
+| Stable public contract | `1.0.0` target; release prohibited |
 | Prospective institutional validation | Pending |
 | Legal or standards conformity determination | Not claimed |
 
@@ -113,36 +174,22 @@ They remain immutable historical artifacts. No `0.4.0` public-case finding is cl
 ## Project structure
 
 ```text
-src/
-  __main__.py                    -- Package entry point
-  cli.py                         -- CLI execution harness
-  cli_args.py                    -- Argument parsing
-  commands/                      -- Conformance and migration commands
-  config/                        -- Repository paths and implementation configuration
-  models/                        -- Typed conformance results and issues
-  validation/                    -- Complete-assessment semantic checks
-  conformance/                   -- Suite, compatibility, migration, and report orchestration
-  rubric/                        -- Deterministic 0.4.0 boundary-rule evaluators
-compatibility/
-  hit-compatibility-manifest.json -- Supported contracts and migration rules
-schema/
-  hit-assessment.schema.json      -- Canonical public assessment contract
-  hit-dimension-catalog.json      -- Canonical construct and rule catalog
-fixtures/
-  v0.4.0-boundaries/              -- 48 executable ambiguity fixtures
-  v0.5.0-conformance/             -- Complete-record valid and invalid vectors
-case-studies/
-  assessments/                    -- Immutable historical 0.1.0 records
-  migrations/v0.4.0/              -- Explicit migration dispositions
-validation/
-  submissions/                    -- Verified independent scorer JSON
-  receipts/                       -- Intake, correction, and transcription records
-  results/                        -- Comparison, decisions, hashes, and release manifest
-coordinator/                      -- Submission preservation and comparison procedures
-recruitment/                      -- Neutral human-scorer materials
-docs/                             -- Handbook, decisions, conformance, migration, and releases
-archive/v0.1.0/                   -- Superseded public contract preserved for reproducibility
-scripts/                          -- Release validation and CLI smoke tests
+src/                                  -- Public CLI and conformance implementation
+compatibility/                        -- Supported contracts and migration rules
+schema/                               -- Canonical 0.4.0 schema and dimension catalog
+fixtures/                             -- Boundary and complete-record conformance vectors
+case-studies/                         -- Historical public cases and migration dispositions
+validation/results/                   -- Published human result, decisions, and hashes
+validation/v0.7.0/                    -- Current-contract replication candidate
+validation/v0.7.0/manual-workbooks/   -- Draft workbook controls and asset manifest
+implementation/v1.0.0-candidate/      -- Clean-room implementation packet candidate
+release/v1.0.0/                       -- Machine-readable stable-contract gate ledger
+coordinator/                          -- Submission preservation and comparison procedures
+recruitment/                          -- Neutral human-scorer materials
+docs/releases/                        -- Published and candidate release records
+docs/                                 -- Handbook, decisions, migration, and readiness plans
+archive/                              -- Superseded public contracts preserved for reproducibility
+scripts/                              -- Validation, comparison, and CLI smoke tests
 ```
 
 ## Relationship to adjacent systems
@@ -163,9 +210,11 @@ A high HIT finding means the available records satisfy the published documentary
 
 The `0.6.0` result shows that two independent reviewers reached the declared threshold on one frozen packet. It does not estimate population reliability.
 
+The `1.0.0` target concerns contract stability and public implementability. It does not upgrade the empirical claim unless new eligible independent human evidence separately satisfies the active protocol.
+
 ## Citation and DOI status
 
-Use [`CITATION.cff`](CITATION.cff) and identify the exact release. The originating DOI identifies the research concept, not a standalone software version. No standalone software DOI has been assigned yet.
+Use [`CITATION.cff`](CITATION.cff) and identify the exact published release. The citation and `.zenodo.json` metadata remain at `0.6.0` until a later release is actually published. The originating DOI identifies the research concept, not a standalone software version. No standalone software DOI has been assigned yet.
 
 ## License
 

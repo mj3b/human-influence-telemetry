@@ -1,5 +1,12 @@
 # Roadmap to Human Influence Telemetry 1.0.0
 
+**Current published release:** `0.6.0`  
+**Active workstream:** `0.7.0` candidate  
+**Stable release candidate:** `0.9.0` pending  
+**Stable public-contract target:** `1.0.0`, release prohibited
+
+See the [release index](docs/releases/README.md), [v1 readiness plan](docs/v1-readiness-plan.md), and [v1 candidate release outline](docs/releases/v1.0.0-candidate.md).
+
 This roadmap treats semantic versions as public compatibility claims. Research maturity remains an evidence claim governed by `RESEARCH.md`.
 
 Dates are secondary. A milestone is complete only when its artifacts and tests exist publicly.
@@ -15,6 +22,7 @@ Dates are secondary. A milestone is complete only when its artifacts and tests e
 - Zenodo identifiers are recorded only after successful archival.
 - Human-result releases preserve original submissions and the pre-adjudication result whether the exercise passes or fails.
 - Recruitment difficulty does not authorize silent reduction of a locked empirical design.
+- Candidate documents do not create a tag, GitHub release, DOI archive, scorer activation, or maturity advancement.
 
 ## 0.1.0: Foundation contract, complete
 
