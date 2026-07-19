@@ -1,0 +1,48 @@
+{
+  "candidate_id": "HIT-CAND-B2-ROBODEBT",
+  "protocol_id": "HIT-IRP-HIT040-002",
+  "slot": "constraint-rich",
+  "public_case_name": "Australian Robodebt Scheme",
+  "institutional_unit": "Australian Commonwealth income-compliance debt assessment and recovery process",
+  "decision_process": "Automated debt assessment, notification, review, and recovery workflow",
+  "system_role": "Automated income averaging and debt calculation within the income-compliance process",
+  "decision_status": "pending_human_selection",
+  "packet_id": null,
+  "expected_findings_recorded": false,
+  "sources": [
+    {
+      "source_id": "C-S01",
+      "title": "Royal Commission into the Robodebt Scheme final report",
+      "canonical_location": "https://robodebt.royalcommission.gov.au/publications/report",
+      "source_status": "identified_not_audited",
+      "human_audit_required": true,
+      "publisher_or_authority": null,
+      "publication_or_filing_date": null,
+      "source_function": null,
+      "procedural_posture": null,
+      "stable_locator_quality": null,
+      "archive_status": "not_checked",
+      "redistribution_status": "not_checked",
+      "sha256": null,
+      "human_notes": null
+    }
+  ],
+  "audit_fields": {
+    "actor_boundary_stability": null,
+    "source_accessibility": null,
+    "locator_precision": null,
+    "procedural_posture_clarity": null,
+    "archive_feasibility": null,
+    "redistribution_feasibility": null,
+    "repair_trigger_evidence": null,
+    "contamination_risk": null,
+    "packet_burden": null,
+    "selection_eligibility": null
+  },
+  "human_decision": {
+    "decision": "pending",
+    "rationale": null,
+    "decided_by": null,
+    "decided_at": null
+  }
+}
