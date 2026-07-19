@@ -6,17 +6,50 @@ The project uses Semantic Versioning for the public technical artifact. Research
 
 ## [Unreleased]
 
+### Added
+
+- Candidate `v0.7.0` current-contract replication architecture under protocol `HIT-IRP-HIT040-002`
+- Human-governed source-audit records for six candidate cases
+- Recruitment-contingency controls that preserve the locked empirical claim boundary
+- Draft 31-page manual workbooks for Scorers A, B, and C plus an unassigned master template
+- Candidate manual-workbook asset manifest and activation contract
+- Machine-readable `v1.0.0` gate ledger
+- Candidate `v1.0.0` release outline
+- Standalone clean-room implementation-packet architecture
+- Clean-room audit protocol `HIT-CRI-V100-001`
+- Canonical release index under `docs/releases/README.md`
+- CI checks that prevent premature scorer activation, clean-room audit, component promotion, or `v1.0.0` release
+
+### Changed
+
+- Main README now exposes the complete `v0.6.0` through `v1.0.0` release train
+- Roadmap now separates current-contract replication, empirical results, release-candidate review, and stable-contract promotion
+- Public release documentation now distinguishes the current published release from the active stable-release target
+
+### Current release position
+
+- Public repository release: `0.6.0`
+- Normative contract: `0.4.0`
+- Conformance engine: `0.5.0`
+- Research maturity: Level 2, Applicable
+- `v0.7.0`: active workstream, scoring prohibited
+- `v0.9.0`: clean-room candidate architecture staged, audit prohibited
+- `v1.0.0`: release prohibited until all gate-ledger conditions pass
+
 ### Planned
 
-- Replicate human scoring under a compatible current contract
-- Produce additional public `0.4.x` assessments
-- Conduct a clean-room implementation audit
-- Prepare a public release candidate in `0.9.0`
+- Complete the signed human selection of one case for each `v0.7.0` study stratum
+- Freeze three current-contract packets and their exact source manifests
+- Lock and publish `v0.7.0`
+- Produce current-contract public applications and complete independent scoring or publish an explicit recruitment disposition
+- Complete the clean-room implementation audit
+- Publish a public release candidate in `v0.9.0`
+- Promote synchronized stable components only after breaking-change and exact-release validation
 - Develop a preregistered prospective validation protocol
 
 ### Research boundary
 
-One passing frozen-packet exercise does not establish general inter-rater reliability, field effectiveness, causal validity, legal correctness, certification, or adoption.
+The v1 readiness architecture is evidence about release control and implementation planning. It does not establish new human reliability, field effectiveness, causal validity, legal correctness, certification, or adoption.
 
 ## [0.6.0] - 2026-07-18
 
