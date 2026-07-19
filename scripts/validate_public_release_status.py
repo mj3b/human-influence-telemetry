@@ -15,8 +15,8 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLISHED_RELEASE = "0.6.4"
 PUBLISHED_DATE = "2026-07-19"
 HUMAN_RESULT_RELEASE = "0.6.0"
-SOFTWARE_DOI = "10.5281/zenodo.21446142"
-RESEARCH_DOI = "10.5281/zenodo.21204892"
+VERSION_DOI = "10.5281/zenodo.21446142"
+CONCEPT_DOI = "10.5281/zenodo.21204892"
 NORMATIVE_CONTRACT = "0.4.0"
 CONFORMANCE_ENGINE = "0.5.0"
 STABLE_TARGET = "1.0.0"
@@ -73,7 +73,8 @@ def main() -> int:
         "README.md": (
             "**Current release:** 0.6.4",
             "**Human-result release:** 0.6.0",
-            "**Software release DOI:** [10.5281/zenodo.21446142]",
+            "**Concept DOI, all software versions:** [10.5281/zenodo.21204892]",
+            "**Version DOI, exact `v0.6.4` release:** [10.5281/zenodo.21446142]",
             "**Stable target:** `1.0.0`, release prohibited",
             "**Active replication protocol:** `HIT-IRP-HIT040-002`, candidate, scoring prohibited",
             "Candidate and future-version documents in the repository are planning and release-control artifacts. They are not published releases.",
@@ -93,7 +94,8 @@ def main() -> int:
         ),
         "PROVENANCE.md": (
             "Public repository release: 0.6.4",
-            "Version-specific software DOI: 10.5281/zenodo.21446142",
+            "Concept DOI for all HIT software versions: 10.5281/zenodo.21204892",
+            "Version-specific software DOI for `v0.6.4`: 10.5281/zenodo.21446142",
             "Post-0.6.4 readiness work, unreleased",
             "Research maturity: Level 2, Applicable",
         ),
@@ -126,13 +128,15 @@ def main() -> int:
         ),
         "docs/releases/README.md": (
             "Current published release",
-            "Version-specific software DOI: `10.5281/zenodo.21446142`",
+            "Concept DOI for all software versions: `10.5281/zenodo.21204892`",
+            "Version-specific software DOI for `v0.6.4`: `10.5281/zenodo.21446142`",
             "`1.0.0`, release prohibited",
             "Candidate documents may describe future versions, but they must not overwrite published-release metadata.",
         ),
         "docs/releases/v0.6.4.md": (
             "**Status:** Published",
-            "10.5281/zenodo.21446142",
+            "**Concept DOI, all software versions:** [10.5281/zenodo.21204892]",
+            "**Version-specific software DOI:** [10.5281/zenodo.21446142]",
             "Human-result release: `0.6.0`",
         ),
         "docs/releases/v0.7.0-candidate.md": (
@@ -179,8 +183,8 @@ def main() -> int:
         for item in citation.get("identifiers", [])
         if item.get("type") == "doi"
     }
-    if citation_dois != {SOFTWARE_DOI, RESEARCH_DOI}:
-        failures.append("CITATION.cff DOI set must contain the software and originating research DOIs")
+    if citation_dois != {VERSION_DOI, CONCEPT_DOI}:
+        failures.append("CITATION.cff DOI set must contain the version-specific and concept DOIs")
 
     if v1_lock.get("target_repository_release") != STABLE_TARGET:
         failures.append("v1 gate ledger target changed")
@@ -190,7 +194,7 @@ def main() -> int:
         failures.append("v1 gate ledger must continue to prohibit release")
     if v1_lock.get("current_repository_release") != PUBLISHED_RELEASE:
         failures.append("v1 gate ledger current release drifted")
-    if v1_lock.get("current_software_doi") != SOFTWARE_DOI:
+    if v1_lock.get("current_software_doi") != VERSION_DOI:
         failures.append("v1 gate ledger software DOI drifted")
     if v1_lock.get("human_result_release") != HUMAN_RESULT_RELEASE:
         failures.append("v1 gate ledger human-result release drifted")
@@ -229,7 +233,8 @@ def main() -> int:
     print("HIT public release-status validation passed")
     print("- published release: 0.6.4")
     print("- human-result release: 0.6.0")
-    print("- software DOI: 10.5281/zenodo.21446142")
+    print("- concept DOI: 10.5281/zenodo.21204892")
+    print("- version DOI: 10.5281/zenodo.21446142")
     print("- normative contract: 0.4.0")
     print("- conformance engine: 0.5.0")
     print("- research maturity: Level 2, Applicable")
