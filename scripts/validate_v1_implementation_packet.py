@@ -94,7 +94,7 @@ def main() -> int:
         "Protocol ID:** `HIT-CRI-V100-001`",
         "Status:** Candidate, audit prohibited",
         "Can a technically competent external reviewer install, operate, and explain",
-        "private author knowledge",
+        "private author explanation",
         "fail_release_blocking_defect",
         "blocks `v0.9.0` promotion and `v1.0.0` release",
     ):
