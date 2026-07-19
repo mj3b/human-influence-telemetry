@@ -2,7 +2,9 @@
 
 **Updated:** 19 July 2026  
 **Governing decision:** `ADR-0001`  
-**Current repository release:** `0.6.0`  
+**Current repository release:** `0.6.4`  
+**Human-result release:** `0.6.0`  
+**Software release DOI:** `10.5281/zenodo.21446142`  
 **Current normative contract:** specification, assessment schema, dimension catalog, and handbook `0.4.0`  
 **Current conformance engine:** `0.5.0`  
 **Current research maturity:** Level 2, Applicable  
@@ -38,6 +40,7 @@ Research maturity remains governed by `RESEARCH.md`. A stable `1.0.0` contract m
 - first locked human exercise under the archived `0.1.0` scorer contract;
 - two eligible independent scorers, two preserved submissions, 7 of 7 exact agreements, and zero critical disagreements;
 - bounded H3 support and Maturity Level 2 decision;
+- standalone software archive and version-specific DOI `10.5281/zenodo.21446142`;
 - candidate current-contract replication architecture;
 - candidate source-audit controls;
 - candidate recruitment contingency;
