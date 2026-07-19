@@ -53,6 +53,12 @@ jobs:
           set -o pipefail
           python scripts/validate_v070_recruitment_contingency.py 2>&1 | tee hit-v070-recruitment-contingency-report.txt
 
+      - name: Validate HIT v1 readiness and manual workbook controls
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/validate_v1_readiness.py 2>&1 | tee hit-v1-readiness-report.txt
+
       - name: Run executable assessment conformance
         run: >-
           python -m src conformance --all --format json
@@ -71,5 +77,6 @@ jobs:
             hit-v070-candidate-report.txt
             hit-v070-source-audit-report.txt
             hit-v070-recruitment-contingency-report.txt
+            hit-v1-readiness-report.txt
             hit-conformance-report.json
           if-no-files-found: error
