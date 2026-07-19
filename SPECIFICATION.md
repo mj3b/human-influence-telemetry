@@ -1,13 +1,16 @@
 # Human Influence Telemetry Specification
 
-**Status:** Working specification  
+**Status:** Released pre-1.0 normative contract  
 **Version:** 0.4.0  
 **Released:** 2026-07-18  
 **Predecessor:** 0.1.0  
+**Stable target:** 1.0.0, gated candidate  
 **Author:** Mark Julius Banasihan  
 **ORCID:** 0009-0001-8121-2878  
 **Originating concept DOI:** 10.5281/zenodo.21204892  
-**Research maturity:** Level 1, Defined
+**Current repository research maturity:** Level 2, Applicable
+
+This file remains the released `0.4.0` normative contract. The `1.0.0` readiness work does not change its scoring semantics. Any promotion to `1.0.0` requires synchronized specification, schema, catalog, handbook, implementation, migration, audit, and exact-release validation.
 
 ## 1. Purpose
 
@@ -39,240 +42,171 @@ In HIT, telemetry means observable, time-bounded documentary evidence that may r
 
 ### 3.2 HIT assessment record
 
-A HIT assessment record contains six substantive findings, two Telemetry Integrity component findings, one derived overall integrity status, actor attribution, evidence propositions, assessment boundaries, limitations, and unresolved propositions.
+A HIT assessment record is the structured evidentiary analysis produced under this specification. It is not a runtime decision log, signed receipt, policy pack, compliance certificate, or portable proof of legal conformity.
 
-A HIT assessment record is not a runtime policy decision, Governed Decision Record, signed receipt, compliance determination, or DEAS evidence-applicability determination.
+### 3.3 Institutional decision
 
-### 3.3 Assessment-contract conformance
+An institutional decision is a consequential determination made through an organizational process that allocates benefits, burdens, access, treatment, status, rights, obligations, or remedies.
 
-Structural conformance means that a record validates against the declared HIT schema version. Substantive conformance additionally requires application of this rubric, the actor-attribution rules, the sampling rule, the evidence-state sequence, the citation requirements, and the Telemetry Integrity procedure.
+## 4. Evidence states
 
-Structural validity does not establish substantive correctness, legal conformity, or empirical reliability.
+Each substantive finding must use one evidence state:
 
-## 4. Governing evidence states
+- **affirmative_absence:** reliable evidence establishes that the relevant human function did not exist, could not operate, or was systematically unavailable;
+- **formal_presence:** a process-specific human role or authority existed, but the record does not establish substantive exercise;
+- **operational_capability:** the actor had a directly demonstrated ability to exercise the function, although the record may not show use in the assessed event;
+- **observed_exercise:** the record shows the function was exercised within the declared boundary;
+- **indeterminate:** the packet cannot distinguish absence, presence, capability, or exercise after a documented search or request.
 
-Before assigning `0`, `1`, `2`, or `IE`, determine which evidence state is established.
-
-### 4.1 Affirmative absence
-
-Affirmative absence means the evidence supports the proposition that the relevant capacity, practice, authority, mechanism, or artifact did not exist during the bounded process.
-
-It requires at least one of:
-
-1. an explicit statement of nonexistence from a competent source responsible for the process;
-2. a binding process design, system constraint, or authority instrument that made the capacity structurally unavailable;
-3. a documented search across a defined and credibly complete record set that would ordinarily contain the artifact;
-4. contemporaneous process evidence showing that the decision path excluded the capacity;
-5. multiple mutually consistent records establishing nonexistence rather than merely omitting mention.
-
-Documentary silence, an unanswered request, a missing file, or a generic process description does not by itself establish affirmative absence.
-
-### 4.2 Formal presence
-
-Formal presence means the capacity existed in the assessed process as an assigned role, required step, documented mechanism, or available channel.
-
-It requires a process-specific artifact showing that the capacity was defined or assigned and applied to the assessed unit, decision type, and period. Generic job descriptions, enterprise policies, vendor statements, and undated authority claims are insufficient unless applicability is traceable.
-
-### 4.3 Operational capability
-
-Operational capability means a formally present capacity was usable in practice. It requires an applicable authority, usable mechanism, required access, workable timing, defined decision consequence, and no material barrier making use impracticable.
-
-It may be shown by an operational test, drill, verified configuration, successful use in a comparable sampled decision, or other direct process evidence. Nominal permission alone is insufficient.
-
-### 4.4 Observed exercise
-
-Observed exercise means the human capacity was used in a documented instance and affected, interrupted, redirected, reconsidered, repaired, or reformed the decision path. The instance must remain attributable to the assessed actor and fall within the declared temporal and sampling boundaries.
-
-### 4.5 Indeterminate
-
-Indeterminate means the record cannot distinguish among affirmative absence, formal presence, operational capability, and observed exercise.
+Documentary silence alone is not affirmative absence.
 
 ## 5. Findings
 
-### 5.1 `0`: absent
+Each substantive dimension must receive exactly one finding:
 
-Assign `0` only when affirmative absence is established. Do not assign `0` because records were not produced, a source is silent, the packet is incomplete, or an expected artifact was not found.
+- `0`: absent, supported only by `affirmative_absence`;
+- `1`: present but ceremonial, supported only by `formal_presence`;
+- `2`: substantively present, supported by `operational_capability` or `observed_exercise`;
+- `IE`: insufficient evidence, supported only by `indeterminate`.
 
-### 5.2 `1`: present but ceremonial
-
-Assign `1` when formal presence is established and operational capability is not established, practical effect is affirmatively constrained, or the capacity operated only as ratification, intake, acknowledgment, routing, or another non-substantive form.
-
-A `1` requires evidence that the form existed. Uncertainty about existence remains `IE`.
-
-### 5.3 `2`: present and substantively exercised
-
-Assign `2` when observed exercise affected the decision path, or when operational capability is directly demonstrated and the assessment design does not reasonably permit an observed exercise, provided that:
-
-- a named authority could use the mechanism during the bounded period;
-- the mechanism was technically and procedurally available;
-- the decision consequence was identifiable;
-- no material evidence shows that use was prohibitively difficult, routinely ignored, or controlled by another actor.
-
-Mere legal authority, policy language, interface presence, or hypothetical capability does not support `2`. When evidence supports both `1` and `2`, use `1` unless the criteria for `2` are affirmatively established.
-
-### 5.4 `IE`: insufficient evidence
-
-Assign `IE` when the evidence cannot distinguish among the evidence states. Record the unresolved proposition, missing or conflicting artifact, search or request performed, and reason a determinate finding is unavailable.
-
-`IE` is not ordinal and must not be averaged, converted to zero, or treated as evidence of failure.
+`IE` is an evidentiary result. It must not be converted to `0`, imputed, averaged, or used as a neutral midpoint.
 
 ## 6. Substantive dimensions
 
 ### 6.1 Counsel
 
-**Question:** Did the named human authority have actual pre-decision access to relevant underlying evidence?
+Counsel measures whether a named human authority had timely access to the evidence needed to influence the decision before the decision became effective.
 
-- `0`: the record establishes that relevant pre-decision access was unavailable.
-- `1`: a formal route existed, but actual presentation or retrieval is not shown, or the human received only a compressed score, ranking, summary, or recommendation.
-- `2`: records show actual, timely access to relevant underlying evidence sufficient to inform judgment.
-- `IE`: permission, retrieval, timing, or scope cannot be determined.
-
-Authorization and actual access must be recorded separately.
+A formal notification or dashboard access supports `1` only when it is process-specific and linked to the decision stage. A finding of `2` requires observed pre-decision access or a directly tested capability that the actor could use in the assessed process.
 
 ### 6.2 Judgment
 
-**Question:** Did the human authority independently evaluate reasons, alternatives, uncertainty, and context?
+Judgment measures whether a named human authority independently evaluated reasons, alternatives, uncertainty, context, and consequences.
 
-Direct evidence includes reviewer-authored reasons, alternatives considered, disagreement, modification, questions, requests for additional evidence, or rationale not reducible to system output. Indirect indicators include review duration, adoption rate, boilerplate language, batch size, and repeated identical dispositions.
-
-- `0`: no evaluation step existed, or the role was structurally prohibited from evaluating the merits.
-- `1`: a formal review step existed, but the record shows ratification or ceremonial review. A `1` based mainly on indirect indicators requires at least two mutually reinforcing, process-specific indicators and no material contrary evidence.
-- `2`: direct evidence shows independent reasoning capable of affecting the path.
-- `IE`: the presence or substance of reasoning cannot be resolved.
+A signature, click, or acknowledgment does not by itself establish judgment. A finding of `2` requires records of independent evaluation or a directly demonstrated deliberative process.
 
 ### 6.3 Command
 
-**Question:** Could a named human authority practically approve, reject, modify, stop, or escalate?
+Command measures whether a named human authority could practically approve, reject, modify, stop, defer, or escalate the decision.
 
-- `0`: no named authority could direct otherwise, or intervention was structurally unavailable.
-- `1`: authority or a mechanism existed formally, but usability, timing, control, or practical consequence is not established, or material friction reduced the role to ratification.
-- `2`: a named authority exercised the power, or a verified operational test shows the power could produce a specified change.
-- `IE`: authority, mechanism availability, or practical control cannot be determined.
-
-Vendor-controlled intervention must not be attributed to the assessed institution without evidence of delegation or control.
+Formal authority supports `1` when operational use remains unestablished. A finding of `2` requires observed exercise or directly demonstrated operational capability within the decision architecture.
 
 ### 6.4 Correction
 
-**Question:** Could the decision be contested, interrupted, reconsidered, modified, reversed, or appealed in practice?
+Correction measures whether a decision could be contested, interrupted, reconsidered, modified, reversed, or appealed in practice.
 
-Assess channel existence, accessibility, procedural use, substantive reconsideration, and practical outcome effect separately.
-
-- `0`: no contest, appeal, interruption, or escalation channel existed.
-- `1`: a channel existed, but the record shows only intake, routing, template disposition, or procedural acknowledgment.
-- `2`: a documented instance or direct operational test shows substantive reconsideration and authority to alter the outcome.
-- `IE`: existence, accessibility, use, or substantive effect cannot be determined.
-
-A reversal is strong evidence but is not required when substantive reconsideration and practical authority are otherwise established.
+A published appeal channel supports `1` only when it applies to the assessed process. A finding of `2` requires observed correction or a directly demonstrated operational correction pathway.
 
 ### 6.5 Repair
 
-**Question:** After qualifying harm, did a named actor own and deliver remediation to affected persons?
+Repair measures whether, after qualifying harm, a named actor owned and delivered remediation to affected persons.
 
-Determine the trigger before the finding:
+Repair is assessed only when the harm trigger is `triggered`, `not_triggered`, or `indeterminate`.
 
-- `triggered`: harm is established through adjudication, formal institutional acknowledgment, or specific contemporaneous evidence corroborated by an independent source or record class;
-- `not_triggered`: the bounded record affirmatively establishes that no qualifying harm occurred;
-- `indeterminate`: allegations or indicators exist, but qualifying harm cannot be established.
+- `triggered` means the record substantiates material harm within the declared boundary;
+- `not_triggered` means reliable evidence establishes that the qualifying harm condition did not occur;
+- `indeterminate` means the packet cannot resolve whether the trigger occurred.
 
-When the trigger is `indeterminate`, assign Repair `IE`.
-
-When triggered:
-
-- `0`: no named actor owned remediation, or repair was affirmatively excluded;
-- `1`: a formal owner or process existed, but no practical remedy to affected persons is established, or only the process was corrected;
-- `2`: a named actor delivered or operationally directed restitution, record correction, notification, restored access, or another remedy tied to the harm;
-- `IE`: repair ownership or action cannot be determined.
-
-When not triggered, standing capability may be evaluated only when capability testing was predeclared. Formal ownership supports at most `1`; `2` requires a tested or previously exercised mechanism. Otherwise use `IE` and state that no qualifying event occurred within the boundary.
+An indeterminate Repair trigger requires finding `IE`. General policy reform, apology, settlement, or process improvement does not by itself establish person-level Repair.
 
 ### 6.6 Reform
 
-**Question:** Did a named authority have and exercise power to change the decision architecture?
+Reform measures whether a named authority had and exercised power to change the decision architecture itself, including rules, thresholds, data use, system configuration, escalation structure, or institutional assignment of authority.
 
-Later change is admissible only when a follow-up period was declared, the changed architecture is identifiable, the change is linked to the assessed failure or risk, and the implementing or authorizing actor is identified.
+Later reform may be recorded as follow-up evidence, but it does not retroactively change an earlier period-level finding unless the assessment predeclares a temporal rule permitting that inference.
 
-- `0`: no assessed actor held reform authority, or change was structurally impossible within that role.
-- `1`: formal authority or a change process existed, but no operative architecture change is established.
-- `2`: a named authority implemented or operationally directed a linked architecture change.
-- `IE`: authority, linkage, timing, or implementation cannot be determined.
+## 7. Actor and authority attribution
 
-Externally compelled change supports `2` only when a named institutional authority substantively implemented, adapted, or extended it.
+Every material actor must be represented separately. Evidence may be attributed only to the actor whose institutional identity, authority, mechanism, and decision stage are supported by the record.
 
-## 7. Telemetry Integrity
+Conduct by a vendor, deployer, regulator, court, corporate affiliate, affected person, or external reviewer must not be assigned to another actor without evidence of authority, delegation, control, or agency.
 
-Assess two objects separately:
+## 8. Evidence claims
 
-1. **institutional-record integrity:** records generated or retained by the institution and governed systems;
-2. **assessment-packet integrity:** provenance, completeness, transformation history, and preservation of materials supplied to the assessor.
+Every finding must trace to structured evidence claims. Each claim must identify:
 
-Each component receives:
+- artifact and source;
+- precise locator;
+- proposition;
+- whether the source supports, contradicts, or limits the proposition;
+- affected dimensions and actors;
+- provenance and independence status;
+- transformation history.
 
-- `adequate`: traceable provenance, disclosed scope, controlled edit authority, credible retention, sufficient independence or corroboration, and no unresolved material contradiction;
-- `limited`: named gaps or dependencies exist, but bounded findings remain possible;
-- `unreliable`: tampering, unexplained alteration, irreconcilable contradiction, circular dependence, compromised generation, or provenance failure makes the record unsafe;
-- `IE`: information about provenance, completeness, edit authority, retention, independence, or transformation is insufficient to classify the component.
+A source reference without a proposition and locator is not sufficient evidence attribution.
 
-Derive the overall status deterministically: `unreliable` overrides `IE`; `IE` overrides `limited`; `limited` overrides `adequate`. Component statuses must remain visible.
+## 9. Contradictory evidence
 
-Missing substantive records do not automatically make integrity `IE`; they may instead make a substantive dimension `IE`.
+Contradictions must remain visible. The assessor must evaluate source type, procedural posture, specificity, corroboration, institutional response, temporal proximity, independence, and unresolved conflict.
 
-## 8. Sampling and aggregation
+A later institutional statement does not automatically override contemporaneous records. A pleading, allegation, ruling, audit finding, settlement, policy statement, and observed event have different evidentiary functions.
 
-Unless another rule is declared before evidence review, period-level assessments report the dominant operational pattern. One exceptional exercise does not automatically elevate a period-level finding to `2`.
+## 10. Sampling and aggregation
 
-Event-specific assessments may report the event finding but must not generalize it to the institution or period without additional evidence.
+The assessment must predeclare:
 
-Every assessment must state the record universe, selection rule, period, aggregation mode, exclusions, and likely selection effects.
+- population or record universe;
+- selection rule;
+- known exclusions;
+- likely selection effects;
+- aggregation mode.
 
-## 9. Actor and authority attribution
+Permitted aggregation modes are:
 
-Before findings are assigned, identify each material actor, institutional identity, role, authority type, mechanisms controlled, decision stages affected, evidence basis, and relationship to other actors.
+- dominant pattern;
+- event specific;
+- tested capability;
+- another explicitly predeclared rule.
 
-Conduct, authority, evidence, and failure must not be attributed across institutional boundaries without evidence of delegation, control, agency, shared decision rights, or another defined relationship. Vendors, deployers, regulators, courts, affiliates, and individual professionals must be separated when their authorities differ.
+A finding for one observed event must not be generalized to a dominant institutional pattern without a declared sampling basis.
 
-A combined institutional finding is permitted only when the assessment explains why the actors form one decision architecture for the dimension being evaluated.
+## 11. Telemetry Integrity
 
-## 10. Contradictory evidence
+Telemetry Integrity has two separate components.
 
-Evaluate conflicting evidence by directness, contemporaneity, specificity, source competence, independence, corroboration, disclosed interest, procedural posture, internal consistency, and consistency with other record classes.
+### 11.1 Institutional-record integrity
 
-No source type is automatically controlling. A determinate finding is permitted when one account is materially better supported and the assessment explains why the conflict does not alter the result. Use `IE` when unresolved conflict could reasonably change the finding or actor attribution.
+This component evaluates whether the institution's underlying records have adequate provenance, scope, completeness, edit authority, independence, tamper evidence, retention, and contradiction handling.
 
-HIT evaluates support for its constructs; it does not adjudicate legal liability or ultimate credibility.
+### 11.2 Assessment-packet integrity
 
-## 11. Evidence reuse and citation precision
+This component evaluates whether the assessor's packet preserves source provenance, declared scope, selection logic, transformations, locators, exclusions, contradictions, and reproducibility.
 
-One artifact may support multiple dimensions only through a distinct proposition and reasoning path for each use. Evidence establishing one dimension does not automatically establish another.
+Each component receives `adequate`, `limited`, `unreliable`, or `IE`.
 
-Every material evidence claim must include:
+The overall status is derived using:
 
-1. source and artifact identifiers;
-2. page, paragraph, section, timestamp, event identifier, record identifier, line, or another reproducible locator;
-3. a bounded proposition;
-4. relation: `supports`, `contradicts`, or `limits`;
-5. relevant dimensions and actors;
-6. provenance, independence, and transformation history.
+`unreliable > IE > limited > adequate`
 
-When no stable locator exists, identify the smallest reproducible unit and explain the limitation.
+The derived overall status does not replace either component.
 
-## 12. Conformance and migration
+## 12. Assessment-contract conformance
 
-A conforming `0.4.0` assessment must validate against `schema/hit-assessment.schema.json` and satisfy this specification and `docs/application-handbook.md`.
+A record conforms to the HIT assessment contract when it satisfies the released schema and the executable semantic checks declared compatible with this specification.
 
-Version `0.4.0` is a breaking change from `0.1.0`. Migration is a fresh reassessment, not a version-field replacement. Historical `0.1.0` files remain valid historical artifacts and must not be overwritten or represented as `0.4.0` records without reconstruction under the new contract.
+Conformance establishes structural and rule consistency. It does not establish that the evidence is true, complete, legally sufficient, admissible, or causally valid.
 
-The public migration dispositions are recorded in `case-studies/migrations/v0.4.0/migration-manifest.json`.
+## 13. Migration
 
-## 13. Adjacent systems and non-claims
+Historical `0.1.0` assessments remain immutable. Migration to `0.4.0` is prohibited when the current contract requires new evidence interpretation, actor separation, sampling declarations, Repair-trigger analysis, split Telemetry Integrity, or precise locators that the historical record does not contain.
 
-Runtime governors may supply enforcement and audit records. Signed-receipt systems may supply integrity evidence. Credo AI may supply policy, control, workflow, and monitoring artifacts. GDI may supply Governed Decision Records. DEAS may qualify evidence applicability under external requirements.
+A migration plan may identify required work. It must not fabricate a current-contract assessment.
 
-HIT evaluates what those records establish about human influence. It does not inherit runtime enforcement, cryptographic verification, policy-pack harmonization, compliance automation, legal sufficiency, or evidence portability from adjacent systems.
+## 14. Non-claims
 
-A high HIT finding does not prove that a decision was correct, lawful, fair, accurate, harmless, or morally justified. HIT does not claim human inter-rater reliability, causal validity, certification, independent adoption, or that human involvement is always preferable to automation.
+HIT does not:
 
-## 14. Version stability and research maturity
+- enforce runtime policy;
+- block or authorize agent actions;
+- verify identity, privileges, or signed receipts;
+- provide policy packs or compliance automation;
+- determine legal conformity or evidentiary admissibility;
+- make governance evidence portable across legal or institutional regimes;
+- certify meaningful human control in a causal sense;
+- establish that a decision was fair, accurate, harmless, or morally justified.
 
-Semantic versions communicate the stability and compatibility of the public contract. Research maturity communicates the strength of evidence supporting HIT claims.
+## 15. Version and maturity boundary
 
-Release `0.4.0` remains Maturity Level 1. The locked human exercise remains the entry condition for H3 and Maturity Level 2. Its original submissions and pre-adjudication result must be published, passing or failing, under the next available repository version when completed.
+The specification version identifies the normative contract. Repository releases may add implementation, evidence, or research records without changing this contract.
+
+Research maturity is governed separately by `RESEARCH.md`. A later repository release or stable semantic version does not automatically advance research maturity.
