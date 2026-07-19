@@ -1,185 +1,236 @@
 # Human Influence Telemetry v1.0.0 Readiness Plan
 
-**Target:** 31 July 2026  
+**Updated:** 19 July 2026  
 **Governing decision:** `ADR-0001`  
-**Current repository release:** `0.2.1`  
-**Current component versions:** specification, assessment schema, and dimension catalog `0.1.0`  
-**Current maturity:** Level 1, Defined
+**Current repository release:** `0.6.0`  
+**Current normative contract:** specification, assessment schema, dimension catalog, and handbook `0.4.0`  
+**Current conformance engine:** `0.5.0`  
+**Current research maturity:** Level 2, Applicable  
+**Active empirical protocol:** `HIT-IRP-HIT040-002`, candidate, scoring prohibited
 
-## Release claim
+## 1. Release claim
 
-Version `1.0.0` will mean that HIT has a stable public assessment contract that can be implemented from public artifacts and checked through executable conformance tests.
+Version `1.0.0` will mean that HIT has a stable public assessment contract that can be implemented from public artifacts, applied without private author interpretation, and checked through executable conformance tests.
 
-It will not claim human inter-rater reliability. Claim H3 and Maturity Level 2 remain pending until two eligible independent human scorers complete the locked protocol.
+Version `1.0.0` is a compatibility and implementation claim. It is not a claim of population-wide inter-rater reliability, causal effectiveness, legal correctness, certification, or institutional adoption.
 
-The July 31 date is a target. The release gates control the decision.
+Research maturity remains governed by `RESEARCH.md`. A stable `1.0.0` contract may coexist with Maturity Level 2 when the stable-contract gates pass before the three-case replication is complete.
 
-## Workstream A: Normative rubric stabilization
+## 2. Current evidence baseline
 
-**Candidate release:** `0.4.0`
+### Complete
 
-Convert the adversarial rubric-friction review into explicit decision rules.
+- six substantive dimensions and split Telemetry Integrity;
+- explicit `0`, `1`, `2`, and `IE` evidence-state rules;
+- actor and authority attribution contract;
+- Repair trigger;
+- sampling and aggregation contract;
+- contradiction and procedural-posture treatment;
+- structured evidence claims and precise locators;
+- normative contract `0.4.0`;
+- 48 deterministic boundary fixtures;
+- complete-assessment conformance engine `0.5.0`;
+- one valid and fifteen invalid complete-record vectors;
+- stable machine-facing error codes;
+- deterministic reports and public CLI;
+- protected migration planning;
+- adjacent-system claim boundaries;
+- first locked human exercise under the archived `0.1.0` scorer contract;
+- two eligible independent scorers, two preserved submissions, 7 of 7 exact agreements, and zero critical disagreements;
+- bounded H3 support and Maturity Level 2 decision;
+- candidate current-contract replication architecture;
+- candidate source-audit controls;
+- candidate recruitment contingency;
+- draft manual workbooks for three future scorers.
 
-### Required rules
+### Pending
 
-1. **Affirmative absence and `IE`.** Define the evidence needed for `0`, including explicit nonexistence, structural impossibility, complete negative search, and reliable process evidence. Documentary silence alone remains `IE`.
-2. **Formal presence and ceremoniality.** Define the minimum artifact that establishes a practice existed before `1` can be assigned.
-3. **Minimum evidence for `2`.** Separate observed exercise, tested capability, and asserted authority. Define when each can support substantive exercise.
-4. **Actor and authority attribution.** Require one actor-authority matrix for multi-actor processes and prevent conduct from being assigned across institutional boundaries without evidence.
-5. **Temporal admissibility.** Define how later correction, repair, and reform may inform an earlier assessment period.
-6. **Repair trigger.** Define substantiated harm and the result when the harm trigger itself remains unresolved.
-7. **Telemetry Integrity.** Separate integrity of the institutional record from integrity of the public evidence packet. Define thresholds for `adequate`, `limited`, `unreliable`, and `IE`.
-8. **Contradictory evidence.** Define how source type, procedural posture, specificity, corroboration, institutional response, and unresolved conflict affect a finding.
-9. **Sampling and aggregation.** Define whether a finding represents any demonstrated capacity, dominant practice, sampled frequency, or a specified worst-case condition.
-10. **Citation precision.** Require source IDs plus passage, page, paragraph, event, or record locators when the source permits them.
-11. **Adjacent-system terminology.** Define institutional decision, runtime policy decision, Governed Decision Record, HIT assessment record, documentary telemetry, assessment-contract conformance, cryptographic receipt, and evidence-applicability determination.
-12. **Portfolio boundary.** Preserve the separate roles of Microsoft AGT, ScopeBlind/Acta, Credo AI, GDI, HIT, and DEAS. Prohibit claims that HIT performs runtime enforcement, receipt interoperability, policy-pack harmonization, compliance automation, or evidence portability.
+- signed human selection of one exercise-rich, one constraint-rich, and one evidence-limited case;
+- three frozen `0.4.0` packet boundaries and source manifests;
+- locked `v0.7.0` protocol package;
+- three current-contract public applications;
+- clean-room implementation audit;
+- public `v0.9.0` stable release candidate;
+- final breaking-change review and `1.0.0` contract promotion.
 
-### Required artifacts
+## 3. Version sequence
 
-- revised `SPECIFICATION.md`;
-- revised application handbook;
-- synchronized assessment schema and dimension catalog;
-- normative decision tables;
-- `docs/adjacent-system-boundaries.md`;
-- migration notes from component version `0.1.0`;
-- updated public cases or explicit migration exceptions;
-- changelog and compatibility statement.
+### `0.7.0`: frozen current-contract replication package
 
-### Completion test
+Required:
 
-A reader can assign each finding without relying on private author interpretation for any ambiguity class recorded in `HIT-ARFR-001`, and can distinguish HIT from runtime governance, signed-receipt verification, policy-pack systems, decision-record infrastructure, and cross-regime evidence applicability.
+- signed human case-selection decision;
+- exactly three immutable packet IDs and versions;
+- three frozen decision boundaries;
+- three frozen source manifests and source archives or stable identifiers;
+- final scorer and coordinator instructions;
+- locked manual scorer workbooks;
+- deterministic three-scorer comparison implementation;
+- synthetic pass, fail, critical-disagreement, hash, identity, and boundary-deviation vectors;
+- exact-commit validation;
+- protocol status `locked` and `scoring_permitted: true`.
 
-## Workstream B: Executable conformance
+`0.7.0` publishes the study design and packet materials. It does not publish findings.
 
-**Candidate release:** `0.5.0`
+### `0.8.0`: current-contract application and replication result
 
-Turn each normative rule into machine-checkable or review-checkable evidence.
+Preferred result package:
 
-### Test classes
+- three eligible independent scorers;
+- nine preserved submissions;
+- pre-adjudication comparison;
+- disagreement classification;
+- adjudication record that preserves original scores;
+- H3 replication decision;
+- Maturity Level 3 decision under predeclared rules.
 
-- valid substantive assessment;
-- valid ceremonial assessment;
-- valid insufficient-evidence assessment;
-- explicit absence versus missing evidence;
-- formal authority with no exercise;
-- tested capability with no observed use;
-- conflicting source tiers;
-- multi-actor attribution;
-- later reform outside the assessment period;
-- unresolved harm trigger;
-- Telemetry Integrity packet-versus-record distinction;
-- duplicate or missing dimensions;
-- unsupported composite score;
-- missing citation locator;
-- inconsistent component versions;
-- migration from the released `0.1.0` contract;
-- prohibited unqualified use of `decision record`, `conformance`, `telemetry`, or `portability` in HIT public claims;
-- unsupported claims of runtime enforcement, signed-receipt verification, policy-pack harmonization, compliance automation, or evidence portability.
+Recruitment failure does not authorize a silent downgrade. A reduced design requires a numbered pre-scoring amendment or new protocol. With zero viable independent scorers, H3 replication remains unresolved and Level 3 remains pending.
 
-### Required artifacts
+The application track may still publish three current-contract author or coordinator applications when their provenance is explicit and they are not relabeled as inter-rater evidence.
 
-- positive and negative fixtures;
-- boundary assessment cases;
-- validator rules;
-- fixture index;
-- conformance report format;
-- machine-readable compatibility manifest;
-- adjacent-system claim-audit checklist;
-- one-command repository validation.
+### `0.9.0`: stable release candidate and clean-room audit
 
-### Completion test
+Required:
 
-The repository rejects every known invalid state, produces deterministic results for every included boundary case, and detects public language that collapses HIT into an adjacent system layer.
-
-## Workstream C: Clean-room implementation audit
-
-**Candidate release:** `0.9.0`
-
-Test whether the public package can be used without private explanation.
-
-### Procedure
-
-1. Build a standalone implementation packet containing only public normative artifacts.
-2. Run two fresh model sessions as implementation auditors, not human scorers.
-3. Ask each session to reconstruct the finding rules, identify required fields, validate the included fixtures, and report ambiguous instructions.
-4. Ask each session to classify HIT against Microsoft AGT, ScopeBlind/Acta, Credo AI, GDI, and DEAS using only the public boundary document.
-5. Preserve both original outputs and classify discrepancies.
-6. Resolve release-blocking documentation or conformance defects.
-7. Keep the model result separate from H3 and the maturity model.
-
-### Release-candidate gates
-
-- component versions frozen;
-- all public cases validate under the candidate contract;
-- migration guide complete;
-- no known ambiguity can systematically change a finding without a documented rule;
-- implementation packet complete;
-- adjacent-system claim audit passes;
-- the public package distinguishes documentary telemetry from runtime observability and cryptographic receipt evidence;
-- README, research register, limitations, provenance, citation, and release metadata synchronized;
-- one public `v0.9.0` release candidate published;
+- candidate contract versions frozen;
+- specification, schema, catalog, handbook, implementation, fixtures, examples, validator, and CLI synchronized;
+- current-contract application surface documented;
+- migration and historical-version boundaries current;
+- standalone implementation packet containing only public artifacts;
+- clean-room auditor receives no private explanation;
+- auditor installs the package, validates a complete assessment, explains error codes, generates a migration plan, and reproduces one comparison;
+- every point requiring private author knowledge is recorded;
+- release-blocking documentation or conformance defects corrected;
+- original audit records preserved;
+- public `v0.9.0` release candidate published;
 - no release-blocking defect remains open.
 
-## Workstream D: Stable public contract
+A technically competent independent human reviewer is preferred for the clean-room audit. Model implementation audits may supplement this work, but model outputs remain development evidence and do not count as human reliability evidence.
 
-**Release:** `1.0.0`
+### `1.0.0`: stable public contract
 
-### Required release artifacts
+The stable release promotes the reviewed contract to version `1.0.0` only when the release gates below pass.
+
+## 4. Stable-contract gates
+
+### A. Normative completeness
+
+- all six substantive dimensions have stable definitions;
+- Telemetry Integrity remains split into institutional-record and assessment-packet components;
+- `0`, `1`, `2`, and `IE` govern every known ambiguity class;
+- actor, authority, temporal, Repair, contradiction, sampling, aggregation, and locator rules are explicit;
+- no known ambiguity can systematically change a finding without a governing rule.
+
+### B. Contract synchronization
+
+- `SPECIFICATION.md` version `1.0.0`;
+- application handbook version `1.0.0`;
+- assessment schema version `1.0.0`;
+- dimension catalog version `1.0.0`;
+- canonical examples version-compatible with the stable contract;
+- conformance implementation and error catalog synchronized;
+- compatibility manifest defines supported historical versions and migration boundaries.
+
+### C. Executable conformance
+
+- positive, negative, and boundary fixtures pass deterministically;
+- complete-record mutation cases cover known invalid states;
+- actor and evidence-claim references are validated;
+- finding and evidence-state invariants are validated;
+- Repair-trigger and Telemetry Integrity derivation are validated;
+- sampling, aggregation, citation, and version invariants are validated;
+- public CLI commands pass;
+- reports are byte-stable where declared;
+- one-command exact-commit validation passes.
+
+### D. Public implementability
+
+- implementation packet contains every artifact required to apply the method;
+- clean-room audit requires no private author explanation for a valid application;
+- technical-help boundaries distinguish access and schema assistance from substantive coaching;
+- public terminology distinguishes documentary telemetry from runtime observability, policy enforcement, signed-receipt verification, and evidence portability.
+
+### E. Application and migration evidence
+
+- at least three public applications under a compatible current contract exist, or the release record explains why specific historical cases cannot be migrated without unavailable records;
+- every current application states its author, boundary, source surface, and independence status;
+- author-scored applications are not represented as independent replication;
+- historical `0.1.0` records remain immutable;
+- automatic migration remains prohibited when fresh judgment is required.
+
+### F. Release integrity
+
+- breaking-change review complete;
+- limitations and claim register current;
+- adjacent-system claim audit passes;
+- README, roadmap, research register, provenance, citation, changelog, and archival metadata synchronized;
+- release notes identify exact component versions and research maturity;
+- exact release commit passes CI;
+- release assets match recorded SHA-256 hashes;
+- no release-blocking issue remains open.
+
+## 5. Required `1.0.0` artifacts
 
 - stable specification `1.0.0`;
-- assessment schema `1.0.0`;
-- dimension catalog `1.0.0`;
-- application handbook `1.0.0`;
+- stable assessment schema `1.0.0`;
+- stable dimension catalog `1.0.0`;
+- stable application handbook `1.0.0`;
 - terminology and adjacent-system boundary contract;
-- conformance suite and report;
-- migration guide from `0.1.0`;
+- conformance implementation, fixtures, and report format;
+- compatibility manifest and migration guide;
 - breaking-change review;
-- implementation packet;
-- revalidated public cases;
-- adjacent-system claim-audit report;
-- current claim register and limitations;
-- release notes and citation metadata;
-- exact release commit with passing CI.
+- clean-room implementation packet;
+- clean-room audit record;
+- current public applications or documented migration exceptions;
+- current claim register, maturity statement, limitations, and non-claims;
+- release notes, citation metadata, provenance, and archival metadata;
+- exact release commit with passing validation.
 
-### Mandatory release language
+## 6. Manual-workbook readiness
 
-The release must state:
+Draft manual workbooks now exist for `HIT-SCORER-A`, `HIT-SCORER-B`, and `HIT-SCORER-C`, plus an unassigned master template. Each workbook contains three full assessment sections and mirrors the `0.4.0` assessment contract.
 
-- HIT is at Maturity Level 1;
-- H3 remains unresolved;
-- the locked human protocol remains pending;
-- model stress tests are development evidence only;
-- HIT is a documentary assurance method, not a runtime governor, signed-receipt protocol, policy-pack platform, compliance engine, or evidence-portability mechanism;
-- the stable contract does not establish legal compliance, causal validity, certification, or independent adoption.
+The workbooks remain candidate assets. They cannot be activated until `v0.7.0` locks the three packet IDs, boundaries, source manifests, and study instructions. Their current hashes are recorded under `validation/v0.7.0/manual-workbooks/`.
 
-## Parallel DOI path
+This work closes a procedural readiness gap. It does not advance H3 or research maturity.
 
-The DOI path is independent of semantic versioning.
+## 7. Mandatory release language
 
-A manual Zenodo software upload of the `v0.2.1` GitHub source archive can establish a citable software record while the v1 work continues. The upload must contain one compressed source archive, use Resource type `Software`, identify version `0.2.1`, and preserve the same title, author, ORCID, license, description, and related identifiers used in the repository metadata.
+The `1.0.0` release must state the research maturity supported at publication time and must distinguish semantic stability from empirical validation.
 
-The resulting DOI must be added only after the public Zenodo record exists.
+At minimum, the release must state:
 
-## Proposed schedule
+- HIT is a documentary assurance method;
+- the stable contract does not establish legal compliance, causal effectiveness, certification, truthful reasoning, or institutional adoption;
+- HIT is not a runtime governor, signed-receipt protocol, policy-pack platform, compliance engine, or evidence-portability mechanism;
+- author applications and model audits are not inter-rater evidence;
+- H3 and Level 3 claims are limited to the exact independent human evidence available at release time;
+- incomplete recruitment is reported as incomplete recruitment.
 
-| Date | Decision target |
-|---|---|
-| 17 to 21 July | Complete `0.4.0` normative rules, terminology boundary, and migration design |
-| 22 to 24 July | Complete `0.5.0` conformance fixtures, claim audit, and validator coverage |
-| 25 to 27 July | Publish `0.9.0` release candidate and run clean-room implementation audit |
-| 28 to 30 July | Correct release-blocking defects and perform release audit |
-| 31 July | Publish `1.0.0` only when every stable-contract gate passes |
+## 8. Stop conditions
 
-## Stop conditions
+Withhold `1.0.0` when any condition remains true:
 
-Withhold `1.0.0` when any of the following remains true:
-
-- a known friction class can change a finding without a governing rule;
-- schema, catalog, handbook, fixtures, cases, or validator disagree;
-- public cases cannot migrate cleanly;
-- the implementation packet requires private explanation;
-- HIT public language implies runtime enforcement, signed-receipt interoperability, policy-pack harmonization, compliance automation, or evidence portability;
-- overloaded terms such as `decision record`, `telemetry`, `conformance`, or `portability` remain unqualified where they can change system interpretation;
+- a known ambiguity can change a finding without a governing rule;
+- schema, catalog, handbook, fixtures, implementation, examples, or validator disagree;
+- the implementation packet requires private author explanation;
+- no public `v0.9.0` release candidate has completed clean-room review;
+- public applications or migration exceptions are absent;
+- overloaded terminology can collapse HIT into an adjacent governance layer;
+- release metadata overstates reliability, validation, certification, adoption, or legal status;
 - a release-blocking defect remains open;
-- release metadata implies H3, Level 2, validation, certification, or adoption.
+- exact-release validation fails.
+
+## 9. Immediate execution order
+
+1. Complete and sign the human case-selection decision.
+2. Freeze three packet boundaries and source manifests.
+3. Finalize the manual workbooks with packet IDs and exact hashes.
+4. Complete deterministic comparison code and synthetic vectors.
+5. Publish `v0.7.0`.
+6. Run the preferred three-scorer replication or publish the declared recruitment disposition.
+7. Produce three current-contract applications with explicit provenance.
+8. Assemble the standalone implementation packet.
+9. Run the clean-room implementation audit.
+10. Publish `v0.9.0` and correct release-blocking defects.
+11. Promote synchronized stable components to `1.0.0` only after every gate passes.

@@ -1,0 +1,71 @@
+{
+  "contract_id": "HIT-MANUAL-WORKBOOK-HIT040-001",
+  "contract_version": "0.1.0-draft",
+  "protocol_id": "HIT-IRP-HIT040-002",
+  "status": "candidate",
+  "scoring_permitted": false,
+  "required_scorer_public_ids": [
+    "HIT-SCORER-A",
+    "HIT-SCORER-B",
+    "HIT-SCORER-C"
+  ],
+  "required_packet_count": 3,
+  "required_packet_ids": [],
+  "assessment_contract_version": "0.4.0",
+  "conformance_engine_version": "0.5.0",
+  "required_sections": [
+    "workbook_control_and_receipt",
+    "activation_checklist",
+    "eligibility_independence_and_conflict",
+    "tool_use_log",
+    "scoring_reference",
+    "general_scoring_procedure",
+    "packet_1_manual_assessment",
+    "packet_2_manual_assessment",
+    "packet_3_manual_assessment",
+    "submission_closeout",
+    "transcription_verification",
+    "consistency_checks",
+    "coordinator_technical_help_boundary"
+  ],
+  "each_packet_requires": [
+    "packet_control_fields",
+    "boundary_confirmation",
+    "source_access_log",
+    "actor_authority_roster",
+    "evidence_claim_register",
+    "six_substantive_findings",
+    "repair_trigger_record",
+    "institutional_record_integrity",
+    "assessment_packet_integrity",
+    "overall_integrity_derivation",
+    "limitations",
+    "packet_closeout"
+  ],
+  "activation_conditions": [
+    "protocol_status_locked",
+    "protocol_scoring_permitted_true",
+    "three_packet_ids_and_versions_fixed",
+    "three_decision_boundaries_frozen",
+    "three_source_manifests_frozen",
+    "sources_archived_or_stably_identified",
+    "comparison_code_and_synthetic_vectors_final",
+    "submission_schemas_final",
+    "scorer_and_coordinator_instructions_final",
+    "exact_commit_validation_passed",
+    "v0.7.0_published"
+  ],
+  "prohibited_before_activation": [
+    "substantive_source_review",
+    "finding_assignment",
+    "evidence_selection",
+    "rationale_drafting",
+    "packet_distribution_for_scoring",
+    "recruitment_as_active_study_participant",
+    "representation_as_locked_packet"
+  ],
+  "generative_ai_substantive_assistance_allowed": false,
+  "original_working_record_preserved": true,
+  "scorer_verification_required_for_transcription": true,
+  "adjudication_may_overwrite_original": false
+}

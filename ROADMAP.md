@@ -13,7 +13,8 @@ Dates are secondary. A milestone is complete only when its artifacts and tests e
 - Normative changes require migration notes, synchronized contracts, deterministic fixtures, and exact-commit validation.
 - Release versions remain chronological.
 - Zenodo identifiers are recorded only after successful archival.
-- Human-result releases must preserve original submissions and the pre-adjudication result whether the exercise passes or fails.
+- Human-result releases preserve original submissions and the pre-adjudication result whether the exercise passes or fails.
+- Recruitment difficulty does not authorize silent reduction of a locked empirical design.
 
 ## 0.1.0: Foundation contract, complete
 
@@ -59,16 +60,42 @@ Version layers:
 - scorer contract used by the exercise `0.1.0`;
 - maturity Level 2, Applicable.
 
-## Next empirical track
+## 0.7.0: Current-contract replication package, active workstream
 
-The first passing result does not establish general reliability. The next work should create evidence with more discriminating power:
+Required:
 
-- apply a compatible current contract to additional public cases;
-- include cases likely to produce more than one rating category;
-- recruit additional independent scorers;
-- predeclare treatment of source-reference disagreement and rationale divergence;
-- conduct a clean-room implementation audit;
-- design a preregistered prospective pilot when institutional access becomes available.
+- signed human selection of one exercise-rich, one constraint-rich, and one evidence-limited case;
+- exactly three frozen packet IDs, versions, decision boundaries, and source manifests;
+- archived sources or approved stable identifiers;
+- locked scorer and coordinator instructions;
+- locked manual workbooks for three scorers and three packets;
+- deterministic three-scorer comparison implementation;
+- synthetic pass, fail, critical-disagreement, hash, identity, and boundary-deviation vectors;
+- exact-commit validation;
+- protocol status `locked` and `scoring_permitted: true`.
+
+Current procedural readiness:
+
+- protocol architecture complete;
+- source-audit controls complete;
+- recruitment-contingency controls complete;
+- three scorer-specific manual workbooks and one master template staged in DOCX and PDF candidate assets;
+- case selection, packet IDs, and scoring permission remain pending.
+
+## 0.8.0: Current-contract applications and empirical result
+
+Preferred result:
+
+- three eligible independent scorers;
+- nine preserved submissions;
+- pre-adjudication comparison across 72 pairwise primary comparisons;
+- disagreement classification and adjudication record;
+- H3 replication decision;
+- Maturity Level 3 decision under predeclared rules.
+
+When recruitment is incomplete, the repository publishes the recruitment disposition and preserves the original design. A reduced design requires a numbered pre-scoring amendment or a new protocol.
+
+Three current-contract public applications may proceed with explicit provenance even when independent replication remains incomplete. Author or coordinator applications are never relabeled as inter-rater evidence.
 
 ## 0.9.0: Stable release candidate
 
@@ -76,11 +103,13 @@ Required:
 
 - normative contract frozen for the release candidate;
 - specification, schema, catalog, handbook, validator, and implementation package synchronized;
-- at least three public `0.4.x` assessments, or documented evidence that migration requires unavailable records;
-- public implementation package usable without private author explanation;
+- at least three public current-contract assessments, or documented evidence that migration requires unavailable records;
+- public implementation packet usable without private author explanation;
 - clean-room implementation audit with original outputs preserved;
 - citation and archival metadata synchronized;
 - no release-blocking defect.
+
+The candidate clean-room packet and audit protocol are staged under `implementation/v1.0.0-candidate/`. Audit activation remains prohibited until exact inputs, outputs, hashes, environment, and submission controls are frozen.
 
 ## 1.0.0: Stable public contract
 
@@ -94,14 +123,16 @@ Version `1.0.0` may be declared only when:
 6. public applications and migration boundaries are documented;
 7. limitations, claim statuses, provenance, migration notes, and non-claims are current;
 8. the package requires no private author explanation;
-9. one public release candidate has been completed;
+9. one public release candidate has completed clean-room review;
 10. exact-release validation passes.
 
-`1.0.0` will not establish causal effectiveness, legal conformity, certification, truthful reasoning, or independent adoption.
+`1.0.0` will not establish causal effectiveness, legal conformity, certification, truthful reasoning, population-wide reliability, or independent adoption.
+
+A stable semantic contract may be released at Maturity Level 2 when all stable-contract gates pass and the exact empirical claim boundary is stated. H3 and Level 3 remain limited to completed eligible independent human evidence.
 
 ## Beyond 1.0.0
 
-- Maturity Level 3, Evidenced: Level 2 plus at least three public applications under a compatible contract.
+- Maturity Level 3, Evidenced: Level 2 plus at least three public applications under a compatible contract and the maturity evidence required by the active protocol.
 - Maturity Level 4, Validated: preregistered prospective design and pilot result.
 - Maturity Level 5, Adopted: independent institutional use and external reference.
 - Compatible research results and profiles may use `1.x` releases.
