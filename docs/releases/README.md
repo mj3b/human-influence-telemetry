@@ -20,7 +20,9 @@ This directory is the repository release index. GitHub release artifacts and dow
 | [`v0.7.0`](v0.7.0-candidate.md) | Locked current-contract protocol and three frozen scorer packets | Candidate architecture complete; human case selection and packet freeze pending |
 | `v0.8.0` | Current-contract applications and empirical result, or explicit recruitment disposition | Pending `v0.7.0` publication |
 | `v0.9.0` | Stable-release candidate and clean-room implementation audit | Candidate implementation-packet architecture staged |
-| [`v1.0.0`](v1.0.0-candidate.md) | Stable public assessment contract suitable for independent implementation | Release prohibited until the gate ledger passes |
+| `v1.0.0` | Stable public assessment contract suitable for independent implementation | Release prohibited until the gate ledger passes |
+
+The detailed stable-release outline is [`v1.0.0-candidate.md`](v1.0.0-candidate.md).
 
 ## Version layers
 
