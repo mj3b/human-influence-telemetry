@@ -4,16 +4,20 @@ Human Influence Telemetry is an open research artifact maintained by Mark Julius
 
 ## Decision authority
 
-The maintainer holds final release authority during the working-specification phase. This authority covers:
+The maintainer holds final release authority during the pre-`1.0.0` research and stabilization phase. This authority covers:
 
 - normative changes to the specification;
 - schema and rubric changes;
 - release acceptance;
 - claim and maturity status;
 - provenance and publication boundaries;
-- security and responsible-disclosure decisions.
+- security and responsible-disclosure decisions;
+- activation of scorer, packet, and clean-room audit materials;
+- stable-contract promotion and compatibility commitments.
 
 Maintainer authority does not convert unresolved empirical questions into settled findings. Claim status advances only when the evidence conditions in `RESEARCH.md` are met.
+
+Candidate release files, merged readiness controls, branch names, and roadmap milestones do not authorize a tag or GitHub release. Publication requires the declared gate, exact-commit validation, and an explicit maintainer decision.
 
 ## Contribution process
 
@@ -42,20 +46,39 @@ Informative material includes:
 - application guidance;
 - related-work discussion;
 - retrospective case studies;
-- framework mappings.
+- framework mappings;
+- candidate release plans and readiness records.
 
 Informative material may explain the method but cannot silently change normative behavior.
 
 ## Release approval
 
-A release requires:
+Every release requires:
 
-- passing automated validation on the release commit;
+- passing automated validation on the exact release commit;
 - synchronized version values across normative artifacts and metadata;
 - an updated changelog and release note;
 - an accurate maturity statement;
 - no unresolved security issue affecting the release;
-- explicit migration guidance for breaking changes.
+- explicit migration guidance for breaking changes;
+- release assets matching recorded hashes;
+- publication through the canonical GitHub Releases page.
+
+A `1.0.0` release additionally requires:
+
+- a completed and reviewed `0.9.0` release candidate;
+- a clean-room implementation audit;
+- synchronized stable specification, schema, catalog, handbook, implementation, fixtures, and compatibility records;
+- a breaking-change review;
+- current public applications or documented migration exceptions;
+- every gate in `docs/v1-readiness-plan.md`;
+- release language that separates semantic stability from research maturity.
+
+## Empirical protocol authority
+
+A locked human protocol may not be weakened after results or recruitment difficulty are observed. Any reduced-rater, adaptive, or alternate design requires a prospective numbered amendment or a new protocol.
+
+The human case-selection decision, packet freeze, scorer activation, submission opening, comparison, adjudication, and maturity decision remain separate controlled actions.
 
 ## Conflicts of interest
 
