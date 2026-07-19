@@ -28,12 +28,14 @@
     {
       "identifier": "https://doi.org/10.5281/zenodo.21204892",
       "relation": "isSupplementTo",
-      "resource_type": "other"
+      "resource_type": "other",
+      "scheme": "doi"
     },
     {
       "identifier": "https://github.com/mj3b/governed-decision-intelligence",
       "relation": "isRelatedTo",
-      "resource_type": "software"
+      "resource_type": "software",
+      "scheme": "url"
     }
   ]
 }
