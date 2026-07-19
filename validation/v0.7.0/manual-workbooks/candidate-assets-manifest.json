@@ -1,0 +1,77 @@
+{
+  "protocol_id": "HIT-IRP-HIT040-002",
+  "workbook_version": "0.1.0-draft",
+  "status": "draft_scoring_prohibited",
+  "assessment_contract_version": "0.4.0",
+  "conformance_engine_version": "0.5.0",
+  "packet_ids": [],
+  "rendered_page_count_per_workbook": 31,
+  "visual_review_status": "passed_all_pages",
+  "activation_requires_locked_protocol": true,
+  "activation_requires_three_packet_ids": true,
+  "activation_requires_v070_publication": true,
+  "bundle": {
+    "filename": "HIT-v0.7.0-draft-manual-scorer-workbooks.zip",
+    "size_bytes": 1047314,
+    "sha256": "b5a5721991ae6b3c4161a70c8a76de3a8810e5674e27f5d41c227a8b9204105b",
+    "publication_status": "candidate_asset_not_published"
+  },
+  "files": [
+    {
+      "filename": "HIT-SCORER-A-HIT040-manual-workbook-draft.docx",
+      "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "size_bytes": 59884,
+      "sha256": "6515ffe8c689b58706e125d99930d9361346957aa2a165eddf6290d52412e45a",
+      "role": "scorer_specific_manual_workbook"
+    },
+    {
+      "filename": "HIT-SCORER-A-HIT040-manual-workbook-draft.pdf",
+      "media_type": "application/pdf",
+      "size_bytes": 840014,
+      "sha256": "759a5d64917e082e4fd29a865f2b4f2ecad05cf9db251359c4c0e74860c79adb",
+      "role": "print_ready_counterpart"
+    },
+    {
+      "filename": "HIT-SCORER-B-HIT040-manual-workbook-draft.docx",
+      "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "size_bytes": 59884,
+      "sha256": "2fd72c0b0bfbcf3a461c7d79e880240185446903d627f442ef18b4060c50c3a4",
+      "role": "scorer_specific_manual_workbook"
+    },
+    {
+      "filename": "HIT-SCORER-B-HIT040-manual-workbook-draft.pdf",
+      "media_type": "application/pdf",
+      "size_bytes": 840082,
+      "sha256": "2300404f4ca7cfdfa9d08c0409e571de919c871dd421c860e1ef819b11367ddc",
+      "role": "print_ready_counterpart"
+    },
+    {
+      "filename": "HIT-SCORER-C-HIT040-manual-workbook-draft.docx",
+      "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "size_bytes": 59884,
+      "sha256": "06e435614a956737c2f5abdf5dd1137a4aa50b3c19fa153b022f8a45e5943bae",
+      "role": "scorer_specific_manual_workbook"
+    },
+    {
+      "filename": "HIT-SCORER-C-HIT040-manual-workbook-draft.pdf",
+      "media_type": "application/pdf",
+      "size_bytes": 840017,
+      "sha256": "feeaa1db73d3be0358ff8f55134e6d5aee5a271de071e0e7a50de88a988d5ec1",
+      "role": "print_ready_counterpart"
+    },
+    {
+      "filename": "HIT-IRP-HIT040-002-manual-scorer-workbook-template.docx",
+      "media_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "size_bytes": 59918,
+      "sha256": "f5c875be085976a8277ca50032851ed87484cba12451661c40cc685aa9423e42",
+      "role": "master_manual_workbook_template"
+    },
+    {
+      "filename": "HIT-IRP-HIT040-002-manual-scorer-workbook-template.pdf",
+      "media_type": "application/pdf",
+      "size_bytes": 840676,
+      "sha256": "811ef0e710427180151362135dcfd9d7d2e63bc8c370da5820af795de086f67b",
+      "role": "print_ready_counterpart"
+    }
+  ]
+}
