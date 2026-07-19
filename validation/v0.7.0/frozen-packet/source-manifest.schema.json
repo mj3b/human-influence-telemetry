@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mj3b/human-influence-telemetry/blob/main/validation/v0.7.0/frozen-packet/source-manifest.schema.json",
+  "title": "HIT 0.4.0 Frozen Packet Source Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_id",
+    "packet_version",
+    "protocol_id",
+    "status",
+    "frozen_at",
+    "decision_boundary_path",
+    "source_count",
+    "sources",
+    "packet_digest"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "title",
+        "publisher_or_authority",
+        "publication_date",
+        "source_function",
+        "procedural_posture",
+        "public_access",
+        "canonical_location",
+        "archived_filename",
+        "media_type",
+        "size_bytes",
+        "sha256",
+        "transformation_history",
+        "scorer_use_boundary"
+      ],
+      "properties": {
+        "source_id": {"type": "string", "pattern": "^S[0-9]{2,}$"},
+        "title": {"type": "string", "minLength": 3},
+        "publisher_or_authority": {"type": "string", "minLength": 2},
+        "publication_date": {"type": ["string", "null"], "format": "date"},
+        "source_function": {
+          "enum": [
+            "binding_authority",
+            "adjudicated_record",
+            "procedural_record",
+            "institutional_record",
+            "institutional_self_report",
+            "independent_investigation",
+            "technical_documentation",
+            "evaluation_report",
+            "academic_analysis",
+            "other"
+          ]
+        },
+        "procedural_posture": {"type": "string", "minLength": 5},
+        "public_access": {"type": "boolean"},
+        "canonical_location": {"type": "string", "minLength": 5},
+        "archived_filename": {"type": "string", "minLength": 1},
+        "media_type": {"type": "string", "minLength": 3},
+        "size_bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "transformation_history": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "scorer_use_boundary": {"type": "string", "minLength": 10},
+        "known_limitations": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 5}
+        }
+      }
+    }
+  },
+  "properties": {
+    "packet_id": {"type": "string", "pattern": "^HIT-IR-HIT040-PKT-[A-Za-z0-9._-]+$"},
+    "packet_version": {"type": "string", "minLength": 3},
+    "protocol_id": {"const": "HIT-IRP-HIT040-002"},
+    "status": {"enum": ["candidate", "locked", "superseded"]},
+    "frozen_at": {"type": ["string", "null"], "format": "date-time"},
+    "decision_boundary_path": {"type": "string", "minLength": 5},
+    "source_count": {"type": "integer", "minimum": 1},
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/source"}
+    },
+    "packet_digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "manifest_sha256", "archive_bundle_sha256"],
+      "properties": {
+        "algorithm": {"const": "SHA-256"},
+        "manifest_sha256": {"oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+        "archive_bundle_sha256": {"oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]}
+      }
+    },
+    "excluded_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["identifier", "reason"],
+        "properties": {
+          "identifier": {"type": "string", "minLength": 2},
+          "reason": {"type": "string", "minLength": 10}
+        }
+      }
+    }
+  }
+}
