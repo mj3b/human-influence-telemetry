@@ -9,9 +9,10 @@
 
 HIT evaluates what contemporaneous records establish about human access, judgment, authority, correction, repair, and reform. It does not infer intention, certify legal compliance, perform runtime enforcement, or treat a signature as proof of substantive judgment.
 
+**Current release:** 0.6.0  
 **Current public release:** `0.6.0`  
 **Stable-release target:** `1.0.0`, readiness work active, release prohibited  
-**Conformance engine version:** `0.5.0`  
+**Conformance engine version:** 0.5.0  
 **Specification version:** `0.4.0`  
 **Assessment schema version:** `0.4.0`  
 **Dimension catalog version:** `0.4.0`  
