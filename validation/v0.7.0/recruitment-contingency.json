@@ -1,0 +1,81 @@
+{
+  "record_id": "HIT-IRP-HIT040-002-RECRUITMENT-CONTINGENCY-001",
+  "protocol_id": "HIT-IRP-HIT040-002",
+  "record_version": "0.1.0-candidate",
+  "status": "candidate",
+  "current_design": {
+    "packets": 3,
+    "common_independent_scorers": 3,
+    "required_submissions": 9,
+    "scoring_permitted": false
+  },
+  "hard_boundary": {
+    "zero_rater_substitute_exists": false,
+    "zero_independent_scorers_supports_h3_replication": false,
+    "zero_independent_scorers_supports_maturity_level_3": false
+  },
+  "fallback_tiers": [
+    {
+      "tier": "A",
+      "name": "preserve_fixed_design",
+      "requires_protocol_change": false,
+      "claim_class": "bounded_current_protocol_replication",
+      "permitted": true
+    },
+    {
+      "tier": "B",
+      "name": "burden_reduction_with_multiple_raters",
+      "requires_protocol_change": true,
+      "claim_class": "revised_multi_rater_replication",
+      "permitted": false
+    },
+    {
+      "tier": "C",
+      "name": "two_rater_pilot",
+      "requires_protocol_change": true,
+      "claim_class": "reduced_inter_rater_pilot",
+      "permitted": false
+    },
+    {
+      "tier": "D",
+      "name": "adaptive_third_rater",
+      "requires_protocol_change": true,
+      "claim_class": "sequential_inter_rater_study",
+      "permitted": false
+    },
+    {
+      "tier": "E",
+      "name": "recruitment_incomplete_nonhuman_tracks",
+      "requires_protocol_change": false,
+      "claim_class": "technical_or_usability_evidence_only",
+      "permitted": true
+    }
+  ],
+  "prohibited_substitutions": [
+    "author_as_independent_scorer",
+    "same_person_as_multiple_scorers",
+    "model_output_as_human_submission",
+    "author_assessment_as_independent_submission",
+    "consensus_without_preserved_independent_ratings",
+    "threshold_change_after_unsealing",
+    "packet_or_scorer_removal_for_low_agreement",
+    "maturity_level_3_from_author_scored_cases_only",
+    "schema_validity_as_human_reliability",
+    "clean_room_usability_as_inter_rater_agreement"
+  ],
+  "activation_rules": {
+    "substantive_scores_must_be_sealed_before_change": true,
+    "numbered_amendment_or_new_protocol_required": true,
+    "revised_estimands_and_denominators_required": true,
+    "revised_thresholds_required": true,
+    "recruitment_failure_must_be_published": true,
+    "loss_of_generalizability_must_be_stated": true
+  },
+  "current_consequence": {
+    "changes_protocol": false,
+    "assigns_cases": false,
+    "assigns_packet_ids": false,
+    "permits_recruitment": false,
+    "permits_scoring": false
+  }
+}
