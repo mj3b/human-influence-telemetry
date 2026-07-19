@@ -15,14 +15,14 @@ The project uses Semantic Versioning for the public technical artifact. Research
 - Machine-readable `1.0.0` stable-contract gate ledger
 - Candidate clean-room implementation packet and protocol `HIT-CRI-V100-001`
 - Canonical release index distinguishing published releases from candidate release documents
-- Public README status table covering `0.6.0`, `0.7.0`, `0.9.0`, and the gated `1.0.0` target
+- Public README status table covering `0.6.4`, `0.7.0`, `0.9.0`, and the gated `1.0.0` target
 
 ### Changed
 
-- Public status language now distinguishes the current published release from the stable-contract target
-- The main README now explains what `1.0.0` will and will not claim
-- Project governance, contribution, security, research, provenance, and release documentation now use the pre-`1.0.0` stabilization boundary
-- Release metadata remains pinned to `0.6.0` until a later version is actually tagged and published
+- Public status language distinguishes the current published release from the stable-contract target
+- The main README explains what `1.0.0` will and will not claim
+- Project governance, contribution, security, research, provenance, and release documentation use the pre-`1.0.0` stabilization boundary
+- Published-release metadata is synchronized to `0.6.4` and its software DOI
 
 ### Planned
 
@@ -40,6 +40,27 @@ The project uses Semantic Versioning for the public technical artifact. Research
 One passing frozen-packet exercise does not establish general inter-rater reliability, field effectiveness, causal validity, legal correctness, certification, or adoption.
 
 Candidate `0.7.0`, `0.9.0`, and `1.0.0` materials do not create a release, authorize scoring, or advance research maturity.
+
+## [0.6.4] - 2026-07-19
+
+### Added
+
+- Version-specific Zenodo software DOI: `10.5281/zenodo.21446142`
+- Standalone public software archive for release `v0.6.4`
+- Synchronized citation, Zenodo, release-index, provenance, and README metadata
+
+### Changed
+
+- Latest published repository release advances from `0.6.0` to `0.6.4`
+- Software DOI status changes from pending to published
+
+### Unchanged
+
+- Normative specification, schema, catalog, and handbook remain `0.4.0`
+- Conformance engine remains `0.5.0`
+- Human inter-rater result remains the `0.6.0` bounded exercise
+- H3 remains supported for one frozen packet
+- Research maturity remains Level 2, Applicable
 
 ## [0.6.0] - 2026-07-18
 
@@ -108,7 +129,8 @@ Added three public retrospective case narratives and four actor-specific machine
 
 Established the first public HIT specification, schema, catalog, handbook, fixtures, validator, governance files, and release controls.
 
-[Unreleased]: https://github.com/mj3b/human-influence-telemetry/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/mj3b/human-influence-telemetry/compare/v0.6.4...HEAD
+[0.6.4]: https://github.com/mj3b/human-influence-telemetry/compare/v0.6.0...v0.6.4
 [0.6.0]: https://github.com/mj3b/human-influence-telemetry/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mj3b/human-influence-telemetry/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/mj3b/human-influence-telemetry/compare/v0.2.1...v0.4.0
