@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/mj3b/human-influence-telemetry/blob/main/validation/v0.7.0/source-audit/candidate-source-audit.schema.json",
+  "title": "HIT v0.7.0 Candidate Source Audit",
+  "description": "Coordinator record for objective source-surface review before human case selection under HIT-IRP-HIT040-002.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidate_id",
+    "protocol_id",
+    "slot",
+    "public_case_name",
+    "institutional_unit",
+    "decision_process",
+    "system_role",
+    "decision_status",
+    "packet_id",
+    "expected_findings_recorded",
+    "sources",
+    "audit_fields",
+    "human_decision"
+  ],
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "title",
+        "canonical_location",
+        "source_status",
+        "human_audit_required"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "pattern": "^C-S[0-9]{2,}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3
+        },
+        "canonical_location": {
+          "type": "string",
+          "minLength": 5
+        },
+        "source_status": {
+          "enum": [
+            "identified_not_audited",
+            "audited_include",
+            "audited_exclude"
+          ]
+        },
+        "human_audit_required": {
+          "const": true
+        },
+        "publisher_or_authority": {
+          "type": ["string", "null"]
+        },
+        "publication_or_filing_date": {
+          "type": ["string", "null"],
+          "format": "date"
+        },
+        "source_function": {
+          "type": ["string", "null"]
+        },
+        "procedural_posture": {
+          "type": ["string", "null"]
+        },
+        "stable_locator_quality": {
+          "enum": [null, "exact", "bounded", "weak"]
+        },
+        "archive_status": {
+          "enum": [null, "not_checked", "archivable", "stable_identifier_only", "restricted", "unavailable"]
+        },
+        "redistribution_status": {
+          "enum": [null, "not_checked", "redistributable", "citation_only", "restricted"]
+        },
+        "sha256": {
+          "oneOf": [
+            {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            {"type": "null"}
+          ]
+        },
+        "human_notes": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  },
+  "properties": {
+    "candidate_id": {
+      "type": "string",
+      "pattern": "^HIT-CAND-[A-Z0-9-]+$"
+    },
+    "protocol_id": {
+      "const": "HIT-IRP-HIT040-002"
+    },
+    "slot": {
+      "enum": ["exercise-rich", "constraint-rich", "evidence-limited"]
+    },
+    "public_case_name": {
+      "type": "string",
+      "minLength": 3
+    },
+    "institutional_unit": {
+      "type": "string",
+      "minLength": 10
+    },
+    "decision_process": {
+      "type": "string",
+      "minLength": 10
+    },
+    "system_role": {
+      "type": "string",
+      "minLength": 10
+    },
+    "decision_status": {
+      "const": "pending_human_selection"
+    },
+    "packet_id": {
+      "type": "null"
+    },
+    "expected_findings_recorded": {
+      "const": false
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/source"}
+    },
+    "audit_fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor_boundary_stability",
+        "source_accessibility",
+        "locator_precision",
+        "procedural_posture_clarity",
+        "archive_feasibility",
+        "redistribution_feasibility",
+        "repair_trigger_evidence",
+        "contamination_risk",
+        "packet_burden",
+        "selection_eligibility"
+      ],
+      "properties": {
+        "actor_boundary_stability": {"enum": [null, "high", "medium", "low"]},
+        "source_accessibility": {"enum": [null, "complete", "partial", "unstable"]},
+        "locator_precision": {"enum": [null, "exact", "bounded", "weak"]},
+        "procedural_posture_clarity": {"enum": [null, "clear", "mixed", "unclear"]},
+        "archive_feasibility": {"enum": [null, "ready", "remediable", "blocked"]},
+        "redistribution_feasibility": {"enum": [null, "ready", "citation_only", "blocked"]},
+        "repair_trigger_evidence": {"enum": [null, "available", "partial", "unresolved"]},
+        "contamination_risk": {"enum": [null, "low", "medium", "high"]},
+        "packet_burden": {"enum": [null, "low", "moderate", "high"]},
+        "selection_eligibility": {"enum": [null, "eligible", "eligible_with_conditions", "exclude"]}
+      }
+    },
+    "human_decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "rationale", "decided_by", "decided_at"],
+      "properties": {
+        "decision": {"const": "pending"},
+        "rationale": {"type": "null"},
+        "decided_by": {"type": "null"},
+        "decided_at": {"type": "null"}
+      }
+    }
+  }
+}
