@@ -29,13 +29,15 @@ A document in this directory does not create a release. A version becomes public
 
 - Published repository release: `0.6.4`
 - Human-result release: `0.6.0`
-- Version-specific software DOI: `10.5281/zenodo.21446142`
-- Originating research DOI: `10.5281/zenodo.21204892`
+- Concept DOI for all software versions: `10.5281/zenodo.21204892`
+- Version-specific software DOI for `v0.6.4`: `10.5281/zenodo.21446142`
 - Normative assessment contract: `0.4.0`
 - Conformance engine: `0.5.0`
 - Research maturity: Level 2, Applicable
 - Active empirical protocol: `HIT-IRP-HIT040-002`, candidate, scoring prohibited
 - Stable target: `1.0.0`, release prohibited
+
+Use the version-specific DOI for an exact release citation. Use the concept DOI when citing Human Influence Telemetry as an evolving software project across versions.
 
 Release `0.6.4` changes archive and citation metadata. It does not alter the `0.4.0` contract, `0.5.0` engine, `0.6.0` human result, H3 boundary, or Level 2 maturity decision.
 
