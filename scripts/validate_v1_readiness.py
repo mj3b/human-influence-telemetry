@@ -177,7 +177,7 @@ def main() -> int:
         "Version `1.0.0` is a compatibility and implementation claim",
         "Draft manual workbooks now exist",
         "Withhold `1.0.0`",
-        "publish `v0.9.0`",
+        "Publish `v0.9.0`",
     ):
         if phrase not in plan:
             failures.append(f"v1 readiness plan missing required statement: {phrase}")
