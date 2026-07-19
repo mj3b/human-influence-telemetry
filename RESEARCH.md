@@ -31,6 +31,19 @@ Human Influence Telemetry is a design-science research artifact that operational
 | H7 | HIT evidence may support external oversight, accountability, and contestability obligations | Provisional mapping claim | Requires qualified standards or legal review and DEAS-style applicability analysis |
 | H8 | HIT is independently adopted | Not yet | Requires use by an institution outside the author's control |
 
+## v1 readiness claim boundary
+
+The repository now contains E1 and E2 evidence for a controlled path toward a stable `1.0.0` assessment contract:
+
+- a machine-readable stable-release gate ledger;
+- a candidate `v1.0.0` release outline;
+- a candidate clean-room implementation packet;
+- clean-room audit protocol `HIT-CRI-V100-001`;
+- draft manual workbooks and activation controls for three scorers;
+- CI checks that prohibit premature scoring, audit activation, and stable-release promotion.
+
+These artifacts demonstrate release governance and implementation planning. They do not add E5 evidence, advance H3, advance maturity beyond Level 2, establish clean-room usability, or authorize `v1.0.0` publication.
+
 ## Executable evidence register
 
 Release `0.5.0` established E1 evidence about internal representation, rejection behavior, determinism, and compatibility controls through:
@@ -102,6 +115,7 @@ The locked inter-rater design predeclared eligibility, blinding, source boundari
 13. All six substantive ratings used one category, so Cohen's kappa is undefined and category discrimination was not tested empirically.
 14. The scorer exercise used the preserved `0.1.0` contract, not the current `0.4.0` contract.
 15. A passing first exercise demonstrates reproducibility under one frozen packet, not general reliability.
+16. The v1 readiness architecture has not completed human case selection, current-contract applications, clean-room audit, or stable-release promotion.
 
 ## Maturity model
 
@@ -113,7 +127,7 @@ The locked inter-rater design predeclared eligibility, blinding, source boundari
 | 4 | Validated | Preregistered prospective design and pilot result | Pending |
 | 5 | Adopted | Independent institutional use and external reference | Pending |
 
-The levels are cumulative. Release `0.6.0` advances research maturity to Level 2 because the locked exercise passed. The version number alone did not produce that advancement.
+The levels are cumulative. Release `0.6.0` advances research maturity to Level 2 because the locked exercise passed. The version number alone did not produce that advancement. A future stable `1.0.0` contract may remain at Level 2 when the empirical gates for Level 3 have not passed.
 
 ## Release discipline
 
@@ -127,3 +141,5 @@ A numbered release requires:
 - preserved historical and locked artifacts;
 - explicit adjacent-system non-claims;
 - public release assets matching the recorded SHA-256 digest.
+
+Candidate documents, readiness plans, and release outlines do not authorize tag creation or release publication. The canonical release index is [`docs/releases/README.md`](docs/releases/README.md).
