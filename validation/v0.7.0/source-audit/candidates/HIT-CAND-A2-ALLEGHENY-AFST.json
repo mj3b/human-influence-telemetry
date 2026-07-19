@@ -1,0 +1,64 @@
+{
+  "candidate_id": "HIT-CAND-A2-ALLEGHENY-AFST",
+  "protocol_id": "HIT-IRP-HIT040-002",
+  "slot": "exercise-rich",
+  "public_case_name": "Allegheny Family Screening Tool",
+  "institutional_unit": "Allegheny County child-welfare hotline screening process",
+  "decision_process": "Human call-screening decisions supported by a predictive risk score",
+  "system_role": "Predictive risk scoring used to support child-maltreatment hotline screening decisions",
+  "decision_status": "pending_human_selection",
+  "packet_id": null,
+  "expected_findings_recorded": false,
+  "sources": [
+    {
+      "source_id": "C-S01",
+      "title": "Developing Predictive Risk Models to Support Child Maltreatment Hotline Screening Decisions",
+      "canonical_location": "https://analytics.alleghenycounty.us/2019/05/01/developing-predictive-risk-models-support-child-maltreatment-hotline-screening-decisions/",
+      "source_status": "identified_not_audited",
+      "human_audit_required": true,
+      "publisher_or_authority": null,
+      "publication_or_filing_date": null,
+      "source_function": null,
+      "procedural_posture": null,
+      "stable_locator_quality": null,
+      "archive_status": "not_checked",
+      "redistribution_status": "not_checked",
+      "sha256": null,
+      "human_notes": null
+    },
+    {
+      "source_id": "C-S02",
+      "title": "Evaluation Findings on the Use of Predictive Risk Models in Child Welfare",
+      "canonical_location": "https://analytics.alleghenycounty.us/2024/05/31/predictive-risk-models-in-child-welfare/",
+      "source_status": "identified_not_audited",
+      "human_audit_required": true,
+      "publisher_or_authority": null,
+      "publication_or_filing_date": null,
+      "source_function": null,
+      "procedural_posture": null,
+      "stable_locator_quality": null,
+      "archive_status": "not_checked",
+      "redistribution_status": "not_checked",
+      "sha256": null,
+      "human_notes": null
+    }
+  ],
+  "audit_fields": {
+    "actor_boundary_stability": null,
+    "source_accessibility": null,
+    "locator_precision": null,
+    "procedural_posture_clarity": null,
+    "archive_feasibility": null,
+    "redistribution_feasibility": null,
+    "repair_trigger_evidence": null,
+    "contamination_risk": null,
+    "packet_burden": null,
+    "selection_eligibility": null
+  },
+  "human_decision": {
+    "decision": "pending",
+    "rationale": null,
+    "decided_by": null,
+    "decided_at": null
+  }
+}
