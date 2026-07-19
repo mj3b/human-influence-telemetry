@@ -1,0 +1,48 @@
+{
+  "candidate_id": "HIT-CAND-B1-HOUSTON-EVAAS",
+  "protocol_id": "HIT-IRP-HIT040-002",
+  "slot": "constraint-rich",
+  "public_case_name": "Houston EVAAS Teacher Evaluation",
+  "institutional_unit": "Houston Independent School District teacher evaluation and termination process",
+  "decision_process": "Personnel evaluation and termination decisions using EVAAS value-added scores",
+  "system_role": "Proprietary statistical score used within teacher evaluation and employment decision processes",
+  "decision_status": "pending_human_selection",
+  "packet_id": null,
+  "expected_findings_recorded": false,
+  "sources": [
+    {
+      "source_id": "C-S01",
+      "title": "Houston Federation of Teachers Local 2415 et al. v. Houston Independent School District, No. 4:14-cv-01189",
+      "canonical_location": "https://www.govinfo.gov/app/details/USCOURTS-txsd-4_14-cv-01189",
+      "source_status": "identified_not_audited",
+      "human_audit_required": true,
+      "publisher_or_authority": null,
+      "publication_or_filing_date": null,
+      "source_function": null,
+      "procedural_posture": null,
+      "stable_locator_quality": null,
+      "archive_status": "not_checked",
+      "redistribution_status": "not_checked",
+      "sha256": null,
+      "human_notes": null
+    }
+  ],
+  "audit_fields": {
+    "actor_boundary_stability": null,
+    "source_accessibility": null,
+    "locator_precision": null,
+    "procedural_posture_clarity": null,
+    "archive_feasibility": null,
+    "redistribution_feasibility": null,
+    "repair_trigger_evidence": null,
+    "contamination_risk": null,
+    "packet_burden": null,
+    "selection_eligibility": null
+  },
+  "human_decision": {
+    "decision": "pending",
+    "rationale": null,
+    "decided_by": null,
+    "decided_at": null
+  }
+}
