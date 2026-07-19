@@ -4,6 +4,17 @@
 
 Human Influence Telemetry is a design-science research artifact that operationalizes substantive human influence as observable properties of institutional decision records.
 
+## Current program state
+
+- Published repository release: `0.6.0`
+- Normative assessment contract: `0.4.0`
+- Conformance engine: `0.5.0`
+- Research maturity: Level 2, Applicable
+- Active empirical protocol: `HIT-IRP-HIT040-002`, candidate, scoring prohibited
+- Stable public-contract target: `1.0.0`, gated candidate, release prohibited
+
+Version `1.0.0` is a future compatibility and public-implementability claim. It does not become an empirical reliability claim unless new eligible independent human evidence separately satisfies the active protocol.
+
 ## Primary research question
 
 > Can independent reviewers use HIT to distinguish substantive human influence, ceremonial oversight, affirmative absence, and insufficient evidence in AI-mediated institutional decision processes?
@@ -20,7 +31,7 @@ Human Influence Telemetry is a design-science research artifact that operational
 
 ## Claim register
 
-| ID | Claim | Status after 0.6.0 | Update condition |
+| ID | Claim | Current status | Update condition |
 |---|---|---|---|
 | H1 | HIT can represent six substantive dimensions and split Telemetry Integrity in a machine-readable assessment | Demonstrated structurally by the 0.4.0 schema, catalog, canonical example, and CI | Revise when a required construct cannot be represented |
 | H2 | The evidence-state and `0/1/2/IE` rules distinguish affirmative absence, ceremonial presence, substantive exercise, and missing evidence | Demonstrated for 48 synthetic boundary cases; independently applied under the preserved 0.1.0 scorer contract | Requires replication under a compatible current contract and cases with category variation |
@@ -30,6 +41,7 @@ Human Influence Telemetry is a design-science research artifact that operational
 | H6 | A high HIT finding proves meaningful human control in a causal or legal sense | Unsupported | Would require evidence beyond documentary assessment |
 | H7 | HIT evidence may support external oversight, accountability, and contestability obligations | Provisional mapping claim | Requires qualified standards or legal review and DEAS-style applicability analysis |
 | H8 | HIT is independently adopted | Not yet | Requires use by an institution outside the author's control |
+| H9 | The public HIT package can be installed, operated, and explained without private author interpretation | Pending | Requires a completed clean-room implementation audit under `HIT-CRI-V100-001` |
 
 ## Executable evidence register
 
@@ -43,6 +55,8 @@ Release `0.5.0` established E1 evidence about internal representation, rejection
 - compatibility metadata;
 - protected migration planning;
 - CLI smoke tests and exact-head validation.
+
+Post-`0.6.0` unreleased work adds candidate controls for the current-contract replication, manual scorer workbooks, the `1.0.0` gate ledger, and the clean-room implementation packet. These are E1 and E2 readiness artifacts. They do not create new E5 evidence.
 
 ## Human evidence register
 
@@ -69,6 +83,23 @@ Both scorers assigned `1` to all six substantive dimensions and `limited` to Tel
 
 The result establishes successful independent application under one frozen packet. It does not estimate general inter-rater reliability.
 
+## Current-contract replication register
+
+| Field | Current state |
+|---|---|
+| Protocol | `HIT-IRP-HIT040-002` |
+| Contract | `0.4.0` |
+| Planned cases | 3 |
+| Planned scorers | 3 |
+| Planned submissions | 9 |
+| Case selection | Pending signed human decision |
+| Packet IDs | None assigned |
+| Recruitment | Prohibited |
+| Scoring | Prohibited |
+| Result claim | None |
+
+The candidate protocol, source-audit controls, recruitment contingency, and draft manual workbooks are procedural infrastructure. They do not support H3 replication or Maturity Level 3 until the declared human-evidence conditions are met.
+
 ## Historical public application register
 
 | Case | Unit of analysis | Historical assessments | Current disposition |
@@ -81,9 +112,11 @@ The four author-scored assessments remain immutable `0.1.0` artifacts. The human
 
 ## Methods
 
-The research program uses artifact construction, normative specification, JSON Schema validation, deterministic fixtures, complete-record mutation testing, retrospective public-record case studies, blinded inter-rater testing, comparative boundary analysis, and prospective validation when institutional access becomes available.
+The research program uses artifact construction, normative specification, JSON Schema validation, deterministic fixtures, complete-record mutation testing, retrospective public-record case studies, blinded inter-rater testing, comparative boundary analysis, clean-room implementation review, and prospective validation when institutional access becomes available.
 
 The locked inter-rater design predeclared eligibility, blinding, source boundaries, agreement threshold, critical disagreements, supplementary kappa, preservation of original scores, and publication of passing and failing results.
+
+The clean-room implementation design tests whether a technically competent external reviewer can install, operate, and explain the public package without private author explanation. That audit tests public implementability, not inter-rater reliability.
 
 ## Threats to validity
 
@@ -102,6 +135,8 @@ The locked inter-rater design predeclared eligibility, blinding, source boundari
 13. All six substantive ratings used one category, so Cohen's kappa is undefined and category discrimination was not tested empirically.
 14. The scorer exercise used the preserved `0.1.0` contract, not the current `0.4.0` contract.
 15. A passing first exercise demonstrates reproducibility under one frozen packet, not general reliability.
+16. Candidate `1.0.0` readiness artifacts have not yet passed a clean-room implementation audit.
+17. Stable semantic versioning cannot substitute for missing empirical validation.
 
 ## Maturity model
 
@@ -109,11 +144,13 @@ The locked inter-rater design predeclared eligibility, blinding, source boundari
 |---|---|---|---|
 | 1 | Defined | Public constructs, machine-readable contract, executable fixtures, citable archive | Complete |
 | 2 | Applicable | A stranger can apply the method and the locked human exercise passes its declared independence and agreement rules | Current |
-| 3 | Evidenced | Level 2 plus at least three public applications under a compatible contract | Pending |
+| 3 | Evidenced | Level 2 plus at least three public applications under a compatible contract and the active protocol's evidence rule | Pending |
 | 4 | Validated | Preregistered prospective design and pilot result | Pending |
 | 5 | Adopted | Independent institutional use and external reference | Pending |
 
 The levels are cumulative. Release `0.6.0` advances research maturity to Level 2 because the locked exercise passed. The version number alone did not produce that advancement.
+
+A future `1.0.0` release may remain at Level 2 when the stable-contract gates pass before the current-contract human replication is complete. The release must state the exact maturity and H3 evidence available at publication time.
 
 ## Release discipline
 
@@ -127,3 +164,7 @@ A numbered release requires:
 - preserved historical and locked artifacts;
 - explicit adjacent-system non-claims;
 - public release assets matching the recorded SHA-256 digest.
+
+A future `1.0.0` release additionally requires a completed `0.9.0` release candidate, clean-room implementation review, synchronized stable components, breaking-change review, and every gate in `docs/v1-readiness-plan.md`.
+
+Candidate documents, branch names, and merged readiness controls do not authorize tagging, release publication, scorer activation, DOI archival, or maturity advancement.
