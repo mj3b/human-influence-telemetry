@@ -2,7 +2,7 @@
 
 [![HIT Validation](https://github.com/mj3b/human-influence-telemetry/actions/workflows/validate.yml/badge.svg)](https://github.com/mj3b/human-influence-telemetry/actions/workflows/validate.yml)
 [![Latest release: v0.6.4](https://img.shields.io/badge/latest%20release-v0.6.4-blue.svg)](https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.6.4)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21446142.svg)](https://doi.org/10.5281/zenodo.21446142)
+[![DOI: all versions](https://zenodo.org/badge/DOI/10.5281/zenodo.21204892.svg)](https://doi.org/10.5281/zenodo.21204892)
 [![Stable target: v1.0.0](https://img.shields.io/badge/stable%20target-v1.0.0%20gated-orange.svg)](docs/releases/v1.0.0-candidate.md)
 [![Maturity: Level 2](https://img.shields.io/badge/research%20maturity-Level%202%20Applicable-green.svg)](RESEARCH.md)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
@@ -31,8 +31,8 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 **Human reliability claim:** Supported for one frozen packet under `HIT-IRP-CIGNA-001`  
 **Active replication protocol:** `HIT-IRP-HIT040-002`, candidate, scoring prohibited  
 **Stable target:** `1.0.0`, release prohibited until the published gates pass  
-**Software release DOI:** [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142)  
-**Originating research DOI:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)
+**Concept DOI, all software versions:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)  
+**Version DOI, exact `v0.6.4` release:** [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142)
 
 The [GitHub Releases page](https://github.com/mj3b/human-influence-telemetry/releases) contains published releases. Candidate and future-version documents in the repository are planning and release-control artifacts. They are not published releases.
 
@@ -223,7 +223,7 @@ The `1.0.0` target concerns contract stability and public implementability. It d
 
 ## Citation and DOI status
 
-Use [`CITATION.cff`](CITATION.cff) and identify the exact published release. The version-specific software DOI for `v0.6.4` is [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142). The originating research DOI is [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892).
+Use [`CITATION.cff`](CITATION.cff) and identify the exact published release. Cite [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142) when referring to the exact `v0.6.4` artifact. Cite the all-versions concept DOI [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892) when referring to Human Influence Telemetry as an evolving software project.
 
 ## License
 
