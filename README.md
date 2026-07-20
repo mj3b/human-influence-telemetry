@@ -223,7 +223,7 @@ The `1.0.0` target concerns contract stability and public implementability. It d
 
 ## Citation and DOI status
 
-Use [`CITATION.cff`](CITATION.cff) and identify the exact published release. Cite [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142) when referring to the exact `v0.6.4` artifact. Cite the all-versions concept DOI [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892) when referring to Human Influence Telemetry as an evolving software project.
+Use [`CITATION.cff`](CITATION.cff) and identify the exact published release. Cite [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142) when referring to the exact `v0.6.4` artifact. Cite the all-versions concept DOI [10.5281/zenodo.21446141](https://doi.org/10.5281/zenodo.21446141) when referring to Human Influence Telemetry as an evolving software project.
 
 ## License
 
