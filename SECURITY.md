@@ -7,7 +7,7 @@ Security and integrity fixes are applied to `main` and the latest tagged release
 | Version | Supported |
 |---|---|
 | `main`, pre-`1.0.0` stabilization | Yes |
-| `0.6.0`, latest tagged release | Yes |
+| `0.6.4`, latest tagged release | Yes |
 | Earlier tagged releases | Best effort |
 | Candidate `0.7.0`, `0.9.0`, and `1.0.0` documents | Development artifacts, not release channels |
 

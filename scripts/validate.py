@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate HIT 0.6.0, the bounded human result, and preserved contracts."""
+"""Validate the HIT 0.6.0 human result, 0.6.4 release metadata, and preserved contracts."""
 from __future__ import annotations
 import hashlib, importlib.util, json, subprocess, sys
 from pathlib import Path
@@ -11,8 +11,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from src.validation.assessment import validate_assessment
 
-RELEASE, DATE, ENGINE, CONTRACT, LEGACY = "0.6.0", "2026-07-18", "0.5.0", "0.4.0", "0.1.0"
-DOI = "10.5281/zenodo.21204892"
+RESULT_RELEASE = "0.6.0"
+CURRENT_RELEASE = "0.6.4"
+CURRENT_RELEASE_DATE = "2026-07-19"
+ENGINE, CONTRACT, LEGACY = "0.5.0", "0.4.0", "0.1.0"
+CONCEPT_DOI = "10.5281/zenodo.21204892"
+VERSION_DOI = "10.5281/zenodo.21446142"
 A_SHA = "9c90e2eaf0785cd83f4962058d622a948c2ba60c1de830e06a2474eb85542a33"
 B_SHA = "553669d57679fc2034b27021a4b021333c94770ecc656d9b18c1c438f494dd9b"
 CMP_SHA = "91b28ec23f6f446be3ccd4868d9975a7f143da917de87ab5c2f5ac0123b3ced2"
@@ -39,7 +43,7 @@ REQUIRED = {
     "README.md", "RESEARCH.md", "ROADMAP.md", "LIMITATIONS.md", "PROVENANCE.md",
     "CHANGELOG.md", "CITATION.cff", ".zenodo.json", "SPECIFICATION.md",
     "compatibility/hit-compatibility-manifest.json", "docs/application-handbook.md",
-    "docs/releases/v0.6.0.md", "docs/v0.6.0-release-readiness.md",
+    "docs/releases/v0.6.0.md", "docs/releases/v0.6.4.md", "docs/v0.6.0-release-readiness.md",
     "docs/decisions/ADR-0004-advance-hit-to-maturity-level-2.md",
     "validation/README.md", "validation/inter-rater-protocol.md", "validation/protocol-lock.json",
     "validation/scorer-submission.schema.json", "validation/submissions/HIT-IR-SCORER-A.json",
@@ -162,18 +166,19 @@ def validate() -> list[str]:
     if load(P["preservation"]).get("release_asset_bundle",{}).get("sha256") != BUNDLE_SHA: f.append("preservation bundle hash incorrect")
 
     citation, zenodo = yaml.safe_load(read("CITATION.cff")), load(".zenodo.json")
-    if citation.get("version") != RELEASE or citation.get("date-released") != DATE: f.append("citation metadata incorrect")
+    if citation.get("version") != CURRENT_RELEASE or citation.get("date-released") != CURRENT_RELEASE_DATE: f.append("citation metadata incorrect")
     dois = {str(x.get("value")) for x in citation.get("identifiers",[]) if x.get("type") == "doi"}
-    if dois != {DOI}: f.append("citation DOI boundary changed")
-    if zenodo.get("version") != RELEASE or zenodo.get("upload_type") != "software": f.append("Zenodo metadata incorrect")
+    if dois != {CONCEPT_DOI, VERSION_DOI}: f.append("citation DOI boundary changed")
+    if zenodo.get("version") != CURRENT_RELEASE or zenodo.get("upload_type") != "software": f.append("Zenodo metadata incorrect")
     phrases = {
-      "README.md":["**Current release:** 0.6.0","**Conformance engine version:** 0.5.0","**Current maturity:** Level 2, Applicable","7 of 7 exact agreements"],
-      "RESEARCH.md":["Supported for one frozen Cigna packet","Level 2, Applicable"],
-      "ROADMAP.md":["0.6.0: First human inter-rater result, current release"],
+      "README.md":["**Current release:** 0.6.4","**Human-result release:** 0.6.0","**Conformance engine version:** 0.5.0","**Current maturity:** Level 2, Applicable","10.5281/zenodo.21204892","10.5281/zenodo.21446142","7 of 7 exact agreements"],
+      "RESEARCH.md":["Published repository release: `0.6.4`","Supported for one frozen Cigna packet","Level 2, Applicable"],
+      "ROADMAP.md":["0.6.4: Standalone software archive and DOI, current release"],
       "LIMITATIONS.md":["Narrow reliability evidence","Kappa indeterminacy"],
-      "PROVENANCE.md":["Public repository release: 0.6.0","Research maturity: Level 2, Applicable"],
-      "CHANGELOG.md":["## [0.6.0] - 2026-07-18","Exact agreements: 7 of 7"],
+      "PROVENANCE.md":["Public repository release: 0.6.4","Concept DOI for all HIT software versions: 10.5281/zenodo.21204892","Version-specific software DOI for `v0.6.4`: 10.5281/zenodo.21446142","Research maturity: Level 2, Applicable"],
+      "CHANGELOG.md":["## [0.6.4] - 2026-07-19","## [0.6.0] - 2026-07-18","Exact agreements: 7 of 7"],
       "docs/releases/v0.6.0.md":["Maturity Level 2, Applicable","Conformance engine: `0.5.0`"],
+      "docs/releases/v0.6.4.md":["Concept DOI, all software versions","10.5281/zenodo.21204892","10.5281/zenodo.21446142","Human-result release: `0.6.0`"],
       "docs/v0.6.0-release-readiness.md":["Tagging and release publication require separate maintainer approval"],
       "validation/results/H3-maturity-decision.md":["Level 2, Applicable"],
       "validation/results/adjudication-record.md":["No substantive adjudication required"],
@@ -190,8 +195,11 @@ def main() -> int:
     if failures:
         for item in failures: print(f"FAIL: {item}")
         return 1
-    print("HIT 0.6.0 result release validation passed")
-    print("- repository 0.6.0; engine 0.5.0; contract 0.4.0; scorer contract 0.1.0")
+    print("HIT 0.6.0 result package and 0.6.4 release metadata validation passed")
+    print("- current repository release: 0.6.4; human-result release: 0.6.0")
+    print("- concept DOI: 10.5281/zenodo.21204892")
+    print("- version DOI: 10.5281/zenodo.21446142")
+    print("- engine 0.5.0; contract 0.4.0; scorer contract 0.1.0")
     print("- exact agreement: 7 / 7; critical disagreements: 0")
     print("- H3 supported for one frozen packet; maturity Level 2, Applicable")
     return 0

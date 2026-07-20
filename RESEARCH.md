@@ -6,7 +6,9 @@ Human Influence Telemetry is a design-science research artifact that operational
 
 ## Current program state
 
-- Published repository release: `0.6.0`
+- Published repository release: `0.6.4`
+- Human-result release: `0.6.0`
+- Version-specific software DOI: `10.5281/zenodo.21446142`
 - Normative assessment contract: `0.4.0`
 - Conformance engine: `0.5.0`
 - Research maturity: Level 2, Applicable
@@ -56,7 +58,9 @@ Release `0.5.0` established E1 evidence about internal representation, rejection
 - protected migration planning;
 - CLI smoke tests and exact-head validation.
 
-Post-`0.6.0` unreleased work adds candidate controls for the current-contract replication, manual scorer workbooks, the `1.0.0` gate ledger, and the clean-room implementation packet. These are E1 and E2 readiness artifacts. They do not create new E5 evidence.
+Release `0.6.4` adds a public standalone software archive and version-specific DOI. This is provenance and citation evidence, not new E5 evidence.
+
+Post-`0.6.4` unreleased work adds candidate controls for the current-contract replication, manual scorer workbooks, the `1.0.0` gate ledger, and the clean-room implementation packet. These are E1 and E2 readiness artifacts. They do not create new E5 evidence.
 
 ## Human evidence register
 
@@ -148,7 +152,7 @@ The clean-room implementation design tests whether a technically competent exter
 | 4 | Validated | Preregistered prospective design and pilot result | Pending |
 | 5 | Adopted | Independent institutional use and external reference | Pending |
 
-The levels are cumulative. Release `0.6.0` advances research maturity to Level 2 because the locked exercise passed. The version number alone did not produce that advancement.
+The levels are cumulative. Release `0.6.0` advances research maturity to Level 2 because the locked exercise passed. Release `0.6.4` improves software citation and archival provenance without changing maturity.
 
 A future `1.0.0` release may remain at Level 2 when the stable-contract gates pass before the current-contract human replication is complete. The release must state the exact maturity and H3 evidence available at publication time.
 

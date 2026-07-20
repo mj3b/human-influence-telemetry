@@ -1,7 +1,8 @@
 # Human Influence Telemetry
 
 [![HIT Validation](https://github.com/mj3b/human-influence-telemetry/actions/workflows/validate.yml/badge.svg)](https://github.com/mj3b/human-influence-telemetry/actions/workflows/validate.yml)
-[![Latest release: v0.6.0](https://img.shields.io/badge/latest%20release-v0.6.0-blue.svg)](https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.6.0)
+[![Latest release: v0.6.4](https://img.shields.io/badge/latest%20release-v0.6.4-blue.svg)](https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.6.4)
+[![DOI: all versions](https://zenodo.org/badge/DOI/10.5281/zenodo.21204892.svg)](https://doi.org/10.5281/zenodo.21204892)
 [![Stable target: v1.0.0](https://img.shields.io/badge/stable%20target-v1.0.0%20gated-orange.svg)](docs/releases/v1.0.0-candidate.md)
 [![Maturity: Level 2](https://img.shields.io/badge/research%20maturity-Level%202%20Applicable-green.svg)](RESEARCH.md)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
@@ -14,12 +15,14 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 
 | Layer | Status | Meaning |
 |---|---|---|
-| Published repository release | [`0.6.0`](https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.6.0) | First bounded independent human result |
+| Published repository release | [`0.6.4`](https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.6.4) | DOI-bearing software archive and metadata synchronization |
+| Human-result release | [`0.6.0`](docs/releases/v0.6.0.md) | First bounded independent human result |
 | Active empirical package | [`0.7.0` candidate](docs/releases/v0.7.0-candidate.md) | Three-case current-contract protocol and packet construction |
 | Stable release candidate | `0.9.0` planned | Clean-room implementation audit and release-candidate freeze |
 | Stable public contract | [`1.0.0` gated candidate](docs/releases/v1.0.0-candidate.md) | Compatibility and independent-implementation commitment after all gates pass |
 
-**Current release:** 0.6.0  
+**Current release:** 0.6.4  
+**Human-result release:** 0.6.0  
 **Conformance engine version:** 0.5.0  
 **Specification version:** 0.4.0  
 **Assessment schema version:** 0.4.0  
@@ -28,8 +31,8 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 **Human reliability claim:** Supported for one frozen packet under `HIT-IRP-CIGNA-001`  
 **Active replication protocol:** `HIT-IRP-HIT040-002`, candidate, scoring prohibited  
 **Stable target:** `1.0.0`, release prohibited until the published gates pass  
-**Originating research DOI:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)  
-**Software DOI:** Pending a successful standalone software archive
+**Concept DOI, all software versions:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)  
+**Version DOI, exact `v0.6.4` release:** [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142)
 
 The [GitHub Releases page](https://github.com/mj3b/human-influence-telemetry/releases) contains published releases. Candidate and future-version documents in the repository are planning and release-control artifacts. They are not published releases.
 
@@ -54,6 +57,7 @@ The governing materials are:
 | `0.4.0` | Complete | Stabilized the normative assessment contract |
 | `0.5.0` | Complete | Added complete-record executable conformance |
 | `0.6.0` | Published | Added the first bounded independent human result and advanced maturity to Level 2 |
+| `0.6.4` | Published | Established the standalone software archive and version-specific Zenodo DOI |
 | `0.7.0` | Active candidate | Freeze three current-contract packets and the multi-case replication protocol |
 | `0.8.0` | Pending | Publish current-contract applications and the empirical result or declared recruitment disposition |
 | `0.9.0` | Pending | Publish the stable release candidate after clean-room implementation review |
@@ -120,6 +124,8 @@ Release `0.5.0` added executable complete-record conformance without changing th
 
 Release `0.6.0` publishes the bounded human agreement result. It changes research maturity and claim status. It does not change the `0.4.0` specification, schema, catalog, handbook, or scoring semantics, and it does not change the `0.5.0` conformance engine.
 
+Release `0.6.4` synchronizes the published software archive and DOI metadata. It does not change the normative contract, conformance engine, human result, H3 decision, or research maturity.
+
 Release candidates `0.7.0`, `0.9.0`, and `1.0.0` remain governed by prospective gates. Their presence in `main` does not authorize tagging or publication.
 
 See the [repository release index](docs/releases/README.md) for the distinction between published releases and candidate release documents.
@@ -150,6 +156,7 @@ HIT remains a research instrument, not a certified standard.
 | Machine-readable 0.4.0 assessment schema and catalog | Released |
 | 48 accepted, rejected, and boundary fixtures | Released |
 | Complete-record executable conformance | Released in 0.5.0 |
+| Standalone software archive and DOI | Published in 0.6.4 |
 | Historical public case studies | Four `0.1.0` assessments preserved |
 | Public-case 0.4.0 migrations | Not claimed; explicit exceptions recorded |
 | Locked human inter-rater protocol | Completed under the 0.1.0 scorer contract |
@@ -210,11 +217,13 @@ A high HIT finding means the available records satisfy the published documentary
 
 The `0.6.0` result shows that two independent reviewers reached the declared threshold on one frozen packet. It does not estimate population reliability.
 
+The `0.6.4` archive and DOI release changes discoverability and citation metadata. It does not add empirical evidence or alter the assessment contract.
+
 The `1.0.0` target concerns contract stability and public implementability. It does not upgrade the empirical claim unless new eligible independent human evidence separately satisfies the active protocol.
 
 ## Citation and DOI status
 
-Use [`CITATION.cff`](CITATION.cff) and identify the exact published release. The citation and `.zenodo.json` metadata remain at `0.6.0` until a later release is actually published. The originating DOI identifies the research concept, not a standalone software version. No standalone software DOI has been assigned yet.
+Use [`CITATION.cff`](CITATION.cff) and identify the exact published release. Cite [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142) when referring to the exact `v0.6.4` artifact. Cite the all-versions concept DOI [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892) when referring to Human Influence Telemetry as an evolving software project.
 
 ## License
 

@@ -1,6 +1,8 @@
 # Roadmap to Human Influence Telemetry 1.0.0
 
-**Current published release:** `0.6.0`  
+**Current published release:** `0.6.4`  
+**Human-result release:** `0.6.0`  
+**Software release DOI:** `10.5281/zenodo.21446142`  
 **Active workstream:** `0.7.0` candidate  
 **Stable release candidate:** `0.9.0` pending  
 **Stable public-contract target:** `1.0.0`, release prohibited
@@ -42,7 +44,7 @@ Added reusable complete-record checks, stable error codes, compatibility metadat
 
 Repository and engine version: `0.5.0`. Normative contract: `0.4.0`.
 
-## 0.6.0: First human inter-rater result, current release
+## 0.6.0: First human inter-rater result, complete
 
 Completed:
 
@@ -62,11 +64,22 @@ Completion test: the result files validate, recomputation matches the published 
 
 Version layers:
 
-- repository release `0.6.0`;
+- human-result release `0.6.0`;
 - conformance engine `0.5.0`;
 - normative contract `0.4.0`;
 - scorer contract used by the exercise `0.1.0`;
 - maturity Level 2, Applicable.
+
+## 0.6.4: Standalone software archive and DOI, current release
+
+Completed:
+
+- public GitHub release `v0.6.4`;
+- standalone Zenodo software archive;
+- version-specific DOI `10.5281/zenodo.21446142`;
+- synchronized citation, Zenodo, README, changelog, release-index, and provenance metadata.
+
+Release `0.6.4` does not alter the `0.4.0` normative contract, `0.5.0` conformance engine, `0.6.0` human result, H3 boundary, or Level 2 maturity decision.
 
 ## 0.7.0: Current-contract replication package, active workstream
 

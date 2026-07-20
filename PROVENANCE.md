@@ -8,10 +8,13 @@ The public technical instrument is extracted from that program without publishin
 
 - Concept author: Mark Julius Banasihan
 - ORCID: 0009-0001-8121-2878
-- Originating concept DOI: 10.5281/zenodo.21204892
+- Concept DOI for all HIT software versions: 10.5281/zenodo.21204892
+- Version-specific software DOI for `v0.6.4`: 10.5281/zenodo.21446142
+- Zenodo software record: https://zenodo.org/records/21446142
 - Source repository: private and retained by the author
 - Canonical public repository: `mj3b/human-influence-telemetry`
-- Public repository release: 0.6.0
+- Public repository release: 0.6.4
+- Human-result release: 0.6.0
 - Conformance engine version: 0.5.0
 - Public specification version: 0.4.0
 - Assessment schema version: 0.4.0
@@ -20,7 +23,16 @@ The public technical instrument is extracted from that program without publishin
 - Active empirical package: `0.7.0` candidate under `HIT-IRP-HIT040-002`
 - Stable public-contract target: `1.0.0`, gated candidate, release prohibited
 
-Published-release metadata remains bound to `0.6.0`. Candidate `0.7.0`, `0.9.0`, and `1.0.0` files record prospective controls and do not create a release.
+Published-release metadata is bound to `0.6.4`. Candidate `0.7.0`, `0.9.0`, and `1.0.0` files record prospective controls and do not create a release.
+
+## DOI lineage
+
+Zenodo assigns two related identifiers to the HIT software record:
+
+- `10.5281/zenodo.21204892` is the concept DOI representing the software across all published versions and resolving to the latest version;
+- `10.5281/zenodo.21446142` is the version-specific DOI for the exact `v0.6.4` archive.
+
+Use the version DOI for reproducible citation of an exact release. Use the concept DOI when referring to HIT as an evolving software project across versions.
 
 ## Version lineage
 
@@ -50,7 +62,11 @@ Published the first locked human inter-rater result. Two eligible independent sc
 
 Release `0.6.0` advances research maturity to Level 2, Applicable. It does not revise the `0.4.0` normative contract or the `0.5.0` conformance engine.
 
-### Post-0.6.0 readiness work, unreleased
+### 0.6.4
+
+Published the standalone software archive and version-specific DOI `10.5281/zenodo.21446142` under the all-versions concept DOI `10.5281/zenodo.21204892`. This release synchronizes archive and citation metadata. It does not revise the normative contract, executable engine, human-result record, H3 decision, or maturity level.
+
+### Post-0.6.4 readiness work, unreleased
 
 The public repository now contains:
 
@@ -63,7 +79,7 @@ The public repository now contains:
 - audit protocol `HIT-CRI-V100-001`;
 - a synchronized roadmap through `0.7.0`, `0.8.0`, `0.9.0`, and `1.0.0`.
 
-These records establish procedural and release readiness. They do not establish new human agreement evidence, Maturity Level 3, a stable `1.0.0` contract, or a new software DOI.
+These records establish procedural and release readiness. They do not establish new human agreement evidence, Maturity Level 3, or a stable `1.0.0` contract.
 
 ## Human-result lineage
 

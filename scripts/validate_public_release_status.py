@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate HIT public release and v1-readiness status surfaces."""
+"""Validate HIT public release, DOI, and v1-readiness status surfaces."""
 
 from __future__ import annotations
 
@@ -12,7 +12,11 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 
-PUBLISHED_RELEASE = "0.6.0"
+PUBLISHED_RELEASE = "0.6.4"
+PUBLISHED_DATE = "2026-07-19"
+HUMAN_RESULT_RELEASE = "0.6.0"
+VERSION_DOI = "10.5281/zenodo.21446142"
+CONCEPT_DOI = "10.5281/zenodo.21204892"
 NORMATIVE_CONTRACT = "0.4.0"
 CONFORMANCE_ENGINE = "0.5.0"
 STABLE_TARGET = "1.0.0"
@@ -48,6 +52,7 @@ def main() -> int:
         "CITATION.cff",
         ".zenodo.json",
         "docs/releases/README.md",
+        "docs/releases/v0.6.4.md",
         "docs/releases/v0.7.0-candidate.md",
         "docs/releases/v1.0.0-candidate.md",
         "docs/v1-readiness-plan.md",
@@ -66,28 +71,32 @@ def main() -> int:
 
     required_phrases = {
         "README.md": (
-            "**Current release:** 0.6.0",
+            "**Current release:** 0.6.4",
+            "**Human-result release:** 0.6.0",
+            "**Concept DOI, all software versions:** [10.5281/zenodo.21204892]",
+            "**Version DOI, exact `v0.6.4` release:** [10.5281/zenodo.21446142]",
             "**Stable target:** `1.0.0`, release prohibited",
             "**Active replication protocol:** `HIT-IRP-HIT040-002`, candidate, scoring prohibited",
             "Candidate and future-version documents in the repository are planning and release-control artifacts. They are not published releases.",
-            "The citation and `.zenodo.json` metadata remain at `0.6.0` until a later release is actually published.",
         ),
         "ROADMAP.md": (
-            "0.6.0: First human inter-rater result, current release",
+            "0.6.4: Standalone software archive and DOI, current release",
             "1.0.0: Stable public contract",
             "Candidate documents do not create a tag, GitHub release, DOI archive, scorer activation, or maturity advancement.",
         ),
         "RESEARCH.md": (
-            "Published repository release: `0.6.0`",
+            "Published repository release: `0.6.4`",
+            "Version-specific software DOI: `10.5281/zenodo.21446142`",
             "Stable public-contract target: `1.0.0`, gated candidate, release prohibited",
             "Supported for one frozen Cigna packet",
             "Level 2, Applicable",
             "HIT-CRI-V100-001",
         ),
         "PROVENANCE.md": (
-            "Public repository release: 0.6.0",
-            "Stable public-contract target: `1.0.0`, gated candidate, release prohibited",
-            "Post-0.6.0 readiness work, unreleased",
+            "Public repository release: 0.6.4",
+            "Concept DOI for all HIT software versions: 10.5281/zenodo.21204892",
+            "Version-specific software DOI for `v0.6.4`: 10.5281/zenodo.21446142",
+            "Post-0.6.4 readiness work, unreleased",
             "Research maturity: Level 2, Applicable",
         ),
         "LIMITATIONS.md": (
@@ -95,12 +104,12 @@ def main() -> int:
             "Candidate `0.7.0`, `0.9.0`, and `1.0.0` materials do not establish that those versions are released or stable.",
         ),
         "CHANGELOG.md": (
-            "Machine-readable `1.0.0` stable-contract gate ledger",
-            "Release metadata remains pinned to `0.6.0` until a later version is actually tagged and published",
+            "## [0.6.4] - 2026-07-19",
+            "Version-specific Zenodo software DOI: `10.5281/zenodo.21446142`",
             "## [0.6.0] - 2026-07-18",
         ),
         "SECURITY.md": (
-            "`0.6.0`, latest tagged release",
+            "`0.6.4`, latest tagged release",
             "The stable `1.0.0` target remains under gated development and is not yet a supported published release.",
         ),
         "GOVERNANCE.md": (
@@ -119,21 +128,32 @@ def main() -> int:
         ),
         "docs/releases/README.md": (
             "Current published release",
+            "Concept DOI for all software versions: `10.5281/zenodo.21204892`",
+            "Version-specific software DOI for `v0.6.4`: `10.5281/zenodo.21446142`",
             "`1.0.0`, release prohibited",
             "Candidate documents may describe future versions, but they must not overwrite published-release metadata.",
         ),
+        "docs/releases/v0.6.4.md": (
+            "**Status:** Published",
+            "**Concept DOI, all software versions:** [10.5281/zenodo.21204892]",
+            "**Version-specific software DOI:** [10.5281/zenodo.21446142]",
+            "Human-result release: `0.6.0`",
+        ),
         "docs/releases/v0.7.0-candidate.md": (
             "**Status:** Active candidate, release prohibited",
+            "**Current published release:** `0.6.4`",
             "**Stable target:** `1.0.0`",
             "selected cases: 0 of 3",
         ),
         "docs/releases/v1.0.0-candidate.md": (
             "**Status:** Candidate outline, release prohibited",
             "**GitHub release:** Not created",
+            "**Current repository release:** `0.6.4`",
             "This draft must not be copied to the GitHub Releases page until every gate passes.",
         ),
         "docs/v1-readiness-plan.md": (
-            "**Current repository release:** `0.6.0`",
+            "**Current repository release:** `0.6.4`",
+            "**Software release DOI:** `10.5281/zenodo.21446142`",
             "Version `1.0.0` is a compatibility and implementation claim",
             "Withhold `1.0.0`",
         ),
@@ -148,13 +168,23 @@ def main() -> int:
     v1_lock = load_json("release/v1.0.0/contract-freeze.candidate.json")
 
     if citation.get("version") != PUBLISHED_RELEASE:
-        failures.append("CITATION.cff must identify the latest published release 0.6.0")
+        failures.append("CITATION.cff must identify the latest published release 0.6.4")
     if zenodo.get("version") != PUBLISHED_RELEASE:
-        failures.append(".zenodo.json must identify the latest published release 0.6.0")
-    if citation.get("date-released") != "2026-07-18":
+        failures.append(".zenodo.json must identify the latest published release 0.6.4")
+    if citation.get("date-released") != PUBLISHED_DATE:
         failures.append("CITATION.cff release date drifted")
+    if zenodo.get("publication_date") != PUBLISHED_DATE:
+        failures.append(".zenodo.json publication date drifted")
     if zenodo.get("upload_type") != "software":
         failures.append(".zenodo.json upload type changed")
+
+    citation_dois = {
+        str(item.get("value"))
+        for item in citation.get("identifiers", [])
+        if item.get("type") == "doi"
+    }
+    if citation_dois != {VERSION_DOI, CONCEPT_DOI}:
+        failures.append("CITATION.cff DOI set must contain the version-specific and concept DOIs")
 
     if v1_lock.get("target_repository_release") != STABLE_TARGET:
         failures.append("v1 gate ledger target changed")
@@ -162,6 +192,12 @@ def main() -> int:
         failures.append("v1 gate ledger must remain candidate")
     if v1_lock.get("release_permitted") is not False:
         failures.append("v1 gate ledger must continue to prohibit release")
+    if v1_lock.get("current_repository_release") != PUBLISHED_RELEASE:
+        failures.append("v1 gate ledger current release drifted")
+    if v1_lock.get("current_software_doi") != VERSION_DOI:
+        failures.append("v1 gate ledger software DOI drifted")
+    if v1_lock.get("human_result_release") != HUMAN_RESULT_RELEASE:
+        failures.append("v1 gate ledger human-result release drifted")
 
     spec = read("SPECIFICATION.md")
     if f"**Version:** {NORMATIVE_CONTRACT}" not in spec:
@@ -195,7 +231,10 @@ def main() -> int:
         return 1
 
     print("HIT public release-status validation passed")
-    print("- published release: 0.6.0")
+    print("- published release: 0.6.4")
+    print("- human-result release: 0.6.0")
+    print("- concept DOI: 10.5281/zenodo.21204892")
+    print("- version DOI: 10.5281/zenodo.21446142")
     print("- normative contract: 0.4.0")
     print("- conformance engine: 0.5.0")
     print("- research maturity: Level 2, Applicable")
