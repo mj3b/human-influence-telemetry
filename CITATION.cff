@@ -17,7 +17,7 @@ identifiers:
     value: "10.5281/zenodo.21446142"
     description: "Version-specific software DOI for Human Influence Telemetry v0.6.4."
   - type: doi
-    value: "10.5281/zenodo.21204892"
+    value: "10.5281/zenodo.21446141"
     description: "Concept DOI representing all published versions of Human Influence Telemetry."
   - type: url
     value: "https://github.com/mj3b/human-influence-telemetry"
