@@ -31,7 +31,6 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 **Human reliability claim:** Supported for one frozen packet under `HIT-IRP-CIGNA-001`  
 **Active replication protocol:** `HIT-IRP-HIT040-002`, candidate, scoring prohibited  
 **Stable target:** `1.0.0`, release prohibited until the published gates pass  
-**Concept DOI, all software versions:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)  
 **Version DOI, exact `v0.6.4` release:** [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142)
 
 The [GitHub Releases page](https://github.com/mj3b/human-influence-telemetry/releases) contains published releases. Candidate and future-version documents in the repository are planning and release-control artifacts. They are not published releases.
