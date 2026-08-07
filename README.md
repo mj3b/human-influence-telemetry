@@ -9,7 +9,9 @@
 
 **An open documentary assurance method for evaluating whether human authority retained practical force in AI-mediated institutional decisions.**
 
-HIT evaluates what contemporaneous records establish about human access, judgment, authority, correction, repair, and reform. It does not infer intention, certify legal compliance, perform runtime enforcement, or treat a signature as proof of substantive judgment.
+**Concept DOI, all software versions:** [10.5281/zenodo.21204892]
+
+HIT evaluates what contemporaneous records establish about human access, judgment, authority, correction, repair, and reform. It does not infer intention, certify legal compliance, perform runtime[...]
 
 ## Public version status
 
@@ -33,13 +35,13 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 **Stable target:** `1.0.0`, release prohibited until the published gates pass  
 **Version DOI, exact `v0.6.4` release:** [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142)
 
-The [GitHub Releases page](https://github.com/mj3b/human-influence-telemetry/releases) contains published releases. Candidate and future-version documents in the repository are planning and release-control artifacts. They are not published releases.
+The [GitHub Releases page](https://github.com/mj3b/human-influence-telemetry/releases) contains published releases. Candidate and future-version documents in the repository are planning and releas[...]
 
 ## What `1.0.0` will mean
 
-Version `1.0.0` will declare that the public HIT assessment contract is stable enough for independent implementation, versioned compatibility commitments, and reproducible conformance checking from public artifacts.
+Version `1.0.0` will declare that the public HIT assessment contract is stable enough for independent implementation, versioned compatibility commitments, and reproducible conformance checking fro[...]
 
-It will not declare population-wide inter-rater reliability, causal effectiveness, legal conformity, certification, truthful reasoning, or independent institutional adoption. Semantic stability and research maturity remain separate claims.
+It will not declare population-wide inter-rater reliability, causal effectiveness, legal conformity, certification, truthful reasoning, or independent institutional adoption. Semantic stability an[...]
 
 The governing materials are:
 
@@ -111,21 +113,19 @@ Two eligible independent scorers applied frozen packet `HIT-IR-CIGNA-PXDX-001` u
 
 Both scorers assigned `1` to Counsel, Judgment, Command, Correction, Repair, and Reform. Both assigned `limited` to Telemetry Integrity.
 
-Supplementary Cohen's kappa is `null` because all six substantive ratings fell in one category. The data contain no category variance for chance-corrected estimation. The primary exact-agreement measure remains defined and passed.
+Supplementary Cohen's kappa is `null` because all six substantive ratings fell in one category. The data contain no category variance for chance-corrected estimation. The primary exact-agreement [...]
 
 See [`validation/results/`](validation/results/), [`RESEARCH.md`](RESEARCH.md), and [ADR-0004](docs/decisions/ADR-0004-advance-hit-to-maturity-level-2.md).
 
 ## Release layers
 
-Release `0.4.0` stabilized the normative assessment contract. It introduced evidence states, explicit finding thresholds, dimension-specific rules, Repair triggers, split Telemetry Integrity, sampling and aggregation declarations, actor-authority attribution, contradiction handling, structured evidence propositions, precise locators, and 48 executable boundary fixtures.
+Release `0.4.0` stabilized the normative assessment contract. It introduced evidence states, explicit finding thresholds, dimension-specific rules, Repair triggers, split Telemetry Integrity, sam[...]
 
 Release `0.5.0` added executable complete-record conformance without changing the `0.4.0` contract.
 
-Release `0.6.0` publishes the bounded human agreement result. It changes research maturity and claim status. It does not change the `0.4.0` specification, schema, catalog, handbook, or scoring semantics, and it does not change the `0.5.0` conformance engine.
+Release `0.6.0` publishes the bounded human agreement result. It changes research maturity and claim status. It does not change the `0.4.0` specification, schema, catalog, handbook, or scoring se[...]
 
 Release `0.6.4` synchronizes the published software archive and DOI metadata. It does not change the normative contract, conformance engine, human result, H3 decision, or research maturity.
-
-Release candidates `0.7.0`, `0.9.0`, and `1.0.0` remain governed by prospective gates. Their presence in `main` does not authorize tagging or publication.
 
 See the [repository release index](docs/releases/README.md) for the distinction between published releases and candidate release documents.
 
@@ -140,90 +140,3 @@ python -m src conformance --all
 python -m src conformance --path assessment.json
 python -m src migration-plan --path historical-assessment.json
 ```
-
-The complete-record engine checks cross-record references, evidence relations, actor attribution, finding and evidence-state consistency, Repair triggers, Telemetry Integrity derivation, aggregation scope, citation precision, and protected migration behavior.
-
-A passing conformance report establishes assessment-contract conformance for the supplied record. It does not establish evidentiary truth, legal sufficiency, certification, or institutional effectiveness.
-
-## Research status
-
-HIT remains a research instrument, not a certified standard.
-
-| Capability | Status |
-|---|---|
-| Normative 0.4.0 rubric | Released |
-| Machine-readable 0.4.0 assessment schema and catalog | Released |
-| 48 accepted, rejected, and boundary fixtures | Released |
-| Complete-record executable conformance | Released in 0.5.0 |
-| Standalone software archive and DOI | Published in 0.6.4 |
-| Historical public case studies | Four `0.1.0` assessments preserved |
-| Public-case 0.4.0 migrations | Not claimed; explicit exceptions recorded |
-| Locked human inter-rater protocol | Completed under the 0.1.0 scorer contract |
-| Independent human submissions | Two verified submissions published |
-| Pre-adjudication result | 7 / 7 exact agreement; zero critical disagreements |
-| H3 | Supported for one frozen packet |
-| Research maturity | Level 2, Applicable |
-| Current-contract replication | Candidate protocol; cases and packets not yet locked |
-| Clean-room implementation audit | Candidate protocol; audit prohibited until packet freeze |
-| Stable public contract | `1.0.0` target; release prohibited |
-| Prospective institutional validation | Pending |
-| Legal or standards conformity determination | Not claimed |
-
-The completed exercise supports reproducibility for one frozen packet. General reliability across sectors, evidence conditions, scorer populations, and contract versions remains unresolved.
-
-## Historical public evidence pack
-
-The `case-studies/` directory contains three retrospective narratives and four actor-specific machine-readable assessments released under specification and schema `0.1.0`.
-
-They remain immutable historical artifacts. No `0.4.0` public-case finding is claimed. The Cigna protocol is complete, but a current-contract Cigna reassessment would require a separate fresh source review.
-
-## Project structure
-
-```text
-src/                                  -- Public CLI and conformance implementation
-compatibility/                        -- Supported contracts and migration rules
-schema/                               -- Canonical 0.4.0 schema and dimension catalog
-fixtures/                             -- Boundary and complete-record conformance vectors
-case-studies/                         -- Historical public cases and migration dispositions
-validation/results/                   -- Published human result, decisions, and hashes
-validation/v0.7.0/                    -- Current-contract replication candidate
-validation/v0.7.0/manual-workbooks/   -- Draft workbook controls and asset manifest
-implementation/v1.0.0-candidate/      -- Clean-room implementation packet candidate
-release/v1.0.0/                       -- Machine-readable stable-contract gate ledger
-coordinator/                          -- Submission preservation and comparison procedures
-recruitment/                          -- Neutral human-scorer materials
-docs/releases/                        -- Published and candidate release records
-docs/                                 -- Handbook, decisions, migration, and readiness plans
-archive/                              -- Superseded public contracts preserved for reproducibility
-scripts/                              -- Validation, comparison, and CLI smoke tests
-```
-
-## Relationship to adjacent systems
-
-- **Microsoft Agent Governance Toolkit** enforces and audits runtime actions. Its events may supply evidence to HIT; HIT does not enforce actions.
-- **ScopeBlind/Acta** verifies signed-receipt integrity and interoperability. Verified receipts may strengthen provenance; HIT does not define or verify that protocol.
-- **Credo AI** provides policy packs, risk and control mappings, governance workflows, evidence collection, and runtime governance. HIT does not provide policy packs, compliance automation, or universal control mappings.
-- **Governed Decision Intelligence** structures consequential decisions in Governed Decision Records.
-- **Decision Evidence Applicability Specification** evaluates what evidence may support under a specified requirement and where equivalence fails.
-
-## What HIT does not implement
-
-HIT does not intercept, allow, deny, block, sandbox, or terminate agent actions. It does not compile policy into runtime configuration, verify agent identity or privileges, create signed receipts, provide cryptographic receipt conformance, supply policy packs, automate legal compliance, declare evidentiary admissibility, or make governance evidence portable across regimes.
-
-## Claims boundary
-
-A high HIT finding means the available records satisfy the published documentary rubric. It does not establish that the decision was correct, lawful, fair, accurate, harmless, or morally justified.
-
-The `0.6.0` result shows that two independent reviewers reached the declared threshold on one frozen packet. It does not estimate population reliability.
-
-The `0.6.4` archive and DOI release changes discoverability and citation metadata. It does not add empirical evidence or alter the assessment contract.
-
-The `1.0.0` target concerns contract stability and public implementability. It does not upgrade the empirical claim unless new eligible independent human evidence separately satisfies the active protocol.
-
-## Citation and DOI status
-
-Use [`CITATION.cff`](CITATION.cff) and identify the exact published release. Cite [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142) when referring to the exact `v0.6.4` artifact. Cite the all-versions concept DOI [10.5281/zenodo.21446141](https://doi.org/10.5281/zenodo.21446141) when referring to Human Influence Telemetry as an evolving software project.
-
-## License
-
-Apache License 2.0. See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
