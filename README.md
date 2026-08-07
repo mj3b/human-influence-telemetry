@@ -35,13 +35,13 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 **Stable target:** `1.0.0`, release prohibited until the published gates pass  
 **Version DOI, exact `v0.6.4` release:** [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142)
 
-The [GitHub Releases page](https://github.com/mj3b/human-influence-telemetry/releases) contains published releases. Candidate and future-version documents in the repository are planning and releas[...]
+The [GitHub Releases page](https://github.com/mj3b/human-influence-telemetry/releases) contains published releases. Candidate and future-version documents in the repository are planning and release-control artifacts. They are not published releases.
 
 ## What `1.0.0` will mean
 
-Version `1.0.0` will declare that the public HIT assessment contract is stable enough for independent implementation, versioned compatibility commitments, and reproducible conformance checking fro[...]
+Version `1.0.0` will declare that the public HIT assessment contract is stable enough for independent implementation, versioned compatibility commitments, and reproducible conformance checking from public artifacts.
 
-It will not declare population-wide inter-rater reliability, causal effectiveness, legal conformity, certification, truthful reasoning, or independent institutional adoption. Semantic stability an[...]
+It will not declare population-wide inter-rater reliability, causal effectiveness, legal conformity, certification, truthful reasoning, or independent institutional adoption. Semantic stability and research maturity remain separate claims.
 
 The governing materials are:
 
