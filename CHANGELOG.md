@@ -23,6 +23,8 @@ The project uses Semantic Versioning for the public technical artifact. Research
 - The main README explains what `1.0.0` will and will not claim
 - Project governance, contribution, security, research, provenance, and release documentation use the pre-`1.0.0` stabilization boundary
 - Published-release metadata is synchronized to `0.6.4` and its software DOI
+- Fixed
+  - Formatted human-result metadata and normalized the concept DOI for the `v0.6.4` release; added the exact public-status sentence expected by automated validation to README.md and the release notes.
 
 ### Planned
 
@@ -111,7 +113,7 @@ Version `0.5.0` is implementation-compatible with the `0.4.0` normative assessme
 
 ### Added
 
-- Evidence states, explicit finding thresholds, dimension-specific rules, Repair triggers, split Telemetry Integrity, actor-authority controls, structured evidence propositions, precise locators, and 48 boundary fixtures
+- Evidence states, explicit finding thresholds, dimension-specific rules, Repair triggers, split Telemetry Integrity, actor-authority controls, structured evidence propositions, precise locators,[...]
 
 ### Compatibility
 
