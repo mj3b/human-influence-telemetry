@@ -1,0 +1,14 @@
+{
+  "version": "0.6.5",
+  "suite_id": "HIT-COE-NEGATIVE-CONTROLS-V0.6.5",
+  "controls": [
+    {"control_id": "HIT-NC-01", "mutation": "missing_reference", "target_claim": "H1", "expected_gate": "traceability"},
+    {"control_id": "HIT-NC-02", "mutation": "pending_integrity", "target_claim": "H2", "expected_gate": "integrity"},
+    {"control_id": "HIT-NC-03", "mutation": "support_review_removed", "target_claim": "H3", "expected_gate": "human_support_review"},
+    {"control_id": "HIT-NC-04", "mutation": "fitness_failure", "target_claim": "H1", "expected_gate": "evidence_fitness"},
+    {"control_id": "HIT-NC-05", "mutation": "unresolved_dependency", "target_claim": "PAPER-C03", "expected_gate": "dependency_closure"},
+    {"control_id": "HIT-NC-06", "mutation": "false_eligibility", "target_claim": "H5", "expected_gate": "conclusion_eligibility"},
+    {"control_id": "HIT-NC-07", "mutation": "missing_locator", "target_claim": "H9", "expected_gate": "traceability"},
+    {"control_id": "HIT-NC-08", "mutation": "replication_overclaim", "target_claim": "PAPER-C04", "expected_gate": "claim_boundary"}
+  ]
+}

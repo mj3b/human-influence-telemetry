@@ -1,0 +1,10 @@
+{
+  "version": "0.6.5",
+  "figure_id": "HIT-FIG-COE-01",
+  "title": "Claim-gate audit states",
+  "source": "audits/v0.6.5/audit-results.json",
+  "derived_data": "figures/data/claim-gates-v0.6.5.csv",
+  "generated_figure": "figures/generated/claim-gates-v0.6.5.svg",
+  "generator": "scripts/run_research_integrity_audit.py",
+  "reproduction_command": "python scripts/run_research_integrity_audit.py"
+}

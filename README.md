@@ -1,10 +1,11 @@
 # Human Influence Telemetry
 
 [![HIT Validation](https://github.com/mj3b/human-influence-telemetry/actions/workflows/validate.yml/badge.svg)](https://github.com/mj3b/human-influence-telemetry/actions/workflows/validate.yml)
-[![Latest release: v0.6.4](https://img.shields.io/badge/latest%20release-v0.6.4-blue.svg)](https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.6.4)
+[![Latest release: v0.6.5](https://img.shields.io/badge/latest%20release-v0.6.5-blue.svg)](https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.6.5)
 [![DOI: all versions](https://zenodo.org/badge/DOI/10.5281/zenodo.21204892.svg)](https://doi.org/10.5281/zenodo.21204892)
 [![Stable target: v1.0.0](https://img.shields.io/badge/stable%20target-v1.0.0%20gated-orange.svg)](docs/releases/v1.0.0-candidate.md)
 [![Maturity: Level 2](https://img.shields.io/badge/research%20maturity-Level%202%20Applicable-green.svg)](RESEARCH.md)
+[![Research integrity: PASS WITH EXCEPTIONS](https://img.shields.io/badge/research%20integrity-PASS_WITH_EXCEPTIONS-orange.svg)](audits/v0.6.5/audit-report.md)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 **An open documentary assurance method for evaluating whether human authority retained practical force in AI-mediated institutional decisions.**
@@ -17,25 +18,36 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 
 | Layer | Status | Meaning |
 |---|---|---|
-| Published repository release | [`0.6.4`](https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.6.4) | DOI-bearing software archive and metadata synchronization |
+| Published repository release | [`0.6.5`](https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.6.5) | Claim-evidence integrity audit and paper workspace |
 | Human-result release | [`0.6.0`](docs/releases/v0.6.0.md) | First bounded independent human result |
 | Active empirical package | [`0.7.0` candidate](docs/releases/v0.7.0-candidate.md) | Three-case current-contract protocol and packet construction |
 | Stable release candidate | `0.9.0` planned | Clean-room implementation audit and release-candidate freeze |
 | Stable public contract | [`1.0.0` gated candidate](docs/releases/v1.0.0-candidate.md) | Compatibility and independent-implementation commitment after all gates pass |
 
-**Current release:** 0.6.4  
-**Human-result release:** 0.6.0  
-**Conformance engine version:** 0.5.0  
-**Specification version:** 0.4.0  
-**Assessment schema version:** 0.4.0  
-**Dimension catalog version:** 0.4.0  
-**Current maturity:** Level 2, Applicable  
-**Human reliability claim:** Supported for one frozen packet under `HIT-IRP-CIGNA-001`  
-**Active replication protocol:** `HIT-IRP-HIT040-002`, candidate, scoring prohibited  
-**Stable target:** `1.0.0`, release prohibited until the published gates pass  
-**Version DOI, exact `v0.6.4` release:** [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142)
+**Current release:** 0.6.5
+**Human-result release:** 0.6.0
+**Conformance engine version:** 0.5.0
+**Specification version:** 0.4.0
+**Assessment schema version:** 0.4.0
+**Dimension catalog version:** 0.4.0
+**Current maturity:** Level 2, Applicable
+**Human reliability claim:** Supported for one frozen packet under `HIT-IRP-CIGNA-001`
+**Active replication protocol:** `HIT-IRP-HIT040-002`, candidate, scoring prohibited
+**Stable target:** `1.0.0`, release prohibited until the published gates pass
+**Version DOI, exact `v0.6.5` release:** Pending Zenodo archival
+**Previous version DOI, exact `v0.6.4` release:** [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142)
 
 The [GitHub Releases page](https://github.com/mj3b/human-influence-telemetry/releases) contains published releases. Candidate and future-version documents in the repository are planning and release-control artifacts. They are not published releases.
+
+## v0.6.5 research-integrity release
+
+Version 0.6.5 adds a machine-readable claim-evidence map for H1 through H9 and four material paper claims. Its audit separates traceability, integrity, human support review, evidence fitness, and dependency closure. Evidence fitness separately records directness, contemporaneity, independence, completeness, and publication authority.
+
+Eight negative controls test whether the audit detects broken references, weakened integrity, removed review, failed fitness, unresolved dependencies, false conclusion eligibility, missing locators, and a current-contract replication overclaim. The generated state is `PASS_WITH_EXCEPTIONS`: the controls pass while claims lacking required evidence remain blocked.
+
+The release also adds research lineage, an AI-assistance log, a paper workspace, and reproducible claim-gate data and figures. See [`docs/releases/v0.6.5.md`](docs/releases/v0.6.5.md), [`protocols/research-integrity-audit.md`](protocols/research-integrity-audit.md), and [`paper/`](paper/).
+
+This release changes no normative scoring rule, conformance behavior, human result, or maturity decision. The 0.4.0 normative contract, 0.5.0 engine, 0.6.0 human result, and v0.6.4 exact-version DOI remain separate preserved layers. Current-contract external-rater replication remains unresolved and scoring-prohibited.
 
 ## What `1.0.0` will mean
 
@@ -59,6 +71,7 @@ The governing materials are:
 | `0.5.0` | Complete | Added complete-record executable conformance |
 | `0.6.0` | Published | Added the first bounded independent human result and advanced maturity to Level 2 |
 | `0.6.4` | Published | Established the standalone software archive and version-specific Zenodo DOI |
+| `0.6.5` | Published | Added claim-evidence integrity controls and paper workspace |
 | `0.7.0` | Active candidate | Freeze three current-contract packets and the multi-case replication protocol |
 | `0.8.0` | Pending | Publish current-contract applications and the empirical result or declared recruitment disposition |
 | `0.9.0` | Pending | Publish the stable release candidate after clean-room implementation review |
@@ -126,6 +139,8 @@ Release `0.5.0` added executable complete-record conformance without changing th
 Release `0.6.0` publishes the bounded human agreement result. It changes research maturity and claim status. It does not change the `0.4.0` specification, schema, catalog, handbook, or scoring se[...]
 
 Release `0.6.4` synchronizes the published software archive and DOI metadata. It does not change the normative contract, conformance engine, human result, H3 decision, or research maturity.
+
+Release `0.6.5` adds claim-evidence publication controls. It does not change the normative contract, conformance engine, human result, H3 decision, or research maturity.
 
 See the [repository release index](docs/releases/README.md) for the distinction between published releases and candidate release documents.
 

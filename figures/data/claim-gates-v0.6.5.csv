@@ -1,0 +1,14 @@
+claim_id,traceability,integrity,human_support_review,evidence_fitness,dependency_closure,conclusion_eligible
+H1,pass,pass,pass,pass,pass,true
+H2,pass,pass,pass,pass,pass,true
+H3,pass,pass,pass,pass,pass,true
+H4,pass,pass,pass,indeterminate,pass,false
+H5,pass,pass,pass,fail,pass,false
+H6,pass,pass,pass,fail,pass,false
+H7,pass,pass,pass,indeterminate,pass,false
+H8,pass,pass,pass,fail,pass,false
+H9,pass,pass,pass,fail,pass,false
+PAPER-C01,pass,pass,pass,pass,pass,true
+PAPER-C02,pass,pass,pass,pass,pass,true
+PAPER-C03,pass,pass,pass,pass,pass,true
+PAPER-C04,pass,pass,pass,fail,pass,false

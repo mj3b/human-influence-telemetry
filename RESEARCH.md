@@ -6,9 +6,10 @@ Human Influence Telemetry is a design-science research artifact that operational
 
 ## Current program state
 
-- Published repository release: `0.6.4`
+- Published repository release: `0.6.5`
 - Human-result release: `0.6.0`
-- Version-specific software DOI: `10.5281/zenodo.21446142`
+- Version-specific software DOI for v0.6.5: pending Zenodo archival
+- Previous version DOI for v0.6.4: `10.5281/zenodo.21446142`
 - Normative assessment contract: `0.4.0`
 - Conformance engine: `0.5.0`
 - Research maturity: Level 2, Applicable
@@ -16,6 +17,14 @@ Human Influence Telemetry is a design-science research artifact that operational
 - Stable public-contract target: `1.0.0`, gated candidate, release prohibited
 
 Version `1.0.0` is a future compatibility and public-implementability claim. It does not become an empirical reliability claim unless new eligible independent human evidence separately satisfies the active protocol.
+
+## v0.6.5 research-integrity layer
+
+Version 0.6.5 maps H1 through H9 and four material paper claims to exact evidence locators, five gate states, five evidence-fitness dimensions, dependencies, limitations, reversal conditions, and conclusion eligibility. The generated audit state is `PASS_WITH_EXCEPTIONS` because every deterministic control passes and every unresolved claim remains blocked.
+
+Conclusion-eligible claims are limited to H1, H2, H3, PAPER-C01, PAPER-C02, and PAPER-C03. H4 through H9 and PAPER-C04 remain provisional, blocked, unsupported, or pending according to the machine-readable map. The state adds research-integrity controls. It adds no E5 evidence.
+
+Current-contract external-rater replication remains separate and unresolved under `HIT-IRP-HIT040-002`. The candidate does not authorize recruitment, scoring, H3 generalization, or Maturity Level 3.
 
 ## Primary research question
 
@@ -60,7 +69,9 @@ Release `0.5.0` established E1 evidence about internal representation, rejection
 
 Release `0.6.4` adds a public standalone software archive and version-specific DOI. This is provenance and citation evidence, not new E5 evidence.
 
-Post-`0.6.4` unreleased work adds candidate controls for the current-contract replication, manual scorer workbooks, the `1.0.0` gate ledger, and the clean-room implementation packet. These are E1 and E2 readiness artifacts. They do not create new E5 evidence.
+Release `0.6.5` adds claim-evidence integrity and paper controls. This is E1 and E2 research-integrity evidence, not new E5 evidence.
+
+Post-`0.6.5` readiness work includes candidate controls for the current-contract replication, manual scorer workbooks, the `1.0.0` gate ledger, and the clean-room implementation packet. These are E1 and E2 readiness artifacts. They do not create new E5 evidence.
 
 ## Human evidence register
 
@@ -152,7 +163,7 @@ The clean-room implementation design tests whether a technically competent exter
 | 4 | Validated | Preregistered prospective design and pilot result | Pending |
 | 5 | Adopted | Independent institutional use and external reference | Pending |
 
-The levels are cumulative. Release `0.6.0` advances research maturity to Level 2 because the locked exercise passed. Release `0.6.4` improves software citation and archival provenance without changing maturity.
+The levels are cumulative. Release `0.6.0` advances research maturity to Level 2 because the locked exercise passed. Releases `0.6.4` and `0.6.5` improve archival provenance and research-integrity controls without changing maturity.
 
 A future `1.0.0` release may remain at Level 2 when the stable-contract gates pass before the current-contract human replication is complete. The release must state the exact maturity and H3 evidence available at publication time.
 

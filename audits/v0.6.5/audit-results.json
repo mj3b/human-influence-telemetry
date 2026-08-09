@@ -1,0 +1,183 @@
+{
+  "version": "0.6.5",
+  "audit_id": "HIT-COE-AUDIT-V0.6.5",
+  "audit_date": "2026-08-09",
+  "scope": "H1 through H9 and four material claims in the working paper. Unmapped repository prose remains outside this audit.",
+  "status": "PASS_WITH_EXCEPTIONS",
+  "errors": [],
+  "exceptions": [
+    "HIT-EX-01",
+    "HIT-EX-02",
+    "HIT-EX-03",
+    "HIT-EX-04"
+  ],
+  "negative_controls": [
+    {
+      "control_id": "HIT-NC-01",
+      "expected_gate": "traceability",
+      "detected": true,
+      "message": "H1: declared traceability differs from computed state"
+    },
+    {
+      "control_id": "HIT-NC-02",
+      "expected_gate": "integrity",
+      "detected": true,
+      "message": "H2: declared integrity differs from computed state"
+    },
+    {
+      "control_id": "HIT-NC-03",
+      "expected_gate": "human_support_review",
+      "detected": true,
+      "message": "H3: declared human_support_review differs from computed state"
+    },
+    {
+      "control_id": "HIT-NC-04",
+      "expected_gate": "evidence_fitness",
+      "detected": true,
+      "message": "H1: declared evidence_fitness differs from computed state"
+    },
+    {
+      "control_id": "HIT-NC-05",
+      "expected_gate": "dependency_closure",
+      "detected": true,
+      "message": "PAPER-C03: declared dependency_closure differs from computed state"
+    },
+    {
+      "control_id": "HIT-NC-06",
+      "expected_gate": "conclusion_eligibility",
+      "detected": true,
+      "message": "H5: declared conclusion eligibility differs from computed state"
+    },
+    {
+      "control_id": "HIT-NC-07",
+      "expected_gate": "traceability",
+      "detected": true,
+      "message": "H9: declared traceability differs from computed state"
+    },
+    {
+      "control_id": "HIT-NC-08",
+      "expected_gate": "claim_boundary",
+      "detected": true,
+      "message": "PAPER-C04: declared conclusion eligibility differs from computed state"
+    }
+  ],
+  "claim_results": [
+    {
+      "claim_id": "H1",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "pass",
+      "dependency_closure": "pass",
+      "conclusion_eligible": true
+    },
+    {
+      "claim_id": "H2",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "pass",
+      "dependency_closure": "pass",
+      "conclusion_eligible": true
+    },
+    {
+      "claim_id": "H3",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "pass",
+      "dependency_closure": "pass",
+      "conclusion_eligible": true
+    },
+    {
+      "claim_id": "H4",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "indeterminate",
+      "dependency_closure": "pass",
+      "conclusion_eligible": false
+    },
+    {
+      "claim_id": "H5",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "fail",
+      "dependency_closure": "pass",
+      "conclusion_eligible": false
+    },
+    {
+      "claim_id": "H6",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "fail",
+      "dependency_closure": "pass",
+      "conclusion_eligible": false
+    },
+    {
+      "claim_id": "H7",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "indeterminate",
+      "dependency_closure": "pass",
+      "conclusion_eligible": false
+    },
+    {
+      "claim_id": "H8",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "fail",
+      "dependency_closure": "pass",
+      "conclusion_eligible": false
+    },
+    {
+      "claim_id": "H9",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "fail",
+      "dependency_closure": "pass",
+      "conclusion_eligible": false
+    },
+    {
+      "claim_id": "PAPER-C01",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "pass",
+      "dependency_closure": "pass",
+      "conclusion_eligible": true
+    },
+    {
+      "claim_id": "PAPER-C02",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "pass",
+      "dependency_closure": "pass",
+      "conclusion_eligible": true
+    },
+    {
+      "claim_id": "PAPER-C03",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "pass",
+      "dependency_closure": "pass",
+      "conclusion_eligible": true
+    },
+    {
+      "claim_id": "PAPER-C04",
+      "traceability": "pass",
+      "integrity": "pass",
+      "human_support_review": "pass",
+      "evidence_fitness": "fail",
+      "dependency_closure": "pass",
+      "conclusion_eligible": false
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 cff-version: 1.2.0
-message: "If you use Human Influence Telemetry, cite the software release and identify the version used."
+message: "Version 0.6.5 is prepared for archival release. Use its version DOI once Zenodo issues the record."
 title: "Human Influence Telemetry"
 type: software
-version: "0.6.4"
-date-released: "2026-07-19"
+version: "0.6.5"
+date-released: "2026-08-09"
 authors:
   - family-names: Banasihan
     given-names: Mark Julius
@@ -13,9 +13,6 @@ abstract: "An open documentary assurance method for evaluating whether human aut
 license: Apache-2.0
 repository-code: "https://github.com/mj3b/human-influence-telemetry"
 identifiers:
-  - type: doi
-    value: "10.5281/zenodo.21446142"
-    description: "Version-specific software DOI for Human Influence Telemetry v0.6.4."
   - type: doi
     value: "10.5281/zenodo.21204892"
     description: "Concept DOI representing all published versions of Human Influence Telemetry."

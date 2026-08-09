@@ -1,13 +1,14 @@
 # Human Influence Telemetry v1.0.0 Readiness Plan
 
-**Updated:** 19 July 2026  
-**Governing decision:** `ADR-0001`  
-**Current repository release:** `0.6.4`  
-**Human-result release:** `0.6.0`  
-**Software release DOI:** `10.5281/zenodo.21446142`  
-**Current normative contract:** specification, assessment schema, dimension catalog, and handbook `0.4.0`  
-**Current conformance engine:** `0.5.0`  
-**Current research maturity:** Level 2, Applicable  
+**Updated:** 9 August 2026
+**Governing decision:** `ADR-0001`
+**Current repository release:** `0.6.5`
+**Human-result release:** `0.6.0`
+**Current exact-version DOI:** Pending Zenodo archival
+**Previous exact-version DOI, v0.6.4:** `10.5281/zenodo.21446142`
+**Current normative contract:** specification, assessment schema, dimension catalog, and handbook `0.4.0`
+**Current conformance engine:** `0.5.0`
+**Current research maturity:** Level 2, Applicable
 **Active empirical protocol:** `HIT-IRP-HIT040-002`, candidate, scoring prohibited
 
 ## 1. Release claim
@@ -45,6 +46,7 @@ Research maturity remains governed by `RESEARCH.md`. A stable `1.0.0` contract m
 - candidate source-audit controls;
 - candidate recruitment contingency;
 - draft manual workbooks for three future scorers.
+- v0.6.5 claim-evidence integrity controls, paper workspace, and reproducible claim-gate figure.
 
 ### Pending
 
