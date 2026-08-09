@@ -8,10 +8,11 @@ The public technical instrument is extracted from that program without publishin
 
 - Concept author: Mark Julius Banasihan
 - ORCID: 0009-0001-8121-2878
-- Concept DOI for all HIT software versions: 10.5281/zenodo.21204892
+- Originating research DOI: 10.5281/zenodo.21204892
+- Concept DOI for all HIT software versions: 10.5281/zenodo.21446141
 - Version-specific software DOI for `v0.6.4`: 10.5281/zenodo.21446142
-- Zenodo software record: https://zenodo.org/records/21446142
-- Version-specific software DOI for `v0.6.5`: pending Zenodo archival
+- Version-specific software DOI for `v0.6.5`: 10.5281/zenodo.21864224
+- Current Zenodo software record: https://zenodo.org/records/21864224
 - Source repository: private and retained by the author
 - Canonical public repository: `mj3b/human-influence-telemetry`
 - Public repository release: 0.6.5
@@ -28,11 +29,12 @@ Published-release metadata is bound to `0.6.5`. Candidate `0.7.0`, `0.9.0`, and 
 
 ## DOI lineage
 
-Zenodo assigns two related identifiers to the HIT software record:
+The originating research record and the standalone HIT software record have distinct DOI lineages:
 
-- `10.5281/zenodo.21204892` is the concept DOI representing the software across all published versions and resolving to the latest version;
+- `10.5281/zenodo.21204892` identifies the originating research record. It is not the HIT software concept DOI;
+- `10.5281/zenodo.21446141` is the HIT software concept DOI and resolves to the latest published software version;
 - `10.5281/zenodo.21446142` is the version-specific DOI for the exact `v0.6.4` archive.
-- the exact `v0.6.5` DOI remains pending until Zenodo publishes its archive.
+- `10.5281/zenodo.21864224` is the version-specific DOI for the exact `v0.6.5` archive.
 
 Use the version DOI for reproducible citation of an exact release. Use the concept DOI when referring to HIT as an evolving software project across versions.
 
@@ -66,11 +68,11 @@ Release `0.6.0` advances research maturity to Level 2, Applicable. It does not r
 
 ### 0.6.4
 
-Published the standalone software archive and version-specific DOI `10.5281/zenodo.21446142` under the all-versions concept DOI `10.5281/zenodo.21204892`. This release synchronizes archive and citation metadata. It does not revise the normative contract, executable engine, human-result record, H3 decision, or maturity level.
+Published the standalone software archive and version-specific DOI `10.5281/zenodo.21446142` under the all-versions software concept DOI `10.5281/zenodo.21446141`. This release synchronizes archive and citation metadata. It does not revise the normative contract, executable engine, human-result record, H3 decision, or maturity level.
 
 ### 0.6.5
 
-Published claim-evidence mapping for H1 through H9 and four paper claims, five research-integrity gates, five fitness dimensions, eight negative controls, lineage and AI-assistance records, a paper workspace, and reproducible claim-gate outputs. The audit state is `PASS_WITH_EXCEPTIONS`. The release does not revise the normative contract, executable engine, human-result record, H3 decision, or maturity level.
+Published claim-evidence mapping for H1 through H9 and four paper claims, five research-integrity gates, five fitness dimensions, eight negative controls, lineage and AI-assistance records, a paper workspace, and reproducible claim-gate outputs. Zenodo archived the exact release as `10.5281/zenodo.21864224`. The audit state is `PASS_WITH_EXCEPTIONS`. The release does not revise the normative contract, executable engine, human-result record, H3 decision, or maturity level.
 
 ### Post-0.6.5 readiness work, unreleased
 

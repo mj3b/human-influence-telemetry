@@ -36,7 +36,7 @@ Empirical prose must identify the population, protocol, contract, case count, sc
 
 ## Preserved boundaries
 
-This audit adds no scoring rule. The normative contract remains 0.4.0. The executable conformance engine remains 0.5.0. The preserved human result remains the bounded 0.6.0 result. The software concept DOI remains 10.5281/zenodo.21204892, the v0.6.4 DOI remains bound to its exact archive, and the v0.6.5 DOI remains pending archival.
+This audit adds no scoring rule. The normative contract remains 0.4.0. The executable conformance engine remains 0.5.0. The preserved human result remains the bounded 0.6.0 result. The software concept DOI is 10.5281/zenodo.21446141, the v0.6.4 DOI remains bound to its exact archive, and the v0.6.5 DOI is 10.5281/zenodo.21864224. The separate DOI 10.5281/zenodo.21204892 identifies the originating research record.
 
 `HIT-IRP-HIT040-002` remains a separate candidate protocol. Recruitment and scoring remain prohibited until its existing gates authorize them. v0.6.5 creates no new independent-rater evidence.
 

@@ -2,7 +2,7 @@
 
 [![HIT Validation](https://github.com/mj3b/human-influence-telemetry/actions/workflows/validate.yml/badge.svg)](https://github.com/mj3b/human-influence-telemetry/actions/workflows/validate.yml)
 [![Latest release: v0.6.5](https://img.shields.io/badge/latest%20release-v0.6.5-blue.svg)](https://github.com/mj3b/human-influence-telemetry/releases/tag/v0.6.5)
-[![DOI: all versions](https://zenodo.org/badge/DOI/10.5281/zenodo.21204892.svg)](https://doi.org/10.5281/zenodo.21204892)
+[![DOI: all software versions](https://zenodo.org/badge/DOI/10.5281/zenodo.21446141.svg)](https://doi.org/10.5281/zenodo.21446141)
 [![Stable target: v1.0.0](https://img.shields.io/badge/stable%20target-v1.0.0%20gated-orange.svg)](docs/releases/v1.0.0-candidate.md)
 [![Maturity: Level 2](https://img.shields.io/badge/research%20maturity-Level%202%20Applicable-green.svg)](RESEARCH.md)
 [![Research integrity: PASS WITH EXCEPTIONS](https://img.shields.io/badge/research%20integrity-PASS_WITH_EXCEPTIONS-orange.svg)](audits/v0.6.5/audit-report.md)
@@ -10,7 +10,9 @@
 
 **An open documentary assurance method for evaluating whether human authority retained practical force in AI-mediated institutional decisions.**
 
-**Concept DOI, all software versions:** [10.5281/zenodo.21204892]
+**Concept DOI, all software versions:** [10.5281/zenodo.21446141](https://doi.org/10.5281/zenodo.21446141)
+
+**Originating research DOI:** [10.5281/zenodo.21204892](https://doi.org/10.5281/zenodo.21204892)
 
 HIT evaluates what contemporaneous records establish about human access, judgment, authority, correction, repair, and reform. It does not infer intention, certify legal compliance, perform runtime[...]
 
@@ -34,7 +36,7 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 **Human reliability claim:** Supported for one frozen packet under `HIT-IRP-CIGNA-001`
 **Active replication protocol:** `HIT-IRP-HIT040-002`, candidate, scoring prohibited
 **Stable target:** `1.0.0`, release prohibited until the published gates pass
-**Version DOI, exact `v0.6.5` release:** Pending Zenodo archival
+**Version DOI, exact `v0.6.5` release:** [10.5281/zenodo.21864224](https://doi.org/10.5281/zenodo.21864224)
 **Previous version DOI, exact `v0.6.4` release:** [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142)
 
 The [GitHub Releases page](https://github.com/mj3b/human-influence-telemetry/releases) contains published releases. Candidate and future-version documents in the repository are planning and release-control artifacts. They are not published releases.
@@ -47,7 +49,7 @@ Eight negative controls test whether the audit detects broken references, weaken
 
 The release also adds research lineage, an AI-assistance log, a paper workspace, and reproducible claim-gate data and figures. See [`docs/releases/v0.6.5.md`](docs/releases/v0.6.5.md), [`protocols/research-integrity-audit.md`](protocols/research-integrity-audit.md), and [`paper/`](paper/).
 
-This release changes no normative scoring rule, conformance behavior, human result, or maturity decision. The 0.4.0 normative contract, 0.5.0 engine, 0.6.0 human result, and v0.6.4 exact-version DOI remain separate preserved layers. Current-contract external-rater replication remains unresolved and scoring-prohibited.
+This release changes no normative scoring rule, conformance behavior, human result, or maturity decision. The 0.4.0 normative contract, 0.5.0 engine, 0.6.0 human result, and version-specific archive DOIs remain separate preserved layers. Current-contract external-rater replication remains unresolved and scoring-prohibited.
 
 ## What `1.0.0` will mean
 

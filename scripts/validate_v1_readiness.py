@@ -29,7 +29,7 @@ EXPECTED_FILENAMES = {
     "HIT-IRP-HIT040-002-manual-scorer-workbook-template.pdf",
 }
 CURRENT_RELEASE = "0.6.5"
-SOFTWARE_DOI = "10.5281/zenodo.21446142"
+SOFTWARE_DOI = "10.5281/zenodo.21864224"
 
 
 def load_json(path: Path) -> Any:
@@ -147,7 +147,7 @@ def main() -> int:
     if v1.get("current_repository_release") != CURRENT_RELEASE:
         failures.append("v1 readiness baseline must identify repository release 0.6.5")
     if v1.get("current_software_doi") != SOFTWARE_DOI:
-        failures.append("v1 readiness baseline must identify the v0.6.4 software DOI")
+        failures.append("v1 readiness baseline must identify the current v0.6.5 software DOI")
     if v1.get("human_result_release") != "0.6.0":
         failures.append("v1 readiness baseline must preserve the 0.6.0 human-result release")
     current = v1.get("current_component_versions", {})
@@ -179,6 +179,7 @@ def main() -> int:
     plan = V1_PLAN.read_text(encoding="utf-8")
     for phrase in (
         "Current repository release:** `0.6.5`",
+        "Current exact-version DOI:** `10.5281/zenodo.21864224`",
         "Previous exact-version DOI, v0.6.4:** `10.5281/zenodo.21446142`",
         "Current research maturity:** Level 2, Applicable",
         "Version `1.0.0` is a compatibility and implementation claim",
@@ -209,7 +210,7 @@ def main() -> int:
     print("HIT v1 readiness staging validation passed")
     print("- current repository release: 0.6.5")
     print("- human-result release: 0.6.0")
-    print("- software DOI: 10.5281/zenodo.21446142")
+    print("- software DOI: 10.5281/zenodo.21864224")
     print("- current normative contract: 0.4.0")
     print("- current conformance engine: 0.5.0")
     print("- manual workbooks: 3 scorer-specific plus 1 master, DOCX and PDF")

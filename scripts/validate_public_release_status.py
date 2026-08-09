@@ -16,7 +16,9 @@ PUBLISHED_RELEASE = "0.6.5"
 PUBLISHED_DATE = "2026-08-09"
 HUMAN_RESULT_RELEASE = "0.6.0"
 PREVIOUS_VERSION_DOI = "10.5281/zenodo.21446142"
-CONCEPT_DOI = "10.5281/zenodo.21204892"
+CURRENT_VERSION_DOI = "10.5281/zenodo.21864224"
+SOFTWARE_CONCEPT_DOI = "10.5281/zenodo.21446141"
+ORIGINATING_RESEARCH_DOI = "10.5281/zenodo.21204892"
 NORMATIVE_CONTRACT = "0.4.0"
 CONFORMANCE_ENGINE = "0.5.0"
 STABLE_TARGET = "1.0.0"
@@ -57,6 +59,7 @@ def main() -> int:
         "docs/releases/v0.7.0-candidate.md",
         "docs/releases/v1.0.0-candidate.md",
         "docs/v1-readiness-plan.md",
+        "protocols/research-integrity-audit.md",
         "release/v1.0.0/contract-freeze.candidate.json",
     )
 
@@ -74,8 +77,9 @@ def main() -> int:
         "README.md": (
             "**Current release:** 0.6.5",
             "**Human-result release:** 0.6.0",
-            "**Concept DOI, all software versions:** [10.5281/zenodo.21204892]",
-            "**Version DOI, exact `v0.6.5` release:** Pending Zenodo archival",
+            "**Concept DOI, all software versions:** [10.5281/zenodo.21446141]",
+            "**Originating research DOI:** [10.5281/zenodo.21204892]",
+            "**Version DOI, exact `v0.6.5` release:** [10.5281/zenodo.21864224]",
             "**Previous version DOI, exact `v0.6.4` release:** [10.5281/zenodo.21446142]",
             "**Stable target:** `1.0.0`, release prohibited",
             "**Active replication protocol:** `HIT-IRP-HIT040-002`, candidate, scoring prohibited",
@@ -83,12 +87,14 @@ def main() -> int:
         ),
         "ROADMAP.md": (
             "0.6.5: Research-integrity controls, current release",
+            "**Current exact-version DOI:** `10.5281/zenodo.21864224`",
             "1.0.0: Stable public contract",
             "Candidate documents do not create a tag, GitHub release, DOI archive, scorer activation, or maturity advancement.",
         ),
         "RESEARCH.md": (
             "Published repository release: `0.6.5`",
-            "Version-specific software DOI for v0.6.5: pending Zenodo archival",
+            "Software concept DOI: `10.5281/zenodo.21446141`",
+            "Version-specific software DOI for v0.6.5: `10.5281/zenodo.21864224`",
             "Stable public-contract target: `1.0.0`, gated candidate, release prohibited",
             "Supported for one frozen Cigna packet",
             "Level 2, Applicable",
@@ -96,8 +102,10 @@ def main() -> int:
         ),
         "PROVENANCE.md": (
             "Public repository release: 0.6.5",
-            "Concept DOI for all HIT software versions: 10.5281/zenodo.21204892",
+            "Originating research DOI: 10.5281/zenodo.21204892",
+            "Concept DOI for all HIT software versions: 10.5281/zenodo.21446141",
             "Version-specific software DOI for `v0.6.4`: 10.5281/zenodo.21446142",
+            "Version-specific software DOI for `v0.6.5`: 10.5281/zenodo.21864224",
             "Post-0.6.5 readiness work, unreleased",
             "Research maturity: Level 2, Applicable",
         ),
@@ -107,7 +115,7 @@ def main() -> int:
         ),
         "CHANGELOG.md": (
             "## [0.6.5] - 2026-08-09",
-            "Version-specific Zenodo software DOI: `10.5281/zenodo.21446142`",
+            "Exact v0.6.5 DOI: `10.5281/zenodo.21864224`",
             "## [0.6.0] - 2026-07-18",
         ),
         "SECURITY.md": (
@@ -130,22 +138,23 @@ def main() -> int:
         ),
         "docs/releases/README.md": (
             "Current published release",
-            "Concept DOI for all software versions: `10.5281/zenodo.21204892`",
+            "Concept DOI for all software versions: `10.5281/zenodo.21446141`",
+            "Originating research DOI: `10.5281/zenodo.21204892`",
             "Version-specific software DOI for `v0.6.4`: `10.5281/zenodo.21446142`",
-            "Version-specific software DOI for `v0.6.5`: pending Zenodo archival",
+            "Version-specific software DOI for `v0.6.5`: `10.5281/zenodo.21864224`",
             "`1.0.0`, release prohibited",
             "Candidate documents may describe future versions, but they must not overwrite published-release metadata.",
         ),
         "docs/releases/v0.6.4.md": (
             "**Status:** Published",
-            "**Concept DOI, all software versions:** [10.5281/zenodo.21204892]",
+            "**Concept DOI, all software versions:** [10.5281/zenodo.21446141]",
             "**Version-specific software DOI:** [10.5281/zenodo.21446142]",
             "Human-result release: `0.6.0`",
         ),
         "docs/releases/v0.6.5.md": (
-            "**Status:** Prepared for publication",
-            "**Concept DOI, all software versions:** [10.5281/zenodo.21204892]",
-            "**Version-specific software DOI:** Pending Zenodo archival",
+            "**Status:** Published",
+            "**Concept DOI, all software versions:** [10.5281/zenodo.21446141]",
+            "**Version-specific software DOI:** [10.5281/zenodo.21864224]",
             "**Human-result release:** `0.6.0`",
         ),
         "docs/releases/v0.7.0-candidate.md": (
@@ -162,9 +171,16 @@ def main() -> int:
         ),
         "docs/v1-readiness-plan.md": (
             "**Current repository release:** `0.6.5`",
+            "**Current exact-version DOI:** `10.5281/zenodo.21864224`",
             "**Previous exact-version DOI, v0.6.4:** `10.5281/zenodo.21446142`",
             "Version `1.0.0` is a compatibility and implementation claim",
             "Withhold `1.0.0`",
+        ),
+        "protocols/research-integrity-audit.md": (
+            "The software concept DOI is 10.5281/zenodo.21446141",
+            "the v0.6.5 DOI is 10.5281/zenodo.21864224",
+            "The separate DOI 10.5281/zenodo.21204892 identifies the originating research record.",
+            "v0.6.5 creates no new independent-rater evidence.",
         ),
     }
 
@@ -182,18 +198,27 @@ def main() -> int:
         failures.append(".zenodo.json must identify the latest published release 0.6.5")
     if citation.get("date-released") != PUBLISHED_DATE:
         failures.append("CITATION.cff release date drifted")
+    if citation.get("doi") != CURRENT_VERSION_DOI:
+        failures.append("CITATION.cff must identify the exact v0.6.5 DOI")
     if zenodo.get("publication_date") != PUBLISHED_DATE:
         failures.append(".zenodo.json publication date drifted")
     if zenodo.get("upload_type") != "software":
         failures.append(".zenodo.json upload type changed")
+    related_identifiers = zenodo.get("related_identifiers", [])
+    if {
+        "identifier": ORIGINATING_RESEARCH_DOI,
+        "relation": "isSupplementTo",
+        "resource_type": "dataset",
+    } not in related_identifiers:
+        failures.append(".zenodo.json must preserve the originating research relation")
 
     citation_dois = {
         str(item.get("value"))
         for item in citation.get("identifiers", [])
         if item.get("type") == "doi"
     }
-    if citation_dois != {CONCEPT_DOI}:
-        failures.append("CITATION.cff must contain only the concept DOI before v0.6.5 archival")
+    if citation_dois != {SOFTWARE_CONCEPT_DOI}:
+        failures.append("CITATION.cff must identify only the HIT software concept DOI as an additional DOI")
 
     if v1_lock.get("target_repository_release") != STABLE_TARGET:
         failures.append("v1 gate ledger target changed")
@@ -203,7 +228,7 @@ def main() -> int:
         failures.append("v1 gate ledger must continue to prohibit release")
     if v1_lock.get("current_repository_release") != PUBLISHED_RELEASE:
         failures.append("v1 gate ledger current release drifted")
-    if v1_lock.get("current_software_doi") != PREVIOUS_VERSION_DOI:
+    if v1_lock.get("current_software_doi") != CURRENT_VERSION_DOI:
         failures.append("v1 gate ledger software DOI drifted")
     if v1_lock.get("human_result_release") != HUMAN_RESULT_RELEASE:
         failures.append("v1 gate ledger human-result release drifted")
@@ -242,8 +267,9 @@ def main() -> int:
     print("HIT public release-status validation passed")
     print("- published release: 0.6.5")
     print("- human-result release: 0.6.0")
-    print("- concept DOI: 10.5281/zenodo.21204892")
-    print("- v0.6.5 version DOI: pending Zenodo archival")
+    print("- software concept DOI: 10.5281/zenodo.21446141")
+    print("- originating research DOI: 10.5281/zenodo.21204892")
+    print("- v0.6.5 version DOI: 10.5281/zenodo.21864224")
     print("- previous v0.6.4 DOI: 10.5281/zenodo.21446142")
     print("- normative contract: 0.4.0")
     print("- conformance engine: 0.5.0")

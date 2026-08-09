@@ -1,12 +1,12 @@
-Title: Format human-result metadata and normalize concept DOI for v0.6.4
+Title: Historical v0.6.4 release-metadata correction
 
 This change fixes two issues flagged by the CI validation workflow:
 
 - Format `Human-result release` metadata in docs/releases/v0.6.4.md to match the other bold-labelled header entries so the validator can detect the exact text it expects.
-- Normalize the concept DOI in CITATION.cff to the canonical concept DOI `10.5281/zenodo.21204892` so the validator sees the expected DOI pair (concept + version).
+- Record the identifiers available at the time. Later verification established that `10.5281/zenodo.21204892` belongs to the originating research record, while the HIT software concept DOI is `10.5281/zenodo.21446141`.
 
 These edits should resolve the following CI failures observed in the HIT Validation job:
 - FAIL: citation DOI boundary changed
 - FAIL: docs/releases/v0.6.4.md: missing text: Human-result release: `0.6.0`
 
-After merging this PR, the validation workflow should re-run automatically. If it reports any remaining DOI mismatches, the workflow output will list files containing unexpected DOIs — update those files to the canonical concept DOI or the version DOI as appropriate.
+Current metadata validation distinguishes the originating research DOI, the software concept DOI, and each exact-version DOI.

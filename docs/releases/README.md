@@ -30,9 +30,10 @@ A document in this directory does not create a release. A version becomes public
 
 - Published repository release: `0.6.5`
 - Human-result release: `0.6.0`
-- Concept DOI for all software versions: `10.5281/zenodo.21204892`
+- Concept DOI for all software versions: `10.5281/zenodo.21446141`
+- Originating research DOI: `10.5281/zenodo.21204892`
 - Version-specific software DOI for `v0.6.4`: `10.5281/zenodo.21446142`
-- Version-specific software DOI for `v0.6.5`: pending Zenodo archival
+- Version-specific software DOI for `v0.6.5`: `10.5281/zenodo.21864224`
 - Normative assessment contract: `0.4.0`
 - Conformance engine: `0.5.0`
 - Research maturity: Level 2, Applicable

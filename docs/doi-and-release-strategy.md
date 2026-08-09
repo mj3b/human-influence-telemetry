@@ -2,11 +2,11 @@
 
 ## Decision
 
-Human Influence Telemetry should receive a separate Zenodo software record when a release is successfully archived.
+Human Influence Telemetry uses a separate Zenodo software record for successfully archived releases.
 
 DOI `10.5281/zenodo.21204892` identifies the originating research concept. It is not a version DOI for this standalone software repository.
 
-As of release `0.4.0`, no standalone HIT software DOI has been assigned. The repository must state that directly and must not display a software DOI badge until a public Zenodo record exists.
+The standalone HIT software record now exists. Zenodo assigned software concept DOI `10.5281/zenodo.21446141`, version DOI `10.5281/zenodo.21446142` to `v0.6.4`, and version DOI `10.5281/zenodo.21864224` to `v0.6.5`.
 
 ## Identifier model
 
@@ -15,11 +15,12 @@ As of release `0.4.0`, no standalone HIT software DOI has been assigned. The rep
    - Identifies the originating concept and research lineage.
 
 2. **HIT software concept DOI**
-   - Assigned after the first successful standalone software archive.
+   - `10.5281/zenodo.21446141`
    - Identifies the collection of archived HIT releases.
 
 3. **HIT version DOI**
-   - Assigned to a successfully archived release.
+   - Current exact release: `10.5281/zenodo.21864224` for `v0.6.5`.
+   - Previous exact release: `10.5281/zenodo.21446142` for `v0.6.4`.
    - Identifies the exact released files and metadata.
 
 A GitHub tag or release does not by itself prove that a software DOI exists.
@@ -28,7 +29,7 @@ A GitHub tag or release does not by itself prove that a software DOI exists.
 
 The software record should reference the originating research DOI as `isSupplementTo`. The public software operationalizes and supplements the research concept without replacing it.
 
-After Zenodo assigns software identifiers:
+After Zenodo assigns a new version identifier:
 
 - add the software concept DOI and exact version DOI to `CITATION.cff` in a follow-up release;
 - retain the originating DOI as a clearly described related identifier;
@@ -49,11 +50,11 @@ After Zenodo assigns software identifiers:
 
 A missing software DOI does not invalidate the GitHub release. It means archival identity remains incomplete and must be reported accurately.
 
-## 0.4.0 handling
+## Historical 0.4.0 handling
 
-Release `0.4.0` is the next archival opportunity. Repository, specification, assessment schema, and dimension catalog all identify version `0.4.0`.
+Release `0.4.0` was the first planned archival opportunity. Repository, specification, assessment schema, and dimension catalog then identified version `0.4.0`.
 
-The release remains Maturity Level 1. A software DOI would identify an archived software artifact; it would not establish human reliability, validation, certification, legal compliance, or institutional adoption.
+That release remained at Maturity Level 1. A software DOI would have identified an archived software artifact without establishing human reliability, validation, certification, legal compliance, or institutional adoption.
 
 When the GitHub integration does not produce a record, a manual Zenodo software upload may be used after checking for duplicate-record risk. The uploaded archive must correspond exactly to the tagged release, and the resulting DOI must be added only in a later repository update.
 
@@ -63,10 +64,13 @@ The repository contains both `CITATION.cff` and `.zenodo.json`. When `.zenodo.js
 
 Current component versions:
 
-- repository release: 0.4.0;
+- repository release: 0.6.5;
 - specification: 0.4.0;
 - assessment schema: 0.4.0;
-- dimension catalog: 0.4.0.
+- dimension catalog: 0.4.0;
+- conformance engine: 0.5.0;
+- human-result release: 0.6.0;
+- research maturity: Level 2, Applicable.
 
 ## Non-claims
 

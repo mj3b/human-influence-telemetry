@@ -2,7 +2,8 @@
 
 **Current published release:** `0.6.5`
 **Human-result release:** `0.6.0`
-**Current exact-version DOI:** Pending Zenodo archival
+**Current exact-version DOI:** `10.5281/zenodo.21864224`
+**Software concept DOI:** `10.5281/zenodo.21446141`
 **Previous exact-version DOI, v0.6.4:** `10.5281/zenodo.21446142`
 **Active workstream:** `0.7.0` candidate
 **Stable release candidate:** `0.9.0` pending
@@ -93,6 +94,7 @@ Completed:
 - research lineage and AI-assistance records;
 - a working paper package and reproducible claim-gate figure;
 - `PASS_WITH_EXCEPTIONS`, with unsupported empirical claims blocked.
+- exact-version archive DOI `10.5281/zenodo.21864224`.
 
 Release `0.6.5` does not alter the `0.4.0` normative contract, `0.5.0` conformance engine, `0.6.0` human result, H3 boundary, or Level 2 maturity decision. Current-contract external-rater replication remains unresolved.
 

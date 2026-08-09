@@ -8,8 +8,10 @@ Human Influence Telemetry is a design-science research artifact that operational
 
 - Published repository release: `0.6.5`
 - Human-result release: `0.6.0`
-- Version-specific software DOI for v0.6.5: pending Zenodo archival
+- Software concept DOI: `10.5281/zenodo.21446141`
+- Version-specific software DOI for v0.6.5: `10.5281/zenodo.21864224`
 - Previous version DOI for v0.6.4: `10.5281/zenodo.21446142`
+- Originating research DOI: `10.5281/zenodo.21204892`
 - Normative assessment contract: `0.4.0`
 - Conformance engine: `0.5.0`
 - Research maturity: Level 2, Applicable
