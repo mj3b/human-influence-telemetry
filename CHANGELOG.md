@@ -18,7 +18,9 @@
 - Complete-record conformance engine: `0.5.0`.
 - Bounded human-result release and maturity decision: `0.6.0`, Level 2, Applicable.
 - Previous exact-version DOI: `v0.6.4`, `10.5281/zenodo.21446142`.
-- Exact v0.6.5 DOI: pending Zenodo archival.
+- Exact v0.6.5 DOI: `10.5281/zenodo.21864224`.
+- HIT software concept DOI: `10.5281/zenodo.21446141`.
+- Originating research DOI, separate from the software lineage: `10.5281/zenodo.21204892`.
 - Current-contract external-rater replication: separate, unresolved, and scoring-prohibited.
 
 All notable changes to Human Influence Telemetry are documented here.

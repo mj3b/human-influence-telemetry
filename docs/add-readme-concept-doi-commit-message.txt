@@ -1,7 +1,7 @@
-Title: Add concept DOI public-status line to README
+Title: Historical README DOI status note
 
-This commit adds the exact literal the validator expects in README.md:
+This file records the earlier README status change. Later Zenodo verification established the current software concept DOI:
 
-**Concept DOI, all software versions:** [10.5281/zenodo.21204892]
+**Concept DOI, all software versions:** [10.5281/zenodo.21446141]
 
-Placing it after the DOI badge aligns README with other release metadata files and resolves the validator's missing public-status text check.
+The separate DOI `10.5281/zenodo.21204892` identifies the originating research record.
