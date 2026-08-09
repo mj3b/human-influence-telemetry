@@ -1,0 +1,12 @@
+{
+  "version": "0.6.5",
+  "log_id": "HIT-AI-ASSISTANCE-V0.6.5",
+  "responsible_author": "Mark Julius Banasihan",
+  "entries": [
+    {"date": "2026-08-09", "activity": "Research-integrity architecture adaptation", "human_responsibility": "Authorized the scope and retains responsibility for every source, fitness judgment, and conclusion.", "ai_assistance": "Compared the TAE v0.5.0 architecture with HIT, drafted the adapted files, and implemented deterministic checks.", "outputs": ["protocols/research-integrity-audit.md", "evidence/claim-evidence-map.json", "scripts/run_research_integrity_audit.py"]},
+    {"date": "2026-08-09", "activity": "Paper workspace preparation", "human_responsibility": "Must approve literature interpretations, novelty claims, manuscript claims, and any submission.", "ai_assistance": "Prepared a bounded working manuscript, claim crosswalk, literature workflow, novelty audit, references, and submission notes.", "outputs": ["paper/manuscript.md", "paper/claim-crosswalk.md", "paper/literature-matrix.md", "paper/novelty-audit.md"]},
+    {"date": "2026-08-09", "activity": "Audit and publication-figure generation", "human_responsibility": "Reviews the declared support attestations and published exceptions.", "ai_assistance": "Ran the mapped gates, negative controls, prose checks, and deterministic figure generation.", "outputs": ["audits/v0.6.5/audit-results.json", "figures/generated/claim-gates-v0.6.5.svg"]}
+  ],
+  "attestation": "AI assistance supported drafting, code, and consistency checking. The responsible author retains responsibility for source verification, research judgments, claim approval, and publication.",
+  "limits": ["This is a material-activity log, not a complete transcript.", "Author review is not independent assessment."]
+}

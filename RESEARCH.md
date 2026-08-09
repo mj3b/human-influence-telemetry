@@ -17,6 +17,14 @@ Human Influence Telemetry is a design-science research artifact that operational
 
 Version `1.0.0` is a future compatibility and public-implementability claim. It does not become an empirical reliability claim unless new eligible independent human evidence separately satisfies the active protocol.
 
+## v0.6.5 research-integrity layer
+
+The v0.6.5 candidate maps H1 through H9 and four material paper claims to exact evidence locators, five gate states, five evidence-fitness dimensions, dependencies, limitations, reversal conditions, and conclusion eligibility. The generated audit state is `PASS_WITH_EXCEPTIONS` when every deterministic control passes and every unresolved claim remains blocked.
+
+Conclusion-eligible claims are limited to H1, H2, H3, PAPER-C01, PAPER-C02, and PAPER-C03. H4 through H9 and PAPER-C04 remain provisional, blocked, unsupported, or pending according to the machine-readable map. The state adds research-integrity controls. It adds no E5 evidence.
+
+Current-contract external-rater replication remains separate and unresolved under `HIT-IRP-HIT040-002`. The candidate does not authorize recruitment, scoring, H3 generalization, or Maturity Level 3.
+
 ## Primary research question
 
 > Can independent reviewers use HIT to distinguish substantive human influence, ceremonial oversight, affirmative absence, and insufficient evidence in AI-mediated institutional decision processes?

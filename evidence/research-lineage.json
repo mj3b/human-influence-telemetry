@@ -1,0 +1,35 @@
+{
+  "version": "0.6.5",
+  "lineage_id": "HIT-LINEAGE-V0.6.5",
+  "description": "A PROV-O-compatible declaration of responsibility and derivation. This file does not claim full PROV-O or RO-Crate conformance.",
+  "agents": [
+    {"agent_id": "AGENT-MJB", "name": "Mark Julius Banasihan", "type": "person", "responsibility": "Responsible author, source reviewer, claim approver, and reviewer of record"},
+    {"agent_id": "AGENT-AI", "name": "OpenAI Codex", "type": "software", "responsibility": "Drafting, implementation, organization, and consistency checks under human responsibility"},
+    {"agent_id": "AGENT-CI", "name": "HIT validation workflow", "type": "software", "responsibility": "Deterministic schema, boundary, audit, figure, and claim-boundary checks"}
+  ],
+  "activities": [
+    {"activity_id": "ACT-PORT", "date": "2026-08-09", "description": "Adapt the trust-autonomy-evidence v0.5.0 research-integrity architecture to HIT without changing preserved component contracts.", "responsible_agent": "AGENT-MJB", "assisting_agents": ["AGENT-AI"], "status": "completed"},
+    {"activity_id": "ACT-MAP", "date": "2026-08-09", "description": "Map H1 through H9 and material paper claims to evidence, fitness judgments, dependencies, and conclusion states.", "responsible_agent": "AGENT-MJB", "assisting_agents": ["AGENT-AI"], "status": "completed"},
+    {"activity_id": "ACT-AUDIT", "date": "2026-08-09", "description": "Execute the five gates, negative controls, E5 boundary checks, and reproducible figure build.", "responsible_agent": "AGENT-MJB", "assisting_agents": ["AGENT-AI", "AGENT-CI"], "status": "completed"},
+    {"activity_id": "ACT-EXTERNAL-REPLICATION", "date": null, "description": "Run the current-contract external-rater replication under HIT-IRP-HIT040-002.", "responsible_agent": "AGENT-MJB", "assisting_agents": [], "status": "unresolved"}
+  ],
+  "entities": [
+    {"entity_id": "ENTITY-CONTRACT", "path": "SPECIFICATION.md", "version": "0.4.0", "state": "preserved"},
+    {"entity_id": "ENTITY-ENGINE", "path": "src/conformance/runner.py", "version": "0.5.0", "state": "preserved"},
+    {"entity_id": "ENTITY-HUMAN-RESULT", "path": "validation/results/pre-adjudication-comparison.json", "version": "0.6.0", "state": "preserved"},
+    {"entity_id": "ENTITY-DOI", "path": ".zenodo.json", "version": "0.6.4", "state": "preserved"},
+    {"entity_id": "ENTITY-CLAIM-MAP", "path": "evidence/claim-evidence-map.json", "version": "0.6.5", "state": "generated"},
+    {"entity_id": "ENTITY-AUDIT", "path": "audits/v0.6.5/audit-results.json", "version": "0.6.5", "state": "generated"},
+    {"entity_id": "ENTITY-PAPER", "path": "paper/manuscript.md", "version": "working", "state": "draft"}
+  ],
+  "relations": [
+    {"activity": "ACT-PORT", "entity": "ENTITY-CONTRACT", "relation": "preserved"},
+    {"activity": "ACT-PORT", "entity": "ENTITY-ENGINE", "relation": "preserved"},
+    {"activity": "ACT-PORT", "entity": "ENTITY-HUMAN-RESULT", "relation": "preserved"},
+    {"activity": "ACT-PORT", "entity": "ENTITY-DOI", "relation": "preserved"},
+    {"activity": "ACT-MAP", "entity": "ENTITY-CLAIM-MAP", "relation": "generated"},
+    {"activity": "ACT-AUDIT", "entity": "ENTITY-CLAIM-MAP", "relation": "used"},
+    {"activity": "ACT-AUDIT", "entity": "ENTITY-AUDIT", "relation": "generated"},
+    {"activity": "ACT-AUDIT", "entity": "ENTITY-PAPER", "relation": "constrains"}
+  ]
+}

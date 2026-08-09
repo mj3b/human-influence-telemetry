@@ -1,5 +1,23 @@
 # Changelog
 
+## [Unreleased] - v0.6.5 research-integrity candidate
+
+### Added
+
+- Machine-readable claim-evidence mapping for H1 through H9 and four material working-paper claims.
+- Five independent gates: traceability, integrity, human support review, evidence fitness, and dependency closure.
+- Claim-specific fitness judgments for directness, contemporaneity, independence, completeness, and publication authority.
+- Eight negative controls, deterministic audit output, `PASS_WITH_EXCEPTIONS`, and E5 claim-boundary checks.
+- Research lineage, AI-assistance disclosure, paper workspace, derived figure data, and a reproducible SVG publication figure.
+
+### Preserved boundaries
+
+- Normative contract and assessment schema: `0.4.0`.
+- Complete-record conformance engine: `0.5.0`.
+- Bounded human-result release and maturity decision: `0.6.0`, Level 2, Applicable.
+- DOI-bearing software release and metadata: `v0.6.4`.
+- Current-contract external-rater replication: separate, unresolved, and scoring-prohibited.
+
 All notable changes to Human Influence Telemetry are documented here.
 
 The project uses Semantic Versioning for the public technical artifact. Research maturity is reported separately.

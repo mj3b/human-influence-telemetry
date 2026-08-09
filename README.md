@@ -5,6 +5,7 @@
 [![DOI: all versions](https://zenodo.org/badge/DOI/10.5281/zenodo.21204892.svg)](https://doi.org/10.5281/zenodo.21204892)
 [![Stable target: v1.0.0](https://img.shields.io/badge/stable%20target-v1.0.0%20gated-orange.svg)](docs/releases/v1.0.0-candidate.md)
 [![Maturity: Level 2](https://img.shields.io/badge/research%20maturity-Level%202%20Applicable-green.svg)](RESEARCH.md)
+[![Research integrity: v0.6.5 candidate](https://img.shields.io/badge/research%20integrity-v0.6.5%20candidate-orange.svg)](audits/v0.6.5/audit-report.md)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 **An open documentary assurance method for evaluating whether human authority retained practical force in AI-mediated institutional decisions.**
@@ -36,6 +37,16 @@ HIT evaluates what contemporaneous records establish about human access, judgmen
 **Version DOI, exact `v0.6.4` release:** [10.5281/zenodo.21446142](https://doi.org/10.5281/zenodo.21446142)
 
 The [GitHub Releases page](https://github.com/mj3b/human-influence-telemetry/releases) contains published releases. Candidate and future-version documents in the repository are planning and release-control artifacts. They are not published releases.
+
+## v0.6.5 research-integrity candidate
+
+The v0.6.5 candidate adds a machine-readable claim-evidence map for H1 through H9 and four material paper claims. Its audit separates traceability, integrity, human support review, evidence fitness, and dependency closure. Evidence fitness separately records directness, contemporaneity, independence, completeness, and publication authority.
+
+Eight negative controls test whether the audit detects broken references, weakened integrity, removed review, failed fitness, unresolved dependencies, false conclusion eligibility, missing locators, and a current-contract replication overclaim. The generated state is `PASS_WITH_EXCEPTIONS`: the controls pass while claims lacking required evidence remain blocked.
+
+The candidate also adds research lineage, an AI-assistance log, a paper workspace, and reproducible claim-gate data and figures. See [`docs/releases/v0.6.5.md`](docs/releases/v0.6.5.md), [`protocols/research-integrity-audit.md`](protocols/research-integrity-audit.md), and [`paper/`](paper/).
+
+This candidate changes no normative scoring rule, conformance behavior, human result, maturity decision, DOI, or release authorization. The 0.4.0 normative contract, 0.5.0 engine, 0.6.0 human result, and v0.6.4 DOI-bearing release remain separate preserved layers. Current-contract external-rater replication remains unresolved and scoring-prohibited.
 
 ## What `1.0.0` will mean
 
