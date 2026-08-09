@@ -17,7 +17,7 @@
     {"entity_id": "ENTITY-CONTRACT", "path": "SPECIFICATION.md", "version": "0.4.0", "state": "preserved"},
     {"entity_id": "ENTITY-ENGINE", "path": "src/conformance/runner.py", "version": "0.5.0", "state": "preserved"},
     {"entity_id": "ENTITY-HUMAN-RESULT", "path": "validation/results/pre-adjudication-comparison.json", "version": "0.6.0", "state": "preserved"},
-    {"entity_id": "ENTITY-DOI", "path": ".zenodo.json", "version": "0.6.4", "state": "preserved"},
+    {"entity_id": "ENTITY-DOI", "path": ".zenodo.json", "version": "0.6.5", "state": "prepared_for_archival"},
     {"entity_id": "ENTITY-CLAIM-MAP", "path": "evidence/claim-evidence-map.json", "version": "0.6.5", "state": "generated"},
     {"entity_id": "ENTITY-AUDIT", "path": "audits/v0.6.5/audit-results.json", "version": "0.6.5", "state": "generated"},
     {"entity_id": "ENTITY-PAPER", "path": "paper/manuscript.md", "version": "working", "state": "draft"}

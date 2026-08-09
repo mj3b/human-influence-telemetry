@@ -1,6 +1,8 @@
 # Changelog
 
-## [Unreleased] - v0.6.5 research-integrity candidate
+## [Unreleased]
+
+## [0.6.5] - 2026-08-09
 
 ### Added
 
@@ -15,7 +17,8 @@
 - Normative contract and assessment schema: `0.4.0`.
 - Complete-record conformance engine: `0.5.0`.
 - Bounded human-result release and maturity decision: `0.6.0`, Level 2, Applicable.
-- DOI-bearing software release and metadata: `v0.6.4`.
+- Previous exact-version DOI: `v0.6.4`, `10.5281/zenodo.21446142`.
+- Exact v0.6.5 DOI: pending Zenodo archival.
 - Current-contract external-rater replication: separate, unresolved, and scoring-prohibited.
 
 All notable changes to Human Influence Telemetry are documented here.
@@ -149,7 +152,8 @@ Added three public retrospective case narratives and four actor-specific machine
 
 Established the first public HIT specification, schema, catalog, handbook, fixtures, validator, governance files, and release controls.
 
-[Unreleased]: https://github.com/mj3b/human-influence-telemetry/compare/v0.6.4...HEAD
+[Unreleased]: https://github.com/mj3b/human-influence-telemetry/compare/v0.6.5...HEAD
+[0.6.5]: https://github.com/mj3b/human-influence-telemetry/compare/v0.6.4...v0.6.5
 [0.6.4]: https://github.com/mj3b/human-influence-telemetry/compare/v0.6.0...v0.6.4
 [0.6.0]: https://github.com/mj3b/human-influence-telemetry/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mj3b/human-influence-telemetry/compare/v0.4.0...v0.5.0

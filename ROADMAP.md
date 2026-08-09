@@ -1,10 +1,11 @@
 # Roadmap to Human Influence Telemetry 1.0.0
 
-**Current published release:** `0.6.4`  
-**Human-result release:** `0.6.0`  
-**Software release DOI:** `10.5281/zenodo.21446142`  
-**Active workstream:** `0.7.0` candidate  
-**Stable release candidate:** `0.9.0` pending  
+**Current published release:** `0.6.5`
+**Human-result release:** `0.6.0`
+**Current exact-version DOI:** Pending Zenodo archival
+**Previous exact-version DOI, v0.6.4:** `10.5281/zenodo.21446142`
+**Active workstream:** `0.7.0` candidate
+**Stable release candidate:** `0.9.0` pending
 **Stable public-contract target:** `1.0.0`, release prohibited
 
 See the [release index](docs/releases/README.md), [v1 readiness plan](docs/v1-readiness-plan.md), and [v1 candidate release outline](docs/releases/v1.0.0-candidate.md).
@@ -70,7 +71,7 @@ Version layers:
 - scorer contract used by the exercise `0.1.0`;
 - maturity Level 2, Applicable.
 
-## 0.6.4: Standalone software archive and DOI, current release
+## 0.6.4: Standalone software archive and DOI, complete
 
 Completed:
 
@@ -80,6 +81,20 @@ Completed:
 - synchronized citation, Zenodo, README, changelog, release-index, and provenance metadata.
 
 Release `0.6.4` does not alter the `0.4.0` normative contract, `0.5.0` conformance engine, `0.6.0` human result, H3 boundary, or Level 2 maturity decision.
+
+## 0.6.5: Research-integrity controls, current release
+
+Completed:
+
+- machine-readable mapping for H1 through H9 and four paper claims;
+- separate traceability, integrity, human support review, evidence fitness, and dependency-closure gates;
+- directness, contemporaneity, independence, completeness, and publication-authority judgments;
+- eight prespecified negative controls;
+- research lineage and AI-assistance records;
+- a working paper package and reproducible claim-gate figure;
+- `PASS_WITH_EXCEPTIONS`, with unsupported empirical claims blocked.
+
+Release `0.6.5` does not alter the `0.4.0` normative contract, `0.5.0` conformance engine, `0.6.0` human result, H3 boundary, or Level 2 maturity decision. Current-contract external-rater replication remains unresolved.
 
 ## 0.7.0: Current-contract replication package, active workstream
 

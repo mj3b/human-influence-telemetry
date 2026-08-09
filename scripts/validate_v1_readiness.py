@@ -28,7 +28,7 @@ EXPECTED_FILENAMES = {
     "HIT-IRP-HIT040-002-manual-scorer-workbook-template.docx",
     "HIT-IRP-HIT040-002-manual-scorer-workbook-template.pdf",
 }
-CURRENT_RELEASE = "0.6.4"
+CURRENT_RELEASE = "0.6.5"
 SOFTWARE_DOI = "10.5281/zenodo.21446142"
 
 
@@ -145,7 +145,7 @@ def main() -> int:
     if v1.get("research_maturity_is_separate") is not True:
         failures.append("v1 semantic stability must remain separate from research maturity")
     if v1.get("current_repository_release") != CURRENT_RELEASE:
-        failures.append("v1 readiness baseline must identify repository release 0.6.4")
+        failures.append("v1 readiness baseline must identify repository release 0.6.5")
     if v1.get("current_software_doi") != SOFTWARE_DOI:
         failures.append("v1 readiness baseline must identify the v0.6.4 software DOI")
     if v1.get("human_result_release") != "0.6.0":
@@ -178,8 +178,8 @@ def main() -> int:
 
     plan = V1_PLAN.read_text(encoding="utf-8")
     for phrase in (
-        "Current repository release:** `0.6.4`",
-        "Software release DOI:** `10.5281/zenodo.21446142`",
+        "Current repository release:** `0.6.5`",
+        "Previous exact-version DOI, v0.6.4:** `10.5281/zenodo.21446142`",
         "Current research maturity:** Level 2, Applicable",
         "Version `1.0.0` is a compatibility and implementation claim",
         "Draft manual workbooks now exist",
@@ -192,7 +192,7 @@ def main() -> int:
     release = V1_RELEASE.read_text(encoding="utf-8")
     for phrase in (
         "Status:** Candidate outline, release prohibited",
-        "Current repository release:** `0.6.4`",
+        "Current repository release:** `0.6.5`",
         "Current normative contract:** `0.4.0`",
         "Current conformance engine:** `0.5.0`",
         "public `v0.9.0` release candidate",
@@ -207,7 +207,7 @@ def main() -> int:
         return 1
 
     print("HIT v1 readiness staging validation passed")
-    print("- current repository release: 0.6.4")
+    print("- current repository release: 0.6.5")
     print("- human-result release: 0.6.0")
     print("- software DOI: 10.5281/zenodo.21446142")
     print("- current normative contract: 0.4.0")
